@@ -277,3 +277,70 @@ export const categoriesOptions = [
     isFree: false,
   },
 ]
+
+// ******************************************************** v5 *****************************************************
+export const tagsData = [
+  {
+    label: "Popular",
+    icon: "/images/appStore/svg/popularity 1.svg",
+  },
+  {
+    label: "Art",
+    icon: "/images/appStore/svg/art-and-design 1.svg",
+  },
+  {
+    label: "Games",
+    icon: "/images/appStore/svg/game.svg",
+  },
+  {
+    label: "Music",
+    icon: "/images/appStore/svg/guitar 1.svg",
+  },
+  {
+      label: "Sports",
+      icon: "/images/appStore/svg/sports 1.svg",
+  },
+  {
+  label: "Photography",
+  icon: "/images/appStore/svg/photography 1.svg",
+  },
+  {
+    label:"Voice Cloning",
+    icon: "/images/appStore/svg/sports 1.svg",
+  },
+  {
+    label:"Edge TTS",
+    icon: "/images/appStore/svg/sports 1.svg",
+  },
+  {
+    label:"Instruction Tuned",
+    icon: "/images/appStore/svg/sports 1.svg",
+  },
+  {
+    label:"Chat Assistants",
+    icon: "/images/appStore/svg/sports 1.svg",
+  }
+];
+
+export const ChainData = [
+  {
+    name:"Bit coin",
+    icon: "/images/appStore/svg/bitcoin.svg",
+  },
+  {
+    name:"Etherium",
+    icon: "/images/appStore/svg/etherium.svg",
+  },
+  {
+    name:"Ollama",
+    icon: "/images/appStore/svg/ollama.svg",
+  },
+  {
+    name:"Chain",
+    icon: "/images/appStore/svg/chain.svg",
+  },
+  {
+      name:"Solona",
+      icon: "/images/appStore/svg/solona.svg",
+  },
+];
