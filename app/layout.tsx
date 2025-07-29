@@ -36,10 +36,10 @@ export default function RootLayout({
   const sessionCookie = cookies().get('userSessionToken')
 
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning lang="en" className='hide-scrollbar'>
       <body
         className={cn(
-          'min-h-screen w-full bg-background font-sans text-foreground antialiased',
+          'container mx-auto min-h-screen w-full max-w-[1982px] bg-background p-0 font-sans text-foreground antialiased',
           inter.variable
         )}
       >

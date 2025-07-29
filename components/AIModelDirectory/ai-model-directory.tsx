@@ -263,3 +263,41 @@
 
 
 // *****************************************************  v5 *****************************************************
+
+
+"use client";
+import React, { useState } from 'react';
+import Banner from './ai-model-banner';
+import Fillter from './ai-model-filter';
+import ModelListing from './ai-model-listing';
+
+export default function AppDirectory() {
+    const [selectedChains, setSelectedChains] = useState<string[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  
+    const toggleChain = (chain: string) => {
+      setSelectedChains(prev =>
+        prev.includes(chain) ? prev.filter(c => c !== chain) : [...prev, chain]
+      );
+    };
+  
+    const toggleCategory = (category: string) => {
+      setSelectedCategories(prev =>
+        prev.includes(category) ? prev.filter(c => c !== category) : [...prev, category]
+      );
+    };
+  
+    return (
+        <div className='p-4 md:p-6 xl:p-8 2xl:p-8 3xl:p-10'>
+            <Banner />
+            <Fillter 
+                selectedChains={selectedChains}
+                selectedCategories={selectedCategories}
+                onToggleChain={toggleChain}
+                onToggleCategory={toggleCategory}
+            
+            />
+            <ModelListing selectedChains={selectedChains} selectedCategories={selectedCategories} />
+        </div>
+    );
+}

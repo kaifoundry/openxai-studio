@@ -78,8 +78,23 @@
     margin: 0;
   }
 
-  /* Firefox */
+ 
   input[type='number'] {
     -moz-appearance: textfield;
   }
+}
+
+/* New Stylings adding for v5  */
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.filter-blue {
+  filter: invert(39%) sepia(90%) saturate(2476%) hue-rotate(202deg) brightness(97%) contrast(95%);
 }
