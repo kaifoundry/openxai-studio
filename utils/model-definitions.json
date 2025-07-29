@@ -1,17 +1,52 @@
+
+
 [
   {
     "id": "0",
-    "logo": "/images/models/deepseek.png",
-    "name": "deepseek-r1",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Deploy and run your own DeepSeek R1 model for advanced language processing and generation capabilities.",
-    "longDesc": "**What is DeepSeek R1?**\n\nDeepSeek R1 is a powerful language model designed for natural text generation and understanding. It offers state-of-the-art performance for various NLP tasks while being efficient and deployable on standard hardware.",
+    "image": "/images/appStore/mock-card1.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
     "nixName": "deepseekr1",
     "implemented": true,
     "isUnitRunnable": true,
     "last_updated": "8 days ago",
+    "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains": [
+      {
+        "name":"Solona",
+          "chain":"/images/appStore/svg/solona.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
     "options": [
       {
         "name": "model_size",
@@ -19,29 +54,176 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "1.5b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "deepseek-r1:1.5b" },
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "deepseek-r1:7b" },
-          "8b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "deepseek-r1:8b" },
-          "14b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "deepseek-r1:14b" },
-          "32b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "deepseek-r1:32b" },
-          "70b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "deepseek-r1:70b" },
-          "671b": { "ram": 512000, "storage": 700000, "cpu": 64, "ollamaCommand": "deepseek-r1:671b" }
+          "1.5b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "deepseek-r1:1.5b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "deepseek-r1:7b"
+          },
+          "8b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "deepseek-r1:8b"
+          },
+          "14b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "deepseek-r1:14b"
+          },
+          "32b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "deepseek-r1:32b"
+          },
+          "70b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "deepseek-r1:70b"
+          },
+          "671b": {
+            "ram": 512000,
+            "storage": 700000,
+            "cpu": 64,
+            "ollamaCommand": "deepseek-r1:671b"
+          }
         }
       }
-    ]
+    ],
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
+"transactions": [
+    {
+      "id": "0x1Tdc7eb37...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "MEV Builder: Default...",
+      "status": "success"
+    },
+    {
+      "id": "0x17c3cd99c...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "Lido.id",
+      "status": "success"
+    },
+    {
+      "id": "0x92bb63f1e8...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "0x76034e1e..d60636da3",
+      "status": "success"
+    },
+    {
+      "id": "0x74d8e6270c...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "0x201f1Cf1..c70e70f83",
+      "status": "success"
+    },
+    {
+      "id": "0x245e8b036...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "0xeC8c324..0f9672207",
+      "status": "success"
+    }
+  ],
+      "claims":[
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  },
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  },
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  },
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  }
+]
+
   },
   {
     "id": "1",
-    "logo": "/images/models/llama.png",
-    "name": "llama2",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Meta's state-of-the-art large language model optimized for dialogue use cases.",
-    "nixName": "llama2",
-    "implemented": false,
+    "image": "/images/appStore/mock-card2.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Art",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "1 month ago",
+    "last_updated": "8 days ago",
+    "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -49,25 +231,142 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "llama2:7b" },
-          "13b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "llama2:13b" },
-          "70b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "llama2:70b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "llama2:7b"
+          },
+          "13b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "llama2:13b"
+          },
+          "70b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "llama2:70b"
+          }
         }
       }
-    ]
+    ],
+    "transactions": [
+    {
+      "id": "0x1Tdc7eb37...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "MEV Builder: Default...",
+      "status": "success"
+    },
+    {
+      "id": "0x17c3cd99c...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "Lido.id",
+      "status": "success"
+    },
+    {
+      "id": "0x92bb63f1e8...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "0x76034e1e..d60636da3",
+      "status": "success"
+    },
+    {
+      "id": "0x74d8e6270c...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "0x201f1Cf1..c70e70f83",
+      "status": "success"
+    },
+    {
+      "id": "0x245e8b036...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "0xeC8c324..0f9672207",
+      "status": "success"
+    }
+  ],
+      "claims":[
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  },
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  },
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  },
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  }
+]
   },
   {
     "id": "2",
-    "logo": "/images/models/mistral.png",
-    "name": "mistral",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "High-performance language model with strong reasoning capabilities.",
-    "nixName": "mistral",
-    "implemented": false,
+    "image": "/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Games",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "3 weeks ago",
+    "last_updated": "8 days ago",
+     "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains": [
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
     "options": [
       {
         "name": "model_size",
@@ -75,23 +374,139 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "mistral:7b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "mistral:7b"
+          }
         }
       }
-    ]
+    ],
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
+    "transactions": [
+    {
+      "id": "0x1Tdc7eb37...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "MEV Builder: Default...",
+      "status": "success"
+    },
+    {
+      "id": "0x17c3cd99c...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "Lido.id",
+      "status": "success"
+    },
+    {
+      "id": "0x92bb63f1e8...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "0x76034e1e..d60636da3",
+      "status": "success"
+    },
+    {
+      "id": "0x74d8e6270c...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "0x201f1Cf1..c70e70f83",
+      "status": "success"
+    },
+    {
+      "id": "0x245e8b036...",
+      "type": "Transfer",
+      "amount": "2272572",
+      "timeAgo": "16 secs ago",
+      "details": "0xeC8c324..0f9672207",
+      "status": "success"
+    }
+    ],
+    "claims":[
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  },
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  },
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  },
+  {
+    "time": "12:32 PM UTC",
+    "address": "0×836...9465c87",
+    "amount": "500 OPENX"
+  }
+]
+
+    
+  
   },
   {
     "id": "3",
-    "logo": "/images/models/mistral.png",
-    "name": "mixtral",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "A mixture-of-experts model offering superior performance across various tasks, by Mistral team.",
-    "nixName": "mixtral",
-    "implemented": false,
+    "image": "/images/appStore/mock-card1.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Photography",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "1 week ago",
+    "last_updated": "8 days ago",
+       "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
     "options": [
       {
         "name": "model_size",
@@ -99,23 +514,72 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "8x7b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "mixtral:8x7b" }
+          "8x7b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "mixtral:8x7b"
+          }
         }
       }
     ]
   },
   {
     "id": "4",
-    "logo": "/images/models/qwen.png",
-    "name": "qwen",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "A versatile language model with multiple size options for different use cases.",
-    "nixName": "qwen",
-    "implemented": false,
+    "image": "/images/appStore/mock-card2.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Voice Cloning",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "9 months ago",
+    "last_updated": "8 days ago",
+      "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Solona",
+          "chain":"/images/appStore/svg/solona.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
     "options": [
       {
         "name": "model_size",
@@ -123,30 +587,114 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "0.5b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen:0.5b" },
-          "1.8b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen:1.8b" },
-          "4b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen:4b" },
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen:7b" },
-          "14b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "qwen:14b" },
-          "32b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "qwen:32b" },
-          "72b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "qwen:72b" },
-          "110b": { "ram": 512000, "storage": 700000, "cpu": 64, "ollamaCommand": "qwen:110b" }
+          "0.5b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen:0.5b"
+          },
+          "1.8b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen:1.8b"
+          },
+          "4b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen:4b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen:7b"
+          },
+          "14b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "qwen:14b"
+          },
+          "32b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "qwen:32b"
+          },
+          "72b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "qwen:72b"
+          },
+          "110b": {
+            "ram": 512000,
+            "storage": 700000,
+            "cpu": 64,
+            "ollamaCommand": "qwen:110b"
+          }
         }
       }
     ]
   },
   {
     "id": "5",
-    "logo": "/images/models/google.png",
-    "name": "gemma",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Google's efficient and powerful language model for various tasks.",
-    "nixName": "gemma",
-    "implemented": false,
+    "image": "/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Edge TTS",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "9 months ago",
+    "last_updated": "8 days ago",
+      "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
+    "chains": [
+      {
+        "name":"Solona",
+          "chain":"/images/appStore/svg/solona.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
     "options": [
       {
         "name": "model_size",
@@ -154,24 +702,79 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "2b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "gemma:2b" },
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "gemma:7b" }
+          "2b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "gemma:2b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "gemma:7b"
+          }
         }
       }
     ]
   },
   {
     "id": "6",
-    "logo": "/images/models/microsoft.png",
-    "name": "phi3",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Microsoft's efficient language model known for strong reasoning capabilities.",
-    "nixName": "phi3",
-    "implemented": false,
+    "image": "/images/appStore/mock-card1.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Instruction Tuned",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "6 months ago",
+    "last_updated": "8 days ago",
+       "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
     "options": [
       {
         "name": "model_size",
@@ -179,24 +782,82 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "3.8b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "phi3:3.8b" },
-          "14b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "phi3:14b" }
+          "3.8b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "phi3:3.8b"
+          },
+          "14b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "phi3:14b"
+          }
         }
       }
     ]
   },
   {
     "id": "7",
-    "logo": "/images/models/llama.png",
-    "name": "codellama",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Meta's code-specialized language model optimized for programming tasks.",
-    "nixName": "codellama",
-    "implemented": false,
+    "image": "/images/appStore/mock-card2.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Chat Assistants",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "6 months ago",
+    "last_updated": "8 days ago",
+      "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains": [
+      {
+        "name":"Solona",
+          "chain":"/images/appStore/svg/solona.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
     "options": [
       {
         "name": "model_size",
@@ -204,26 +865,90 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "codellama:7b" },
-          "13b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "codellama:13b" },
-          "34b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "codellama:34b" },
-          "70b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "codellama:70b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "codellama:7b"
+          },
+          "13b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "codellama:13b"
+          },
+          "34b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "codellama:34b"
+          },
+          "70b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "codellama:70b"
+          }
         }
       }
     ]
   },
   {
     "id": "8",
-    "logo": "/images/models/tinyllama.png",
-    "name": "tinyllama",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Compact and efficient language model suitable for resource-constrained environments.",
-    "nixName": "tinyllama",
-    "implemented": false,
+    "image": "/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Music",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "13 months ago",
+    "last_updated": "8 days ago",
+      "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains": [
+      {
+        "name":"Solona",
+          "chain":"/images/appStore/svg/solona.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -231,23 +956,72 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "1.1b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "tinyllama:1.1b" }
+          "1.1b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "tinyllama:1.1b"
+          }
         }
       }
     ]
   },
   {
     "id": "9",
-    "logo": "/images/models/starcoder2.png",
-    "name": "starcoder2",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Advanced code generation model trained on a diverse set of programming languages.",
-    "nixName": "starcoder2",
-    "implemented": false,
+    "image": "/images/appStore/mock-card1.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Sports",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "4 months ago",
+    "last_updated": "8 days ago",
+       "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains": [
+      {
+        "name":"Solona",
+          "chain":"/images/appStore/svg/solona.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -255,25 +1029,84 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "3b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "starcoder2:3b" },
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "starcoder2:7b" },
-          "15b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "starcoder2:15b" }
+          "3b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "starcoder2:3b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "starcoder2:7b"
+          },
+          "15b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "starcoder2:15b"
+          }
         }
       }
     ]
   },
   {
     "id": "10",
-    "logo": "/images/models/dolphin.png",
-    "name": "dolphin-mixtral",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "A fine-tuned version of Mixtral offering enhanced instruction following capabilities.",
-    "nixName": "dolphin-mixtral",
-    "implemented": false,
+    "image": "/images/appStore/mock-card2.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "5 weeks ago",
+    "last_updated": "8 days ago",
+   "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -281,24 +1114,79 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "8x7b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "dolphin-mixtral:8x7b" },
-          "8x22b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "dolphin-mixtral:8x22b" }
+          "8x7b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "dolphin-mixtral:8x7b"
+          },
+          "8x22b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "dolphin-mixtral:8x22b"
+          }
         }
       }
     ]
   },
   {
     "id": "11",
-    "logo": "/images/models/deepseek.png",
-    "name": "deepseek-coder-v2",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Advanced code generation model with strong performance on programming tasks.",
-    "nixName": "deepseek-coder-v2",
-    "implemented": false,
+    "image": "/images/appStore/mock-card2.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Chat Assistants",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "4 months ago",
+    "last_updated": "8 days ago",
+   "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+     
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -306,24 +1194,78 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "16b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "deepseek-coder-v2:16b" },
-          "236b": { "ram": 512000, "storage": 700000, "cpu": 64, "ollamaCommand": "deepseek-coder-v2:236b" }
+          "16b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "deepseek-coder-v2:16b"
+          },
+          "236b": {
+            "ram": 512000,
+            "storage": 700000,
+            "cpu": 64,
+            "ollamaCommand": "deepseek-coder-v2:236b"
+          }
         }
       }
     ]
   },
   {
     "id": "12",
-    "logo": "/images/models/google.png",
-    "name": "codegemma",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Code-specialized version of Google's Gemma model for programming tasks.",
-    "nixName": "codegemma",
-    "implemented": false,
+    "image":"/images/appStore/mock-card2.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Voice Cloning",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "6 months ago",
+    "last_updated": "8 days ago",
+    "likes": "1.5K",
+    "followers": 144,
+    "apy": "320",
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -331,24 +1273,82 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "2b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "codegemma:2b" },
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "codegemma:7b" }
+          "2b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "codegemma:2b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "codegemma:7b"
+          }
         }
       }
     ]
   },
   {
     "id": "13",
-    "logo": "/images/models/wizardlm2.jpg",
-    "name": "wizardlm2",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Advanced language model focused on instruction following and reasoning.",
-    "nixName": "wizardlm2",
-    "implemented": false,
+    "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "9 months ago",
+    "last_updated": "8 days ago",
+       "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -356,24 +1356,85 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "wizardlm2:7b" },
-          "8x22b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "wizardlm2:8x22b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "wizardlm2:7b"
+          },
+          "8x22b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "wizardlm2:8x22b"
+          }
         }
       }
     ]
   },
   {
     "id": "14",
-    "logo": "/images/models/h4.png",
-    "name": "zephyr",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Fine-tuned language model optimized for chat and instruction following.",
-    "nixName": "zephyr",
-    "implemented": false,
+  "image":"/images/appStore/mock-card1.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "9 months ago",
+    "last_updated": "8 days ago",
+     "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },{
+        "name":"Solona",
+          "chain":"/images/appStore/svg/solona.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -381,24 +1442,78 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "zephyr:7b" },
-          "141b": { "ram": 512000, "storage": 700000, "cpu": 64, "ollamaCommand": "zephyr:141b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "zephyr:7b"
+          },
+          "141b": {
+            "ram": 512000,
+            "storage": 700000,
+            "cpu": 64,
+            "ollamaCommand": "zephyr:141b"
+          }
         }
       }
     ]
   },
   {
     "id": "15",
-    "logo": "/images/models/yi.svg",
-    "name": "yi",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Versatile language model with strong multilingual capabilities.",
-    "nixName": "yi",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "8 months ago",
+    "last_updated": "8 days ago",
+     "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -406,25 +1521,92 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "6b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "yi:6b" },
-          "9b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "yi:9b" },
-          "34b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "yi:34b" }
+          "6b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "yi:6b"
+          },
+          "9b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "yi:9b"
+          },
+          "34b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "yi:34b"
+          }
         }
       }
     ]
   },
   {
     "id": "16",
-    "logo": "/images/models/llava.jpeg",
-    "name": "llava",
-    "category": "AI",
-    "tags": ["Vision"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Multimodal model capable of understanding and reasoning about images and text.",
-    "nixName": "llava",
-    "implemented": false,
+    "image":"/images/appStore/mock-card1.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "12 months ago",
+    "last_updated": "8 days ago",
+     "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -432,25 +1614,92 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "llava:7b" },
-          "13b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "llava:13b" },
-          "34b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "llava:34b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "llava:7b"
+          },
+          "13b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "llava:13b"
+          },
+          "34b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "llava:34b"
+          }
         }
       }
     ]
   },
   {
     "id": "17",
-    "logo": "/images/models/google.png",
-    "name": "gemma2",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Second generation of Google's Gemma model with improved capabilities.",
-    "nixName": "gemma2",
-    "implemented": false,
+   "image":"/images/appStore/mock-card2.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "6 months ago",
+    "last_updated": "8 days ago",
+       "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -458,25 +1707,92 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "2b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "gemma2:2b" },
-          "9b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "gemma2:9b" },
-          "27b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "gemma2:27b" }
+          "2b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "gemma2:2b"
+          },
+          "9b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "gemma2:9b"
+          },
+          "27b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "gemma2:27b"
+          }
         }
       }
     ]
   },
   {
     "id": "18",
-    "logo": "/images/models/qwen.png",
-    "name": "qwen2.5",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Latest version of the Qwen model series with enhanced performance.",
-    "nixName": "qwen2.5",
-    "implemented": false,
+    "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "4 months ago",
+    "last_updated": "8 days ago",
+   "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -484,29 +1800,116 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "0.5b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen2.5:0.5b" },
-          "1.5b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen2.5:1.5b" },
-          "3b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen2.5:3b" },
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen2.5:7b" },
-          "14b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "qwen2.5:14b" },
-          "32b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "qwen2.5:32b" },
-          "72b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "qwen2.5:72b" }
+          "0.5b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen2.5:0.5b"
+          },
+          "1.5b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen2.5:1.5b"
+          },
+          "3b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen2.5:3b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen2.5:7b"
+          },
+          "14b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "qwen2.5:14b"
+          },
+          "32b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "qwen2.5:32b"
+          },
+          "72b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "qwen2.5:72b"
+          }
         }
       }
     ]
   },
   {
     "id": "19",
-    "logo": "/images/models/mistral.png",
-    "name": "mistral-nemo",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "NVIDIA-optimized version of Mistral for enhanced performance.",
-    "nixName": "mistral-nemo",
-    "implemented": false,
+    "image":"/images/appStore/mock-card1.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "5 months ago",
+    "last_updated": "8 days ago",
+      "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -514,23 +1917,80 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "12b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "mistral-nemo:12b" }
+          "12b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "mistral-nemo:12b"
+          }
         }
       }
     ]
   },
   {
     "id": "20",
-    "logo": "/images/models/llama.png",
-    "name": "llama3.2-vision",
-    "category": "AI",
-    "tags": ["Vision"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Multimodal version of LLaMA 3.2 with vision capabilities.",
-    "nixName": "llama3.2-vision",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "2 months ago",
+    "last_updated": "8 days ago",
+       "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -538,24 +1998,86 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "11b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "llama3.2-vision:11b" },
-          "90b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "llama3.2-vision:90b" }
+          "11b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "llama3.2-vision:11b"
+          },
+          "90b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "llama3.2-vision:90b"
+          }
         }
       }
     ]
   },
   {
     "id": "21",
-    "logo": "/images/models/qwen.png",
-    "name": "qwen2.5-coder",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Code-specialized version of Qwen 2.5 optimized for programming tasks.",
-    "nixName": "qwen2.5-coder",
-    "implemented": false,
+    "image":"/images/appStore/mock-card2.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "2 months ago",
+    "last_updated": "8 days ago",
+   "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -563,28 +2085,110 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "0.5b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen2.5-coder:0.5b" },
-          "1.5b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen2.5-coder:1.5b" },
-          "3b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen2.5-coder:3b" },
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "qwen2.5-coder:7b" },
-          "14b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "qwen2.5-coder:14b" },
-          "32b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "qwen2.5-coder:32b" }
+          "0.5b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen2.5-coder:0.5b"
+          },
+          "1.5b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen2.5-coder:1.5b"
+          },
+          "3b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen2.5-coder:3b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "qwen2.5-coder:7b"
+          },
+          "14b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "qwen2.5-coder:14b"
+          },
+          "32b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "qwen2.5-coder:32b"
+          }
         }
       }
     ]
   },
   {
     "id": "22",
-    "logo": "/images/models/internlm.jpeg",
-    "name": "internlm2",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Advanced language model with strong multilingual capabilities.",
-    "nixName": "internlm2",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "5 months ago",
+    "last_updated": "8 days ago",
+       "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -592,26 +2196,98 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "1m": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "internlm2:1m" },
-          "1.8b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "internlm2:1.8b" },
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "internlm2:7b" },
-          "20b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "internlm2:20b" }
+          "1m": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "internlm2:1m"
+          },
+          "1.8b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "internlm2:1.8b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "internlm2:7b"
+          },
+          "20b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "internlm2:20b"
+          }
         }
       }
     ]
   },
   {
     "id": "23",
-    "logo": "/images/models/nvidia.png",
-    "name": "nemotron",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "NVIDIA's high-performance language model for general tasks.",
-    "nixName": "nemotron",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "3 months ago",
+    "last_updated": "8 days ago",
+    "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -619,23 +2295,80 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "70b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "nemotron:70b" }
+          "70b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "nemotron:70b"
+          }
         }
       }
     ]
   },
   {
     "id": "24",
-    "logo": "/images/models/microsoft.png",
-    "name": "phi3.5",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Latest version of Microsoft's Phi model series with improved capabilities.",
-    "nixName": "phi3.5",
-    "implemented": false,
+    "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "4 months ago",
+    "last_updated": "8 days ago",
+     "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+   "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -643,23 +2376,80 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "3.8b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "phi3.5:3.8b" }
+          "3.8b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "phi3.5:3.8b"
+          }
         }
       }
     ]
   },
   {
     "id": "25",
-    "logo": "/images/models/codestral.png",
-    "name": "codestral",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Code-specialized language model optimized for programming tasks.",
-    "nixName": "codestral",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "4 months ago",
+    "last_updated": "8 days ago",
+       "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -667,23 +2457,80 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "22b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "codestral:22b" }
+          "22b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "codestral:22b"
+          }
         }
       }
     ]
   },
   {
     "id": "26",
-    "logo": "/images/models/starcoder2.png",
-    "name": "starcoder",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Original StarCoder model for code generation and understanding.",
-    "nixName": "starcoder",
-    "implemented": false,
+    "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "15 months ago",
+    "last_updated": "8 days ago",
+   "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -691,26 +2538,98 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "1b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "starcoder:1b" },
-          "3b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "starcoder:3b" },
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "starcoder:7b" },
-          "15b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "starcoder:15b" }
+          "1b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "starcoder:1b"
+          },
+          "3b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "starcoder:3b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "starcoder:7b"
+          },
+          "15b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "starcoder:15b"
+          }
         }
       }
     ]
   },
   {
     "id": "27",
-    "logo": "/images/models/ibm.png",
-    "name": "granite-code",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Specialized code generation model with multiple size options.",
-    "nixName": "granite-code",
-    "implemented": false,
+  "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "4 months ago",
+    "last_updated": "8 days ago",
+      "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -718,26 +2637,98 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "3b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "granite-code:3b" },
-          "8b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "granite-code:8b" },
-          "20b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "granite-code:20b" },
-          "34b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "granite-code:34b" }
+          "3b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "granite-code:3b"
+          },
+          "8b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "granite-code:8b"
+          },
+          "20b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "granite-code:20b"
+          },
+          "34b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "granite-code:34b"
+          }
         }
       }
     ]
   },
   {
     "id": "28",
-    "logo": "/images/models/vicuna.png",
-    "name": "vicuna",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Fine-tuned language model known for high-quality chat interactions.",
-    "nixName": "vicuna",
-    "implemented": false,
+  "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "15 months ago",
+    "last_updated": "8 days ago",
+    "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -745,25 +2736,92 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "vicuna:7b" },
-          "13b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "vicuna:13b" },
-          "33b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "vicuna:33b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "vicuna:7b"
+          },
+          "13b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "vicuna:13b"
+          },
+          "33b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "vicuna:33b"
+          }
         }
       }
     ]
   },
   {
     "id": "29",
-    "logo": "/images/models/smollm2.png",
-    "name": "smollm",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Efficient small language model for resource-constrained environments.",
-    "nixName": "smollm",
-    "implemented": false,
+    "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "5 months ago",
+    "last_updated": "8 days ago",
+    "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -771,25 +2829,92 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "135m": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "smollm:135m" },
-          "360m": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "smollm:360m" },
-          "1.7b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "smollm:1.7b" }
+          "135m": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "smollm:135m"
+          },
+          "360m": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "smollm:360m"
+          },
+          "1.7b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "smollm:1.7b"
+          }
         }
       }
     ]
   },
   {
     "id": "30",
-    "logo": "/images/models/wizard-vicuna-uncensored.png",
-    "name": "wizard-vicuna-uncensored",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Uncensored version of Wizard-Vicuna for open-ended interactions.",
-    "nixName": "wizard-vicuna-uncensored",
-    "implemented": false,
+    "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "15 months ago",
+    "last_updated": "8 days ago",
+      "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -797,25 +2922,92 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "wizard-vicuna-uncensored:7b" },
-          "13b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "wizard-vicuna-uncensored:13b" },
-          "30b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "wizard-vicuna-uncensored:30b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "wizard-vicuna-uncensored:7b"
+          },
+          "13b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "wizard-vicuna-uncensored:13b"
+          },
+          "30b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "wizard-vicuna-uncensored:30b"
+          }
         }
       }
     ]
   },
   {
     "id": "31",
-    "logo": "/images/models/mistral.png",
-    "name": "mistral-openorca",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Fine-tuned version of Mistral optimized with the OpenOrca dataset.",
-    "nixName": "mistral-openorca",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "15 months ago",
+    "last_updated": "8 days ago",
+      "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -823,23 +3015,80 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "mistral-openorca:7b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "mistral-openorca:7b"
+          }
         }
       }
     ]
   },
   {
     "id": "32",
-    "logo": "/images/models/qwen.png",
-    "name": "qwq",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "General purpose language model with strong performance.",
-    "nixName": "qwq",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "2 months ago",
+    "last_updated": "8 days ago",
+     "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -847,23 +3096,80 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "32b": { "ram": 24000, "storage": 40000, "cpu": 4, "ollamaCommand": "qwq:32b" }
+          "32b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "qwq:32b"
+          }
         }
       }
     ]
   },
   {
     "id": "33",
-    "logo": "/images/models/llama.png",
-    "name": "llama2-chinese",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Chinese-optimized version of LLaMA 2 for enhanced Chinese language capabilities.",
-    "nixName": "llama2-chinese",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "15 months ago",
+    "last_updated": "8 days ago",
+     "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -871,24 +3177,86 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "llama2-chinese:7b" },
-          "13b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "llama2-chinese:13b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "llama2-chinese:7b"
+          },
+          "13b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "llama2-chinese:13b"
+          }
         }
       }
     ]
   },
   {
     "id": "34",
-    "logo": "/images/models/smollm2.png",
-    "name": "smollm2",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Second generation of the efficient small language model.",
-    "nixName": "smollm2",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "3 months ago",
+    "last_updated": "8 days ago",
+   "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -896,25 +3264,92 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "135m": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "smollm2:135m" },
-          "360m": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "smollm2:360m" },
-          "1.7b": { "ram": 8000, "storage": 10000, "cpu": 2, "ollamaCommand": "smollm2:1.7b" }
+          "135m": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "smollm2:135m"
+          },
+          "360m": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "smollm2:360m"
+          },
+          "1.7b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "smollm2:1.7b"
+          }
         }
       }
     ]
   },
   {
     "id": "35",
-    "logo": "/images/models/codegeex4.jpg",
-    "name": "codegeex4",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Advanced code generation model with multilingual programming capabilities.",
-    "nixName": "codegeex4",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "6 months ago",
+    "last_updated": "8 days ago",
+     "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -922,23 +3357,80 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "9b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "codegeex4:9b" }
+          "9b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "codegeex4:9b"
+          }
         }
       }
     ]
   },
   {
     "id": "36",
-    "logo": "/images/models/openchat.png",
-    "name": "openchat",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Open-source chat model optimized for dialogue interactions.",
-    "nixName": "openchat",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "12 months ago",
+    "last_updated": "8 days ago",
+      "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -946,23 +3438,80 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "openchat:7b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "openchat:7b"
+          }
         }
       }
     ]
   },
   {
     "id": "37",
-    "logo": "/images/models/cohere.png",
-    "name": "aya",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Versatile language model with strong general capabilities.",
-    "nixName": "aya",
-    "implemented": false,
+  "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "8 months ago",
+    "last_updated": "8 days ago",
+    "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -970,24 +3519,85 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "8b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "aya:8b" },
-          "35b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "aya:35b" }
+          "8b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "aya:8b"
+          },
+          "35b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "aya:35b"
+          }
         }
       }
     ]
   },
   {
     "id": "38",
-    "logo": "/images/models/deepseek.png",
-    "name": "deepseek-v3",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Latest version of DeepSeek's general-purpose language model.",
-    "nixName": "deepseek-v3",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "2 weeks ago",
+    "last_updated": "8 days ago",
+    "likes": "1.5K",
+    "followers": 144,
+    "apy": "320",
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -995,23 +3605,80 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "671b": { "ram": 512000, "storage": 700000, "cpu": 64, "ollamaCommand": "deepseek-v3:671b" }
+          "671b": {
+            "ram": 512000,
+            "storage": 700000,
+            "cpu": 64,
+            "ollamaCommand": "deepseek-v3:671b"
+          }
         }
       }
     ]
   },
   {
     "id": "39",
-    "logo": "/images/models/qwen.png",
-    "name": "codeqwen",
-    "category": "AI",
-    "tags": ["Code"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Code-specialized version of Qwen optimized for programming tasks.",
-    "nixName": "codeqwen",
-    "implemented": false,
+   "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "7 months ago",
+    "last_updated": "8 days ago",
+       "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -1019,23 +3686,79 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "7b": { "ram": 16000, "storage": 10000, "cpu": 2, "ollamaCommand": "codeqwen:7b" }
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "codeqwen:7b"
+          }
         }
       }
     ]
   },
   {
     "id": "40",
-    "logo": "/images/models/nous.png",
-    "name": "nous-hermes2",
-    "category": "AI",
-    "tags": ["General"],
-    "dateAdded": "2024-03-22T12:00:00Z",
-    "desc": "Second generation of the Nous Hermes language model.",
-    "nixName": "nous-hermes2",
-    "implemented": false,
+    "image":"/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
     "isUnitRunnable": true,
-    "last_updated": "13 months ago",
+    "last_updated": "8 days ago",
+    "likes": "1.5K",
+    "followers": 144,
+    "apy": "320",
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains":[
+      { 
+          "name":"Bit coin",
+          "chain":"/images/appStore/svg/bitcoin.svg"
+      },
+      {
+        "name":"Etherium",
+          "chain":"/images/appStore/svg/etherium.svg"
+      },
+      {
+        "name":"Ollama",
+          "chain":"/images/appStore/svg/ollama.svg"
+      },
+      {
+        "name":"Chain",
+          "chain":"/images/appStore/svg/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller":[
+      {
+        "logo":"/images/appStore/contentlogo.png",
+        "name":"Christian Grey"
+      }
+    ],
     "options": [
       {
         "name": "model_size",
@@ -1043,8 +3766,18 @@
         "nixName": "model.size",
         "type": "string",
         "requirements": {
-          "10.7b": { "ram": 16000, "storage": 20000, "cpu": 4, "ollamaCommand": "nous-hermes2:10.7b" },
-          "34b": { "ram": 48000, "storage": 100000, "cpu": 8, "ollamaCommand": "nous-hermes2:34b" }
+          "10.7b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "nous-hermes2:10.7b"
+          },
+          "34b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "nous-hermes2:34b"
+          }
         }
       }
     ]
