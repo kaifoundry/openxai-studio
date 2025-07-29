@@ -1,0 +1,150 @@
+"use client";
+import React, { useState, useMemo, useEffect } from 'react';
+import Card from './ai-model-card';
+import ModelDefinitions from '../../utils/model-definitions.json';
+import Image from 'next/image';
+
+interface AppContentProps {
+  selectedChains: string[];
+  selectedCategories: string[];
+}
+const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) => {
+  const [collapsed, setCollapsed] = useState(false);
+  const [visibleCounts, setVisibleCounts] = useState<{ [key: string]: number }>({});
+
+  useEffect(() => {
+    const initialCollapsed = localStorage.getItem('nav-collapsed') === 'true';
+    setCollapsed(initialCollapsed);
+
+    const handler = (e: CustomEvent) => {
+      setCollapsed(e.detail.collapsed);
+    };
+
+    window.addEventListener('nav-collapsed-change', handler as EventListener);
+    return () => window.removeEventListener('nav-collapsed-change', handler as EventListener);
+  }, []);
+
+  const uniqueCategories = useMemo(() => {
+    const categories = ModelDefinitions.map((item) => item.category);
+    return [...new Set(categories)];
+  }, []);
+
+  const filterModels = (category: string) => {
+    return ModelDefinitions.filter(item => {
+      const matchChain = selectedChains.length > 0
+        ? item.chains?.some((c: any) => selectedChains.includes(c.name))
+        : true;
+      const matchCategory = selectedCategories.length > 0
+        ? selectedCategories.includes(item.category)
+        : true;
+      return matchChain && matchCategory && item.category === category;
+    });
+  };
+
+  const renderCards = (title: string, models: any[], showAll: boolean = false) => {
+    const getVisibleCount = () => {
+      if (typeof window !== 'undefined' && window.innerWidth >= 1920) {
+        return 4;
+      }
+      return collapsed ? 4 : 3;
+    };
+    
+    const visibleCount = visibleCounts[title] ?? getVisibleCount();
+    const visibleModels = showAll ? models : models.slice(0, visibleCount);
+    const hasMore = !showAll && visibleCount < models.length;
+    if (models.length === 0 && (selectedCategories.length !==0 || selectedChains.length !==0)  ) {
+      return (
+        <div className='flex items-center justify-center'>
+          <Image src="/images/appStore/no_data.jpg" alt="No data" width={400} height={400} />
+        </div>
+      );
+    }
+    return (
+      <div key={title} className="hide-scrollbar mb-10 flex flex-col overflow-x-auto">
+        {models.length !== 0 &&(<div className="scrollbar-hide mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
+          {title} ({models.length})
+        </div>)}
+
+        <div
+          className={`
+            grid grid-cols-1 gap-4 transition-all duration-300
+            md:grid-cols-2
+            3xl:gap-8
+            ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'}
+            ${collapsed ? 'xl:grid-cols-4' : 'xl:grid-cols-3'}
+            ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'}
+            3xl:grid-cols-4
+          `}
+        >
+          {visibleModels.map((data: any) => (
+            <Card
+              key={data.id}
+              id={data.id}
+              image={data.image}
+              title={data.name}
+              hashTags={data.tags}
+              logo={data.logo}
+              icons={data.chains}
+              likes={data.likes}
+              followers={data.followers}
+              apy={data.apy}
+              Seller={data.Seller}
+            />
+          ))}
+        </div>
+
+        {hasMore && (
+          <div
+            className="mt-4 w-fit cursor-pointer px-2 text-[13px] font-[500] text-[#434343] transition-all duration-100 hover:underline hover:underline-offset-1"
+            onClick={() =>
+              setVisibleCounts(prev => ({
+                ...prev,
+                [title]: (prev[title] ?? (collapsed ? 4 : 3)) + 4
+              }))
+            }
+          >
+            View More
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  if (selectedCategories.length > 0 || selectedChains.length > 0) {
+   
+    const matchingCategories = uniqueCategories.filter(cat => {
+      const models = filterModels(cat);
+      return models.length > 0;
+    });
+    const categoriesToShow = selectedCategories.length > 0
+      ? selectedCategories
+      : matchingCategories;
+  
+    if (categoriesToShow.length === 0) {
+      return (
+        <div className='flex items-center justify-center'>
+          <Image src="/images/appStore/no_data.jpg" alt="No data" width={400} height={400} />
+        </div>
+      );
+    }
+  
+    return (
+      <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20">
+        {categoriesToShow.map(category => {
+          const models = filterModels(category);
+          return renderCards(category, models, true);
+        })}
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20">
+      {uniqueCategories.map((category) => {
+        const models = filterModels(category);
+        return models.length > 0 ? renderCards(category, models, false) : null;
+      })}
+    </div>
+  );
+};
+export default ModelListing
