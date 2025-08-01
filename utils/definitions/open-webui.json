@@ -10,6 +10,7 @@
     "storage": 100
   },
   "tags": ["LLM"],
+  "version":"Voice-to-Voice",
   "website": "https://github.com/open-webui/open-webui",
   "implemented": true,
   "logo": "",

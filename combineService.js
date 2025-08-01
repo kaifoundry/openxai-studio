@@ -15,7 +15,7 @@ const combineJsonFiles = () => {
     }
 
     const jsonFiles = files.filter(file => file.endsWith('.json'));
-
+  
     if (jsonFiles.length === 0) {
       console.warn(`No JSON files found in ${sourceDir}`);
       return;
