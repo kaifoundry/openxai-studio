@@ -3,7 +3,8 @@
 import React,{useState,useEffect} from 'react'
 import Image from 'next/image'
 import { useRouter } from "next/navigation";
-import { useNavContext } from '../SidebarNav/sibebar-nav';
+
+
 interface cardProps {
     id?:string,
     image?:string,
@@ -25,7 +26,7 @@ interface cardProps {
 const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:cardProps) => {
     const router = useRouter();
     const [collapsed, setCollapsed] = useState(false);
-
+    
   useEffect(() => {
   
     setCollapsed(localStorage.getItem('nav-collapsed') === 'true');
@@ -43,17 +44,35 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
     router.push(`/app-store/${id}`);
   };
   return (
-    <div className={`my-2 flex cursor-pointer flex-col justify-center  rounded-xl bg-[#F6FAFF] p-2 `} style={{boxShadow:'rgba(0, 0, 0, 0.15) 0px 2px 8px'}}  
+    <div className={`duration-800 delay-800 my-2 flex cursor-pointer flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 transition-all ease-in-out`}
     
     //onClick={handleClick}
     >
+        <div className="relative rounded-xl">
+        <div
+          className="absolute inset-0 z-0 h-[245px] w-full p-2 opacity-50 3xl:h-[275px]"
+          style={{
+            backgroundImage: `url(${image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'blur(40px)',
+            transform: 'scale(0.8)',
+            
+          }}
+        >
+            
+        </div>
+    
+
         <Image
-         src={image}
-         alt='title'
-         width={390}
-         height={235}
-         className={`h-[190px] w-full transition-all duration-700 ease-in-out  3xl:h-[235px] `}
+          src={image}
+          alt="title"
+          width={390}
+          height={235}
+          priority={true}
+          className="duration-800 delay-800 relative z-20 h-[190px] w-full rounded-xl transition-all ease-in-out 3xl:h-[235px]"
         />
+      </div>
         <div className='flex justify-between p-4'>
                 <div className='flex flex-col gap-0'>
                     <div className='text-[15.08px] font-[600] text-black md:text-[14.08px] xl:text-[16.08px] 2xl:text-[19.08px] 3xl:text-[23.08px]'>{title}</div>
