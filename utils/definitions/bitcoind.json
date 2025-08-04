@@ -10,6 +10,7 @@
     "storage": 512000
   },
   "tags": ["Validator", "Blockchain", "Bitcoin"],
+  "version":"Bitcoin Demon",
   "website": "https://bitcoin.org/",
   "implemented": true,
   "logo": "https://bitcoin.org/img/icons/opengraph.png",

@@ -282,65 +282,65 @@ export const categoriesOptions = [
 export const tagsData = [
   {
     label: "Popular",
-    icon: "/images/appStore/svg/popularity 1.svg",
+    icon: "/images/appStore/svg/categories/popularity 1.svg",
   },
   {
     label: "Art",
-    icon: "/images/appStore/svg/art-and-design 1.svg",
+    icon: "/images/appStore/svg/categories/art-and-design 1.svg",
   },
   {
     label: "Games",
-    icon: "/images/appStore/svg/game.svg",
+    icon: "/images/appStore/svg/categories/game.svg",
   },
   {
     label: "Music",
-    icon: "/images/appStore/svg/guitar 1.svg",
+    icon: "/images/appStore/svg/categories/guitar 1.svg",
   },
   {
       label: "Sports",
-      icon: "/images/appStore/svg/sports 1.svg",
+      icon: "/images/appStore/svg/categories/sports 1.svg",
   },
   {
   label: "Photography",
-  icon: "/images/appStore/svg/photography 1.svg",
+  icon: "/images/appStore/svg/categories/photography 1.svg",
   },
   {
     label:"Voice Cloning",
-    icon: "/images/appStore/svg/sports 1.svg",
+    icon: "/images/appStore/svg/categories/sports 1.svg",
   },
   {
     label:"Edge TTS",
-    icon: "/images/appStore/svg/sports 1.svg",
+    icon: "/images/appStore/svg/categories/sports 1.svg",
   },
   {
     label:"Instruction Tuned",
-    icon: "/images/appStore/svg/sports 1.svg",
+    icon: "/images/appStore/svg/categories/sports 1.svg",
   },
   {
     label:"Chat Assistants",
-    icon: "/images/appStore/svg/sports 1.svg",
+    icon: "/images/appStore/svg/categories/sports 1.svg",
   }
 ];
 
 export const ChainData = [
   {
     name:"Bit coin",
-    icon: "/images/appStore/svg/bitcoin.svg",
+    icon: "/images/appStore/svg/chains/bitcoin.svg",
   },
   {
     name:"Etherium",
-    icon: "/images/appStore/svg/etherium.svg",
+    icon: "/images/appStore/svg/chains/etherium.svg",
   },
   {
     name:"Ollama",
-    icon: "/images/appStore/svg/ollama.svg",
+    icon: "/images/appStore/svg/chains/ollama.svg",
   },
   {
     name:"Chain",
-    icon: "/images/appStore/svg/chain.svg",
+    icon: "/images/appStore/svg/chains/chain.svg",
   },
   {
       name:"Solona",
-      icon: "/images/appStore/svg/solona.svg",
+      icon: "/images/appStore/svg/chains/solona.svg",
   },
 ];

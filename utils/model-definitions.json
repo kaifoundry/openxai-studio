@@ -43,7 +43,7 @@
     "chains": [
       {
         "name":"Solona",
-          "chain":"/images/appStore/svg/solona.svg"
+          "chain":"/images/appStore/svg/chains/solona.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -214,7 +214,7 @@
       
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -359,11 +359,11 @@
     "chains": [
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -499,11 +499,11 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -572,11 +572,11 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Solona",
-          "chain":"/images/appStore/svg/solona.svg"
+          "chain":"/images/appStore/svg/chains/solona.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -687,11 +687,11 @@
     "chains": [
       {
         "name":"Solona",
-          "chain":"/images/appStore/svg/solona.svg"
+          "chain":"/images/appStore/svg/chains/solona.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -761,11 +761,11 @@
       
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "Seller":[
@@ -840,15 +840,15 @@
     "chains": [
       {
         "name":"Solona",
-          "chain":"/images/appStore/svg/solona.svg"
+          "chain":"/images/appStore/svg/chains/solona.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "Seller":[
@@ -935,11 +935,11 @@
     "chains": [
       {
         "name":"Solona",
-          "chain":"/images/appStore/svg/solona.svg"
+          "chain":"/images/appStore/svg/chains/solona.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1008,11 +1008,11 @@
     "chains": [
       {
         "name":"Solona",
-          "chain":"/images/appStore/svg/solona.svg"
+          "chain":"/images/appStore/svg/chains/solona.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1093,11 +1093,11 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1173,11 +1173,11 @@
      
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/chains/svg/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/chains/svg/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1251,12 +1251,12 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1331,15 +1331,15 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1414,18 +1414,18 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },{
         "name":"Solona",
-          "chain":"/images/appStore/svg/solona.svg"
+          "chain":"/images/appStore/svg/chains/solona.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1500,11 +1500,11 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1585,19 +1585,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1678,19 +1678,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1771,19 +1771,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1888,19 +1888,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1969,19 +1969,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2056,19 +2056,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2167,19 +2167,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2266,19 +2266,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2347,19 +2347,19 @@
    "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2428,19 +2428,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2509,19 +2509,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2608,19 +2608,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2707,19 +2707,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2800,19 +2800,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2893,19 +2893,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -2986,19 +2986,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -3067,19 +3067,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -3148,19 +3148,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -3235,19 +3235,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -3328,19 +3328,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -3409,19 +3409,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -3490,19 +3490,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -3576,19 +3576,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -3657,19 +3657,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -3737,19 +3737,19 @@
     "chains":[
       { 
           "name":"Bit coin",
-          "chain":"/images/appStore/svg/bitcoin.svg"
+          "chain":"/images/appStore/svg/chains/bitcoin.svg"
       },
       {
         "name":"Etherium",
-          "chain":"/images/appStore/svg/etherium.svg"
+          "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
         "name":"Ollama",
-          "chain":"/images/appStore/svg/ollama.svg"
+          "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
         "name":"Chain",
-          "chain":"/images/appStore/svg/chain.svg"
+          "chain":"/images/appStore/svg/chains/chain.svg"
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",

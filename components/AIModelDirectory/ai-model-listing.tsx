@@ -52,18 +52,14 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     const visibleCount = visibleCounts[title] ?? getVisibleCount();
     const visibleModels = showAll ? models : models.slice(0, visibleCount);
     const hasMore = !showAll && visibleCount < models.length;
-    if (models.length === 0 && (selectedCategories.length !==0 || selectedChains.length !==0)  ) {
-      return (
-        <div className='flex items-center justify-center'>
-          <Image src="/images/appStore/no_data.jpg" alt="No data" width={400} height={400} />
-        </div>
-      );
-    }
+
+    if(models.length === 0) return null
+
     return (
       <div key={title} className="hide-scrollbar mb-10 flex flex-col overflow-x-auto">
-        {models.length !== 0 &&(<div className="scrollbar-hide mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
+        <div className="scrollbar-hide mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
           {title} ({models.length})
-        </div>)}
+        </div>
 
         <div
           className={`
@@ -110,8 +106,29 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     );
   };
 
+
+  const allMatchingModels = useMemo(() => {
+    return ModelDefinitions.filter(item => {
+      const matchChain = selectedChains.length > 0
+        ? item.chains?.some((c: any) => selectedChains.includes(c.name))
+        : true;
+      const matchCategory = selectedCategories.length > 0
+        ? selectedCategories.includes(item.category)
+        : true;
+      return matchChain && matchCategory;
+    });
+  }, [selectedChains, selectedCategories]);
+
+  // Show no data image if there are no matching models and filters are applied
+  if ((selectedCategories.length > 0 || selectedChains.length > 0) && allMatchingModels.length === 0) {
+    return (
+      <div className='flex items-center justify-center'>
+        <Image src="/images/appStore/no_data.jpg" alt="No data" width={400} height={400} />
+      </div>
+    );
+  }
+
   if (selectedCategories.length > 0 || selectedChains.length > 0) {
-   
     const matchingCategories = uniqueCategories.filter(cat => {
       const models = filterModels(cat);
       return models.length > 0;
@@ -119,14 +136,6 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     const categoriesToShow = selectedCategories.length > 0
       ? selectedCategories
       : matchingCategories;
-  
-    if (categoriesToShow.length === 0) {
-      return (
-        <div className='flex items-center justify-center'>
-          <Image src="/images/appStore/no_data.jpg" alt="No data" width={400} height={400} />
-        </div>
-      );
-    }
   
     return (
       <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20">
@@ -147,4 +156,4 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     </div>
   );
 };
-export default ModelListing
+export default ModelListing;

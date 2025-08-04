@@ -10,6 +10,7 @@
     "storage": 12000
   },
   "tags": ["LLM", "AI"],
+  "version":"deepseek:1.5b",
   "website": "https://github.com/ollama/ollama",
   "implemented": true,
   "logo": "https://avatars.githubusercontent.com/u/151674099",
