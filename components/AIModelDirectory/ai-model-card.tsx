@@ -45,8 +45,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
   };
   return (
     <div className={`duration-800 delay-800 my-2 flex cursor-pointer flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 transition-all ease-in-out`}
-    
-    //onClick={handleClick}
+    onClick={handleClick}
     >
         <div className="relative rounded-xl">
         <div
