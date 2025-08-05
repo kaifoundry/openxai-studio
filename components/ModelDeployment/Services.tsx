@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-
+import ModelDefinition from "../../utils/model-definitions.json"
 import {
   Accordion,
   AccordionContent,
@@ -68,18 +68,19 @@ export const Services = ({ id }: ServicesProps) => {
     label:string;
   } | null>(null)
 
+  const modelDefinition = ModelDefinition.find(m => m.id === id)
   const handleModelSelect = (option: any) => {
     setSelectedAIModel(option)
-    console.log('Selected Full Model Option:', option)
+    //console.log('Selected Full Model Option:', option)
   }
   const handleProviderSelect = (option: any) => {
     setSelectedProvider(option)
-    console.log('Selected Provider', option)
+    //console.log('Selected Provider', option)
   }
   const handleTokenizationSelect = (option: any) => {
     setSelectedTokenization(option)
     
-    console.log('Selected Tokenization', option)
+    //console.log('Selected Tokenization', option)
   }
   const accordionData = [
     {
@@ -280,6 +281,7 @@ export const Services = ({ id }: ServicesProps) => {
           selectedProvider={selectedProvider}
           selectedTokenization={selectedTokenization}
           final_amount={final_amount}
+          templateId={modelDefinition?.nixName}
         />
       </div>
     </div>

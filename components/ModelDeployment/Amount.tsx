@@ -1,14 +1,31 @@
 
 'use client';
 import React, { useState,useEffect } from "react";
-
-export default function Amount({ selectedAIModel, selectedProvider, selectedTokenization,final_amount }) {
+import { useToast } from '@/components/ui/use-toast'
+import { useRouter } from 'next/navigation'
+import { useDemoContext, useSetDemoContext } from '@/contexts/XnodeDemoContext'
+import ModelDefinitions from '@/utils/model-definitions.json'
+import {
+  demoSession,
+  reserveDemo,
+  useDemosAvailable,
+  useDeployModel,
+  type DemoXnode,
+} from '@/lib/xnode-demo'
+import { xnode } from '@openmesh-network/xnode-manager-sdk'
+export default function Amount({ selectedAIModel, selectedProvider, selectedTokenization,final_amount,templateId }) {
   const [selectedServices, setSelectedServices] = useState([]);
   const [hourlyRate,setHourlyRate] = useState(0.00);
   const [monthlyRate,setMontlyRate]=useState(0.00);
   const [totalSavings,setTotalSavings]=useState(0.00)
   // const monthlyRate = (selectedServices.length * hourlyRate * 24 * 30).toFixed(2);
-
+  const router = useRouter();
+  const { toast } = useToast()
+  const demos = useDemosAvailable()
+  const demoXnode = demos.data?.find((x) => !x.reservation)
+   const reservedXnode = useDemoContext()
+    const setReservedXnode = useSetDemoContext()
+    const deployModel = useDeployModel()
   const getWorkingDaysInMonth = (year, month) => {
     const startDate = new Date(year, month, 1);
     const endDate = new Date(year, month + 1, 0);
@@ -72,11 +89,10 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
     const now = new Date();
     const workingDays = getWorkingDaysInMonth(now.getFullYear(), now.getMonth());
 
-    // Calculate hourly rate
     const totalWorkingHours = workingDays * WORKING_HOURS_PER_DAY;
     const calculatedHourlyRate = totalWorkingHours > 0 
       ? newMonthlyRate / totalWorkingHours 
-      : 0; // Avoid division by zero
+      : 0; 
 
     setHourlyRate(parseFloat(calculatedHourlyRate.toFixed(2)));
     }
@@ -141,6 +157,93 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
     showFinalSummaryBlock = false;
   }
 
+
+  const deployOnDemo = async () => {
+    const activeReservation =
+      reservedXnode.xnode &&
+      reservedXnode.xnode.reservation.reserved_until > Date.now() / 1000
+    let deployOnXnode: DemoXnode
+
+    if (!activeReservation && !demoXnode) {
+      const nextFreeXnode = demos.data
+        ?.map((x) => x.reservation.reserved_until)
+        .sort()
+        .at(0)
+      toast({
+        title: 'Deployment failed',
+        description: `No demo xnodes available. ${nextFreeXnode ? `Next xnode will be free in ${Math.round((nextFreeXnode - Date.now() / 1000) / 60)} minutes.` : ''}`,
+        variant: 'destructive',
+      })
+      return
+    }
+
+    let dismiss = () => {}
+    try {
+      if (activeReservation) {
+        deployOnXnode = reservedXnode.xnode
+      } else {
+        dismiss = toast({
+          title: 'Reserving Xnode...',
+          description: 'This can take up to 1 minute..',
+          duration: 60_000,
+        }).dismiss
+        deployOnXnode = await reserveDemo({ xnode_id: demoXnode.id })
+      }
+
+      //console.log('Selected model:', step.modelSize)
+
+      // Use templateId to find the correct model definition
+      const selectedModel = ModelDefinitions.find(
+        (m) => m.nixName === templateId
+      )
+      console.log('Found model definition:', selectedModel)
+
+      // Get the selected size from the UI
+      const modelSize = selectedAIModel?.name
+      console.log('Model size:', modelSize)
+
+      const ollamaCommand =
+        selectedModel?.options[0].requirements[modelSize]?.ollamaCommand
+      console.log('Ollama command:', ollamaCommand)
+
+      if (!ollamaCommand) {
+        throw new Error('Selected model configuration not found')
+      }
+
+      const session = demoSession({ xnode_id: deployOnXnode.id })
+      while (true) {
+        // Wait until access is granted
+        try {
+          await xnode.usage.cpu({
+            session,
+            path: {
+              scope: 'host',
+            },
+          })
+          break
+        } catch (e) {
+          console.log('waiting for Xnode access...')
+          await new Promise((resolve) => setTimeout(resolve, 1000))
+        }
+      }
+
+      const deploymentId = await deployModel({
+        session,
+        model: ollamaCommand,
+      }).then((data) => data.request_id)
+      setReservedXnode({
+        xnode: deployOnXnode,
+        deploymentId,
+        processes: ['open-webui', 'ollama', 'ollama-model-loader'],
+      })
+
+      router.push('/deployments')
+    } catch (e) {
+      console.error(e)
+    } finally {
+      dismiss()
+    }
+  }
   return (
     <div className="flex py-4 pl-0 pr-4">
 
@@ -289,7 +392,12 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
           </div>)}
 
           <button className={`mt-6 w-full rounded-md  py-2 text-white transition  ${(selectedAIModel && selectedProvider && selectedTokenization && final_amount) ?'bg-[#0058FF]':'bg-[#757575]'}`}
-          onClick={()=>{console.log(selectedAIModel , selectedProvider , selectedTokenization , final_amount,selectedAIModel && selectedProvider && selectedTokenization && final_amount)}}
+          onClick={() => {
+           
+            deployOnDemo()
+              .catch(console.error)
+              .finally(() => console.log("Deploying"))
+          }}
           >
             Deploy
           </button>
