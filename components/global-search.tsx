@@ -66,7 +66,7 @@ export function GlobalSearch({ onSelect }: GlobalSearchProps) {
                 >
                   <Link href={navItem.href}>
                     {navItem.icon ? (
-                      <navItem.icon className="mr-2 size-4 max-hdplus:size-3" />
+                      <Image src={navItem?.icon} alt='' width={20} height={20} className="mr-2 size-4 max-hdplus:size-3" />
                     ) : null}
                     <span className="max-hdplus:text-xs">{navItem.name}</span>
                   </Link>

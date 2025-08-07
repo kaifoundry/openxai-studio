@@ -15,10 +15,8 @@ interface cardProps {
     likes?:string
     followers?:number
     apy?:string
-    Seller?:[{
-        name:string
-        logo?:string}
-    ]
+    Seller?: { name: string; logo?: string }[]
+
 }
 
 
@@ -59,11 +57,8 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
             transform: 'scale(0.8)',
             
           }}
-        >
-            
+        >  
         </div>
-    
-
         <Image
           src={image}
           alt="title"
@@ -81,9 +76,9 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
             ))}</div>
                 </div>
                 <div>
-                {Seller && Seller.length > 0 && (
+                {Seller && Seller?.length > 0 && (
                 <Image
-                src={Seller[0]?.logo}
+                src={Seller?.[0]?.logo}
                 alt="logo"
                 width={36}
                 height={36}
@@ -92,10 +87,10 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
            
         </div>
         <div className='flex items-center gap-0 p-2'>
-            {icons.map((item,index)=>(
+            {icons?.map((item,index)=>(
                 <div key={index} className="relative flex size-[36px] items-center justify-center">
                 <Image
-                    src={item.chain}
+                    src={item?.chain}
                     alt="icon"
                     width={50}
                     height={20}

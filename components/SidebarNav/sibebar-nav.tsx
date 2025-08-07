@@ -716,7 +716,7 @@ const NavLayout: React.FC<React.HTMLAttributes<HTMLElement>> = ({
   return (
     <TooltipProvider>
       <div className={cn('flex w-full', className)}>
-        <SidebarNav className="z-40 hidden lg:block" />
+        <SidebarNav className="z-20 hidden lg:block" />
         <main className="flex-1">{children}</main>
       </div>
     </TooltipProvider>

@@ -15,6 +15,7 @@ import {
   Search,
   Settings,
   TriangleAlert,
+  AlignJustify,
   User2,
 } from 'lucide-react'
 import { useAccount } from 'wagmi'
@@ -44,13 +45,14 @@ import { useXnodes } from '@/app/dashboard/health-data'
 import { useDemoModeContext } from '../demo-mode'
 import { Button } from '../ui/button'
 import ActivateXNodeDialog from '../xnode/activate-dialog'
+import Sidebar from './header-sidebar'
 
 export default function Header({ sessionToken }: { sessionToken?: string }) {
   const { address, status } = useAccount()
   const { data: activeXNodes } = useXuNfts(address)
   const { data: inactiveXNodes } = useXueNfts(address)
   const { data: deployedXnodes } = useXnodes(sessionToken)
-
+  const [isSidebarOpen,setIsSidebarOpen]=useState(false)
   const { open } = useWeb3Modal()
   const { push } = useRouter()
 
@@ -136,6 +138,13 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
 
   return (
     <>
+      
+        <Sidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        sessionToken={sessionToken}
+        />
+      
       <ActivateXNodeDialog
         address={address}
         open={!!activationOpen}
@@ -144,7 +153,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
       />
       <header
         className={cn(
-          'sticky inset-x-0 top-0 z-50 flex h-20 flex-col bg-foreground max-hdplus:h-16',
+          'sticky inset-x-0 top-0 z-40 flex h-20 flex-col bg-foreground max-hdplus:h-16',
           demoMode && 'h-24 max-hdplus:h-20'
         )}
       >
@@ -166,8 +175,11 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
             </Button>
           </div>
         )}
-        <div className="flex grow items-center justify-between gap-x-32 px-6 max-hdplus:gap-x-20">
-          <div className="flex items-center gap-6">
+        {/* max-hdplus:gap-x-20 */}
+        <div className="flex grow items-center justify-between gap-x-0 lg:gap-x-32 px-4 lg:px-6 ">
+        
+          <div className="flex items-center gap-2 lg:gap-6">
+            <AlignJustify className='block text-white lg:hidden cursor-pointer' onClick={()=>setIsSidebarOpen(true)}/>
             <div className="shrink-0 text-3xl font-bold text-background max-hdplus:text-xl">
               OpenxAI
               <sup className="relative top-[-10px] text-xs font-normal">
@@ -251,7 +263,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
             </Popover>
           </div>
           <Popover open={globalSearchOpen} onOpenChange={setGlobalSearchOpen}>
-            <PopoverTrigger className="flex h-9 min-w-56 max-w-lg grow items-center justify-between gap-3 rounded border border-background/15 bg-background/10 px-3 text-muted transition-colors hover:bg-background/15">
+            <PopoverTrigger className="hidden h-9 min-w-56 max-w-lg grow items-center justify-between gap-3 rounded border border-background/15 bg-background/10 px-3 text-muted transition-colors hover:bg-background/15 lg:flex">
               <span className="flex items-center gap-3">
                 <Search className="size-4 max-hdplus:size-3" />
                 <span className="text-sm max-hdplus:text-xs">
@@ -264,11 +276,11 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
             </PopoverTrigger>
             <GlobalSearch onSelect={() => setGlobalSearchOpen(false)} />
           </Popover>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 lg:gap-6">
             <button
               disabled
               type="button"
-              className="flex size-9 items-center justify-center rounded bg-primary text-background transition-colors hover:bg-primary/90 disabled:pointer-events-none disabled:opacity-50 max-hdplus:size-8"
+              className="hidden size-9 items-center justify-center rounded bg-primary text-background transition-colors hover:bg-primary/90 disabled:pointer-events-none disabled:opacity-50 max-hdplus:size-8 lg:flex"
             >
               <Plus className="size-5 max-hdplus:size-4" strokeWidth={1.5} />
             </button>
@@ -276,7 +288,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
               <button
                 disabled
                 type="button"
-                className="flex size-9 items-center justify-center rounded transition-colors hover:bg-background/10 disabled:pointer-events-none disabled:opacity-50 max-hdplus:size-8"
+                className="hidden size-9 items-center justify-center rounded transition-colors hover:bg-background/10 disabled:pointer-events-none disabled:opacity-50 max-hdplus:size-8 lg:flex"
               >
                 <span className="sr-only">Notifications</span>
                 <BellDot
@@ -287,7 +299,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
               <button
                 disabled
                 type="button"
-                className="flex size-9 items-center justify-center rounded transition-colors hover:bg-background/10 disabled:pointer-events-none disabled:opacity-50 max-hdplus:size-8"
+                className="hidden size-9 items-center justify-center rounded transition-colors hover:bg-background/10 disabled:pointer-events-none disabled:opacity-50 max-hdplus:size-8 lg:flex"
               >
                 <span className="sr-only">Help</span>
                 <HelpCircle
@@ -298,7 +310,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
               <button
                 disabled
                 type="button"
-                className="flex size-9 items-center justify-center rounded transition-colors hover:bg-background/10 disabled:pointer-events-none disabled:opacity-50 max-hdplus:size-8"
+                className="hidden size-9 items-center justify-center rounded transition-colors hover:bg-background/10 disabled:pointer-events-none disabled:opacity-50 max-hdplus:size-8 lg:flex"
               >
                 <span className="sr-only">Settings</span>
                 <Settings
@@ -310,7 +322,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
             {!address && status === 'disconnected' && !demoMode ? (
               <button
                 type="button"
-                className="flex h-10 items-center gap-1.5 rounded bg-primary px-4 text-base font-semibold tracking-tighter text-background max-hdplus:h-8 max-hdplus:text-sm"
+                className="flex h-fit lg:h-10 items-center gap-0 lg:gap-1.5 rounded bg-primary px-4 text-base font-semibold tracking-tighter text-background max-hdplus:h-8 max-hdplus:text-sm"
                 onClick={pressWalletButton}
               >
                 Connect Wallet

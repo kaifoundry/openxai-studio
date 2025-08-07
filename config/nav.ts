@@ -95,6 +95,7 @@ export type NavItem = {
   | {
       type: 'category'
       items: NavItem[]
+      href: string
       disabled?: boolean
     }
 )

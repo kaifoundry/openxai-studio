@@ -94,11 +94,11 @@ export function Providers({
             <DemoModeProvider>
               <SelectedXnodeProvider>
                 <DemoContextProvider>
-                  <ScreenProvider>
+                  {/* <ScreenProvider> */}
                     {children}
                     <ToastContainer />
                     <Toaster />
-                  </ScreenProvider>
+                  {/* </ScreenProvider> */}
                 </DemoContextProvider>
               </SelectedXnodeProvider>
             </DemoModeProvider>

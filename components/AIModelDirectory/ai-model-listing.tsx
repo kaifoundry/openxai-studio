@@ -3,6 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import Card from './ai-model-card';
 import ModelDefinitions from '../../utils/model-definitions.json';
 import Image from 'next/image';
+import { FileWarning } from 'lucide-react';
 
 interface AppContentProps {
   selectedChains: string[];
@@ -31,10 +32,10 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
   const filterModels = (category: string) => {
     return ModelDefinitions.filter(item => {
-      const matchChain = selectedChains.length > 0
-        ? item.chains?.some((c: any) => selectedChains.includes(c.name))
+      const matchChain = selectedChains?.length > 0
+        ? item?.chains?.some((c: any) => selectedChains.includes(c.name))
         : true;
-      const matchCategory = selectedCategories.length > 0
+      const matchCategory = selectedCategories?.length > 0
         ? selectedCategories.includes(item.category)
         : true;
       return matchChain && matchCategory && item.category === category;
@@ -58,7 +59,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     return (
       <div key={title} className="hide-scrollbar mb-10 flex flex-col overflow-x-auto">
         <div className="scrollbar-hide mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
-          {title} ({models.length})
+          {title} ({models?.length})
         </div>
 
         <div
@@ -74,23 +75,23 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
         >
           {visibleModels.map((data: any) => (
             <Card
-              key={data.id}
-              id={data.id}
-              image={data.image}
-              title={data.name}
-              hashTags={data.tags}
-              logo={data.logo}
-              icons={data.chains}
-              likes={data.likes}
-              followers={data.followers}
-              apy={data.apy}
-              Seller={data.Seller}
+              key={data?.id}
+              id={data?.id}
+              image={data?.image}
+              title={data?.name}
+              hashTags={data?.tags}
+              logo={data?.logo}
+              icons={data?.chains}
+              likes={data?.likes}
+              followers={data?.followers}
+              apy={data?.apy}
+              Seller={data?.Seller}
             />
           ))}
         </div>
 
         {hasMore && (
-          <div
+          <button
             className="mt-4 w-fit cursor-pointer px-2 text-[13px] font-[500] text-[#434343] transition-all duration-100 hover:underline hover:underline-offset-1"
             onClick={() =>
               setVisibleCounts(prev => ({
@@ -98,9 +99,10 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
                 [title]: (prev[title] ?? (collapsed ? 4 : 3)) + 4
               }))
             }
+            aria-label={`View more models in ${title}`}
           >
             View More
-          </div>
+          </button>
         )}
       </div>
     );
@@ -119,11 +121,14 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     });
   }, [selectedChains, selectedCategories]);
 
-  // Show no data image if there are no matching models and filters are applied
   if ((selectedCategories.length > 0 || selectedChains.length > 0) && allMatchingModels.length === 0) {
     return (
       <div className='flex items-center justify-center'>
-        <Image src="/images/appStore/no_data.jpg" alt="No data" width={400} height={400} />
+        <div className='flex flex-col justify-center items-center'>
+          <FileWarning/>
+          <div>No Apps Found</div>
+        </div>
+        
       </div>
     );
   }
@@ -149,9 +154,9 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
   return (
     <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20">
-      {uniqueCategories.map((category) => {
+      {uniqueCategories?.map((category) => {
         const models = filterModels(category);
-        return models.length > 0 ? renderCards(category, models, false) : null;
+        return models?.length > 0 ? renderCards(category, models, false) : null;
       })}
     </div>
   );

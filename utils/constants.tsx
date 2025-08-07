@@ -324,7 +324,7 @@ export const tagsData = [
 
 export const ChainData = [
   {
-    name:"Bit coin",
+    name:"Bitcoin",
     icon: "/images/appStore/svg/chains/bitcoin.svg",
   },
   {
