@@ -43,8 +43,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
   };
   return (
     <div className={`duration-800 delay-800 my-2 flex cursor-pointer flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 transition-all ease-in-out`}
-    
-    //onClick={handleClick}
+    onClick={handleClick}
     >
         <div className="relative rounded-xl">
         <div
@@ -68,7 +67,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
           className="duration-800 delay-800 relative z-20 h-[190px] w-full rounded-xl transition-all ease-in-out 3xl:h-[235px]"
         />
       </div>
-        <div className='flex justify-between p-4'>
+        <div className='flex justify-between px-4 pt-4 pb-2'>
                 <div className='flex flex-col gap-0'>
                     <div className='text-[15.08px] font-[600] text-black md:text-[14.08px] xl:text-[16.08px] 2xl:text-[19.08px] 3xl:text-[23.08px]'>{title}</div>
                     <div className='text-[11.39px] font-[400] text-[#918C8C]'>{hashTags?.map((tag, index) => (
@@ -86,8 +85,8 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
                 </div>    
            
         </div>
-        <div className='flex items-center gap-0 p-2'>
-            {icons?.map((item,index)=>(
+        <div className='flex items-center gap-0 px-2 pt-1 pb-0'>
+            {icons.map((item,index)=>(
                 <div key={index} className="relative flex size-[36px] items-center justify-center">
                 <Image
                     src={item?.chain}
@@ -99,7 +98,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
                 </div>
             ))}
         </div>
-        <div className='flex items-center justify-between   px-4 pb-2 pt-8 '>
+        <div className='flex items-center justify-between   px-4 pb-2 2xl:pt-4 3xl:pt-8 '>
             <div className=' flex items-center gap-[2vw]  '>
             <div className='flex items-center gap-2 md:gap-2 xl:gap-2 2xl:gap-2 3xl:gap-2'>
                 <div className='text-[14px] font-[500] text-[#1C1C1C]'>{likes}</div>

@@ -123,9 +123,9 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
   if ((selectedCategories.length > 0 || selectedChains.length > 0) && allMatchingModels.length === 0) {
     return (
-      <div className='flex items-center justify-center'>
-        <div className='flex flex-col justify-center items-center'>
-          <FileWarning/>
+      <div className='flex h-[400px] items-center justify-center '>
+        <div className='flex flex-col items-center justify-center text-gray-400'>
+          <Image src="/images/no-data-6.png" alt="" width={150} height={150}/>
           <div>No Apps Found</div>
         </div>
         

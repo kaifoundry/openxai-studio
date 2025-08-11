@@ -98,3 +98,11 @@
 .filter-blue {
   filter: invert(39%) sepia(90%) saturate(2476%) hue-rotate(202deg) brightness(97%) contrast(95%);
 }
+
+input[type="radio"] {
+  accent-color: blue;
+}
+
+input[type="checkbox"] {
+  accent-color: blue;
+}
