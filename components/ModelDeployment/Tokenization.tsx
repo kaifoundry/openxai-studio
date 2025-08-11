@@ -18,7 +18,7 @@ interface TokenizationProps {
     AI_Data: string;
     Token_label:string;
     Address:string;
-    Amount:number;
+    Amount:string;
     label:string;
   } | null;
   onSelect: (option: {
@@ -28,7 +28,7 @@ interface TokenizationProps {
     AI_Data: string;
     Token_label:string;
     Address:string;
-    Amount:number;
+    Amount:string;
     label:string;
   }) => void;
   setFinalAmount: React.Dispatch<React.SetStateAction<boolean>>;

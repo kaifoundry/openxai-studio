@@ -64,7 +64,7 @@ export const Services = ({ id }: ServicesProps) => {
     AI_Data: string;
     Token_label:string;
     Address:string;
-    Amount:number
+    Amount:string;
     label:string;
   } | null>(null)
 

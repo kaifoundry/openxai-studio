@@ -102,8 +102,9 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
     },
   ]
 
-  const [selectedNode, setSelectedNode] = useState(
-    address? XNODEDVMs[0]:'')
+  const [selectedNode, setSelectedNode] = useState<Provider | null>(
+    isConnected && address ? XNODEDVMs[0] : null
+  )
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(()=>{

@@ -15,7 +15,7 @@ import {
 import { redirect } from 'next/navigation'
 import ModelDefinition from "../../../utils/model-definitions.json"
 
-const page = () => {
+const Page = () => {
   const params = useParams();
     const id = Array.isArray(params.id) ? params.id[0] : params.id;
     function getData() {
@@ -52,4 +52,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
