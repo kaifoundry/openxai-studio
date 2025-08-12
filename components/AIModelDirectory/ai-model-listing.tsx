@@ -41,13 +41,30 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     });
   };
 
-  const renderCards = (title: string, models: any[], showAll: boolean = false) => {
-    const getVisibleCount = () => {
-      if (typeof window !== 'undefined' && window.innerWidth >= 1920) {
-        return 4;
-      }
-      return collapsed ? 4 : 3;
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+  
+  const getVisibleCount = () => {
+    if (windowWidth >= 1920) return 4;
+    if (windowWidth > 1550) return collapsed ? 4 : 3;
+    if (windowWidth <= 1280) return collapsed ? 3 : 3;
+    if (windowWidth <= 1024) return 3;
+    if (windowWidth <= 768) return 2;
+  };
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
     };
+  
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
+  
+  const renderCards = (title: string, models: any[], showAll: boolean = false) => {
+    
     
     const visibleCount = visibleCounts[title] ?? getVisibleCount();
     const visibleModels = showAll ? models : models.slice(0, visibleCount);
@@ -67,7 +84,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
             md:grid-cols-2
             3xl:gap-8
             ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'}
-            ${collapsed ? 'xl:grid-cols-4' : 'xl:grid-cols-3'}
+            ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'}
             ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'}
             3xl:grid-cols-4
           `}
@@ -119,7 +136,6 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     });
   }, [selectedChains, selectedCategories]);
 
-  // Show no data image if there are no matching models and filters are applied
   if ((selectedCategories.length > 0 || selectedChains.length > 0) && allMatchingModels.length === 0) {
     return (
       <div className='flex items-center justify-center'>

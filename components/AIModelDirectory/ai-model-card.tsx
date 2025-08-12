@@ -69,7 +69,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
           width={390}
           height={235}
           priority={true}
-          className="duration-800 delay-800 relative z-20 h-[190px] w-full rounded-xl transition-all ease-in-out 3xl:h-[235px]"
+          className="duration-800 delay-800 relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl transition-all ease-in-out 3xl:h-[235px]"
         />
       </div>
         <div className='flex justify-between px-4 pt-4 pb-2'>
@@ -103,7 +103,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
                 </div>
             ))}
         </div>
-        <div className='flex items-center justify-between   px-4 pb-2 2xl:pt-4 3xl:pt-8 '>
+        <div className='flex items-center justify-between   px-4 pb-2 pt-4 lg:pt-4 xl:pt-4 2xl:pt-4 3xl:pt-6 '>
             <div className=' flex items-center gap-[2vw]  '>
             <div className='flex items-center gap-2 md:gap-2 xl:gap-2 2xl:gap-2 3xl:gap-2'>
                 <div className='text-[14px] font-[500] text-[#1C1C1C]'>{likes}</div>

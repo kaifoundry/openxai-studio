@@ -249,7 +249,7 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
 
       
      
-      <div className=" flex w-full  p-4 ">
+      <div className=" flex w-full  py-4 pl-0 pr-4 ">
         <div className="w-full bg-white">
         {!final_amount &&(<div className="mb-6 rounded-md bg-[#EEEEEE] px-4 py-2 text-left text-[21px] font-[400]">
             Hosting costs

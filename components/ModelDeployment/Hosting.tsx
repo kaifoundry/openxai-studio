@@ -30,9 +30,10 @@ interface ProviderSelectorProps {
   selected?: Provider
   showAll?: boolean
   onSelect: (provider: Provider) => void
+  setExpandedItem: (value: string | null) => void
 }
 
-const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
+const Hosting = ({ selected, onSelect,setExpandedItem }: ProviderSelectorProps) => {
   const [showExtendedOptions, setShowExtendedOptions] = useState(false)
   const { address, isConnected, status } = useAccount()
   const { push } = useRouter()
@@ -114,6 +115,7 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
   const handleSelect = (node) => {
     setSelectedNode(node)
     setIsOpen(false)
+    setExpandedItem(null)
   }
 
 
@@ -164,7 +166,7 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
             {providers.map((provider) => (
               <div
                 key={provider.name}
-                onClick={() => !provider.disabled && onSelect(provider)}
+                onClick={() =>{setExpandedItem(null); !provider.disabled && onSelect(provider) }}
                 className={cn(
                   'relative flex cursor-pointer flex-col rounded-lg border p-6 max-[1550px]:p-4 max-[1350px]:p-3 max-[1250px]:p-2 max-[992px]:p-1.5',
                   'h-[128px] max-[1550px]:h-[120px] max-[1350px]:h-[115px] max-[1250px]:h-[110px] max-[992px]:h-[100px]',
