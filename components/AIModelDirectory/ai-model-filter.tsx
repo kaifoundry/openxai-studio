@@ -5,7 +5,7 @@ import { Poppins } from 'next/font/google'
 import Image from 'next/image'
 import { ChainData, tagsData } from '@/utils/constants'
 import { ChevronDown, Search } from 'lucide-react'
-
+import { motion } from "framer-motion";
 import ModelDefinitions from '../../utils/model-definitions.json'
 import { Input } from '../ui/input'
 
@@ -112,7 +112,8 @@ const Fillter = ({
                   const isSelected = selectedCategories.includes(tag.label)
 
                   return (
-                    <div
+                    
+                    <div   
                       key={index}
                       className="flex items-center gap-6 px-4 py-2"
                       onClick={() => onToggleCategory(tag.label)}
@@ -164,7 +165,8 @@ const Fillter = ({
               {filteredChains.map((chain, index) => {
                 const isSelected = selectedChains.includes(chain.name)
                 return (
-                  <div
+                  <div 
+                        
                     key={index}
                     className="flex items-center gap-6 px-4 py-2"
                     onClick={() => onToggleChain(chain.name)}
@@ -188,19 +190,34 @@ const Fillter = ({
       <div className="my-14 hidden flex-col justify-between md:flex-row lg:flex">
         <div className="flex max-w-[80%] flex-col gap-4">
           <div className="flex items-center gap-10 md:h-6 xl:h-6 2xl:h-10 3xl:h-10">
-            <div className="font-[700] text-[#1F1F1F] md:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px]">
+            <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8,delay:0.3 }}
+            viewport={{ once: true }}
+            className="font-[700] text-[#1F1F1F] md:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px]">
               By Categories
-            </div>
-            <div className="font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px]">
+            </motion.div>
+            <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8,delay:0.3 }}
+            viewport={{ once: true }} 
+            className="font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px]">
               {formatIndNumber(Number(ModelDefinitions.length))} items
-            </div>
+            </motion.div>
           </div>
 
           <div className="flex flex-wrap gap-4 md:flex-row md:gap-2 xl:gap-4 2xl:gap-4 3xl:gap-8">
             {tagsData.slice(0, visibleCount).map((tag, index) => {
               const isSelected = selectedCategories.includes(tag.label)
               return (
-                <div
+                <motion.div 
+                        initial={{ opacity: 0, x: 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.8,delay:0.5 }}
+                      viewport={{ once: true }}
+                      
                   key={index}
                   onClick={() => onToggleCategory(tag.label)}
                   className={`flex cursor-pointer items-center gap-4 rounded-xl bg-[#F6FAFF] px-4 py-3 shadow-sm md:gap-2 md:px-6 xl:gap-2 xl:py-2 2xl:gap-2 2xl:py-2 3xl:gap-2 3xl:py-2 ${
@@ -223,30 +240,44 @@ const Fillter = ({
                   >
                     {tag.label}
                   </div>
-                </div>
+                </motion.div>
               )
             })}
 
             {showMoreAvailable && (
-              <div
+              <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8,delay:0.6 }}
+            viewport={{ once: true }}
                 onClick={handleShowMore}
                 className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px]"
               >
                 More
-              </div>
+              </motion.div>
             )}
           </div>
         </div>
 
         <div className="mt-10 flex flex-col gap-6 md:mt-0">
-          <div className="font-[700] text-[#1F1F1F] md:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px]">
+          <motion.div 
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8,delay:0.3 }}
+          viewport={{ once: true }}
+          className="font-[700] text-[#1F1F1F] md:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px]">
             By chain
-          </div>
+          </motion.div>
           <div className="flex gap-4 rounded-xl bg-[#F6FAFF] p-2 px-3 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2">
             {ChainData.map((chain, index) => {
               const isSelected = selectedChains.includes(chain.name)
               return (
-                <div
+                <motion.div 
+                        initial={{ opacity: 0, x: 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.8,delay:0.5 }}
+                      viewport={{ once: true }}
+                      
                   key={index}
                   className={`flex cursor-pointer items-center justify-center rounded-full bg-white md:p-1 xl:p-1 2xl:p-1 3xl:p-2 ${
                     isSelected
@@ -262,7 +293,7 @@ const Fillter = ({
                     alt="icon"
                     className="md:size-[20px] xl:size-[20px] 2xl:size-[30px] 3xl:size-[25px]"
                   />
-                </div>
+                </motion.div>
               )
             })}
           </div>

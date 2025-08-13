@@ -1,9 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
+import { motion } from "framer-motion";
 
 const Banner = () => {
   return (
-    <div className="relative mt-6 h-[172px] w-full md:h-[150px] xl:h-[200px] 2xl:h-[216px] 3xl:h-[216px]">
+    <motion.div 
+    initial={{ opacity: 0, x: 30 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+    
+    className="relative mt-6 h-[172px] w-full md:h-[150px] xl:h-[200px] 2xl:h-[216px] 3xl:h-[216px]">
       <div className="relative size-full rounded-2xl">
         <Image
           src="/images/appStore/banner-mask.png"
@@ -36,7 +43,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

@@ -3,7 +3,23 @@ import React, { useState, useMemo, useEffect } from 'react';
 import Card from './ai-model-card';
 import ModelDefinitions from '../../utils/model-definitions.json';
 import Image from 'next/image';
-import { FileWarning } from 'lucide-react';
+import { motion } from "framer-motion";
+
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 2, // Reduced stagger time for faster sequential appearance
+      delayChildren: 0.5,   // Reduced initial delay
+    },
+  },
+};
+
+const base = 0.8
+const step = 0.5
+
 
 interface AppContentProps {
   selectedChains: string[];
@@ -58,25 +74,36 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
     return (
       <div key={title} className="hide-scrollbar mb-10 flex flex-col overflow-x-auto">
-        <div className="scrollbar-hide mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
+        <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1,delay:0.8 }}
+        viewport={{ once: true }}
+        className="scrollbar-hide mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
           {title} ({models?.length})
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           className={`
             grid grid-cols-1 gap-4 transition-all duration-300
             md:grid-cols-2
             3xl:gap-8
             ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'}
-            ${collapsed ? 'xl:grid-cols-4' : 'xl:grid-cols-3'}
+            ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'}
             ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'}
             3xl:grid-cols-4
           `}
+
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
-          {visibleModels.map((data: any) => (
+          {visibleModels.map((data: any,index) => (
             <Card
               key={data?.id}
               id={data?.id}
+              delay={base + index * step}
               image={data?.image}
               title={data?.name}
               hashTags={data?.tags}
@@ -88,7 +115,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
               Seller={data?.Seller}
             />
           ))}
-        </div>
+        </motion.div>
 
         {hasMore && (
           <button
@@ -124,10 +151,15 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
   if ((selectedCategories.length > 0 || selectedChains.length > 0) && allMatchingModels.length === 0) {
     return (
       <div className='flex h-[400px] items-center justify-center '>
-        <div className='flex flex-col items-center justify-center text-gray-400'>
+        <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1,delay:0.8 }}
+        viewport={{ once: true }}
+        className='flex flex-col items-center justify-center text-gray-400'>
           <Image src="/images/no-data-6.png" alt="" width={150} height={150}/>
           <div>No Apps Found</div>
-        </div>
+        </motion.div>
         
       </div>
     );

@@ -3,6 +3,25 @@
 import React,{useState,useEffect} from 'react'
 import Image from 'next/image'
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+
+
+const fadeUp = (delay = 0) => ({
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      delay,
+      ease: 'easeInOut',  
+      type: "spring",
+      stiffness: 150,
+      damping: 100
+    },
+  },
+});
+
 
 
 interface cardProps {
@@ -16,12 +35,12 @@ interface cardProps {
     followers?:number
     apy?:string
     Seller?: { name: string; logo?: string }[]
-
+    delay:number
 }
 
 
 
-const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:cardProps) => {
+const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller,delay}:cardProps) => {
     const router = useRouter();
     const [collapsed, setCollapsed] = useState(false);
     
@@ -42,7 +61,13 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
     router.push(`/app-store/${id}`);
   };
   return (
-    <div className={`duration-800 delay-800 my-2 flex cursor-pointer flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 transition-all ease-in-out`}
+    <motion.div 
+    
+    variants={fadeUp(delay)}
+    whileHover={{ scale: 1.05}}
+    whileTap={{ scale: 0.95 }}
+    viewport={{ once: true, amount: 0.4 }}
+    className={`duration-800 delay-800 my-2 flex cursor-pointer flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 transition-all ease-in-out`}
     onClick={handleClick}
     >
         <div className="relative rounded-xl">
@@ -93,7 +118,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
                     alt="icon"
                     width={50}
                     height={20}
-                    className="h-[30px] w-[60px] "
+                    className="h-[20px] w-[30px] "
                 />
                 </div>
             ))}
@@ -126,7 +151,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
                 <span className='text-[14px] font-[300]'>APY</span>
             </div>
         </div>
-    </div>
+    </motion.div>
   )
 }
 
