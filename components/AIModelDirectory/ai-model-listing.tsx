@@ -5,18 +5,16 @@ import ModelDefinitions from '../../utils/model-definitions.json';
 import Image from 'next/image';
 import { motion } from "framer-motion";
 
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 2, // Reduced stagger time for faster sequential appearance
-      delayChildren: 0.5,   // Reduced initial delay
+      delayChildren: 0.2,
+      staggerChildren: 0.15,  
     },
   },
 };
-
 const base = 0.8
 const step = 0.5
 
@@ -60,8 +58,15 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
   const renderCards = (title: string, models: any[], showAll: boolean = false) => {
     const getVisibleCount = () => {
-      if (typeof window !== 'undefined' && window.innerWidth >= 1920) {
-        return 4;
+      if (typeof window !== 'undefined') {
+        const width = window.innerWidth;
+        if (width >= 1920) {
+          return 4;
+        } else if (width >= 1000 && width <= 1250) {
+          return 3; 
+        }else if (width >= 768 && width < 1000) {
+          return 2; 
+        }
       }
       return collapsed ? 4 : 3;
     };
@@ -84,8 +89,11 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
         </motion.div>
 
         <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
           className={`
-            grid grid-cols-1 gap-4 transition-all duration-300
+            grid grid-cols-1 gap-4 transition-all duration-800 delay-700
             md:grid-cols-2
             3xl:gap-8
             ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'}
@@ -93,14 +101,10 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
             ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'}
             3xl:grid-cols-4
           `}
-
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
         >
           {visibleModels.map((data: any,index) => (
-            <Card
+            
+              <Card
               key={data?.id}
               id={data?.id}
               delay={base + index * step}
@@ -114,6 +118,8 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
               apy={data?.apy}
               Seller={data?.Seller}
             />
+           
+            
           ))}
         </motion.div>
 

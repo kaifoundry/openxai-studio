@@ -6,21 +6,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 
-const fadeUp = (delay = 0) => ({
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1,
-      delay,
-      ease: 'easeInOut',  
-      type: "spring",
-      stiffness: 150,
-      damping: 100
-    },
-  },
-});
+
 
 
 
@@ -61,12 +47,20 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller,del
     router.push(`/app-store/${id}`);
   };
   return (
-    <motion.div 
-    
-    variants={fadeUp(delay)}
-    whileHover={{ scale: 1.05}}
-    whileTap={{ scale: 0.95 }}
-    viewport={{ once: true, amount: 0.4 }}
+    <motion.div  
+    initial={{opacity:0,y:30}}
+    whileInView={{opacity:1,y:0}}
+    transition={{duration:0.8,delay:0.8}}
+    viewport={{ once: true }}
+    // whileHover={{
+    //   rotateX: 10, 
+    //   rotateY: -10, 
+     
+      
+    // }}
+    // style={{
+    //   transformStyle: "preserve-3d", 
+    // }}
     className={`duration-800 delay-800 my-2 flex cursor-pointer flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 transition-all ease-in-out`}
     onClick={handleClick}
     >
@@ -89,6 +83,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller,del
           width={390}
           height={235}
           priority={true}
+          blurDataURL={image}
           className="duration-800 delay-800 relative z-20 h-[190px] w-full rounded-xl transition-all ease-in-out 3xl:h-[235px]"
         />
       </div>

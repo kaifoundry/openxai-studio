@@ -30,9 +30,10 @@ interface ProviderSelectorProps {
   selected?: Provider
   showAll?: boolean
   onSelect: (provider: Provider) => void
+  setExpandedItem: (value: string | null) => void
 }
 
-const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
+const Hosting = ({ selected, onSelect,setExpandedItem }: ProviderSelectorProps) => {
   const [showExtendedOptions, setShowExtendedOptions] = useState(false)
   const { address, isConnected, status } = useAccount()
   const { push } = useRouter()
@@ -102,24 +103,27 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
     },
   ]
 
-  const [selectedNode, setSelectedNode] = useState<Provider | null>(
-    isConnected && address ? XNODEDVMs[0] : null
-  )
+  console.log("Selected ",selected)
+
+  const [selectedNode, setSelectedNode] = useState<Provider | null>(selected || (isConnected && address ? XNODEDVMs[0] : null))
   const [isOpen, setIsOpen] = useState(false)
 
-  useEffect(()=>{
-    onSelect(selectedNode)
-  },[selectedNode])
+  useEffect(() => {
+    if (selectedNode && selectedNode !== selected) {
+      onSelect(selectedNode)
+    }
+  }, [selectedNode])
 
   const handleSelect = (node) => {
     setSelectedNode(node)
     setIsOpen(false)
+    setExpandedItem("3")
   }
 
 
   const pressWalletButton = () => {
     if (window.location.pathname.endsWith('login')) {
-      // If we are already on the login page, they probably want the wallet popup
+      
       open()
       return
     }
@@ -164,7 +168,7 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
             {providers.map((provider) => (
               <div
                 key={provider.name}
-                onClick={() => !provider.disabled && onSelect(provider)}
+                onClick={() =>{setExpandedItem("2"); !provider.disabled && onSelect(provider) }}
                 className={cn(
                   'relative flex cursor-pointer flex-col rounded-lg border p-6 max-[1550px]:p-4 max-[1350px]:p-3 max-[1250px]:p-2 max-[992px]:p-1.5',
                   'h-[128px] max-[1550px]:h-[120px] max-[1350px]:h-[115px] max-[1250px]:h-[110px] max-[992px]:h-[100px]',
