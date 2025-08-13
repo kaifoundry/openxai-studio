@@ -44,8 +44,15 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
   const renderCards = (title: string, models: any[], showAll: boolean = false) => {
     const getVisibleCount = () => {
-      if (typeof window !== 'undefined' && window.innerWidth >= 1920) {
-        return 4;
+      if (typeof window !== 'undefined') {
+        const width = window.innerWidth;
+        if (width >= 1920) {
+          return 4;
+        } else if (width >= 1000 && width <= 1250) {
+          return 3; 
+        }else if (width >= 768 && width < 1000) {
+          return 2; 
+        }
       }
       return collapsed ? 4 : 3;
     };

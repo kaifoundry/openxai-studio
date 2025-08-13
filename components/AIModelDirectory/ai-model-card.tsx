@@ -93,7 +93,7 @@ const Card = ({id,image,title,hashTags,logo,icons,likes,followers,apy,Seller}:ca
                     alt="icon"
                     width={50}
                     height={20}
-                    className="h-[30px] w-[60px] "
+                    className="h-[25px] w-[30px] "
                 />
                 </div>
             ))}
