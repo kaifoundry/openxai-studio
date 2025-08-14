@@ -213,8 +213,8 @@ const Fillter = ({
               const isSelected = selectedCategories.includes(tag.label)
               return (
                 <motion.div 
-                        initial={{ opacity: 0, x: 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0,scale: 0.87, x: 30 }}
+                      whileInView={{ opacity: 1,scale:1, x: 0 }}
                       transition={{ duration: 0.8,delay:0.5 }}
                       viewport={{ once: true }}
                       
@@ -248,7 +248,7 @@ const Fillter = ({
               <motion.div 
               initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8,delay:0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
                 onClick={handleShowMore}
                 className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px]"
@@ -273,8 +273,8 @@ const Fillter = ({
               const isSelected = selectedChains.includes(chain.name)
               return (
                 <motion.div 
-                        initial={{ opacity: 0, x: 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0,scale: 0.87, x: 30 }}
+                      whileInView={{ opacity: 1,scale: 1, x: 0 }}
                       transition={{ duration: 0.8,delay:0.5 }}
                       viewport={{ once: true }}
                       

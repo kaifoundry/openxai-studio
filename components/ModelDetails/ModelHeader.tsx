@@ -9,13 +9,13 @@ export function ModelHeader({ title, subtitle }: ModelHeaderProps) {
     return (
         <>
             <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0,scale:0.87, x: 30 }}
+            whileInView={{ opacity: 1,scale:1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true,amount:0.5 }}
-            className="relative  mx-2 mt-10 overflow-hidden text-white md:mx-8 ">
+            className="relative group rounded-2xl  mx-2 mt-10 overflow-hidden text-white md:mx-8 ">
 
-                <img src="/images/project/hero/Rectangle.png" alt="" className="absolute h-full w-full" />
+                <img src="/images/project/hero/Rectangle.png" alt="" className="absolute transition-transform duration-1000 ease-in-out group-hover:scale-110 group-hover:-translate-x-5  h-full w-full" />
 
                 <div className="relative  mx-auto px-4 py-8 sm:px-2 sm:py-12 lg:px-8 lg:py-16">
                     <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">

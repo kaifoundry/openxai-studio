@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 const Banner = () => {
   return (
     <motion.div 
-    initial={{ opacity: 0, x: 30 }}
-  whileInView={{ opacity: 1, x: 0 }}
+    initial={{ opacity: 0,scale: 0.87, x: 30 }}
+  whileInView={{ opacity: 1,scale:1, x: 0 }}
   transition={{ duration: 0.8 }}
   viewport={{ once: true }}
     

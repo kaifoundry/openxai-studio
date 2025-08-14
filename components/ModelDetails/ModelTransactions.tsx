@@ -27,14 +27,14 @@ export function ModelStat({ transactions }: { transactions?: Transaction[] }) {
     return (
         <Card>
             <CardContent className="p-0">
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto hide-scrollbar">
                     <motion.table 
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8,delay:0.8 }}
                     viewport={{ once: true }}
-                    className="w-full min-w-[640px]">
-                        <tbody className="bg-white divide-y divide-gray-200">
+                    className="w-full min-w-[640px] ">
+                        <tbody className="bg-white divide-y divide-gray-200 ">
                             {transactions.map((transaction, index) => (
                                 <motion.tr 
                                 initial={{ opacity: 0, y: 30 }}

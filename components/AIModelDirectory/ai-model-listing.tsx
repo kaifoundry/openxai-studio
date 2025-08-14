@@ -10,7 +10,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0.2,
+      delayChildren: 0.4,
       staggerChildren: 0.15,  
     },
   },
@@ -80,9 +80,9 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     return (
       <div key={title} className="hide-scrollbar mb-10 flex flex-col overflow-x-auto">
         <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1,delay:0.8 }}
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.4,}}
         viewport={{ once: true }}
         className="scrollbar-hide mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
           {title} ({models?.length})
@@ -124,7 +124,11 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
         </motion.div>
 
         {hasMore && (
-          <button
+          <motion.div
+          initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.4 }}
+        viewport={{ once: true }}
             className="mt-4 w-fit cursor-pointer px-2 text-[13px] font-[500] text-[#434343] transition-all duration-100 hover:underline hover:underline-offset-1"
             onClick={() =>
               setVisibleCounts(prev => ({
@@ -135,7 +139,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
             aria-label={`View more models in ${title}`}
           >
             View More
-          </button>
+          </motion.div>
         )}
       </div>
     );
