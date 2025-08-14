@@ -42,13 +42,15 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     });
   };
 
+  
+  
   const renderCards = (title: string, models: any[], showAll: boolean = false) => {
     const getVisibleCount = () => {
       if (typeof window !== 'undefined') {
         const width = window.innerWidth;
         if (width >= 1920) {
           return 4;
-        } else if (width >= 1000 && width <= 1250) {
+        } else if (width >= 1000 && width <= 1300) {
           return 3; 
         }else if (width >= 768 && width < 1000) {
           return 2; 
@@ -75,7 +77,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
             md:grid-cols-2
             3xl:gap-8
             ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'}
-            ${collapsed ? 'xl:grid-cols-4' : 'xl:grid-cols-3'}
+            ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'}
             ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'}
             3xl:grid-cols-4
           `}

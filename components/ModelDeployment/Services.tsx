@@ -20,7 +20,7 @@ interface ServicesProps {
 }
 
 export const Services = ({ id }: ServicesProps) => {
-  const [expandedItem, setExpandedItem] = useState<string | null>(null)
+  const [expandedItem, setExpandedItem] = useState<string >('0')
   const [final_amount,setFinalAmount]=useState(false);
   const [selectedAIModel, setSelectedAIModel] = useState<{
     ModelName: string
@@ -71,16 +71,14 @@ export const Services = ({ id }: ServicesProps) => {
   const modelDefinition = ModelDefinition.find(m => m.id === id)
   const handleModelSelect = (option: any) => {
     setSelectedAIModel(option)
-    //console.log('Selected Full Model Option:', option)
+    setExpandedItem("1") 
   }
   const handleProviderSelect = (option: any) => {
-    setSelectedProvider(option)
-    //console.log('Selected Provider', option)
+    setSelectedProvider(option) 
   }
   const handleTokenizationSelect = (option: any) => {
     setSelectedTokenization(option)
-    
-    //console.log('Selected Tokenization', option)
+   
   }
   const accordionData = [
     {
@@ -98,7 +96,7 @@ export const Services = ({ id }: ServicesProps) => {
       id: 'item2',
       title: 'Compute & Hosting',
       component: (
-        <Hosting selected={selectedProvider} onSelect={handleProviderSelect} />
+        <Hosting selected={selectedProvider} onSelect={handleProviderSelect} setExpandedItem={setExpandedItem} />
       ),
     },
     {
@@ -109,14 +107,15 @@ export const Services = ({ id }: ServicesProps) => {
           selected={selectedTokenization}
           onSelect={handleTokenizationSelect}
           setFinalAmount={setFinalAmount}
+          setExpandedItem={setExpandedItem}
         />
       ),
     },
   ]
 
   return (
-    <div className="grid grid-cols-[3fr_1fr]">
-      <div className="mx-auto flex w-full px-12 py-6">
+    <div className="grid grid-cols-[70%_30%] ">
+      <div className="mx-auto flex w-full pl-8 pr-12 py-6 ">
         <Accordion
           type="single"
           collapsible
@@ -275,7 +274,7 @@ export const Services = ({ id }: ServicesProps) => {
           })}
         </Accordion>
       </div>
-      <div>
+      <div >
         <Amount
           selectedAIModel={selectedAIModel}
           selectedProvider={selectedProvider}
