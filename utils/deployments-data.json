@@ -1,0 +1,54 @@
+{
+  "summaryData": [
+    { "label": "Staking Revenue", "value": "$467.89" },
+    { "label": "Marketplace Revenue", "value": "$632.14" },
+    { "label": "Staking Revenue", "value": "$467.89" },
+    { "label": "Staking Revenue", "value": "$467.89" }
+  ],
+  "marketplaceEntries": [
+    {
+      "id": "1",
+      "image": "/images/appStore/mock-card1.png",
+      "title": "Onchain Dating Agent",
+      "hashTags": ["Chatbot", "AI"],
+      "logo": "/images/models/llama.png",
+      "icons": [
+        { "chain": "/images/appStore/svg/chains/bitcoin.svg" },
+        { "chain": "/images/viewDeployment/ollama.svg" }
+      ],
+      "likes": 120,
+      "followers": 1500,
+      "apy": 320,
+      "Seller": [{ "name": "User", "logo": "/images/appStore/contentlogo.png" }],
+      "stakingRevenue": "$567.96",
+      "marketplaceRevenue": "$88.98",
+      "views": "1.5K",
+      "users": "144"
+    }
+  ],
+  "personalServers": [
+    {
+      "id": "1",
+      "name": "XNode DVM1",
+      "address": "xyz26et...0Bghyjkuhn05",
+      "stakingRevenue": "$567.96",
+      "cpuUsage": 83,
+      "memoryUsage": 2.62,
+      "memoryTotal": 16,
+      "diskUsage": 24.71,
+      "diskTotal": 313,
+      "expiringIn": 3
+    },
+    {
+      "id": "2",
+      "name": "XNode DVM1",
+      "address": "xyz26et...0Bghyjkuhn05",
+      "stakingRevenue": "$567.96",
+      "cpuUsage": 83,
+      "memoryUsage": 2.62,
+      "memoryTotal": 16,
+      "diskUsage": 24.71,
+      "diskTotal": 313
+    }
+  ]
+}
