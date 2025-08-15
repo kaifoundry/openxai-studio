@@ -10,9 +10,14 @@ import {
     ModelBalance
 } from '@/components/ModelDetails';
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+
 import { useParams } from 'next/navigation';
+import MonetisationSettings from '@/app/deployments/MonetisationSettings';
 
 export default function BTCOraclePage() {
+    const searchParams = useSearchParams();
+    const deployed = searchParams.get('deploy') === 'true';
     const [data, setData] = useState(null);
     const [deploy, setDeploy] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -71,10 +76,21 @@ export default function BTCOraclePage() {
                 </div>
             </div>
             <div className="md:w-[35%] w-full">
-                <div className="sticky top-6" style={{ height: contentHeight }}>
-                    {/* <ModelSidebar deploy={deploy} setDeploy={setDeploy} claims={data?.claims ?? []} /> */}
-                    <ModelBalance id={id}/>
-                </div>
+                {!deployed && (
+                    <div className="sticky top-6" style={{ height: contentHeight }}>
+
+                        <ModelBalance id={id} />
+                    </div>)}
+                {deployed && (
+                    <MonetisationSettings
+                        walletAddress="xyz6etbhbjd...8ghyuhn75"
+                        price={123.45}
+                        currency="OPENX"
+                        estimatedRevenue={456.78}
+                        estimatedRevenuePeriod="mo"
+                        serverExpiryDays={3}
+                    />)}
+
             </div>
         </section>
     );

@@ -3,12 +3,18 @@
 import React from 'react'
 import { Eye, Heart, Users } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from "next/navigation";
 
 import { Card, CardContent } from '@/components/ui/card'
 import deploymentsData from '@/utils/deployments-data.json'
 
 export default function DeploymentPage() {
+  const router = useRouter();
   const { summaryData, marketplaceEntries, personalServers } = deploymentsData as any
+  const handleClick = (id: string) => {
+    router.push(`/app-store/${id}?deploy=true`);
+  };
+
   return (
     <div className="container mx-auto md:p-6 px-2">
 
@@ -26,7 +32,7 @@ export default function DeploymentPage() {
         </div>
       </section>
 
-      {/* Your Marketplace  */}
+
       <section className="mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">
           Your Marketplace Entries ({marketplaceEntries.length})
@@ -35,102 +41,9 @@ export default function DeploymentPage() {
           {marketplaceEntries.map((entry) => (
             <React.Fragment key={entry.id}>
               <div className="relative">
-                {/* Custom card that matches the image exactly */}
-                {/* <Card className="bg-white shadow-sm overflow-hidden">
-        <div className="relative">
-         
-          <div
-            className="absolute inset-0 z-0 h-[245px] w-full opacity-50"
-            style={{
-              backgroundImage: `url(${entry.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              filter: 'blur(40px)',
-              transform: 'scale(0.8)',
-            }}
-          />
 
-          <Image
-            src={entry.image}
-            alt={entry.title}
-            width={390}
-            height={235}
-            priority={true}
-            className="relative z-20 h-[190px] w-full object-cover"
-          />
-        </div>
-
-        <CardContent className="p-4">
-
-          <div className="flex justify-between items-start mb-3">
-            <div className="text-lg font-semibold text-black">{entry.title}</div>
-            <div className="text-sm text-gray-500">
-              {entry.hashTags.map((tag, index) => (
-                <span key={index} className="mr-2">#{tag}</span>
-              ))}
-            </div>
-          </div>
-
-
-          <div className="flex items-center gap-2 mb-4">
-            {entry.icons.map((icon, index) => (
-              <div key={index} className="relative flex size-[36px] items-center justify-center">
-                <Image
-                  src={icon.chain}
-                  alt="icon"
-                  width={30}
-                  height={25}
-                  className="h-[25px] w-[30px]"
-                />
-              </div>
-            ))}
-          </div>
-
-
-          <div className="space-y-2 mb-4">
-            <div className="text-sm text-gray-700">
-              Staking revenue <span className="font-semibold">{entry.stakingRevenue}</span>
-            </div>
-            <div className="text-sm text-gray-700">
-              Marketplace revenue <span className="font-semibold">{entry.marketplaceRevenue}</span>
-            </div>
-          </div>
-
-
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1">
-                <Eye className="h-4 w-4 text-gray-500" />
-                <span className="text-sm font-medium text-gray-700">{entry.views}</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <Heart className="h-4 w-4 text-gray-500" />
-                <span className="text-sm font-medium text-gray-700">{entry.likes}</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <Users className="h-4 w-4 text-gray-500" />
-                <span className="text-sm font-medium text-gray-700">{entry.users}</span>
-              </div>
-            </div>
-            <div className="text-right">
-              <span className="text-lg font-semibold text-gray-900">{entry.apy}%</span>
-              <span className="text-sm text-gray-500 ml-1">APY</span>
-            </div>
-          </div>
-
-
-          <div className="absolute top-4 right-4">
-            <Image
-              src={entry.Seller[0].logo}
-              alt="User"
-              width={36}
-              height={36}
-              className="rounded-full"
-            />
-          </div>
-        </CardContent>
-      </Card> */}
-                <Card className="bg-white shadow-sm overflow-hidden rounded-lg">
+                <Card className="bg-white shadow-sm overflow-hidden rounded-lg"
+                  onClick={() => handleClick("0")}>
                   <div className="relative">
                     <div
                       className="absolute inset-0 z-0 h-[245px] w-full opacity-50"
