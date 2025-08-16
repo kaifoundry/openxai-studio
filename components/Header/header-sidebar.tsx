@@ -103,7 +103,7 @@ const Sidebar = ({ isOpen, onClose, sessionToken }: SidebarProps) => {
   )
 
   return (
-    <div >
+    <div className='lg:hidden' >
       <ActivateXNodeDialog
         address={address}
         open={!!activationOpen}
@@ -113,7 +113,7 @@ const Sidebar = ({ isOpen, onClose, sessionToken }: SidebarProps) => {
 
       <div
         className={cn(
-          "will-change-opacity fixed inset-0 z-40 bg-black/70 backdrop-blur-sm transition-all duration-300 ease-in-out",
+          "will-change-opacity fixed inset-0 z-40  bg-black/70 backdrop-blur-sm transition-all duration-300 ease-in-out",
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         )}
         onClick={onClose}

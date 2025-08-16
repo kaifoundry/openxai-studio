@@ -774,8 +774,6 @@ const NavContainer = React.forwardRef<
       })
     )
   }
-
-
   const handleMouseEnter = () => toggleCollapsed(false)
   const handleMouseLeave = () => toggleCollapsed(true)
 
