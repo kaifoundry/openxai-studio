@@ -55,14 +55,14 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
       return matchChain && matchCategory && item.category === category;
     });
   };
-
+ 
   const renderCards = (title: string, models: any[], showAll: boolean = false) => {
     const getVisibleCount = () => {
       if (typeof window !== 'undefined') {
         const width = window.innerWidth;
         if (width >= 1920) {
           return 4;
-        } else if (width >= 1000 && width <= 1250) {
+        } else if (width >= 1000 && width <= 1300) {
           return 3; 
         }else if (width >= 768 && width < 1000) {
           return 2; 

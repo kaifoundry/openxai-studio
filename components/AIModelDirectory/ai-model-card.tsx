@@ -109,9 +109,9 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                                 <Image
                                     src={item?.chain || ''}
                                     alt="icon"
-                                    width={50}
-                                    height={20}
-                                    className="h-[20px] w-[30px]"
+                                    width={30}
+                                    height={25}
+                                    className="h-[25px] w-[30px]"
                                 />
                             </div>
                         ))}

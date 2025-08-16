@@ -77,7 +77,11 @@ const Fillter = ({
     <>
       <div className="my-4 flex gap-6 lg:hidden">
         <div className="dropdown-container relative">
-          <div
+          <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8,delay:0.3 }}
+          viewport={{ once: true }}
             className="relative flex cursor-pointer justify-between gap-4 rounded-xl border border-[#B8B8B8] px-4 py-2"
             onClick={() => {
               setIsOpenChain(false)
@@ -91,7 +95,7 @@ const Fillter = ({
               className={`cursor-pointer text-[#525252] ${isOpenCategory ? 'rotate-180' : 'rotate-0'}  transition-all delay-200 duration-500 ease-in-out`}
               
             />
-          </div>
+          </motion.div>
           
             <div
               className={`absolute z-50 w-[250px] ${isOpenCategory ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'} hide-scrollbar top-14 overflow-y-auto rounded-lg bg-white transition-all delay-300 duration-500 ease-in-out `}
@@ -134,7 +138,11 @@ const Fillter = ({
           
         </div>
         <div className="dropdown-container relative">
-          <div
+          <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8,delay:0.3 }}
+          viewport={{ once: true }}
             className="relative flex cursor-pointer justify-between gap-4 rounded-xl border border-[#B8B8B8] px-4 py-2"
             onClick={() => {
               setIsOpenCategory(false)
@@ -146,7 +154,7 @@ const Fillter = ({
               className={`cursor-pointer text-[#525252] ${isOpenChain ? 'rotate-180' : 'rotate-0'} transition-all delay-200 duration-500 ease-in-out`}
               
             />
-          </div>
+          </motion.div>
 
             <div
               className={`absolute z-50 w-[250px] ${isOpenChain ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'} hide-scrollbar  -right-10 top-14 overflow-y-auto rounded-lg bg-white transition-all delay-300 duration-500 ease-in-out `}
@@ -217,6 +225,8 @@ const Fillter = ({
                       whileInView={{ opacity: 1,scale:1, x: 0 }}
                       transition={{ duration: 0.8,delay:0.5 }}
                       viewport={{ once: true }}
+                      whileTap={{scale:0.95,transition: { duration: 0.2, delay: 0 }}}
+                      
                       
                   key={index}
                   onClick={() => onToggleCategory(tag.label)}
@@ -273,7 +283,7 @@ const Fillter = ({
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8,delay:0.2 }}
           viewport={{ once: true }}
-          className="flex gap-4 rounded-xl bg-[#F6FAFF] p-2 px-3 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2">
+          className="flex gap-4 rounded-xl bg-[#F6FAFF] justify-around p-2 px-3 w-48 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2">
             {ChainData.map((chain, index) => {
               const isSelected = selectedChains.includes(chain.name)
               return (
@@ -284,7 +294,7 @@ const Fillter = ({
                       viewport={{ once: true }}
                       
                   key={index}
-                  className={`flex cursor-pointer items-center justify-center rounded-full bg-white md:p-1 xl:p-1 2xl:p-1 3xl:p-2 ${
+                  className={`flex cursor-pointer items-center justify-between  rounded-full bg-white md:p-1 xl:p-1 2xl:p-1 3xl:p-2 ${
                     isSelected
                       ? 'border border-blue-500'
                       : 'border border-transparent'

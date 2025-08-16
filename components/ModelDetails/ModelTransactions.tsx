@@ -37,9 +37,9 @@ export function ModelStat({ transactions }: { transactions?: Transaction[] }) {
                         <tbody className="bg-white divide-y divide-gray-200 ">
                             {transactions.map((transaction, index) => (
                                 <motion.tr 
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8,delay:0.3 }}
+                    transition={{ duration: 0.8,delay:0.2 }}
                     viewport={{ once: true }}
                                 key={index} className="hover:bg-gray-50">
                                     <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">

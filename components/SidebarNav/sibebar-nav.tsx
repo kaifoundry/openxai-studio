@@ -161,7 +161,7 @@
 //     >
 //       <aside
 //         className={cn(
-//           'duration-plico sticky top-20 flex h-[calc(100svh-5rem)] shrink-0 flex-col justify-between border-r bg-card text-card-foreground transition-[width] ease-in-out max-hdplus:top-16',
+//           'duration-plico sticky top-20 flex h-[calc(100svh-5rem)] shrink-0 flex-col justify-between border-r bg-[#FFFFFF] text-card-foreground transition-[width] ease-in-out max-hdplus:top-16',
 //           collapsed ? 'w-14' : 'w-64 max-hdplus:w-52',
 //           demoMode && 'top-24 max-hdplus:top-20',
 //           className
@@ -247,7 +247,7 @@
 //           'category group relative overflow-hidden text-sm transition-all duration-300 animate-in fade-in max-hdplus:text-xs',
 //           // When sidebar collapsed, the content is absolute positioned to the right of the sidebar
 //           collapsed
-//             ? 'data-[state=closed]:animate-accordion-left data-[state=open]:animate-accordion-right absolute left-full top-0 ml-4 w-full rounded-md border bg-card'
+//             ? 'data-[state=closed]:animate-accordion-left data-[state=open]:animate-accordion-right absolute left-full top-0 ml-4 w-full rounded-md border bg-[#FFFFFF]'
 //             : 'w-full data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down'
 //         )}
 //       >
@@ -593,7 +593,7 @@
 //       {title && (
 //         <p
 //           className={cn(
-//             'duration-plico absolute inset-0 flex w-fit items-center bg-card px-4 text-xs uppercase text-card-foreground transition-[width,opacity] ease-in-out',
+//             'duration-plico absolute inset-0 flex w-fit items-center bg-[#FFFFFF] px-4 text-xs uppercase text-card-foreground transition-[width,opacity] ease-in-out',
 //             collapsed && 'w-0 opacity-0'
 //           )}
 //         >
@@ -764,25 +764,20 @@ const NavContainer = React.forwardRef<
 
   const { demoMode } = useDemoModeContext()
 
-  const toggleCollapsed = () => {
-    const newCollapsed = !collapsed;
-    setCollapsed(newCollapsed);
-    localStorage.setItem('nav-collapsed', String(newCollapsed));
-    // Dispatch custom event
-    window.dispatchEvent(new CustomEvent('nav-collapsed-change', {
-      detail: { collapsed: newCollapsed }
-    }));
-  };
-
-  const handleMouseEnter = () => {
-    setCollapsed(false)
-    toggleCollapsed()
+  const toggleCollapsed = (newCollapsed: boolean) => {
+    setCollapsed(newCollapsed)
+    localStorage.setItem('nav-collapsed', String(newCollapsed))
+  
+    window.dispatchEvent(
+      new CustomEvent('nav-collapsed-change', {
+        detail: { collapsed: newCollapsed },
+      })
+    )
   }
 
-  const handleMouseLeave = () => {
-    setCollapsed(true)
-    toggleCollapsed()
-  }
+
+  const handleMouseEnter = () => toggleCollapsed(false)
+  const handleMouseLeave = () => toggleCollapsed(true)
 
   return (
     <NavContext.Provider
@@ -794,7 +789,7 @@ const NavContainer = React.forwardRef<
     >
       <aside
         className={cn(
-          'duration-plico sticky top-20 flex h-[calc(100svh-5rem)] shrink-0 flex-col px-0 justify-between border-r bg-card text-card-foreground transition-[width] delay-300 duration-500 ease-in-out max-hdplus:top-16',
+          'duration-plico sticky top-20 flex h-[calc(100svh-5rem)] shrink-0 flex-col px-0 justify-between border-r bg-[#FFFFFF] text-card-foreground transition-[width] delay-300 duration-500 ease-in-out max-hdplus:top-16',
           collapsed ? 'w-14' : 'w-64 max-hdplus:w-52',
           demoMode && 'top-24 max-hdplus:top-20',
           className
@@ -889,7 +884,7 @@ const NavCollapsable: React.FC<NavCollapsableProps> = ({
           'category group relative overflow-hidden text-sm transition-all duration-300 animate-in fade-in max-hdplus:text-xs',
           // When sidebar collapsed, the content is absolute positioned to the right of the sidebar
           collapsed
-            ? 'data-[state=closed]:animate-accordion-left data-[state=open]:animate-accordion-right absolute left-full top-0 ml-4 w-full rounded-md border bg-card'
+            ? 'data-[state=closed]:animate-accordion-left data-[state=open]:animate-accordion-right absolute left-full top-0 ml-4 w-full rounded-md border bg-[#FFFFFF]'
             : 'w-full data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down'
         )}
       >
@@ -1243,7 +1238,7 @@ const NavSeperator: React.FC<SeperatorProps> = ({
       {title && (
         <p
           className={cn(
-            'duration-plico absolute inset-0 flex w-fit items-center bg-card px-4 text-xs uppercase text-card-foreground transition-[width,opacity] ease-in-out',
+            'duration-plico absolute inset-0 flex w-fit items-center bg-[#FFFFFF] px-4 text-xs uppercase text-card-foreground transition-[width,opacity] ease-in-out',
             collapsed && 'w-0 opacity-0'
           )}
         >

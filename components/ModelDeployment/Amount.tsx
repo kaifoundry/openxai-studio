@@ -236,7 +236,7 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
         deploymentId,
         processes: ['open-webui', 'ollama', 'ollama-model-loader'],
       })
-
+     
       router.push('/deployments')
     } catch (e) {
       console.error(e)
@@ -249,14 +249,14 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
 
       
      
-      <div className=" flex w-full  p-4 ">
+      <div className=" flex w-full  py-4 pl-0 pr-4 ">
         <div className="w-full bg-white">
         {!final_amount &&(<div className="mb-6 rounded-md bg-[#EEEEEE] px-4 py-2 text-left text-[21px] font-[400]">
             Hosting costs
           </div>)}
 
           {!final_amount &&(<div
-            // onClick={() => toggleService("Service 1")}
+            
             className="flex cursor-pointer items-center justify-between border-b border-[#D4D4D4] py-3"
           >
             <span className="text-[14px] 2xl:text-[16px] 3xl:text-[18px] text-[#8E8E8E]">Service</span>

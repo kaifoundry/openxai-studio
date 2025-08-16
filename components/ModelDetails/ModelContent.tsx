@@ -13,7 +13,6 @@ interface ModelContentProps {
   }[]
 }
 
-// Hook to split text into lines based on container width
 function useTextLines(text: string, containerRef: React.RefObject<HTMLElement>, prefix: string = '') {
   const [lines, setLines] = useState<string[]>([])
 
@@ -26,7 +25,6 @@ function useTextLines(text: string, containerRef: React.RefObject<HTMLElement>, 
     
     if (!context) return
 
-    // Get computed styles
     const styles = window.getComputedStyle(container)
     const fontSize = styles.fontSize
     const fontFamily = styles.fontFamily
@@ -42,11 +40,11 @@ function useTextLines(text: string, containerRef: React.RefObject<HTMLElement>, 
 
     words.forEach((word) => {
       const testLine = currentLine ? `${currentLine} ${word}` : word
-      // Include prefix width for first line calculation
+  
       const testLineWithPrefix = isFirstLine && prefix ? `${prefix}${testLine}` : testLine
       const testWidth = context.measureText(testLineWithPrefix).width
       
-      if (testWidth > containerWidth - 32 && currentLine) { // 32px for padding
+      if (testWidth > containerWidth - 32 && currentLine) { 
         textLines.push(currentLine)
         currentLine = word
         isFirstLine = false
@@ -65,7 +63,6 @@ function useTextLines(text: string, containerRef: React.RefObject<HTMLElement>, 
   return lines
 }
 
-// Component for line-by-line animated text
 function AnimatedText({ 
   text, 
   className, 
@@ -148,9 +145,9 @@ export function ModelContent({
           <div className="space-y-2 sm:space-y-3">
             {howItWorks.map((item, i) => (
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 + (i * 0.1) }}
+                transition={{ duration: 0.8, delay: 0.2 + (i * 0.1) }}
                 viewport={{ once: true }}
                 key={item.step}
                 className="flex items-start space-x-3"

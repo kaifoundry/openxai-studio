@@ -31,7 +31,9 @@ interface ProviderSelectorProps {
   showAll?: boolean
   onSelect: (provider: Provider) => void
   setExpandedItem: (value: string | null) => void
+  
 }
+
 
 const Hosting = ({ selected, onSelect,setExpandedItem }: ProviderSelectorProps) => {
   const [showExtendedOptions, setShowExtendedOptions] = useState(false)
@@ -117,7 +119,7 @@ const Hosting = ({ selected, onSelect,setExpandedItem }: ProviderSelectorProps) 
   const handleSelect = (node) => {
     setSelectedNode(node)
     setIsOpen(false)
-    setExpandedItem("3")
+    setExpandedItem("2")
   }
 
 
