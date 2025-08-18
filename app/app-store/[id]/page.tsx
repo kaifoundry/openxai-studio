@@ -17,7 +17,9 @@ export default function BTCOraclePage() {
     const [deploy, setDeploy] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
     const [contentHeight, setContentHeight] = useState('auto');
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const params = useParams();
     const id = Array.isArray(params.id) ? params.id[0] : params.id;
 
