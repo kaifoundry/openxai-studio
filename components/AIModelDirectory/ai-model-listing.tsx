@@ -78,7 +78,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     if(models.length === 0) return null
 
     return (
-      <div key={title} className="hide-scrollbar mb-10 flex flex-col overflow-x-auto">
+      <div key={title} className="hide-scrollbar mb-0 flex flex-col overflow-x-auto">
         <motion.div 
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
