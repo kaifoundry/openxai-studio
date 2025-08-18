@@ -103,7 +103,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                         </div>    
                     </div>
 
-                    <div className='flex items-center gap-0 px-2 pt-1 pb-0'>
+                    <div className='flex items-center gap-0 px-2 pt-1 pb-2 lg:pb-0'>
                         {icons?.map((item, index) => (
                             <div key={index} className="relative flex size-[36px] items-center justify-center">
                                 <Image

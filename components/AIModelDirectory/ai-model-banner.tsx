@@ -16,7 +16,13 @@ const Banner = () => {
           src="/images/appStore/banner-mask.png"
           alt="Mask Images"
           fill
-          className="rounded-2xl object-cover"
+          className="rounded-2xl object-cover hidden lg:block"
+        />
+        <Image
+          src="/images/appStore/banner-mask-mobile.png"
+          alt="Mask Images"
+          fill
+          className="rounded-2xl object-container lg:hidden block"
         />
       </div>
 
