@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { PencilLine } from "lucide-react";
 import UpdateMonetisationModal from "./UpdateMonetisationModal";
@@ -32,8 +31,7 @@ export default function MonetisationSettings({
 
     return (
         <>
-
-            <div className="  p-4 rounded-lg space-y-7  mt-10 mx-4">
+            <div className=" p-4 rounded-lg space-y-7  mt-10 mx-4">
 
                 <div className="bg-[#F5F5F5] rounded-lg border-[#F0F0F0] border-[1px] flex justify-between items-center px-4 py-3 font-semibold">
                     <span className="text-[#141414]">Monetisation Setting</span>
@@ -44,7 +42,7 @@ export default function MonetisationSettings({
 
                 <div className="flex justify-between px-1">
                     <span className="text-[#525252]">Revenue Wallet Address</span>
-                    <span className="font-semibold">{isConnected ? formatAddress(address) : walletAddress}</span>
+                    <span className="font-semibold">{isConnected ? formatAddress(address) : formatAddress(address)}</span>
                 </div>
                 <hr className="border-gray-200" />
 
@@ -81,11 +79,6 @@ export default function MonetisationSettings({
                         Transfer
                     </button>
                 </div>
-
-
-
-
-
             </div>
             <div className="p-4 space-y-10 mt-6 mx-4">
                 <hr className="border-gray-200" />
