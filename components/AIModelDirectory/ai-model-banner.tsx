@@ -19,7 +19,6 @@ const Banner = () => {
           className="rounded-2xl object-cover"
         />
       </div>
-
       <div className="absolute left-0 top-0 z-10 size-full rounded-2xl bg-[#0997FF] opacity-65"></div>
 
       <div className="absolute -top-4 z-20 h-full px-5 lg:top-0">
