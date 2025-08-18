@@ -160,7 +160,7 @@ export const Services = ({ id }: ServicesProps) => {
                     />
                   </div>
                 )}
-                {isTokenization && selectedTokenization && (
+                {isTokenization && selectedTokenization && final_amount &&  (
                   <div className="absolute -right-2 top-2 z-10">
                     <Image
                       src="/images/tick.svg"

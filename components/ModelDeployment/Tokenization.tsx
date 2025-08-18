@@ -55,6 +55,9 @@ export default function Tokenization({
   const { push } = useRouter()
   const { address, isConnected, status } = useAccount()
   const [price,setPrice]=useState('Price');
+  const [amount, setAmount] = useState('');
+const [fundWallet, setFundWallet] = useState(address || '');
+const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agree?:string }>({});
   const Legal_Structure = [
     {
       option: 'Use Smart Contract Instead',
@@ -102,6 +105,29 @@ export default function Tokenization({
       }
     }
   }, [selected])
+
+  const validateForm = () => {
+    let newErrors: { amount?: string; fundWallet?: string; agree?:string } = {};
+  
+    
+    if (tokenizationOption.Token === 'sellEntireMonetization' && !amount) {
+      newErrors.amount = "Please enter the amount.";
+    }
+  
+    if (tokenizationOption.Token === 'buildChainOnSaaS' && price === 'Price') {
+      if (!amount) {
+        newErrors.amount = "Please enter the price amount.";
+      }
+      if (!fundWallet) {
+        newErrors.fundWallet = "Fund receiving wallet is required.";
+      }
+    }
+    if(!iAgree){
+      newErrors.agree="This filed is required."
+    }
+    setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
 
   useEffect(() => {
     onSelect(tokenizationOption)
@@ -310,12 +336,15 @@ export default function Tokenization({
                     How would you charge from your users
                   </p>
                 </div>
-                <div className="flex items-center justify-start gap-3  px-3 py-2">
+                <div className='flex flex-col gap-2 px-3'>
+                <div className="flex items-center justify-start gap-3   py-2">
                   <input
                     type="number"
                     id="token-amount"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
                     className="h-10 w-20 rounded-md border border-gray-300 px-3 text-sm text-[#000000] outline-none"
-                    placeholder="0.00"
+                    placeholder="0.00" 
                   />
                   <Select
                     defaultValue={JSON.stringify(Price_OPTIONS[0])}
@@ -344,6 +373,11 @@ export default function Tokenization({
                     </SelectContent>
                   </Select>
                 </div>
+                {errors.amount && (
+  <p className="text-sm text-red-500 mt-1">{errors.amount}</p>
+)}
+                </div>
+                
               
             </div>
           ) : (
@@ -382,12 +416,15 @@ export default function Tokenization({
                     How would you charge from your users (1k Tokens)
                   </p>
                 </div>
-                <div className="flex items-center justify-start gap-3  px-3 py-2">
+                <div className='flex flex-col gap-2 px-3'>
+                <div className="flex items-center justify-start gap-3   py-2">
                   <input
                     type="number"
                     id="token-amount"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
                     className="h-10 w-20 rounded-md border border-gray-300 px-3 text-sm text-[#000000] outline-none"
-                    placeholder="0.00"
+                    placeholder="0.00" 
                   />
                   <Select
                     defaultValue={JSON.stringify(Price_OPTIONS[0])}
@@ -417,6 +454,11 @@ export default function Tokenization({
                     </SelectContent>
                   </Select>
                 </div>
+                {errors.amount && (
+  <p className="text-sm text-red-500 mt-1">{errors.amount}</p>
+)}
+                </div>
+                
               </div>)}
 
               {price=== 'Price' &&(<div className="grid items-center gap-6 md:grid-cols-2">
@@ -431,18 +473,26 @@ export default function Tokenization({
                     This acts like your bank account
                   </p>
                 </div>
-                <div className="flex items-center space-x-2 px-3">
+                <div className='flex flex-col gap-2 px-3'>
+                <div className="flex items-center space-x-2 ">
                   <input
                     type="text"
                     id="fund-wallet-address"
+                    value={fundWallet}
+                    onChange={(e) => setFundWallet(e.target.value)}
                     className="grow rounded-md border border-gray-300 p-2 text-blue-500 focus:border-blue-500 focus:ring-blue-500"
-                    placeholder="0x8464...7456"
-                  />
+                    placeholder="0x8464...7456" 
+                  /> 
 
                   <button className="whitespace-nowrap text-sm font-medium text-[#8E8E8E]">
                     + Add another
                   </button>
                 </div>
+                {errors.fundWallet && (
+  <p className="text-sm text-red-500 mt-1">{errors.fundWallet}</p>
+)}
+                </div>
+                
               </div>)}
             </div>
           )}
@@ -529,15 +579,21 @@ export default function Tokenization({
             <span className="font-medium underline">0x8464...7456</span> &
             cannot be undone
           </p>
-          <label className="flex items-center">
+          <div className='flex flex-col gap-2'>
+          <label className="flex items-center ">
             <input
               type="checkbox"
               checked={iAgree}
               onChange={handleIAgreeChange}
-              className="form-checkbox size-5 rounded text-blue-600"
+              className="form-checkbox size-5 rounded cursor-pointer text-blue-600"
             />
             <span className="ml-2 text-[#000000]">I agree</span>
           </label>
+          {errors.agree &&(
+            <p className="text-sm text-red-500 mt-1">{errors.agree}</p>
+          )}
+          </div>
+          
         </div>
 
         <div className="mb-16 text-[#000000]">
@@ -554,13 +610,11 @@ export default function Tokenization({
           <button
             className="rounded-md bg-blue-600 px-10 py-3 font-semibold text-white shadow-md hover:bg-blue-700"
             onClick={() => {
+              if (!validateForm()) return;
               if (iAgree) {
                 setExpandedItem(null)
                 handleOptionSelect();
-               
-              } else {
-                alert('Please agree to continue.')
-              }
+              } 
             }}
           >
             Save

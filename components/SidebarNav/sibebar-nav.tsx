@@ -659,7 +659,7 @@ const SidebarNav: React.FC<SidebarNavProps> = ({
             type: 'item',
             name: 'Design & Build',
             href: '/workspace',
-            icon: '/images/nav/appStore.svg',
+            icon: '/images/nav/pencilRuler.svg',
           } as NavItem,
         ]
       : [item]
