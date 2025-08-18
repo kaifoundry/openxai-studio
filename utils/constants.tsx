@@ -332,7 +332,7 @@ export const ChainData = [
     icon: "/images/appStore/svg/chains/etherium.svg",
   },
   {
-    name:"Ollama",
+    name:"Base",
     icon: "/images/appStore/svg/chains/ollama.svg",
   },
   {

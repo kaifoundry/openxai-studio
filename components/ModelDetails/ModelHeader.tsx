@@ -1,34 +1,38 @@
 'use client'
 
+import Image from 'next/image'
+
 interface ModelHeaderProps {
-    title: string
-    subtitle: string
+  image: string
+  title: string
+  subtitle: string
 }
 
-export function ModelHeader({ title, subtitle }: ModelHeaderProps) {
-    return (
-        <>
-            <div className="relative  text-white overflow-hidden mt-10 md:mx-8 mx-2 ">
+export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
+  return (
+    <>
+      <div className="relative mx-2 mt-10 overflow-hidden text-white md:mx-8">
+        <Image
+          src={image}
+          alt={title}
+          fill 
+          priority
+          className="absolute inset-0 h-full w-full rounded-2xl object-cover"
+        />
 
-                <img src="/images/project/hero/Rectangle.png" alt="" className="w-full h-full absolute" />
-
-                <div className="relative  mx-auto px-4 sm:px-2 lg:px-8 py-8 sm:py-12 lg:py-16">
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-
-                        <div className="flex-1 max-w-2xl text-center lg:text-left">
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
-                                {title}
-                            </h1>
-                            <p className="text-base sm:text-lg lg:text-xl text-gray-300">
-                                {subtitle}
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
+        <div className="relative mx-auto px-4 py-8 sm:px-2 sm:py-12 lg:px-8 lg:py-16">
+          <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
+            <div className="max-w-2xl flex-1 text-center lg:text-left">
+              <h1 className="mb-2 text-3xl font-bold leading-tight sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
+                {title}
+              </h1>
+              <p className="text-base text-gray-300 sm:text-lg lg:text-xl">
+                {subtitle}
+              </p>
             </div>
-
-        </>
-    )
-} 
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}

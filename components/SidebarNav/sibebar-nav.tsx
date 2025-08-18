@@ -764,25 +764,19 @@ const NavContainer = React.forwardRef<
 
   const { demoMode } = useDemoModeContext()
 
-  const toggleCollapsed = () => {
-    const newCollapsed = !collapsed;
-    setCollapsed(newCollapsed);
-    localStorage.setItem('nav-collapsed', String(newCollapsed));
-    // Dispatch custom event
-    window.dispatchEvent(new CustomEvent('nav-collapsed-change', {
-      detail: { collapsed: newCollapsed }
-    }));
-  };
-
-  const handleMouseEnter = () => {
-    setCollapsed(false)
-    toggleCollapsed()
+  
+  const toggleCollapsed = (newCollapsed: boolean) => {
+    setCollapsed(newCollapsed)
+    localStorage.setItem('nav-collapsed', String(newCollapsed))
+  
+    window.dispatchEvent(
+      new CustomEvent('nav-collapsed-change', {
+        detail: { collapsed: newCollapsed },
+      })
+    )
   }
-
-  const handleMouseLeave = () => {
-    setCollapsed(true)
-    toggleCollapsed()
-  }
+  const handleMouseEnter = () => toggleCollapsed(false)
+  const handleMouseLeave = () => toggleCollapsed(true)
 
   return (
     <NavContext.Provider
