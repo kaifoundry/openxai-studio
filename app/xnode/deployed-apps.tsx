@@ -182,7 +182,7 @@ const DeployedApps = ({ services, xNode, setDeleteServiceOpen }: DeployedAppsPro
                 {['Process', 'File Explore', 'Edit', 'Update'].map((action) => (
                   <div
                     key={action}
-                    className='flex cursor-pointer items-center justify-center rounded-md border border-[#525252] px-10 py-2 text-[10px] font-[500] text-[#525252] xl:text-[12px] 2xl:text-[14px] 3xl:text-[16px]'
+                    className='flex cursor-pointer items-center whitespace-nowrap justify-center rounded-md border border-[#525252] px-10 py-2 text-[10px] font-[500] text-[#525252] xl:text-[12px] 2xl:text-[14px] 3xl:text-[16px]'
                   //onClick={()=>{handleAction(action)}}
                   >
                     {action}

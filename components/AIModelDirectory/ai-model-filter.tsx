@@ -75,7 +75,7 @@ const Fillter = ({
 
   return (
     <>
-      <div className="my-4 flex gap-6 lg:hidden">
+      <div className="my-4 flex gap-6 lg:hidden pb-4 lg:pb-0">
         <div className="dropdown-container relative">
           <motion.div
           initial={{ opacity: 0, x: 30 }}

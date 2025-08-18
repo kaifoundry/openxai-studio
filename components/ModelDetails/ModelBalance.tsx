@@ -43,11 +43,11 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
     }).format(value);
 
   const formatPercentage = (value: number) => `~${value}%`;
-
+ 
   return (
     <>
       <motion.div
-        className="flex items-center justify-center p-4 font-sans"
+        className="flex items-center justify-center  p-4 font-sans"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -115,13 +115,14 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
           
           <motion.button
             className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white shadow-md hover:bg-blue-700"
-            onClick={() => router.push(`/model-deployment/${id}`)}
+            onClick={() =>{router.push(`/model-deployment/${id}`)}}
             variants={fadeUp}
           >
             Deploy
           </motion.button>
         </motion.div>
       </motion.div>
+     
     </>
   );
 };

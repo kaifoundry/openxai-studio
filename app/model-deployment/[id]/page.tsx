@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { Services,Amount } from '@/components/ModelDeployment'
 import { useParams } from 'next/navigation'
 import { DeploymentContextProvider } from '@/app/deploy/deployment-context'
@@ -14,9 +14,11 @@ import {
 } from '@/types/dataProvider'
 import { redirect } from 'next/navigation'
 import ModelDefinition from "../../../utils/model-definitions.json"
-
+import ModelPopup from '@/components/ModelDetails/ModelPopup'
+const MOBILE_BREAKPOINT = 1024
 const Page = () => {
   const params = useParams();
+  const [showDialog,setShowDialog]=useState(false);
     const id = Array.isArray(params.id) ? params.id[0] : params.id;
     function getData() {
         if (!id ) redirect('/app-store')
@@ -40,14 +42,30 @@ const Page = () => {
       }
     
       const { data, services, specs, type } = getData()
+
+      useEffect(() => {
+          if (window.visualViewport.width < MOBILE_BREAKPOINT) {
+            setShowDialog(true)
+          }
+          const handleResize = () => {
+            if (window.visualViewport.width > MOBILE_BREAKPOINT) {
+              setShowDialog(false)
+            } else {
+              setShowDialog(true)
+            }
+          }
+      
+          window.addEventListener('resize', handleResize)
+          return () => window.removeEventListener('resize', handleResize)
+        }, [window.visualViewport.width])
   return (
     <DeploymentContextProvider
       initialData={{ name: data.name, description: data.desc, services }}
     >
-    <div className=''>
+       {showDialog ?(<ModelPopup show={showDialog} title={"switch to desktop for deploying the app"} route={`/app-store/${id}`}/>)
+    :(
         <Services id={id} />
-        {/* <Amount/> */}
-    </div>
+    )}
     </DeploymentContextProvider>
   )
 }
