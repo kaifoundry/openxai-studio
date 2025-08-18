@@ -31,7 +31,7 @@ export function ModelStats({
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="flex items-center space-x-4 rounded-xl bg-[#F1F7FF] px-4 py-2"
+                className="flex items-center space-x-4 rounded-xl bg-[#F1F7FF] px-4 py-1"
               >
                 <motion.span
                   initial={{ opacity: 0, x: 30 }}
@@ -59,7 +59,7 @@ export function ModelStats({
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="flex items-center space-x-4 rounded-xl bg-[#F1F7FF] px-4 py-2"
+                className="flex items-center space-x-4 rounded-xl bg-[#F1F7FF] px-4 py-1"
               >
                 <motion.span
                   initial={{ opacity: 0, x: 30 }}
@@ -88,7 +88,7 @@ export function ModelStats({
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="flex items-center space-x-4 rounded-xl bg-[#F1F7FF] px-4 py-2"
+                className="flex items-center space-x-4 rounded-xl bg-[#F1F7FF] px-4 py-1"
               >
                 <motion.span
                   initial={{ opacity: 0, x: 30 }}
@@ -124,7 +124,7 @@ export function ModelStats({
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   viewport={{ once: true }}
-                  className="whitespace-nowrap rounded bg-[#8CD417] px-3 py-1 text-sm font-bold text-white sm:px-4 sm:py-2 sm:text-base lg:text-lg"
+                  className="whitespace-nowrap rounded bg-[#8CD417] px-3 py-1 text-sm font-bold text-white  sm:text-base lg:text-lg"
                 >
                   {apy} % APY
                 </motion.span>

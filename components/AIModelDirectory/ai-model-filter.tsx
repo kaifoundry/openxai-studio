@@ -283,7 +283,7 @@ const Fillter = ({
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8,delay:0.2 }}
           viewport={{ once: true }}
-          className="flex gap-4 rounded-xl bg-[#F6FAFF] justify-around p-2 px-3 w-48 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2">
+          className="flex gap-4 rounded-xl bg-[#F6FAFF] justify-around p-2 px-3 w-32 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2">
             {ChainData.map((chain, index) => {
               const isSelected = selectedChains.includes(chain.name)
               return (
