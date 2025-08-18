@@ -45,6 +45,7 @@ export default function BTCOraclePage() {
         <section className='flex md:flex-row flex-col'>
             <div className="md:w-[65%] w-full" ref={contentRef}>
                 <ModelHeader
+                    image={data.image}
                     title={data.name}
                     subtitle={Array.isArray(data.tags) ? data.tags.join(', ') : data.tags}
                 />
