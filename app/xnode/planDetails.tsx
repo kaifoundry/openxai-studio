@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { ChevronUp, ChevronDown } from 'lucide-react';
-
+import { ChevronUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 interface PlanDetailsProps {
     planData: {
         serverPlan: string;
@@ -77,20 +77,26 @@ export default function PlanDetails({ planData }: PlanDetailsProps) {
                 onClick={() => setIsExpanded(!isExpanded)}
             >
                 <h2 className="text-sm font-semibold text-[#000000] md:text-xl">Plan Details</h2>
-                {isExpanded ? (
-                    <ChevronUp className="size-5 text-[#959595]" />
-                ) : (
-                    <ChevronDown className="size-5 text-[#959595]" />
-                )}
+                
+                <motion.div
+          animate={{ rotate: isExpanded ? 0 : 180 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ChevronUp className="size-5 text-[#959595]" />
+        </motion.div>
+                
             </div>
-
-            <div
-                style={{
-                    maxHeight: isExpanded ? `${contentHeight}px` : '0px',
-                }}
-                className="overflow-hidden transition-all duration-500 ease-in-out"
-            >
-                <div ref={contentRef} className="px-4 pb-4">
+            <AnimatePresence initial={false}>
+            {isExpanded && (
+            <motion.div
+            key="content"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+                <div  className="px-4 pb-4">
                     {daysUntilExpiration < 30 && (
                         <div className="mb-4 rounded-md border border-solid border-[#F6DFDF] bg-[#F6DFDF] px-4 py-3 text-[#C73A3A]">
                             <p className="text-sm font-semibold">
@@ -244,7 +250,9 @@ export default function PlanDetails({ planData }: PlanDetailsProps) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
+            )}
+      </AnimatePresence>
         </div>
     );
 } 

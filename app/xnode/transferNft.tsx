@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useRef, useCallback } from 'react';
-import { ChevronUp, ChevronDown } from 'lucide-react';
-
+import { ChevronUp} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 interface TransferNFTProps {
   onTransfer?: (recipientAddress: string) => void;
   currentWalletAddress?: string;
@@ -68,18 +68,25 @@ export default function TransferNFT({
         onClick={toggleExpand}
       >
         <h2 className="text-xl font-semibold text-[#000000]">Transfer NFT</h2>
-        {isExpanded ? (
+        <motion.div
+          animate={{ rotate: isExpanded ? 0 : 180 }}
+          transition={{ duration: 0.3 }}
+        >
           <ChevronUp className="size-5 text-[#959595]" />
-        ) : (
-          <ChevronDown className="size-5 text-[#959595]" />
-        )}
+        </motion.div>
       </div>
 
-      <div
-        style={{ maxHeight: isExpanded ? `1000px` : '0px' }}
-        className="overflow-hidden transition-all duration-500 ease-in-out"
-      >
-        <div ref={contentRef} className="px-4 pb-4">
+      <AnimatePresence initial={false}>
+            {isExpanded && (
+            <motion.div
+            key="content"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+        <div  className="px-4 pb-4">
           <p className="mb-6 mt-4 text-sm text-[#525252]">
             Transferring ERC721 NFT will transfer the ownership and billing
             responsibility to the recipient.
@@ -112,7 +119,9 @@ export default function TransferNFT({
             Transfer
           </button>
         </div>
-      </div>
+        </motion.div>
+            )}
+      </AnimatePresence>
 
    
       {showConfirmModal && (

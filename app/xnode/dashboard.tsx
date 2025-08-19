@@ -1,9 +1,11 @@
 'use client'
 
+import { once } from 'events'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { servicesCompressedForAdmin } from '@/utils/xnode'
 import { useQuery } from '@tanstack/react-query'
 import { addYears, formatDistanceToNowStrict } from 'date-fns'
+import { motion } from 'framer-motion'
 import { useUser } from 'hooks/useUser'
 import { ChevronRight } from 'lucide-react'
 import { useAccount } from 'wagmi'
@@ -39,6 +41,21 @@ export default function XNodeDashboard({ xNodeId }: XnodePageProps) {
   }, [demoMode, xNodeId])
 
   const [user] = useUser()
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.4,
+      },
+    },
+  }
+
+  const item = {
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  }
 
   {
     /* --------------just for testing purposes, remove later ---------------*/
@@ -174,16 +191,25 @@ export default function XNodeDashboard({ xNodeId }: XnodePageProps) {
             deleteService={deleteService}
           />
 
-          <div className="flex w-full flex-col gap-6 bg-white py-6">
-            <div className="mb-4 flex items-center space-x-2">
-              <span className="text-lg text-[#8F8F8F]">Deployment</span>
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="flex w-full flex-col gap-6 bg-white py-6"
+          >
+            <motion.div
+              variants={item}
+              className="mb-4 flex items-center space-x-2"
+            >
+              <span className="text-[12px] md:text-[14px] 2xl:text-[16px] 3xl:text-lg text-[#8F8F8F]">Deployment</span>
               <ChevronRight size={20} className="text-[#9B9B9B]" />
-              <span className="text-lg font-medium text-[#525252]">
+              <span className="text-[12px] md:text-[14px] 2xl:text-[16px] 3xl:text-lg font-medium text-[#525252]">
                 {xNode.name}
               </span>
-            </div>
-            <PlanManagement xnode={xNode} />
-          </div>
+            </motion.div>
+            <PlanManagement xnode={xNode} delayStart={0.6} />
+          </motion.div>
           <Resources xNode={xNode} lastUpdated={lastUpdated} />
 
           <Deployed_Apps
