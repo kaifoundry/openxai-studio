@@ -65,7 +65,7 @@ const Page = () => {
       
        {showDialog ?(
         <div className='h-screen lg:h-full'>
-          <ModelPopup show={showDialog} title={"switch to desktop for deploying the app"} route={`/app-store/${id}`}/>
+          <ModelPopup show={showDialog} title={"Switch to desktop for deploying the app"} route={`/app-store/${id}`}/>
         </div>
         )
     :(
