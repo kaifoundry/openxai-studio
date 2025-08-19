@@ -88,30 +88,35 @@ const Fillter = ({
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="relative flex cursor-pointer justify-between gap-4 rounded-xl border border-[#B8B8B8] px-4 py-2"
+            className={`relative flex cursor-pointer justify-between gap-4 rounded-xl ${isOpenCategory ? 'border-[2px] border-blue-700':'border border-[#B8B8B8] '}  px-4 py-2`}
             onClick={() => {
               setIsOpenChain(false)
               setIsOpenCategory(!isOpenCategory)
             }}
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center  gap-4">
               <div className="text-[16px] font-[500] text-[#525252]">
                 Category
               </div>
               {selectedCategories.length > 0 && (
                 <>
-                  <div className="flex items-center justify-center rounded-full bg-blue-500 text-white font-[700] size-6 text-sm">
+                  <div className="flex items-center justify-center rounded-full bg-blue-500 text-white font-[500] size-6 text-sm">
                     {selectedCategories.length}
                   </div>
-                  <div onClick={(e) => { e.stopPropagation(); onClearCategories(); }}>
-                    <X className="size-4 text-blue-400 font-semibold cursor-pointer" />
-                  </div>
+                  {/* <div onClick={(e) => { e.stopPropagation(); onClearCategories(); }}>
+                    <X className="size-4 text-blue-800 font-semibold cursor-pointer" />
+                  </div> */}
                 </>
               )}
             </div>
+            {selectedCategories.length > 0 ? (
+              <div className="flex items-center justify-center"  onClick={(e) => { e.stopPropagation(); onClearCategories(); }}>
+                    <X className="size-4 text-blue-500 font-[800] cursor-pointer" />
+                  </div>
+            ):(
             <ChevronDown
               className={`cursor-pointer text-[#525252] ${isOpenCategory ? 'rotate-180' : 'rotate-0'}  transition-all delay-200 duration-500 ease-in-out`}
-            />
+            />)}
           </motion.div>
 
           <div
@@ -140,7 +145,7 @@ const Fillter = ({
                   type="checkbox"
                   checked={true}
                   readOnly
-                  className="size-6 appearance-none rounded-md border border-gray-400 bg-white transition duration-200 checked:border-blue-500 checked:bg-white checked:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA3OGZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDZsLTExIDEyLTUtNSIvPjwvc3ZnPg==')] checked:bg-[length:14px_14px] checked:bg-center checked:bg-no-repeat"
+                  className="size-6 appearance-none rounded-md border border-gray-600 bg-white transition duration-200 checked:border-blue-500 checked:bg-white checked:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA3OGZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDZsLTExIDEyLTUtNSIvPjwvc3ZnPg==')] checked:bg-[length:14px_14px] checked:bg-center checked:bg-no-repeat"
                 />
                 <div className="text-[18px] text-[#525252]">
                   {tag?.label}
@@ -179,7 +184,7 @@ const Fillter = ({
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="relative flex cursor-pointer justify-between gap-4 rounded-xl border border-[#B8B8B8] px-4 py-2"
+            className={`relative flex cursor-pointer justify-between gap-4 rounded-xl ${isOpenChain ? 'border-[2px] border-blue-700':'border border-[#B8B8B8] '}  px-4 py-2`}
             onClick={() => {
               setIsOpenCategory(false)
               setIsOpenChain(!isOpenChain)
@@ -311,7 +316,7 @@ const Fillter = ({
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex gap-4 rounded-xl bg-[#F6FAFF] justify-around p-2 px-3 w-48 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2">
+            className="flex gap-4 rounded-xl bg-[#F6FAFF] justify-around p-2 px-3  md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2">
             {ChainData.map((chain, index) => {
               const isSelected = selectedChains.includes(chain.name)
               return (
