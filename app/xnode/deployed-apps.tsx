@@ -5,6 +5,33 @@ import { Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { type Xnode } from '@/types/node'
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2, 
+    },
+  },
+};
+
+const fadeUp = (delay = 0) => ({
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay,
+      ease: "easeOut",
+    },
+  },
+});
+
 export interface ServiceSpec {
   ram?: number;
   storage?: number;
@@ -75,21 +102,29 @@ const DeployedApps = ({ services, xNode, setDeleteServiceOpen }: DeployedAppsPro
   // } 
 
   return (
-    <div>
+    <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+    >
       <div className="flex items-center justify-between pb-2 pt-8">
-        <div className="text-sm font-bold text-[#141414] xl:text-base 2xl:text-xl 3xl:text-2xl">
+        <motion.div variants={fadeUp(0.2)} className="text-sm font-bold text-[#141414] xl:text-base 2xl:text-xl 3xl:text-2xl">
           Apps ({services.length})
-        </div>
-        <button
+        </motion.div>
+        <motion.button
+        variants={fadeUp(0.4)}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
           onClick={() => push('/app-store')}
           className="rounded-lg border-2 border-[#525252] px-8 py-2 font-medium text-[#525252]"
         >
           + Add App
-        </button>
+        </motion.button>
       </div>
 
       <div className="grid grid-cols-1 gap-8 py-4 lg:grid-cols-3">
-        {services?.map((service) => {
+        {services?.map((service,i) => {
           const servicePort = service.options
             ?.flatMap((o) => {
               const nestedOptions = [o]
@@ -116,10 +151,13 @@ const DeployedApps = ({ services, xNode, setDeleteServiceOpen }: DeployedAppsPro
             service.options?.find(
               (option) => option.nixName === 'openFirewall'
             )?.value === 'true'
-
+            const delay = 1 + i * 0.4;
           return (
-            <div
+            <motion.div
               key={service.nixName}
+              variants={fadeUp(delay)}
+              whileHover={{ scale: 1.05}}
+        whileTap={{ scale: 0.95 }}
               className="flex w-full max-w-sm flex-col gap-4 rounded-xl border p-6"
             >
               <div className="flex justify-between">
@@ -202,11 +240,11 @@ const DeployedApps = ({ services, xNode, setDeleteServiceOpen }: DeployedAppsPro
                 Open {service.name ?? service.nixName}
                 <Image src='/images/arrow-up-right.svg' alt="" width={20} height={20} />
               </Link>
-            </div>
+            </motion.div>
           )
         })}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
