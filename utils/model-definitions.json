@@ -3,7 +3,7 @@
 [
   {
     "id": "0",
-    "image": "/images/appStore/mock-card1.png",
+    "image": "/images/appStore/mock-card9.png",
     "logo": "/images/appStore/contentlogo.png",
     "name": "BTC Oracle",
     "category": "Popular",
@@ -760,7 +760,7 @@
     "chains":[
       
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -843,7 +843,7 @@
           "chain":"/images/appStore/svg/chains/solona.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -938,7 +938,7 @@
           "chain":"/images/appStore/svg/chains/solona.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       }
     ],
@@ -1053,7 +1053,7 @@
   },
   {
     "id": "10",
-    "image": "/images/appStore/mock-card2.png",
+    "image": "/images/appStore/mock-card4.png",
     "logo": "/images/appStore/contentlogo.png",
     "name": "BTC Oracle",
     "category": "Popular",
@@ -1172,7 +1172,7 @@
     "chains":[
      
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/chains/svg/ollama.svg"
       },
       {
@@ -1291,7 +1291,7 @@
   },
   {
     "id": "13",
-    "image":"/images/appStore/mock-card3.png",
+    "image":"/images/appStore/mock-card5.png",
     "logo": "/images/appStore/contentlogo.png",
     "name": "BTC Oracle",
     "category": "Popular",
@@ -1338,7 +1338,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       }
     ],
@@ -1374,7 +1374,7 @@
   },
   {
     "id": "14",
-  "image":"/images/appStore/mock-card1.png",
+  "image":"/images/appStore/mock-card6.png",
     "logo": "/images/appStore/contentlogo.png",
     "name": "BTC Oracle",
     "category": "Popular",
@@ -1460,7 +1460,7 @@
   },
   {
     "id": "15",
-   "image":"/images/appStore/mock-card3.png",
+   "image":"/images/appStore/mock-card7.png",
     "logo": "/images/appStore/contentlogo.png",
     "name": "BTC Oracle",
     "category": "Popular",
@@ -1545,7 +1545,7 @@
   },
   {
     "id": "16",
-    "image":"/images/appStore/mock-card1.png",
+    "image":"/images/appStore/mock-card8.png",
     "logo": "/images/appStore/contentlogo.png",
     "name": "BTC Oracle",
     "category": "Popular",
@@ -1592,7 +1592,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -1638,7 +1638,7 @@
   },
   {
     "id": "17",
-   "image":"/images/appStore/mock-card2.png",
+   "image":"/images/appStore/mock-card1.png",
     "logo": "/images/appStore/contentlogo.png",
     "name": "BTC Oracle",
     "category": "Popular",
@@ -1685,7 +1685,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -1778,7 +1778,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -1895,7 +1895,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -1976,7 +1976,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2063,7 +2063,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2174,7 +2174,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2273,7 +2273,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2354,7 +2354,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2435,7 +2435,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2516,7 +2516,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2615,7 +2615,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2714,7 +2714,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2807,7 +2807,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2900,7 +2900,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -2993,7 +2993,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -3074,7 +3074,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -3155,7 +3155,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -3242,7 +3242,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -3335,7 +3335,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -3416,7 +3416,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -3497,7 +3497,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -3583,7 +3583,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -3664,7 +3664,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {
@@ -3744,7 +3744,7 @@
           "chain":"/images/appStore/svg/chains/etherium.svg"
       },
       {
-        "name":"Ollama",
+        "name":"Base",
           "chain":"/images/appStore/svg/chains/ollama.svg"
       },
       {

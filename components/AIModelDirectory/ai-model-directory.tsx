@@ -54,7 +54,7 @@
 //   const [amount, unit] = timeString.split(' ')
 //   const now = Date.now()
 //   const number = parseInt(amount)
-  
+
 //   switch (unit) {
 //     case 'days':
 //     case 'day':
@@ -73,7 +73,7 @@
 // function ModelCard({ data }: { data: ModelData }) {
 //   const sizes = data.model_sizes?.split(',') || ["7b"]
 //   const iconPath = data.logo
-  
+
 //   const cardContent = (
 //     <div className={cn(
 //       "flex h-[200px] cursor-pointer flex-col rounded-lg border p-4 hover:bg-muted/50"
@@ -135,7 +135,7 @@
 
 //   const filteredAndSortedItems = useMemo(() => {
 //     let items = activeTab === 'models' ? [...initialModels] : [...AgentDefinitions]
-    
+
 //     // Apply search filter
 //     if (searchQuery) {
 //       const query = searchQuery.toLowerCase()
@@ -143,12 +143,12 @@
 //         item.name.toLowerCase().includes(query)
 //       )
 //     }
-    
+
 //     // Apply type filters
 //     if (selectedTypes.length > 0) {
 //       items = items.filter(item => selectedTypes.includes(item.type))
 //     }
-    
+
 //     // Apply sorting
 //     switch (sortBy) {
 //       case 'most-popular':
@@ -168,7 +168,7 @@
 //         items.sort((a, b) => b.name.localeCompare(a.name))
 //         break
 //     }
-    
+
 //     return items
 //   }, [initialModels, sortBy, selectedTypes, searchQuery, activeTab])
 
@@ -272,32 +272,40 @@ import Fillter from './ai-model-filter';
 import ModelListing from './ai-model-listing';
 
 export default function AppDirectory() {
-    const [selectedChains, setSelectedChains] = useState<string[]>([]);
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  
-    const toggleChain = (chain: string) => {
-      setSelectedChains(prev =>
-        prev.includes(chain) ? prev.filter(c => c !== chain) : [...prev, chain]
-      );
-    };
-  
-    const toggleCategory = (category: string) => {
-      setSelectedCategories(prev =>
-        prev.includes(category) ? prev.filter(c => c !== category) : [...prev, category]
-      );
-    };
-  
-    return (
-        <div className='px-4 py-2 md:py-4 md:px-6 xl:px-8 xl:py-6 2xl:px-8 2xl:py-6 3xl:py-8 3xl:px-10'>
-            <Banner />
-            <Fillter 
-                selectedChains={selectedChains}
-                selectedCategories={selectedCategories}
-                onToggleChain={toggleChain}
-                onToggleCategory={toggleCategory}
-            
-            />
-            <ModelListing selectedChains={selectedChains} selectedCategories={selectedCategories} />
-        </div>
+  const [selectedChains, setSelectedChains] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const toggleChain = (chain: string) => {
+    setSelectedChains(prev =>
+      prev.includes(chain) ? prev.filter(c => c !== chain) : [...prev, chain]
     );
+  };
+
+  const toggleCategory = (category: string) => {
+    setSelectedCategories(prev =>
+      prev.includes(category) ? prev.filter(c => c !== category) : [...prev, category]
+    );
+  };
+  const onClearCategories = () => {
+    setSelectedCategories([]);
+  };
+  const onClearChain = () =>{
+    setSelectedChains([]);
+  }
+
+  return (
+    <div className='px-4 py-2 md:py-4 md:px-6 xl:px-8 xl:py-6 2xl:px-8 2xl:py-6 3xl:py-8 3xl:px-10'>
+      <Banner />
+      <Fillter
+        selectedChains={selectedChains}
+        selectedCategories={selectedCategories}
+        onToggleChain={toggleChain}
+        onToggleCategory={toggleCategory}
+        onClearCategories={onClearCategories}
+        onClearChain={onClearChain}
+
+      />
+      <ModelListing selectedChains={selectedChains} selectedCategories={selectedCategories} />
+    </div>
+  );
 }

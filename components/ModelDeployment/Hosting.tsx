@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useState,useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { formatAddress } from '@/utils/functions'
-import { Check, X } from 'lucide-react'
-import { useAccount } from 'wagmi'
 import { useRouter } from 'next/navigation'
+import { formatAddress } from '@/utils/functions'
+import { Check, ChevronDown, X } from 'lucide-react'
+import { useAccount } from 'wagmi'
+
 import { cn } from '@/lib/utils'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 
@@ -30,12 +31,18 @@ interface ProviderSelectorProps {
   selected?: Provider
   showAll?: boolean
   onSelect: (provider: Provider) => void
+  setExpandedItem: (value: string | null) => void
 }
 
-const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
+const Hosting = ({
+  selected,
+  onSelect,
+  setExpandedItem,
+}: ProviderSelectorProps) => {
   const [showExtendedOptions, setShowExtendedOptions] = useState(false)
   const { address, isConnected, status } = useAccount()
   const { push } = useRouter()
+
   const providers: Provider[] = [
     {
       name: 'Xnode',
@@ -91,35 +98,38 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
     {
       name: 'Xnode DVM 1',
       icon: '/images/xnode-card/silvercard-front.webp',
-      address:address && formatAddress(address),
+      address: address && formatAddress(address),
       Base: '/images/appStore/svg/chains/ollama.svg',
     },
     {
       name: 'Xnode DVM 2',
       icon: '/images/xnode-card/silvercard-front.webp',
-      address:address && formatAddress(address),
+      address: address && formatAddress(address),
       Base: '/images/appStore/svg/chains/ollama.svg',
     },
   ]
 
+  console.log('Selected ', selected)
+
   const [selectedNode, setSelectedNode] = useState<Provider | null>(
-    isConnected && address ? XNODEDVMs[0] : null
+    selected || (isConnected && address ? XNODEDVMs[0] : null)
   )
   const [isOpen, setIsOpen] = useState(false)
 
-  useEffect(()=>{
-    onSelect(selectedNode)
-  },[selectedNode])
+  useEffect(() => {
+    if (selectedNode && selectedNode !== selected) {
+      onSelect(selectedNode)
+    }
+  }, [selectedNode])
 
   const handleSelect = (node) => {
     setSelectedNode(node)
     setIsOpen(false)
+    setExpandedItem('2')
   }
-
 
   const pressWalletButton = () => {
     if (window.location.pathname.endsWith('login')) {
-      // If we are already on the login page, they probably want the wallet popup
       open()
       return
     }
@@ -146,12 +156,12 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
             </button>
           ) : (
             <button
-                type="button"
-                className="flex h-10 items-center gap-1.5 rounded bg-primary px-4 text-base font-semibold tracking-tighter text-background max-hdplus:h-8 max-hdplus:text-sm"
-                onClick={pressWalletButton}
-              >
-                Connect Wallet
-              </button>
+              type="button"
+              className="flex h-10 items-center gap-1.5 rounded bg-primary px-4 text-base font-semibold tracking-tighter text-background max-hdplus:h-8 max-hdplus:text-sm"
+              onClick={pressWalletButton}
+            >
+              Connect Wallet
+            </button>
           )}
         </div>
       </div>
@@ -164,7 +174,10 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
             {providers.map((provider) => (
               <div
                 key={provider.name}
-                onClick={() => !provider.disabled && onSelect(provider)}
+                onClick={() => {
+                  setExpandedItem('2')
+                  !provider.disabled && onSelect(provider)
+                }}
                 className={cn(
                   'relative flex cursor-pointer flex-col rounded-lg border p-6 max-[1550px]:p-4 max-[1350px]:p-3 max-[1250px]:p-2 max-[992px]:p-1.5',
                   'h-[128px] max-[1550px]:h-[120px] max-[1350px]:h-[115px] max-[1250px]:h-[110px] max-[992px]:h-[100px]',
@@ -281,14 +294,15 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
             ))}
           </div>
         ) : (
-          <div className="w-[80%] rounded-lg border bg-white px-8 pt-8 pb-2 shadow-sm">
-            <div
-              className="flex  cursor-pointer items-center justify-between"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <div className="flex items-center justify-center gap-3">
-                <div className='flex gap-10 items-center'>
-                  <div className='flex gap-2'>
+          <div className="relative">
+          
+            <div className="relative w-[80%] rounded-lg border bg-white px-8 py-2 shadow-sm">
+              <div
+                className="flex cursor-pointer items-center justify-between"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <div className="flex items-center gap-10">
+                  <div className="flex items-center gap-2">
                     <input type="radio" checked readOnly />
                     <img
                       src={selectedNode?.icon}
@@ -296,76 +310,79 @@ const Hosting = ({ selected, onSelect }: ProviderSelectorProps) => {
                       className="h-6 w-10 object-cover"
                     />
                   </div>
-                
-                  <div className='flex gap-20  '>
-                    <div className=''>
+
+                  <div className="flex items-center gap-20">
+                    <div>
                       <div className="font-medium">{selectedNode?.name}</div>
                       <div className="text-sm text-blue-600">
                         {selectedNode?.address}
                       </div>
                     </div>
-                    <div className='flex flex-col gap-3'>
-                          <img src={selectedNode?.Base} alt="base" className="ml-2 h-5 w-5" />
-                          <span className="ml-1 text-xs">Base</span>
+                    <div className="flex flex-col items-center">
+                      <img
+                        src={selectedNode?.Base}
+                        alt="base"
+                        className="h-5 w-5"
+                      />
+                      <span className="text-xs">Base</span>
                     </div>
                   </div>
                 </div>
+
+                <ChevronDown
+                  className={`transition-transform duration-500 ${
+                    isOpen ? 'rotate-180' : 'rotate-0'
+                  }`}
+                />
               </div>
-             
-                <div className={`${isOpen ?'rotate-180':'rotate-0'} transition-all duration-700 `}>
-                <svg
-                  width="17"
-                  height="15"
-                  viewBox="0 0 17 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8.47762 14.6246L0.295813 0.831004L16.3324 0.642172L8.47762 14.6246Z"
-                    fill="#383CFF"
-                  />
-                </svg>
-                </div>
-              
             </div>
 
-           
-            {isOpen && (
-              <div className="mt-2 space-y-2 ">
-                {XNODEDVMs?.filter(
-                  (node) => node.name !== selectedNode?.name
-                ).map((node, idx) => (
-                  <div
-                    key={idx}
-                    className="flex cursor-pointer items-center gap-10 py-2 rounded "
-                    onClick={() => handleSelect(node)}
-                  ><div className='flex gap-2'>
-                    <input type="radio" readOnly />
-                    <img
-                      src={node.icon}
-                      alt="icon"
-                      className="h-6 w-10 object-cover"
-                    />
-                    </div>
-                    <div className='flex gap-20  '>
-                    <div>
-                      <div className="font-medium">{node.name}</div>
-                      <div className="text-sm text-blue-600">
-                        {node.address}
+        
+            <div
+              className={`absolute left-0 z-10 w-[80%] overflow-hidden rounded-md bg-white transition-all duration-500 ${
+                isOpen ? 'mt-2 max-h-60 border' : 'max-h-0 hidden'
+              }`}
+            >
+              {isOpen && (
+                <div className="space-y-2 px-8 py-2">
+                  {XNODEDVMs?.filter(
+                    (node) => node.name !== selectedNode?.name
+                  ).map((node, idx) => (
+                    <div
+                      key={idx}
+                      className="flex cursor-pointer items-center gap-10 rounded py-2 hover:bg-gray-50"
+                      onClick={() => handleSelect(node)}
+                    >
+                      <div className="flex items-center gap-2">
+                        <input type="radio" readOnly />
+                        <img
+                          src={node.icon}
+                          alt="icon"
+                          className="h-6 w-10 object-cover"
+                        />
+                      </div>
+
+                      <div className="flex items-center gap-20">
+                        <div>
+                          <div className="font-medium">{node.name}</div>
+                          <div className="text-sm text-blue-600">
+                            {node.address}
+                          </div>
+                        </div>
+                        <div className="flex flex-col items-center">
+                          <img src={node.Base} alt="base" className="h-5 w-5" />
+                          <span className="text-xs">Base</span>
+                        </div>
                       </div>
                     </div>
-                    <div className='flex flex-col gap-3'>
-                      <img src={node.Base} alt="base" className="ml-2 h-5 w-5" />
-                      <span className="ml-1 text-xs">Base</span>
-                    </div>
-                   </div>
+                  ))}
+
+                  <div className="cursor-pointer pt-2 text-[12px] text-[#8E8E8E] 2xl:text-[14px] 3xl:text-[16px]">
+                    + Buy a Xnode DVM
                   </div>
-                ))}
-                <div className="mt-2 pt-4 cursor-pointe cursor-pointer text-[12px] 2xl:text-[14px] 3xl:text-[16px] text-[#8E8E8E] ">
-                  + Buy a Xnode DVM
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         )}
         <button

@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Files, Eye } from 'lucide-react'
-
+import {motion} from 'framer-motion'
 interface Transaction {
     id: string;
     type: string;
@@ -27,11 +27,21 @@ export function ModelStat({ transactions }: { transactions?: Transaction[] }) {
     return (
         <Card>
             <CardContent className="p-0">
-                <div className="overflow-x-auto">
-                    <table className="w-full min-w-[640px]">
-                        <tbody className="bg-white divide-y divide-gray-200">
+                <div className="overflow-x-auto hide-scrollbar">
+                    <motion.table 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8,delay:0.8 }}
+                    viewport={{ once: true }}
+                    className="w-full min-w-[640px] ">
+                        <tbody className="bg-white divide-y divide-gray-200 ">
                             {transactions.map((transaction, index) => (
-                                <tr key={index} className="hover:bg-gray-50">
+                                <motion.tr 
+                                initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8,delay:0.2 }}
+                    viewport={{ once: true }}
+                                key={index} className="hover:bg-gray-50">
                                     <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
                                         <div className="flex items-center space-x-1 sm:space-x-2">
                                             <Button
@@ -74,10 +84,10 @@ export function ModelStat({ transactions }: { transactions?: Transaction[] }) {
                                             <Files className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" />
                                         </Button>
                                     </td>
-                                </tr>
+                                </motion.tr>
                             ))}
                         </tbody>
-                    </table>
+                    </motion.table>
                 </div>
             </CardContent>
         </Card>

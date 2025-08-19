@@ -14,11 +14,11 @@ export default function Footer() {
     },
   ]
   return (
-    <footer className="z-50 flex h-16 w-full items-center justify-between bg-foreground px-6 py-3 md:pr-0">
+    <footer className="z-50 flex h-16 w-full  bottom-0  static md:w-auto items-center justify-between bg-foreground px-6 py-3 md:pr-0">
       <div className="flex items-center">
         <Image src={logo} alt="OpenxAI Logo" width={40} height={40} />
         <div className="ml-6 hidden items-center text-sm text-gray-500 md:flex">
-        Accelerate the AI industry without corporations — it is open, decentralized, and community-driven.
+          Accelerate the AI industry without corporations — it is open, decentralized, and community-driven.
         </div>
       </div>
 

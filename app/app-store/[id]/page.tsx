@@ -22,7 +22,9 @@ export default function BTCOraclePage() {
     const [deploy, setDeploy] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
     const [contentHeight, setContentHeight] = useState('auto');
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const params = useParams();
     const id = Array.isArray(params.id) ? params.id[0] : params.id;
 
@@ -39,7 +41,7 @@ export default function BTCOraclePage() {
         }
     }, []);
 
-    if (!data) return <div className="relative flex justify-center items-center w-full h-full">
+    if (!data) return <div className="relative flex justify-center items-center w-full h-screen lg:h-full">
         <div className="w-12 h-12 rounded-full absolute border-2 border-solid border-gray-200"></div>
         <div
             className="w-12 h-12 rounded-full animate-spin absolute border-2 border-solid border-violet-500 border-t-transparent shadow-md">
@@ -50,6 +52,7 @@ export default function BTCOraclePage() {
         <section className='flex md:flex-row flex-col'>
             <div className="md:w-[65%] w-full" ref={contentRef}>
                 <ModelHeader
+                    image={data.image}
                     title={data.name}
                     subtitle={Array.isArray(data.tags) ? data.tags.join(', ') : data.tags}
                 />

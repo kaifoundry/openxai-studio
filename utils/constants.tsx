@@ -323,24 +323,24 @@ export const tagsData = [
 ];
 
 export const ChainData = [
-  {
-    name:"Bitcoin",
-    icon: "/images/appStore/svg/chains/bitcoin.svg",
-  },
+  // {
+  //   name:"Bitcoin",
+  //   icon: "/images/appStore/svg/chains/bitcoin.svg",
+  // },
   {
     name:"Etherium",
     icon: "/images/appStore/svg/chains/etherium.svg",
   },
   {
-    name:"Ollama",
+    name:"Base",
     icon: "/images/appStore/svg/chains/ollama.svg",
   },
-  {
-    name:"Chain",
-    icon: "/images/appStore/svg/chains/chain.svg",
-  },
-  {
-      name:"Solona",
-      icon: "/images/appStore/svg/chains/solona.svg",
-  },
+  // {
+  //   name:"Chain",
+  //   icon: "/images/appStore/svg/chains/chain.svg",
+  // },
+  // {
+  //     name:"Solona",
+  //     icon: "/images/appStore/svg/chains/solona.svg",
+  // },
 ];
