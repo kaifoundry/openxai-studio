@@ -12,6 +12,7 @@ import {
   useDeployModel,
   type DemoXnode,
 } from '@/lib/xnode-demo'
+import { LoadingOverlay } from "../ui/loading-overlay";
 import { xnode } from '@openmesh-network/xnode-manager-sdk'
 export default function Amount({ selectedAIModel, selectedProvider, selectedTokenization,final_amount,templateId }) {
   const [selectedServices, setSelectedServices] = useState([]);
@@ -19,6 +20,7 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
   const [monthlyRate,setMontlyRate]=useState(0.00);
   const [totalSavings,setTotalSavings]=useState(0.00)
   // const monthlyRate = (selectedServices.length * hourlyRate * 24 * 30).toFixed(2);
+  const [deploying, setDeploying] = useState<boolean>(false)
   const router = useRouter();
   const { toast } = useToast()
   const demos = useDemosAvailable()
@@ -102,60 +104,7 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
   },[selectedTokenization])
 
 
- 
-  let currentTotalSavings = 0.00;
-  let headerTitle = ""; 
-  let showServicesSection = false;
-  let showDiscountSection = false;
-  let showOpenXAIMagic = false;
-  let showSummaryRewards = false;
-  let showDeployButton = false;
-  let showSubTotalLine = false; 
-  let showFinalSummaryBlock = false; 
 
- 
-  if (selectedTokenization) {
-  
-    headerTitle = "Summary";
-    currentTotalSavings = SAVINGS_WITH_MAGIC;
-    showSummaryRewards = true;
-    showServicesSection = true; 
-    showDiscountSection = false;
-    showOpenXAIMagic = false;
-    showDeployButton = true;
-    showSubTotalLine = false; 
-    showFinalSummaryBlock = true;
-  } else if (selectedProvider) {
-
-    headerTitle = "Hosting costs";
-    currentTotalSavings = SAVINGS_WITH_MAGIC;
-    showOpenXAIMagic = true;
-    showServicesSection = true; 
-    showDiscountSection = true; 
-    showDeployButton = true;
-    showSubTotalLine = true; 
-    showFinalSummaryBlock = true;
-  } else if (selectedAIModel) {
-
-    headerTitle = "Hosting costs";
-    currentTotalSavings = 0.00; 
-    showServicesSection = true;
-    showDiscountSection = true; 
-    showDeployButton = true;
-    showSubTotalLine = true; 
-    showFinalSummaryBlock = true;
-  } else {
-   
-    headerTitle = ""; 
-    currentTotalSavings = 0.00;
-    showServicesSection = false;
-    showDiscountSection = false;
-    showOpenXAIMagic = false;
-    showSummaryRewards = false;
-    showDeployButton = false;
-    showSubTotalLine = false;
-    showFinalSummaryBlock = false;
-  }
 
 
   const deployOnDemo = async () => {
@@ -182,11 +131,11 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
       if (activeReservation) {
         deployOnXnode = reservedXnode.xnode
       } else {
-        dismiss = toast({
-          title: 'Reserving Xnode...',
-          description: 'This can take up to 1 minute..',
-          duration: 60_000,
-        }).dismiss
+        // dismiss = toast({
+        //   title: 'Reserving Xnode...',
+        //   description: 'This can take up to 1 minute..',
+        //   duration: 60_000,
+        // }).dismiss
         deployOnXnode = await reserveDemo({ xnode_id: demoXnode.id })
       }
 
@@ -196,15 +145,15 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
       const selectedModel = ModelDefinitions.find(
         (m) => m.nixName === templateId
       )
-      console.log('Found model definition:', selectedModel)
+      //console.log('Found model definition:', selectedModel)
 
       // Get the selected size from the UI
       const modelSize = selectedAIModel?.name
-      console.log('Model size:', modelSize)
+      //console.log('Model size:', modelSize)
 
       const ollamaCommand =
         selectedModel?.options[0].requirements[modelSize]?.ollamaCommand
-      console.log('Ollama command:', ollamaCommand)
+      //console.log('Ollama command:', ollamaCommand)
 
       if (!ollamaCommand) {
         throw new Error('Selected model configuration not found')
@@ -236,7 +185,7 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
         deploymentId,
         processes: ['open-webui', 'ollama', 'ollama-model-loader'],
       })
-     
+      
       router.push('/deployments')
     } catch (e) {
       console.error(e)
@@ -247,7 +196,7 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
   return (
     <div className="flex py-4 pl-0 pr-4">
 
-      
+<LoadingOverlay isVisible={deploying} />
      
       <div className=" flex w-full  py-4 pl-0 pr-4 ">
         <div className="w-full bg-white">
@@ -391,9 +340,9 @@ export default function Amount({ selectedAIModel, selectedProvider, selectedToke
           </div>
           </div>)}
 
-          <button className={`mt-6 w-full rounded-md  py-2 text-white transition  ${(selectedAIModel && selectedProvider && selectedTokenization && final_amount) ?'bg-[#0058FF]':'bg-[#757575]'}`}
+          <button className={`mt-6 w-full rounded-md  py-2 text-white transition  ${(selectedAIModel && selectedProvider && selectedTokenization && final_amount ) ?'bg-[#0058FF]':'bg-[#757575]'}`}
           onClick={() => {
-           
+            setDeploying(true)
             deployOnDemo()
               .catch(console.error)
               .finally(() => console.log("Deploying"))

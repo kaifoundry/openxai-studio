@@ -150,31 +150,39 @@ export function ModelContent({
 }: ModelContentProps) {
   return (
     <div className="bg-transparent shadow-transparent w-full">
-      <CardContent className="space-y-4 p-3 sm:space-y-6 sm:p-4 md:p-6 w-full">
+      <CardContent className="space-y-4  sm:space-y-6 px-2 md:px-0 w-full">
         <div className="space-y-3 sm:space-y-4 w-full">
-          <AnimatedText
-            text={description}
-            className="text-sm leading-relaxed text-[#393939] sm:text-base md:text-lg w-full break-words"
-            initialDelay={0.3}
-          />
+          
+          <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8,  }}
+          viewport={{ once: true }}
+          className=" leading-relaxed text-[#393939] sm:text-[16px] md:text-lg w-full break-words"
+          >
+            {description}
+          </motion.div>
         </div>
         
         <div className="space-y-3 sm:space-y-4 w-full">
-          <AnimatedText
-            text={concept}
-            className="text-sm leading-relaxed text-[#393939] sm:text-base md:text-lg w-full break-words"
-            initialDelay={0.4}
-            prefix="Concept: "
-          />
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8,  }}
+          viewport={{ once: true }}
+          className=" leading-relaxed text-[#393939] text-[16px] md:text-lg w-full break-words"
+          >
+           Concept: {concept}
+          </motion.div>
         </div>
         
         <div className="space-y-3 sm:space-y-4 w-full">
           <motion.h3
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, }}
             viewport={{ once: true }}
-            className="font-semibold text-[#393939] text-[12px] md:text-[16px]"
+            className="font-semibold text-[#393939] text-[16px] md:text-lg"
           >
             How It Works (for Users):
           </motion.h3>
@@ -191,7 +199,7 @@ export function ModelContent({
                 <div className="flex size-5 shrink-0 items-center justify-center rounded-full text-xs text-black sm:size-6 sm:text-sm">
                   {item.step}.
                 </div>
-                <p className=" text-[#393939] text-[12px] md:text-[16px]">
+                <p className=" text-[#393939] text-[16px] md:text-lg">
                   {item.description}
                 </p>
               </motion.div>

@@ -40,7 +40,7 @@ export default function ModelPopup({ show,title,route }: ModelPopupProps) {
   return (
     <>
       {showDialog ? (
-        <Dialog open onOpenChange={setShowDialog}>
+        <Dialog open onOpenChange={setShowDialog} >
           <DialogContent
             className="z-50 max-w-[300px] rounded-2xl py-6  shadow-lg "
             canClose={false}
@@ -56,7 +56,7 @@ export default function ModelPopup({ show,title,route }: ModelPopupProps) {
 
             <div className="flex justify-center mt-6">
               <Button
-                onClick={() =>{router.push(route); setShowDialog(false)}}
+                onClick={() =>{setShowDialog(false);router.push(route)}}
                 className="rounded-lg px-6 py-2"
               >
                 OK

@@ -56,8 +56,9 @@ export default function Tokenization({
   const { address, isConnected, status } = useAccount()
   const [price,setPrice]=useState('Price');
   const [amount, setAmount] = useState('');
+const [buildamount,setBuildamount]=useState('')
 const [fundWallet, setFundWallet] = useState(address || '');
-const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agree?:string }>({});
+const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agree?:string,buildamount?:string }>({});
   const Legal_Structure = [
     {
       option: 'Use Smart Contract Instead',
@@ -107,7 +108,7 @@ const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agr
   }, [selected])
 
   const validateForm = () => {
-    let newErrors: { amount?: string; fundWallet?: string; agree?:string } = {};
+    let newErrors: { amount?: string; fundWallet?: string; agree?:string; buildamount?:string } = {};
   
     
     if (tokenizationOption.Token === 'sellEntireMonetization' && !amount) {
@@ -115,8 +116,8 @@ const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agr
     }
   
     if (tokenizationOption.Token === 'buildChainOnSaaS' && price === 'Price') {
-      if (!amount) {
-        newErrors.amount = "Please enter the price amount.";
+      if (!buildamount) {
+        newErrors.buildamount = "Please enter the price amount.";
       }
       if (!fundWallet) {
         newErrors.fundWallet = "Fund receiving wallet is required.";
@@ -336,8 +337,8 @@ const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agr
                     How would you charge from your users
                   </p>
                 </div>
-                <div className='flex flex-col gap-2 px-3'>
-                <div className="flex items-center justify-start gap-3   py-2">
+                <div className='flex flex-col  px-3'>
+                <div className="flex items-center justify-start gap-3   py-1">
                   <input
                     type="number"
                     id="token-amount"
@@ -416,13 +417,13 @@ const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agr
                     How would you charge from your users (1k Tokens)
                   </p>
                 </div>
-                <div className='flex flex-col gap-2 px-3'>
-                <div className="flex items-center justify-start gap-3   py-2">
+                <div className='flex flex-col gap-1 px-3'>
+                <div className="flex items-center justify-start gap-3   py-1">
                   <input
                     type="number"
                     id="token-amount"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    value={buildamount}
+                    onChange={(e) => setBuildamount(e.target.value)}
                     className="h-10 w-20 rounded-md border border-gray-300 px-3 text-sm text-[#000000] outline-none"
                     placeholder="0.00" 
                   />
@@ -454,7 +455,7 @@ const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agr
                     </SelectContent>
                   </Select>
                 </div>
-                {errors.amount && (
+                {errors.buildamount && (
   <p className="text-sm text-red-500 mt-1">{errors.amount}</p>
 )}
                 </div>
@@ -473,7 +474,7 @@ const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agr
                     This acts like your bank account
                   </p>
                 </div>
-                <div className='flex flex-col gap-2 px-3'>
+                <div className='flex flex-col gap-1 px-3'>
                 <div className="flex items-center space-x-2 ">
                   <input
                     type="text"
@@ -576,7 +577,7 @@ const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agr
         <div className="mb-8">
           <p className="mb-4 text-[#000000]">
             You will receive your funds to{' '}
-            <span className="font-medium underline">0x8464...7456</span> &
+            <span className="font-medium underline">{address ? formatAddress(address) :'0x8464...7456'}</span> &
             cannot be undone
           </p>
           <div className='flex flex-col gap-2'>
@@ -590,7 +591,7 @@ const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agr
             <span className="ml-2 text-[#000000]">I agree</span>
           </label>
           {errors.agree &&(
-            <p className="text-sm text-red-500 mt-1">{errors.agree}</p>
+            <p className="text-sm text-red-500">{errors.agree}</p>
           )}
           </div>
           

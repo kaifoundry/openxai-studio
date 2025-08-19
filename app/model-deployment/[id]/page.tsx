@@ -62,7 +62,12 @@ const Page = () => {
     <DeploymentContextProvider
       initialData={{ name: data.name, description: data.desc, services }}
     >
-       {showDialog ?(<ModelPopup show={showDialog} title={"switch to desktop for deploying the app"} route={`/app-store/${id}`}/>)
+      
+       {showDialog ?(
+        <div className='h-screen lg:h-full'>
+          <ModelPopup show={showDialog} title={"switch to desktop for deploying the app"} route={`/app-store/${id}`}/>
+        </div>
+        )
     :(
         <Services id={id} />
     )}
