@@ -1,8 +1,6 @@
-'use client'
-
 import { motion } from 'framer-motion'
 import { CardContent } from '@/components/ui/card'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 interface ModelContentProps {
   description: string
@@ -16,7 +14,7 @@ interface ModelContentProps {
 function useTextLines(text: string, containerRef: React.RefObject<HTMLElement>, prefix: string = '') {
   const [lines, setLines] = useState<string[]>([])
 
-  useEffect(() => {
+  const calculateLines = useCallback(() => {
     if (!containerRef.current || !text) return
 
     const container = containerRef.current
@@ -32,7 +30,8 @@ function useTextLines(text: string, containerRef: React.RefObject<HTMLElement>, 
     
     context.font = `${fontWeight} ${fontSize} ${fontFamily}`
     
-    const containerWidth = container.offsetWidth
+    // Get current container width (important for responsiveness)
+    const containerWidth = container.getBoundingClientRect().width
     const words = text.split(' ')
     const textLines: string[] = []
     let currentLine = ''
@@ -44,7 +43,10 @@ function useTextLines(text: string, containerRef: React.RefObject<HTMLElement>, 
       const testLineWithPrefix = isFirstLine && prefix ? `${prefix}${testLine}` : testLine
       const testWidth = context.measureText(testLineWithPrefix).width
       
-      if (testWidth > containerWidth - 32 && currentLine) { 
+      
+      const availableWidth = containerWidth - 0 
+      
+      if (testWidth > availableWidth && currentLine) { 
         textLines.push(currentLine)
         currentLine = word
         isFirstLine = false
@@ -58,7 +60,41 @@ function useTextLines(text: string, containerRef: React.RefObject<HTMLElement>, 
     }
     
     setLines(textLines)
-  }, [text, containerRef, prefix])
+  }, [text, prefix])
+
+  useEffect(() => {
+    
+    calculateLines()
+
+  
+    const handleResize = () => {
+      calculateLines()
+    }
+
+  
+    window.addEventListener('resize', handleResize)
+    
+ 
+    window.addEventListener('orientationchange', () => {
+  
+      setTimeout(calculateLines, 100)
+    })
+
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('orientationchange', handleResize)
+    }
+  }, [calculateLines])
+
+  
+  useEffect(() => {
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        setTimeout(calculateLines, 50)
+      })
+    }
+  }, [calculateLines])
 
   return lines
 }
@@ -87,7 +123,7 @@ function AnimatedText({
     >
       {lines.map((line, index) => (
         <motion.span
-          key={index}
+          key={`${line}-${index}`} 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ 
@@ -95,10 +131,10 @@ function AnimatedText({
             delay: initialDelay + (index * 0.15)
           }}
           viewport={{ once: true }}
-          className="block"
+          className=" text-[12px] lg:text-[16px] w-full"
         >
           {index === 0 && prefix && (
-            <span>{prefix}</span>
+            <span className="font-medium">{prefix}</span>
           )}
           {line}
         </motion.span>
@@ -113,49 +149,49 @@ export function ModelContent({
   howItWorks,
 }: ModelContentProps) {
   return (
-    <div className="bg-transparent shadow-transparent">
-      <CardContent className="space-y-4 p-2 sm:space-y-6 md:p-4">
-        <div className="space-y-3 sm:space-y-4">
+    <div className="bg-transparent shadow-transparent w-full">
+      <CardContent className="space-y-4 p-3 sm:space-y-6 sm:p-4 md:p-6 w-full">
+        <div className="space-y-3 sm:space-y-4 w-full">
           <AnimatedText
             text={description}
-            className="text-sm leading-relaxed text-[#393939] sm:text-base"
+            className="text-sm leading-relaxed text-[#393939] sm:text-base md:text-lg w-full break-words"
             initialDelay={0.3}
           />
         </div>
         
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-3 sm:space-y-4 w-full">
           <AnimatedText
             text={concept}
-            className="text-sm leading-relaxed text-[#393939] sm:text-base"
-            initialDelay={0.6}
+            className="text-sm leading-relaxed text-[#393939] sm:text-base md:text-lg w-full break-words"
+            initialDelay={0.4}
             prefix="Concept: "
           />
         </div>
         
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-3 sm:space-y-4 w-full">
           <motion.h3
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="text-lg text-[#393939] sm:text-xl"
+            className="font-semibold text-[#393939] text-[12px] md:text-[16px]"
           >
             How It Works (for Users):
           </motion.h3>
-          <div className="space-y-2 sm:space-y-3">
+          <div className="space-y-2 sm:space-y-3 w-full">
             {howItWorks.map((item, i) => (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 + (i * 0.1) }}
+                transition={{ duration: 0.8, delay: 0.4 + (i * 0.1) }}
                 viewport={{ once: true }}
-                key={item.step}
-                className="flex items-start space-x-3"
+                key={`step-${item.step}`}
+                className="flex items-start space-x-3 w-full"
               >
                 <div className="flex size-5 shrink-0 items-center justify-center rounded-full text-xs text-black sm:size-6 sm:text-sm">
                   {item.step}.
                 </div>
-                <p className="text-sm text-[#393939] sm:text-base">
+                <p className=" text-[#393939] text-[12px] md:text-[16px]">
                   {item.description}
                 </p>
               </motion.div>

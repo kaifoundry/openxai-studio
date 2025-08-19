@@ -10,7 +10,7 @@ const Banner = () => {
   transition={{ duration: 0.8 }}
   viewport={{ once: true }}
     
-    className="relative mt-10 h-[172px] w-full  md:h-[150px] xl:h-[200px] 2xl:h-[216px] 3xl:h-[216px]">
+    className="relative mt-8  lg:mt-4 h-[172px] w-full  md:h-[150px] xl:h-[200px] 2xl:h-[216px] 3xl:h-[216px]">
       <div className="relative size-full rounded-tr-2xl rounded-br-2xl ">
       <Image
           src="/images/appStore/banner-mask.png"
