@@ -14,22 +14,22 @@ export default function Home() {
       <section className=" mb-12 lg:mt-24 mt-14 w-full px-4 md:px-6 lg:px-8  ">
         <div className="flex gap-12 flex-col items-center md:px-6 justify-between md:flex-row">
           <div className="w-full text-left lg:w-3/5 lg:text-left">
-            <h1 className="text-balance text-2xl font-bold md:text-4xl lg:text-6xl">
+            <h1 className="text-balance text-3xl font-bold md:text-4xl lg:text-6xl">
               Build AI applications <span className="whitespace-nowrap">& agents in lightning</span> speed.
             </h1>
-            <p className="mt-4 text-pretty text-lg font-medium md:text-xl lg:text-3xl">
+            <p className="mt-4 text-pretty text-xl font-medium md:text-xl lg:text-3xl">
               You own your model, data & infrastructure
             </p>
             <div className="mt-12 flex flex-row items-center gap-3 justify-start">
               <a
                 href="/app-store"
-                className="flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl bg-primary px-4 sm:px-8 text-sm sm:text-base font-medium text-background transition-colors hover:bg-primary/90"
+                className="flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl bg-primary px-4 sm:px-8 text-sm font-medium text-background transition-colors hover:bg-primary/90"
               >
                 Build for Free
               </a>
               <a
                 href="/explore"
-                className="flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl px-4 sm:px-8 text-sm sm:text-base font-medium underline transition-colors hover:bg-foreground/10"
+                className="flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl px-4 sm:px-8 text-sm font-medium underline transition-colors hover:bg-foreground/10"
               >
                 Earn free server
               </a>
