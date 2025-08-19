@@ -25,7 +25,7 @@ export function ModelStats({
       <div className="mx-4 md:mx-2 pt-2  ">
         <div className="relative lg:mx-auto px-0 py-4 md:py-0 md:px-0 md:pt-4 mb:pb-2 lg:px-4 ">
           <div className="items-left flex flex-col justify-between lg:gap-4 sm:flex-row gap-2 ">
-            <div className="flex flex-wrap lg:items-center justify-start gap-4 sm:justify-start sm:gap-2 lg:gap-8">
+            <div className="flex flex-wrap lg:items-center justify-start gap-4 sm:justify-start sm:gap-2 lg:gap-4">
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
