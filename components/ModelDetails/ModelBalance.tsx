@@ -47,7 +47,7 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
   return (
     <>
       <motion.div
-        className="flex items-center justify-center  p-4 font-sans"
+        className="flex items-center justify-center  py-4 font-sans"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
