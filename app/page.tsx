@@ -17,7 +17,7 @@ export default function Home() {
             <h1 className="text-balance text-3xl font-bold md:text-4xl lg:text-6xl">
               Build AI applications <span className="whitespace-nowrap">& agents in lightning</span> speed.
             </h1>
-            <p className="mt-4 text-pretty text-xl font-medium md:text-xl lg:text-3xl">
+            <p className="mt-4 text-pretty text-md font-medium md:text-xl lg:text-3xl">
               You own your model, data & infrastructure
             </p>
             <div className="mt-12 flex flex-row items-center gap-3 justify-start">
