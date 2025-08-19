@@ -43,7 +43,7 @@ const Banner = () => {
               alt="AppStore"
               width={467}
               height={239}
-              className="-top-6 right-0 h-[200px] w-[500px]  rounded-2xl object-fill lg:object-contain md:h-[174px] md:w-[430px] lg:w-[600px] xl:h-[224px] 2xl:h-[239px] 3xl:h-[239px] 3xl:w-[467px]"
+              className="-top-6 right-0 h-[200px] w-[500px]  rounded-2xl object-fill lg:object-container md:h-[174px] md:w-[430px] lg:w-[600px] xl:h-[224px] 2xl:h-[239px] 3xl:h-[239px] 3xl:w-[467px]"
             />
           </div>
         </div>
