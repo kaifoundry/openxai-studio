@@ -21,6 +21,7 @@ interface CategoryChainProps {
   onToggleChain: (chain: string) => void
   onToggleCategory: (category: string) => void
   onClearCategories: () => void;
+  onClearChain:()=>void;
 }
 
 const Fillter = ({
@@ -29,6 +30,7 @@ const Fillter = ({
   onToggleChain,
   onToggleCategory,
   onClearCategories,
+  onClearChain
 }: CategoryChainProps) => {
   const [visibleCount, setVisibleCount] = useState(6)
   const [isOpenCategory, setIsOpenCategory] = useState(false)
@@ -79,6 +81,12 @@ const Fillter = ({
     return { selected, unselected };
   }, [filteredTags, selectedCategories]);
 
+  const { selected: selectedChain, unselected: unselectedChain } = useMemo(() => {
+    const selected = filteredChains.filter(chain => selectedChains.includes(chain.name));
+    const unselected = filteredChains.filter(chain => !selectedChains.includes(chain.name));
+    return { selected, unselected };
+  }, [filteredChains, selectedChains]);
+
   return (
     <>
       <div className="my-4 flex gap-6 lg:hidden pb-4 lg:pb-0">
@@ -103,9 +111,6 @@ const Fillter = ({
                   <div className="flex items-center justify-center rounded-full bg-blue-500 text-white font-[500] size-6 text-sm">
                     {selectedCategories.length}
                   </div>
-                  {/* <div onClick={(e) => { e.stopPropagation(); onClearCategories(); }}>
-                    <X className="size-4 text-blue-800 font-semibold cursor-pointer" />
-                  </div> */}
                 </>
               )}
             </div>
@@ -190,14 +195,30 @@ const Fillter = ({
               setIsOpenChain(!isOpenChain)
             }}
           >
-            <div className="text-[16px] font-[500] text-[#525252]">Chain</div>
+            <div className="flex items-center  gap-4">
+              <div className="text-[16px] font-[500] text-[#525252]">
+                Chain
+              </div>
+              {selectedChains.length > 0 && (
+                <>
+                  <div className="flex items-center justify-center rounded-full bg-blue-500 text-white font-[500] size-6 text-sm">
+                    {selectedChains.length}
+                  </div>
+                </>
+              )}
+            </div>
+            {selectedChains.length > 0 ? (
+              <div className="flex items-center justify-center"  onClick={(e) => { e.stopPropagation(); onClearChain(); }}>
+                    <X className="size-4 text-blue-500 font-[800] cursor-pointer" />
+                  </div>
+            ):(
             <ChevronDown
-              className={`cursor-pointer text-[#525252] ${isOpenChain ? 'rotate-180' : 'rotate-0'} transition-all delay-200 duration-500 ease-in-out`}
-            />
+              className={`cursor-pointer text-[#525252] ${isOpenChain ? 'rotate-180' : 'rotate-0'}  transition-all delay-200 duration-500 ease-in-out`}
+            />)}
           </motion.div>
 
           <div
-            className={`absolute z-50 w-[250px] ${isOpenChain ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'} hide-scrollbar -right-10 top-14 overflow-y-auto rounded-lg bg-white transition-all delay-300 duration-500 ease-in-out `}
+            className={`absolute z-50 w-[250px] ${isOpenChain ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'} hide-scrollbar -right-0   top-14 overflow-y-auto rounded-lg bg-white transition-all delay-300 duration-500 ease-in-out `}
             style={{ boxShadow: 'rgba(17, 17, 26, 0.1) 0px 0px 16px' }}
           >
             <div className="flex items-center gap-2 border-b border-[#EBEBEB] bg-white px-4 py-3">
@@ -210,26 +231,48 @@ const Fillter = ({
                 placeholder="Search Chain"
               />
             </div>
-            {filteredChains.map((chain, index) => {
-              const isSelected = selectedChains.includes(chain.name)
-              return (
-                <div
-                  key={index}
-                  className="flex items-center gap-6 px-4 py-2"
-                  onClick={() => onToggleChain(chain.name)}
-                >
-                  <Input
-                    type="checkbox"
-                    checked={isSelected}
-                    readOnly
-                    className="size-6 appearance-none rounded-md border border-gray-400 bg-white transition duration-200 checked:border-blue-500 checked:bg-white checked:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA3OGZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDZsLTExIDEyLTUtNSIvPjwvc3ZnPg==')] checked:bg-[length:14px_14px] checked:bg-center checked:bg-no-repeat"
-                  />
-                  <div className="text-[18px] text-[#525252]">
-                    {chain?.name}
-                  </div>
+            {selectedChain.map((chain, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-6 px-4 py-2"
+                onClick={() => onToggleChain(chain?.name)}
+              >
+                <Input
+                  type="checkbox"
+                  checked={true}
+                  readOnly
+                  className="size-6 appearance-none rounded-md border border-gray-600 bg-white transition duration-200 checked:border-blue-500 checked:bg-white checked:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA3OGZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDZsLTExIDEyLTUtNSIvPjwvc3ZnPg==')] checked:bg-[length:14px_14px] checked:bg-center checked:bg-no-repeat"
+                />
+                <div className="text-[18px] text-[#525252]">
+                  {chain?.name}
                 </div>
-              )
-            })}
+              </div>
+            ))}
+
+
+            {selectedChain.length > 0 && unselectedChain.length > 0 && (
+              <hr className="my-2 border-t border-gray-200" />
+            )}
+
+
+            {unselectedChain.map((chain, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-6 px-4 py-2 "
+                onClick={() => onToggleChain(chain.name)}
+              >
+                <Input
+                  type="checkbox"
+                  checked={false}
+                  readOnly
+                  className="size-6 appearance-none rounded-md border border-gray-400 bg-white transition duration-200"
+                />
+                <div className="text-[18px] text-[#525252]">
+                  {chain?.name}
+                </div>
+              </div>
+            ))}
+            
           </div>
         </div>
       </div>

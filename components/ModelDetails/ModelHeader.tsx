@@ -9,14 +9,14 @@ import { motion } from "framer-motion";
 
 export function ModelHeader({image, title, subtitle }: ModelHeaderProps) {
     return (
-        <>
+        <div className="px-3">
             <motion.div 
             initial={{ opacity: 0,scale:0.87, x: 30 }}
             whileInView={{ opacity: 1,scale:1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true,amount:0.5 }}
-            className="relative group rounded-2xl mx-4 lg:mx-2 mt-10 overflow-hidden text-white md:mx-8 
-             h-[200px]  lg:h-[250px]">
+            className="relative group rounded-2xl  lg:mx-2 mt-10 overflow-hidden text-white md:mx-8 
+              aspect-[5/3] lg:aspect-[5/2] ">
 
                 <Image 
                 src={image}
@@ -52,6 +52,6 @@ export function ModelHeader({image, title, subtitle }: ModelHeaderProps) {
 
             </motion.div>
 
-        </>
+        </div>
     )
 } 

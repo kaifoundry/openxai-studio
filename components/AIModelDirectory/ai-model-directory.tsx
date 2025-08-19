@@ -289,6 +289,9 @@ export default function AppDirectory() {
   const onClearCategories = () => {
     setSelectedCategories([]);
   };
+  const onClearChain = () =>{
+    setSelectedChains([]);
+  }
 
   return (
     <div className='px-4 py-2 md:py-4 md:px-6 xl:px-8 xl:py-6 2xl:px-8 2xl:py-6 3xl:py-8 3xl:px-10'>
@@ -299,6 +302,7 @@ export default function AppDirectory() {
         onToggleChain={toggleChain}
         onToggleCategory={toggleCategory}
         onClearCategories={onClearCategories}
+        onClearChain={onClearChain}
 
       />
       <ModelListing selectedChains={selectedChains} selectedCategories={selectedCategories} />

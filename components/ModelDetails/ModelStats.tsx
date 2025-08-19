@@ -22,8 +22,8 @@ export function ModelStats({
 }: ModelStatsProps) {
   return (
     <>
-      <div className="mx-4 md:mx-2  ">
-        <div className="relative lg:mx-auto px-0 py-4 md:px-0 md:py-6 lg:px-8 ">
+      <div className="mx-4 md:mx-2 pt-2  ">
+        <div className="relative lg:mx-auto px-0 py-4 md:py-0 md:px-0 md:pt-4 mb:pb-2 lg:px-4 ">
           <div className="items-left flex flex-col justify-between lg:gap-4 sm:flex-row gap-2 ">
             <div className="flex flex-wrap lg:items-center justify-start gap-4 sm:justify-start sm:gap-2 lg:gap-8">
               <motion.div
@@ -31,7 +31,7 @@ export function ModelStats({
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="flex items-center space-x-4 rounded-xl bg-[#F1F7FF] px-4 py-1"
+                className="flex items-center space-x-4 rounded-md bg-[#F1F7FF] px-4 py-1"
               >
                 <motion.span
                   initial={{ opacity: 0, x: 30 }}
@@ -59,7 +59,7 @@ export function ModelStats({
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="flex items-center space-x-4 rounded-xl bg-[#F1F7FF] px-4 py-1"
+                className="flex items-center space-x-4 rounded-md bg-[#F1F7FF] px-4 py-1"
               >
                 <motion.span
                   initial={{ opacity: 0, x: 30 }}
@@ -88,7 +88,7 @@ export function ModelStats({
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="flex items-center space-x-4 rounded-xl bg-[#F1F7FF] px-4 py-1"
+                className="flex items-center space-x-4 rounded-md bg-[#F1F7FF] px-4 py-1"
               >
                 <motion.span
                   initial={{ opacity: 0, x: 30 }}
@@ -111,6 +111,34 @@ export function ModelStats({
                   />
                 </div>
               </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="flex items-center space-x-4 rounded-md bg-[#F1F7FF] px-4 py-1"
+              >
+                <motion.span
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-base font-semibold text-[#313131] sm:text-lg"
+                >
+                  ~$1,456.85
+                </motion.span>
+                <div className="text-blue-500">
+                  <motion.img
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    src="/images/project/hero/lock.svg"
+                    alt="Heart icon"
+                    className="size-4"
+                  />
+                </div>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
@@ -124,7 +152,7 @@ export function ModelStats({
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   viewport={{ once: true }}
-                  className="whitespace-nowrap rounded bg-[#8CD417] px-3 py-1 text-sm font-bold text-white  sm:text-base lg:text-lg"
+                  className="whitespace-nowrap rounded-md bg-[#8CD417] px-3 py-1 text-sm font-bold text-white  sm:text-base lg:text-lg"
                 >
                   {apy} % APY
                 </motion.span>
