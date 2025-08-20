@@ -48,7 +48,7 @@ export default function UpdateMonetisationModal({
     const [show, setShow] = useState(false);
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 md:px-0 px-2">
             <div className="bg-white rounded-lg shadow-lg md:w-1/2 w-full">
                 <div className="flex justify-between items-center px-6 py-4 border-b">
                     <h2 className="font-semibold">Update Monetisation Details</h2>
