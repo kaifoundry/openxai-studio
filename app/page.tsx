@@ -10,14 +10,14 @@ import YouTube from 'react-youtube'
 
 export default function Home() {
   return (
-    <>
-      <section className=" mb-12 lg:mt-24 mt-14 w-full px-4 md:px-6 lg:px-8  ">
-        <div className="flex gap-12 flex-col items-center md:px-6 justify-between md:flex-row">
-          <div className="w-full text-left lg:w-3/5 lg:text-left">
-            <h1 className="text-balance text-3xl font-bold md:text-4xl lg:text-6xl">
+    <div >
+      <section className=" mb-12 lg:mt-24 mt-14 w-full  ">
+        <div className="flex gap-12  lg:gap-0 xl:gap-0 2xl:gap-12 flex-col items-center  px-4 md:px-6 lg:px-6 xl:px-6 2xl:px-12  justify-between md:flex-row ">
+          <div className="w-full text-left xl:w-3/5  ">
+            <h1 className="text-balance  text-[32px] leading-snug xl:leading-tight font-bold md:text-[30px] lg:text-[4vw]  xl:text-[65px]">
               Build AI applications <span className="whitespace-nowrap">& agents in lightning</span> speed.
             </h1>
-            <p className="mt-4 text-pretty text-md font-medium md:text-xl lg:text-3xl">
+            <p className="mt-4 text-pretty text-md font-medium md:text-xl lg:text-[2vw] xl:text-3xl">
               You own your model, data & infrastructure
             </p>
             <div className="mt-12 flex flex-row items-center gap-3 justify-start">
@@ -36,10 +36,10 @@ export default function Home() {
             </div>
 
           </div>
-          <div className="relative w-full lg:w-2/5 overflow-hidden rounded-xl flex justify-center">
+          <div className="relative w-full xl:w-2/5 overflow-hidden rounded-xl  flex justify-center">
             <YouTube
               videoId="3wy3vgErmrk"
-              className="rounded-xl p-3 bg-foreground/10 w-full  md:w-[500px] h-[280px]"
+              className="rounded-xl p-3 bg-foreground/10 w-full  md:max-w-[500px] lg:w-[500px] h-[280px]"
               opts={{
                 width: "100%",
                 height: "100%",
@@ -57,7 +57,7 @@ export default function Home() {
       </section>
       <section className="my-20 space-y-4 px-4 md:px-6 lg:px-8">
         <h2 className="text-xl font-bold md:text-2xl">Quick Access</h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:gap-6">
           <Link
             href="/claim"
             className="flex items-center gap-2 rounded-xl border p-4 text-sm font-semibold transition-colors hover:bg-foreground/5"
@@ -90,6 +90,6 @@ export default function Home() {
           </SimpleTooltip>
         </div>
       </section>
-    </>
+    </div>
   )
 }
