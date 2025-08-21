@@ -26,7 +26,7 @@ export default function UpdateMonetisationModal({
 
     onClose,
 }: ModalProps) {
-    const { address, isConnected } = useAccount();
+    const { address } = useAccount();
     const CHAIN_OPTIONS = [
         {
             image: "/images/appStore/svg/chains/ollama.svg",
@@ -96,7 +96,7 @@ export default function UpdateMonetisationModal({
                                     if (chain) setSelectedChain(chain);
                                 }}
                             >
-                                <SelectTrigger className="w-72 rounded-lg py-2 px-3 border border-gray-300 focus:ring-0">
+                                <SelectTrigger className="md:w-72 w-full rounded-lg py-2 px-3 border border-gray-300 focus:ring-0">
                                     <SelectValue placeholder="Select Chain" />
                                 </SelectTrigger>
                                 <SelectContent>

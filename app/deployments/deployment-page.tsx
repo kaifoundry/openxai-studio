@@ -169,7 +169,7 @@ export default function DeploymentPage() {
             <div key={server.id} className="border-[1px] border-[#EBEBEB] rounded-[12px]">
               <div className="md:p-6 p-2">
 
-                {/* <div className="flex items-start justify-between mb-4"> */}
+
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4 gap-3">
                   <div className="flex items-start gap-3">
 
