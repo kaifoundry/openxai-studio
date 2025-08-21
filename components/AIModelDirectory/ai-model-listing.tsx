@@ -160,13 +160,13 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
   if ((selectedCategories.length > 0 || selectedChains.length > 0) && allMatchingModels.length === 0) {
     return (
-      <div className='flex h-[400px] items-center justify-center '>
+      <div className='flex w h-[400px] items-center justify-center '>
         <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1,delay:0.8 }}
         viewport={{ once: true }}
-        className='flex flex-col items-center justify-center text-gray-400'>
+        className='flex flex-col items-center  justify-center text-gray-400'>
           <Image src="/images/no-data-6.png" alt="" width={150} height={150}/>
           <div>No Apps Found</div>
         </motion.div>

@@ -21,18 +21,6 @@ interface cardProps {
 
 const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
     const router = useRouter();
-    const [collapsed, setCollapsed] = useState(false);
-    
-    useEffect(() => {
-        setCollapsed(localStorage.getItem('nav-collapsed') === 'true');
-        
-        const handler = (e: CustomEvent) => {
-            setCollapsed(e.detail.collapsed);
-        };
-        
-        window.addEventListener('nav-collapsed-change', handler as EventListener);
-        return () => window.removeEventListener('nav-collapsed-change', handler as EventListener);
-    }, []);
     
     const handleClick = () => {
         router.push(`/app-store/${id}`);
@@ -78,7 +66,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                     
                 </div>
 
-                {/* Content with 3D effect */}
+                
                 <div className="transform-style-preserve-3d">
                     <div className='flex justify-between px-4 pt-4 pb-2'>
                         <div className='flex flex-col gap-0'>

@@ -158,7 +158,7 @@ export function ModelContent({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8,  }}
           viewport={{ once: true }}
-          className=" leading-relaxed text-[#393939] sm:text-[16px] md:text-lg w-full break-words"
+          className=" leading-relaxed text-[#393939] sm:text-[16px] md:text-md w-full break-words"
           >
             {description}
           </motion.div>
@@ -170,7 +170,7 @@ export function ModelContent({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8,  }}
           viewport={{ once: true }}
-          className=" leading-relaxed text-[#393939] text-[16px] md:text-lg w-full break-words"
+          className=" leading-relaxed text-[#393939] text-[16px] md:text-md w-full break-words"
           >
            Concept: {concept}
           </motion.div>
@@ -182,7 +182,7 @@ export function ModelContent({
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, }}
             viewport={{ once: true }}
-            className="font-semibold text-[#393939] text-[16px] md:text-lg"
+            className="font-semibold text-[#393939] text-[16px] md:text-md"
           >
             How It Works (for Users):
           </motion.h3>
@@ -199,7 +199,7 @@ export function ModelContent({
                 <div className="flex size-5 shrink-0 items-center justify-center rounded-full text-xs text-black sm:size-6 sm:text-sm">
                   {item.step}.
                 </div>
-                <p className=" text-[#393939] text-[16px] md:text-lg">
+                <p className=" text-[#393939] text-[16px] md:text-md">
                   {item.description}
                 </p>
               </motion.div>
