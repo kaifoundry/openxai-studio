@@ -14,22 +14,22 @@ export default function Home() {
       <section className=" mb-12 lg:mt-24 mt-14 w-full  ">
         <div className="flex gap-12  lg:gap-0 xl:gap-0 2xl:gap-12 flex-col items-center  px-4 md:px-6 lg:px-6 xl:px-6 2xl:px-12  justify-between md:flex-row ">
           <div className="w-full text-left xl:w-3/5  ">
-            <h1 className="text-balance  text-[32px] leading-snug xl:leading-tight font-bold md:text-[30px] lg:text-[4vw]  xl:text-[65px]">
-              Build AI applications <span className="whitespace-nowrap">& agents in lightning</span> speed.
+            <h1 className="  text-[43px] leading-snug xl:leading-tight font-bold md:text-[30px] lg:text-[4vw]  xl:text-[65px]">
+              Build AI applications <span className="">& agents in lightning</span> speed.
             </h1>
-            <p className="mt-4 text-pretty text-md font-medium md:text-xl lg:text-[2vw] xl:text-3xl">
+            <p className="text-lg mt-4 text-pretty font-medium md:text-xl lg:text-[2vw] xl:text-3xl">
               You own your model, data & infrastructure
             </p>
             <div className="mt-12 flex flex-row items-center gap-3 justify-start">
               <a
                 href="/app-store"
-                className="flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl bg-primary px-4 sm:px-8 text-sm font-medium text-background transition-colors hover:bg-primary/90"
+                className=" whitespace-nowrap flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl bg-primary px-4 sm:px-8 text-sm font-medium text-background transition-colors hover:bg-primary/90"
               >
                 Build for Free
               </a>
               <a
                 href="/explore"
-                className="flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl px-4 sm:px-8 text-sm font-medium underline transition-colors hover:bg-foreground/10"
+                className="whitespace-nowrap flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl px-4 sm:px-8 text-sm font-medium underline transition-colors hover:bg-foreground/10"
               >
                 Earn free server
               </a>
