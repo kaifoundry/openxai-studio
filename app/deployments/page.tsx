@@ -1,8 +1,8 @@
 "use client"
 import Image from 'next/image'
 import { useAccount } from 'wagmi';
-import React,{useEffect} from 'react'
-import ModelPopup from '@component/ModelDetails/ModelPopup'
+import React,{useEffect,useState} from 'react'
+import ModelPopup from '@/components/ModelDetails/ModelPopup';
 
 import DeploymentPage from './deployment-page'
 const MOBILE_BREAKPOINT = 1024
