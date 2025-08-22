@@ -12,7 +12,7 @@ const Banner = () => {
     
     className="relative mt-8  lg:mt-4 h-[172px] w-full  md:h-[150px] xl:h-[200px] 2xl:h-[216px] 3xl:h-[216px]">
       <div className="relative size-full rounded-tr-2xl rounded-br-2xl ">
-        <Image
+      <Image
           src="/images/appStore/banner-mask.png"
           alt="Mask Images"
           fill
@@ -25,7 +25,6 @@ const Banner = () => {
           className="rounded-2xl object-container lg:hidden block"
         />
       </div>
-
       <div className="absolute left-0 top-0 z-10 size-full rounded-2xl bg-[#0997FF] opacity-65"></div>
 
       <div className="absolute -top-4 z-20 h-full px-5 lg:top-0">
