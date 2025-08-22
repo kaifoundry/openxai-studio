@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRouter } from "next/navigation";
 
@@ -17,28 +17,59 @@ export default function DeploymentPage() {
     <div className="container mx-auto md:p-6 px-2">
 
       <section className="mb-8">
-        <h2 className="md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">Summary</h2>
+        <motion.h2 initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">Summary</motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {summaryData.map((item, index) => (
-            <div key={index} className="bg-[#F5F8FF] border border-[#EBEBEB] rounded-[16px]">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
+              viewport={{ once: true }}
+
+              key={index} className="bg-[#F5F8FF] border border-[#EBEBEB] rounded-[16px]">
               <div className="p-6">
-                <div className="text-xl  md:text-2xl lg:text-4xl bold text-[#0047CC]">{item.value}</div>
-                <div className="text-sm text-[#666666] mt-2">{item.label}</div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 + 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-xl  md:text-2xl lg:text-4xl bold text-[#0047CC]">{item.value}</motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 + 0.4 }}
+                  viewport={{ once: true }}
+                  className="text-sm text-[#666666] mt-2">{item.label}</motion.div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
 
       <section className="mb-8">
-        <h2 className=" md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+          className=" md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">
           Your Marketplace Entries ({marketplaceEntries.length})
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {marketplaceEntries.map((entry) => (
-            <React.Fragment key={entry.id}>
-              <div className="relative">
+            <div key={entry.id}>
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                viewport={{ once: true }}
+                className="relative">
+
                 <div className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                                         perspective-1000"
                   style={{ transformStyle: 'preserve-3d' }}
@@ -67,13 +98,13 @@ export default function DeploymentPage() {
                           height={235}
                           priority={true}
                           blurDataURL={entry.image}
-                          className="transition-transform  duration-1000 group-hover:scale-110 group-hover:-translate-x-5  relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
+                          className="transition-transform  duration-1000 group-hover:scale-105  relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
                         />
                       </div>
 
                     </div>
 
-                    {/* Content with 3D effect */}
+
                     <div className="transform-style-preserve-3d">
                       <div className='flex justify-between px-4 pt-4 pb-2'>
                         <div className='flex flex-col gap-0'>
@@ -153,20 +184,30 @@ export default function DeploymentPage() {
                 </div>
 
 
-              </div>
-            </React.Fragment>
+              </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Your personal servers */}
       <section className="mb-8">
-        <h2 className="md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+
+          className="md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">
           Your personal servers ({personalServers.length})
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {personalServers.map((server, index) => (
-            <div key={server.id} className="border-[1px] border-[#EBEBEB] rounded-[12px]">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.4 }}
+              viewport={{ once: true }}
+              key={server.id} className="border-[1px] border-[#EBEBEB] rounded-[12px]">
               <div className="md:p-6 p-2">
 
 
@@ -204,7 +245,7 @@ export default function DeploymentPage() {
                   Staking revenue <span className="font-bold text-gray-900">{server.stakingRevenue}</span>
                 </div>
 
-                {/* CPU  */}
+
                 <div className=' border-[#EBEBEB] p-2 border-[1px] rounded-[12px]'>
                   <div className="space-y-2 mb-4 ">
                     <div className="text-sm text-gray-700 font-medium">CPU Usage</div>
@@ -219,7 +260,6 @@ export default function DeploymentPage() {
                     </div>
                   </div>
 
-                  {/* memory  */}
                   <div className="space-y-2 mb-4">
                     <div className="text-sm text-gray-700 font-medium">Memory Usage</div>
                     <div className="flex items-center gap-3">
@@ -235,7 +275,7 @@ export default function DeploymentPage() {
                     </div>
                   </div>
 
-                  {/* disk */}
+
                   <div className="space-y-2">
                     <div className="text-sm text-gray-700 font-medium">Disk Usage</div>
                     <div className="text-sm text-gray-700 mb-2">Disk 0</div>
@@ -253,7 +293,7 @@ export default function DeploymentPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
