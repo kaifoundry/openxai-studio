@@ -188,7 +188,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
       : matchingCategories;
   
     return (
-      <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20 hide-scrollbar">
+      <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20 hide-scrollbar overflow-y-hidden">
         {categoriesToShow.map(category => {
           const models = filterModels(category);
           return renderCards(category, models, true);
@@ -198,7 +198,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
   }
 
   return (
-    <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20 hide-scrollbar">
+    <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20 hide-scrollbar overflow-y-hidden">
       {uniqueCategories?.map((category) => {
         const models = filterModels(category);
         return models?.length > 0 ? renderCards(category, models, false) : null;
