@@ -15,8 +15,7 @@ const containerVariants = {
     },
   },
 };
-const base = 0.8
-const step = 0.5
+
 
 
 interface AppContentProps {
