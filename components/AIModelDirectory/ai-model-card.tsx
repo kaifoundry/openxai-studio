@@ -19,7 +19,7 @@ interface cardProps {
     delay: number
 }
 
-const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
+const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
     const router = useRouter();
     
     const handleClick = () => {
@@ -28,9 +28,9 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
 
     return (
         <motion.div  
-        initial={{ opacity: 0, scale: 0.87, y: 10 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration:0.8,ease: [0.25, 0.1, 0.25, 1],dealy:delay  }}
+        initial={{ opacity: 0,  y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration:0.8,ease: [0.25, 0.1, 0.25, 1],delay:delay }}
             viewport={{ once: true }}
             className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                         perspective-1000"
@@ -60,7 +60,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                         height={235}
                         priority={true}
                         blurDataURL={image}
-                        className="transition-transform  duration-1000 group-hover:scale-110 group-hover:-translate-x-5  relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
+                        className="transition-transform  duration-1000 group-hover:scale-105 relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
                     />
                     </div>
                     
