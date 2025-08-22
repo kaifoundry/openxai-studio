@@ -107,6 +107,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
               <Card
               key={data?.id}
               id={data?.id}
+              index={index}
               delay={0.3 * index }
               image={data?.image}
               title={data?.name}
