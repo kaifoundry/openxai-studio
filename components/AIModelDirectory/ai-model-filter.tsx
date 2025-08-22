@@ -31,7 +31,7 @@ const DROPDOWN_CLASSES = {
   searchContainer: 'flex items-center gap-2 border-b border-[#EBEBEB] px-4 py-3',
   item: 'flex items-center gap-6 px-4 py-2',
   checkbox: 'size-6 appearance-none rounded-md border bg-white transition duration-200',
-  checkedCheckbox: 'border-gray-600 checked:border-blue-500 checked:bg-white checked:bg-[url(\'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA3OGZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDZsLTExIDEyLTUtNSIvPjwvc3ZnPg==\')] checked:bg-[length:14px_14px] checked:bg-center checked:bg-no-repeat',
+  checkedCheckbox: 'border-gray-600 checked:border-blue-500 checked:bg-white checked:bg-[url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA3OGZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDZsLTExIDEyLTUtNSIvPjwvc3ZnPg==")] checked:bg-[length:14px_14px] checked:bg-center checked:bg-no-repeat',
   uncheckedCheckbox: 'border-gray-400',
 }
 
