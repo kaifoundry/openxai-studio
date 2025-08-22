@@ -36,27 +36,6 @@ const DROPDOWN_CLASSES = {
   uncheckedCheckbox: 'border-gray-400',
 }
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2, // delay between CategoryTag animations
-      when: "beforeChildren", // ensure children finish before moving on
-    },
-  },
-}
-
-const variants ={
-  hidden: { opacity: 0, y: 60 },
-  show: { opacity: 1, y: 0, transition: { duration: UI_CONSTANTS.ANIMATION_DURATION } },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 60 },
-  show: { opacity: 1, y: 0, transition: { duration: UI_CONSTANTS.ANIMATION_DURATION } },
-}
-
 
 
 interface FilterItem {
@@ -347,7 +326,10 @@ const CategoryTag: React.FC<{
 
   return (
     <motion.div
-    variants={variants}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.3 * index }}
+      viewport={{ once: true }}
       whileTap={{ scale: 0.95, transition: { duration: 0.2, delay:0 } }}
       className={`flex cursor-pointer items-center gap-4 rounded-xl bg-[#F6FAFF] px-4 py-3 shadow-sm md:gap-2 md:px-6 xl:gap-2 xl:py-2 2xl:gap-2 2xl:py-2 3xl:gap-2 3xl:py-2  ${
         isSelected
@@ -576,9 +558,7 @@ const Filter: React.FC<CategoryChainProps> = ({
             </motion.div>
           </div>
 
-          <div 
-          variants={containerVariants}
-          className="flex flex-wrap gap-4 md:flex-row md:gap-2 xl:gap-4 2xl:gap-4 3xl:gap-8" role="group" aria-label="Category filters">
+          <div className="flex flex-wrap gap-4 md:flex-row md:gap-2 xl:gap-4 2xl:gap-4 3xl:gap-8" role="group" aria-label="Category filters">
             {tagsData.slice(0, visibleCount).map((tag, index) => (
               <CategoryTag
                 key={tag.label}
@@ -591,7 +571,10 @@ const Filter: React.FC<CategoryChainProps> = ({
             
             {showMoreAvailable && (
               <motion.button
-              variants={itemVariants}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION,dealy:1 }}
+                viewport={{ once: true }}
                 onClick={handleShowMore}
                 className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px] focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
                 aria-label={`Show ${Math.min(UI_CONSTANTS.INCREMENT_COUNT, tagsData.length - visibleCount)} more categories`}
