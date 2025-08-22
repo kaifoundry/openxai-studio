@@ -1,17 +1,40 @@
 "use client"
 import Image from 'next/image'
 import { useAccount } from 'wagmi';
-
+import React,{useEffect} from 'react'
+import ModelPopup from '@component/ModelDetails/ModelPopup'
 
 import DeploymentPage from './deployment-page'
-
+const MOBILE_BREAKPOINT = 1024
 
 
 export default function DeploymentsPage() {
+  const [showDialog,setShowDialog]=useState(false);
+  useEffect(() => {
+    if (window.visualViewport.width < MOBILE_BREAKPOINT) {
+      setShowDialog(true)
+    }
+    const handleResize = () => {
+      if (window.visualViewport.width > MOBILE_BREAKPOINT) {
+        setShowDialog(false)
+      } else {
+        setShowDialog(true)
+      }
+    }
 
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [window.visualViewport.width])
   const { isConnected } = useAccount();
 
   return (
+    <>
+    {showDialog ?(
+      <div className='h-screen lg:h-full'>
+        <ModelPopup show={showDialog} title={"Switch to desktop for deploying the app"} route={`/`}/>
+      </div>
+      )
+  :(
     <div className=" my-12 w-full md:px-8 px-2">
       {!isConnected ? (
 
@@ -32,6 +55,7 @@ export default function DeploymentsPage() {
 
         <DeploymentPage />
       )}
-    </div>
+    </div>)}
+  </>
   )
 }
