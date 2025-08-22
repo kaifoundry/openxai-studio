@@ -79,7 +79,8 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
     return (
       <div key={title} className="hide-scrollbar mb-6 lg:mb-0 flex flex-col overflow">
-        <motion.div 
+        <motion.div
+        layout 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8,}}
@@ -89,6 +90,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
         </motion.div>
 
         <motion.div
+        layout
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -125,6 +127,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
         {hasMore && (
           <motion.div
+          layout
           initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}

@@ -60,7 +60,7 @@ const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, S
                         height={235}
                         priority={true}
                         blurDataURL={image}
-                        className="transition-transform  duration-1000 group-hover:scale-110 group-hover:-translate-x-5  relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
+                        className="transition-transform  duration-1000 group-hover:scale-105 relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
                     />
                     </div>
                     
