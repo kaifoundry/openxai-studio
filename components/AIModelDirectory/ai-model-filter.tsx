@@ -324,11 +324,11 @@ const CategoryTag: React.FC<{
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.87, x: 30 }}
-      whileInView={{ opacity: 1, scale: 1, x: 0 }}
-      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.5 }}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.4 * index }}
       viewport={{ once: true }}
-      whileTap={{ scale: 0.95, transition: { duration: 0.2, delay: 0 } }}
+      whileTap={{ scale: 0.95, transition: { duration: 0.2, delay:0 } }}
       className={`flex cursor-pointer items-center gap-4 rounded-xl bg-[#F6FAFF] px-4 py-3 shadow-sm md:gap-2 md:px-6 xl:gap-2 xl:py-2 2xl:gap-2 2xl:py-2 3xl:gap-2 3xl:py-2  ${
         isSelected
           ? 'border border-blue-500 bg-blue-50'
@@ -379,9 +379,9 @@ const ChainIcon: React.FC<{
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.87, x: 30 }}
-      whileInView={{ opacity: 1, scale: 1, x: 0 }}
-      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.5 }}
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.4 * index }}
       viewport={{ once: true }}
       className={`flex cursor-pointer items-center justify-between rounded-full bg-white md:p-1 xl:p-1 2xl:p-1 3xl:p-2  ${
         isSelected ? 'border border-blue-500' : 'border border-transparent'
@@ -569,9 +569,9 @@ const Filter: React.FC<CategoryChainProps> = ({
             
             {showMoreAvailable && (
               <motion.button
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION }}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION,dealy:0.8 }}
                 viewport={{ once: true }}
                 onClick={handleShowMore}
                 className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px] focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
@@ -595,8 +595,8 @@ const Filter: React.FC<CategoryChainProps> = ({
           </motion.h2>
           
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 }}
             viewport={{ once: true }}
             className="flex gap-4 rounded-xl bg-[#F6FAFF] justify-around p-2 px-3 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2"

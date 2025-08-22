@@ -30,7 +30,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
         <motion.div  
         initial={{ opacity: 0, scale: 0.87, y: 10 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration:0.8,ease: [0.25, 0.1, 0.25, 1]  }}
+            transition={{ duration:0.8,ease: [0.25, 0.1, 0.25, 1],dealy:delay  }}
             viewport={{ once: true }}
             className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                         perspective-1000"
