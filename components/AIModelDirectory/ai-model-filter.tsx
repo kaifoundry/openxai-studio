@@ -328,7 +328,7 @@ const CategoryTag: React.FC<{
     <motion.div
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.3 * index }}
+      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
       viewport={{ once: true }}
       whileTap={{ scale: 0.95, transition: { duration: 0.2, delay:0 } }}
       className={`flex cursor-pointer items-center gap-4 rounded-xl bg-[#F6FAFF] px-4 py-3 shadow-sm md:gap-2 md:px-6 xl:gap-2 xl:py-2 2xl:gap-2 2xl:py-2 3xl:gap-2 3xl:py-2  ${
@@ -383,7 +383,7 @@ const ChainIcon: React.FC<{
     <motion.div
     initial={{ opacity: 0, y: 60 }}
     whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.4 * index }}
+    transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
       viewport={{ once: true }}
       className={`flex cursor-pointer items-center justify-between rounded-full bg-white md:p-1 xl:p-1 2xl:p-1 3xl:p-2  ${
         isSelected ? 'border border-blue-500' : 'border border-transparent'
@@ -573,7 +573,7 @@ const Filter: React.FC<CategoryChainProps> = ({
               <motion.button
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION,dealy:1 }}
+                transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION,delay:1 }}
                 viewport={{ once: true }}
                 onClick={handleShowMore}
                 className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px] focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"

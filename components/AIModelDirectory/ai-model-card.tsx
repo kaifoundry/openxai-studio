@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 interface cardProps {
     id?: string,
     image?: string,
-    index?:number,
     title?: string,
     hashTags?: string[],
     logo?: string,
@@ -20,7 +19,7 @@ interface cardProps {
     delay: number
 }
 
-const Card = ({ id, image,index ,title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
+const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
     const router = useRouter();
     
     const handleClick = () => {
@@ -31,7 +30,7 @@ const Card = ({ id, image,index ,title, hashTags, logo, icons, likes, followers,
         <motion.div  
         initial={{ opacity: 0,  y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration:0.8,ease: [0.25, 0.1, 0.25, 1],dealy:0.3 * index  }}
+            transition={{ duration:0.8,ease: [0.25, 0.1, 0.25, 1],delay:delay }}
             viewport={{ once: true }}
             className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                         perspective-1000"

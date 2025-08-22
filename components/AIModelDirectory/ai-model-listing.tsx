@@ -84,7 +84,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8,}}
         viewport={{ once: true }}
-        className="scrollbar-hide mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
+        className="hide-scrollbar mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
           {title} ({models?.length})
         </motion.div>
 
@@ -107,7 +107,6 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
               <Card
               key={data?.id}
               id={data?.id}
-              index={index}
               delay={0.3 * index }
               image={data?.image}
               title={data?.name}
@@ -186,7 +185,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
       : matchingCategories;
   
     return (
-      <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20">
+      <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20 hide-scrollbar">
         {categoriesToShow.map(category => {
           const models = filterModels(category);
           return renderCards(category, models, true);
@@ -196,7 +195,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
   }
 
   return (
-    <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20">
+    <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20 hide-scrollbar">
       {uniqueCategories?.map((category) => {
         const models = filterModels(category);
         return models?.length > 0 ? renderCards(category, models, false) : null;
