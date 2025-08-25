@@ -294,7 +294,7 @@ export default function AppDirectory() {
   }
 
   return (
-    <div className='px-4 py-2 md:py-4 md:px-6 xl:px-8 xl:py-6 2xl:px-8 2xl:py-6 3xl:py-8 3xl:px-10'>
+    <div className='px-4 py-2 md:py-2 md:px-4 xl:px-6 xl:py-4 2xl:px-6 2xl:py-4 3xl:py-6 3xl:px-8'>
       <Banner />
       <Fillter
         selectedChains={selectedChains}

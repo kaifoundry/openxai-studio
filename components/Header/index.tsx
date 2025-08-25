@@ -177,16 +177,16 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
           </div>
         )}
         {/* max-hdplus:gap-x-20 */}
-        <div className="flex grow items-center justify-between gap-x-0 lg:gap-x-32 px-4 lg:px-6 ">
+        <div className="flex grow items-center justify-between gap-x-0 lg:gap-x-32 px-4 lg:pr-6 lg:pl-4 ">
         
-          <div className="flex items-center gap-2 lg:gap-6">
+          <div className="flex items-center gap-2 lg:gap-4">
             <AlignJustify className='block text-white lg:hidden cursor-pointer' onClick={()=>setIsSidebarOpen(true)}/>
            
               <Image src='/images/header/toggle.svg' alt='' width={20} height={20} className='hidden lg:block cursor-pointer' onClick={()=>{console.log("Clicking",collapsed,toggleCollapsed);toggleCollapsed(!collapsed)}}/> 
            
-            <div className="shrink-0 text-3xl font-bold text-background max-hdplus:text-xl">
+            <div className="shrink-0 text-4xl font-bold text-background max-hdplus:text-xl">
               OpenxAI
-              <sup className="relative top-[-10px] text-xs font-normal">
+              <sup className="relative top-[-10px] text-sm font-normal">
                 Studio
               </sup>
             </div>
