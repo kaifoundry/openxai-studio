@@ -61,8 +61,9 @@ export default function BTCOraclePage() {
                     users={data.followers.toString()}
                     trending={data.trending.toString()}
                     apy={data.apy.toString()}
-                    deploy={deploy}
-                    setDeploy={setDeploy}
+                    profileName={data?.profile?.name}
+                    profileImage={data?.profile?.image}
+
                 />
                 <div className="mx-auto px-4 sm:px-0 lg:px-6 py-6 sm:py-8 lg:py-12">
                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">
