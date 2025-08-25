@@ -19,7 +19,7 @@ import {
   User2,
 } from 'lucide-react'
 import { useAccount } from 'wagmi'
-
+import Image from 'next/image'
 import { mockXNodes } from '@/config/demo-mode'
 import { cn, formatSelectedXNodeName } from '@/lib/utils'
 import {
@@ -46,6 +46,7 @@ import { useDemoModeContext } from '../demo-mode'
 import { Button } from '../ui/button'
 import ActivateXNodeDialog from '../xnode/activate-dialog'
 import Sidebar from './header-sidebar'
+import { useNavContext } from '@/contexts/NavContext'
 
 export default function Header({ sessionToken }: { sessionToken?: string }) {
   const { address, status } = useAccount()
@@ -55,7 +56,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
   const [isSidebarOpen,setIsSidebarOpen]=useState(false)
   const { open } = useWeb3Modal()
   const { push } = useRouter()
-
+  const {toggleCollapsed,collapsed}=useNavContext();
   const { demoMode, setDemoMode } = useDemoModeContext()
 
   const allXnodes: SelectedXnode[] = demoMode
@@ -153,7 +154,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
       />
       <header
         className={cn(
-          'sticky inset-x-0 top-0 z-40 flex h-20 flex-col bg-foreground max-hdplus:h-16',
+          'sticky inset-x-0 top-0 z-40 flex h-20 flex-col bg-[#1C1E2A] max-hdplus:h-16',
           demoMode && 'h-24 max-hdplus:h-20'
         )}
       >
@@ -176,13 +177,16 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
           </div>
         )}
         {/* max-hdplus:gap-x-20 */}
-        <div className="flex grow items-center justify-between gap-x-0 lg:gap-x-32 px-4 lg:px-6 ">
+        <div className="flex grow items-center justify-between gap-x-0 lg:gap-x-32 px-4 lg:pr-6 lg:pl-4 ">
         
-          <div className="flex items-center gap-2 lg:gap-6">
+          <div className="flex items-center gap-2 lg:gap-4">
             <AlignJustify className='block text-white lg:hidden cursor-pointer' onClick={()=>setIsSidebarOpen(true)}/>
-            <div className="shrink-0 text-3xl font-bold text-background max-hdplus:text-xl">
+           
+              <Image src='/images/header/toggle.svg' alt='' width={20} height={20} className='hidden lg:block cursor-pointer' onClick={()=>{console.log("Clicking",collapsed,toggleCollapsed);toggleCollapsed(!collapsed)}}/> 
+           
+            <div className="shrink-0 text-4xl font-bold text-background max-hdplus:text-xl">
               OpenxAI
-              <sup className="relative top-[-10px] text-xs font-normal">
+              <sup className="relative top-[-10px] text-sm font-normal">
                 Studio
               </sup>
             </div>

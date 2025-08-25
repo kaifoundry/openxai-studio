@@ -98,11 +98,11 @@ const getItemKey = (item: FilterItem): string => {
 }
 
 
-const DropdownSearch: React.FC<DropdownSearchProps> = ({ 
-  value, 
-  onChange, 
-  placeholder, 
-  'aria-label': ariaLabel 
+const DropdownSearch: React.FC<DropdownSearchProps> = ({
+  value,
+  onChange,
+  placeholder,
+  'aria-label': ariaLabel
 }) => (
   <div className={DROPDOWN_CLASSES.searchContainer}>
     <Search className="text-[#8F8F8F]" aria-hidden="true" />
@@ -117,15 +117,15 @@ const DropdownSearch: React.FC<DropdownSearchProps> = ({
   </div>
 )
 
-const DropdownItem: React.FC<DropdownItemProps> = ({ 
-  item, 
-  isSelected, 
-  onToggle, 
-  keyPrefix 
+const DropdownItem: React.FC<DropdownItemProps> = ({
+  item,
+  isSelected,
+  onToggle,
+  keyPrefix
 }) => {
   const itemKey = getItemKey(item)
   const handleClick = useCallback(() => {
-   
+
     onToggle(itemKey)
   }, [onToggle, itemKey])
 
@@ -202,7 +202,7 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
       firstFocusableElement?.focus({ preventScroll: true })
     }
   }, [isOpen])
-  
+
 
   return (
     <div className="dropdown-container relative">
@@ -212,9 +212,8 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: UI_CONSTANTS.ANIMATION_DELAY }}
         viewport={{ once: true }}
-        className={`relative flex cursor-pointer justify-between gap-4 rounded-xl px-4 py-2  ${
-          isOpen ? 'border-[2px] border-blue-700' : 'border border-[#B8B8B8]'
-        }`}
+        className={`relative flex cursor-pointer justify-between gap-4 rounded-xl px-4 py-2  ${isOpen ? 'border-[2px] border-blue-700' : 'border border-[#B8B8B8]'
+          }`}
         onClick={onToggle}
         onKeyDown={handleKeyDown}
         role="combobox"
@@ -229,7 +228,7 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
             {title}
           </div>
           {selectedCount > 0 && (
-            <div 
+            <div
               className="flex items-center justify-center rounded-full bg-blue-500 text-white font-[500] size-6 text-sm"
               aria-label={`${selectedCount} selected`}
             >
@@ -248,9 +247,8 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
           </button>
         ) : (
           <ChevronDown
-            className={`cursor-pointer text-[#525252] transition-all delay-200 duration-500 ease-in-out ${
-              isOpen ? 'rotate-180' : 'rotate-0'
-            }`}
+            className={`cursor-pointer text-[#525252] transition-all delay-200 duration-500 ease-in-out ${isOpen ? 'rotate-180' : 'rotate-0'
+              }`}
             aria-hidden="true"
           />
         )}
@@ -261,14 +259,12 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
         id={dropdownId}
         role="listbox"
         aria-label={`Select ${title}`}
-        className={`${DROPDOWN_CLASSES.container} w-[${UI_CONSTANTS.DROPDOWN_WIDTH}px] ${
-          position === 'right' ? '-right-0' : ''
-        } top-14 ${
-          isOpen ? `max-h-[${maxHeight}px] opacity-100` : 'max-h-0 opacity-0'
-        }`}
-        style={{ 
+        className={`${DROPDOWN_CLASSES.container} w-[${UI_CONSTANTS.DROPDOWN_WIDTH}px] ${position === 'right' ? '-right-0' : ''
+          } top-14 ${isOpen ? `max-h-[${maxHeight}px] opacity-100` : 'max-h-0 opacity-0'
+          }`}
+        style={{
           boxShadow: 'rgba(17, 17, 26, 0.1) 0px 0px 16px',
-          width: UI_CONSTANTS.DROPDOWN_WIDTH 
+          width: UI_CONSTANTS.DROPDOWN_WIDTH
         }}
         aria-hidden={!isOpen}
       >
@@ -330,12 +326,11 @@ const CategoryTag: React.FC<{
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
       viewport={{ once: true }}
-      whileTap={{ scale: 0.95, transition: { duration: 0.2, delay:0 } }}
-      className={`flex cursor-pointer items-center gap-4 rounded-xl bg-[#F6FAFF] px-4 py-3 shadow-sm md:gap-2 md:px-6 xl:gap-2 xl:py-2 2xl:gap-2 2xl:py-2 3xl:gap-2 3xl:py-2  ${
-        isSelected
-          ? 'border border-blue-500 bg-blue-50'
-          : 'border border-transparent bg-[#F6FAFF]'
-      }`}
+      whileTap={{ scale: 0.95, transition: { duration: 0.2, delay: 0 } }}
+      className={`flex cursor-pointer items-center gap-4 rounded-xl bg-[#F6FAFF] px-4 py-3 shadow-sm md:gap-2 md:px-6 xl:gap-2 xl:py-2 2xl:gap-2 2xl:py-2 3xl:gap-2 3xl:py-2  ${isSelected
+        ? 'border border-blue-500 bg-blue-50'
+        : 'border border-transparent bg-[#F6FAFF]'
+        }`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
@@ -381,13 +376,12 @@ const ChainIcon: React.FC<{
 
   return (
     <motion.div
-    initial={{ opacity: 0, y: 60 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
       viewport={{ once: true }}
-      className={`flex cursor-pointer items-center justify-between rounded-full bg-white md:p-1 xl:p-1 2xl:p-1 3xl:p-2  ${
-        isSelected ? 'border border-blue-500' : 'border border-transparent'
-      }`}
+      className={`flex cursor-pointer items-center justify-between rounded-lg bg-[#F6F9FF] border border-[#EBF2FF]   md:py-1 md:px-3  xl:py-1 xl:px-3 2xl:py-1 2xl:px-3 3xl:py-3 3xl:px-4  ${isSelected ? 'border border-blue-500' : 'border border-transparent'
+        }`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
@@ -395,6 +389,7 @@ const ChainIcon: React.FC<{
       aria-pressed={isSelected}
       aria-label={`${isSelected ? 'Remove' : 'Add'} ${getItemKey(chain)} chain filter`}
     >
+      <div className=' bg-[#FFFFFF] rounded-full p-1'>
       <Image
         src={chain.icon}
         width={25}
@@ -403,6 +398,8 @@ const ChainIcon: React.FC<{
         className="md:size-[20px] xl:size-[20px] 2xl:size-[30px] 3xl:size-[25px]"
         aria-hidden="true"
       />
+      </div>
+      
     </motion.div>
   )
 }
@@ -436,18 +433,18 @@ const Filter: React.FC<CategoryChainProps> = ({
     setIsOpenChain(!isOpenChain)
   }, [isOpenChain])
 
- 
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
       if (!target) return;
-  
+
       const dropdownContainer = target.closest(".dropdown-container");
       if (dropdownContainer) return;
-      
+
       const dropdownItem = target.closest('[role="option"]');
       if (dropdownItem) return;
-      
+
       setIsOpenCategory(false)
       setIsOpenChain(false)
     };
@@ -495,7 +492,7 @@ const Filter: React.FC<CategoryChainProps> = ({
 
   return (
     <div>
-      
+
       <div className="my-4 flex gap-4 lg:hidden pb-4 lg:pb-0">
         <AccessibleDropdown
           isOpen={isOpenCategory}
@@ -533,7 +530,7 @@ const Filter: React.FC<CategoryChainProps> = ({
         />
       </div>
 
-     
+
       <div className="my-14 hidden flex-col justify-between md:flex-row lg:flex">
         <div className="flex max-w-[80%] flex-col gap-4">
           <div className="flex items-center gap-10 md:h-6 xl:h-6 2xl:h-10 3xl:h-10">
@@ -568,18 +565,18 @@ const Filter: React.FC<CategoryChainProps> = ({
                 index={index}
               />
             ))}
-            
+
             {showMoreAvailable && (
               <motion.button
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION,delay:1 }}
+                transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 1 }}
                 viewport={{ once: true }}
                 onClick={handleShowMore}
                 className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px] focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
                 aria-label={`Show ${Math.min(UI_CONSTANTS.INCREMENT_COUNT, tagsData.length - visibleCount)} more categories`}
               >
-                More
+                More..
               </motion.button>
             )}
           </div>
@@ -595,13 +592,13 @@ const Filter: React.FC<CategoryChainProps> = ({
           >
             By chain
           </motion.h2>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex gap-4 rounded-xl bg-[#F6FAFF] justify-around p-2 px-3 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2"
+            className="flex gap-4 rounded-xl justify-around p-2 px-3 ] md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2"
             role="group"
             aria-label="Chain filters"
           >

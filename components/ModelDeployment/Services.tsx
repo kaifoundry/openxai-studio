@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import ModelDefinition from "../../utils/model-definitions.json"
+
 import {
   Accordion,
   AccordionContent,
@@ -10,8 +10,9 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
+import ModelDefinition from '../../utils/model-definitions.json'
 import AIModels from './AIModels'
-import Amount from './Amount' 
+import Amount from './Amount'
 import Hosting from './Hosting'
 import Tokenization from './Tokenization'
 
@@ -20,8 +21,8 @@ interface ServicesProps {
 }
 
 export const Services = ({ id }: ServicesProps) => {
-  const [expandedItem, setExpandedItem] = useState<string >('0')
-  const [final_amount,setFinalAmount]=useState(false);
+  const [expandedItem, setExpandedItem] = useState<string>('0')
+  const [final_amount, setFinalAmount] = useState(false)
   const [selectedAIModel, setSelectedAIModel] = useState<{
     ModelName: string
     cpu: string
@@ -58,27 +59,26 @@ export const Services = ({ id }: ServicesProps) => {
     Base?: string
   } | null>(null)
   const [selectedTokenization, setSelectedTokenization] = useState<{
-    Token: string;
-    Legal: string;
-    isAgree: boolean;
-    AI_Data: string;
-    Token_label:string;
-    Address:string;
-    Amount:string;
-    label:string;
+    Token: string
+    Legal: string
+    isAgree: boolean
+    AI_Data: string
+    Token_label: string
+    Address: string
+    Amount: string
+    label: string
   } | null>(null)
 
-  const modelDefinition = ModelDefinition.find(m => m.id === id)
+  const modelDefinition = ModelDefinition.find((m) => m.id === id)
   const handleModelSelect = (option: any) => {
     setSelectedAIModel(option)
-    setExpandedItem("1") 
+    setExpandedItem('1')
   }
   const handleProviderSelect = (option: any) => {
-    setSelectedProvider(option) 
+    setSelectedProvider(option)
   }
   const handleTokenizationSelect = (option: any) => {
     setSelectedTokenization(option)
-   
   }
   const accordionData = [
     {
@@ -96,7 +96,11 @@ export const Services = ({ id }: ServicesProps) => {
       id: 'item2',
       title: 'Compute & Hosting',
       component: (
-        <Hosting selected={selectedProvider} onSelect={handleProviderSelect} setExpandedItem={setExpandedItem} />
+        <Hosting
+          selected={selectedProvider}
+          onSelect={handleProviderSelect}
+          setExpandedItem={setExpandedItem}
+        />
       ),
     },
     {
@@ -114,8 +118,8 @@ export const Services = ({ id }: ServicesProps) => {
   ]
 
   return (
-    <div className="grid grid-cols-[70%_30%] ">
-      <div className="mx-auto flex w-full pl-8 pr-12 py-6 ">
+    <div className="grid grid-cols-[70%_30%]">
+      <div className="mx-auto flex w-full py-6 pl-8 pr-12">
         <Accordion
           type="single"
           collapsible
@@ -128,6 +132,15 @@ export const Services = ({ id }: ServicesProps) => {
             const isHosting = index === 1
             const isTokenization = index === 2
             const isCollapsed = expandedItem !== String(index)
+            let showCheckmark = false;
+            if (isAIModel && selectedAIModel) {
+              showCheckmark = true;
+            } else if (isHosting && selectedProvider) {
+              showCheckmark = true;
+            } else if (isTokenization && selectedTokenization && final_amount) {
+              showCheckmark = true;
+            }
+
             return (
               <AccordionItem
                 key={index}
@@ -138,7 +151,7 @@ export const Services = ({ id }: ServicesProps) => {
                     : 'bg-[#F2F6FF]'
                 }`}
               >
-                {isAIModel && selectedAIModel && (
+                {/* {isAIModel && selectedAIModel && (
                   <div className="absolute -right-2 top-2 z-10">
                     <Image
                       src="/images/tick.svg"
@@ -170,10 +183,26 @@ export const Services = ({ id }: ServicesProps) => {
                       className="z-10"
                     />
                   </div>
-                )}
+                )} */}
 
-                <AccordionTrigger className="flex w-full flex-col items-start justify-start gap-4 px-4 py-3 hover:no-underline [&>svg]:hidden">
-                  <div className="text-left text-[18px] font-[600] text-[#000000] 3xl:text-[32px]">
+                <AccordionTrigger className="flex  w-full  items-start justify-start gap-4 px-4 py-3 hover:no-underline ">
+                  <div className='flex flex-col gap-4 w-full'>
+                  <div className="text-left flex items-center gap-3 text-[18px] font-[600] text-[#000000] 3xl:text-[32px]">
+                    <div >
+                      {showCheckmark ? (
+                        <div>
+                          <Image
+                            src="/images/tick.svg"
+                            alt=""
+                            width={25}
+                            height={25}
+                            className="z-10"
+                          />
+                        </div>
+                      ) : (
+                        <div className='rounded-full border-2 border-dashed border-[#8F8F8F] w-7 h-7'></div>
+                      )}
+                    </div>
                     {accordion.title}
                   </div>
                   <div className="w-full">
@@ -231,19 +260,24 @@ export const Services = ({ id }: ServicesProps) => {
                             className="size-4"
                           />{' '}
                           <div className="flex flex-col items-start">
-                            <span className="text-[12px] md:text-[14px] xl:text-[16px] 2xl:text-[16px] 3xl:text-[20px] font-[500]">
+                            <span className="text-[12px] font-[500] md:text-[14px] xl:text-[16px] 2xl:text-[16px] 3xl:text-[20px]">
                               {selectedTokenization?.Token_label}
                             </span>
-                            <span className="text-[12px] md:text-[14px] xl:text-[16px] 2xl:text-[16px] 3xl:text-[20px] font-[500]">
+                            <span className="text-[12px] font-[500] md:text-[14px] xl:text-[16px] 2xl:text-[16px] 3xl:text-[20px]">
                               {selectedTokenization?.Token}
                             </span>
                           </div>
                         </label>
 
                         <span className="flex flex-col text-[14px] font-[500] text-black 2xl:text-[16px] 3xl:text-[20px]">
-                          <span className=' text-[12px] md:text-[14px] xl:text-[16px] 2xl:text-[16px] 3xl:text-[20px] font-[500] '>Funds receive to</span>
+                          <span className="text-[12px] font-[500] md:text-[14px] xl:text-[16px] 2xl:text-[16px] 3xl:text-[20px]">
+                            Funds receive to
+                          </span>
                           {selectedTokenization?.Address && (
-                            <a href="#" className="text-blue-500 truncate max-w-20 underline text-[12px] md:text-[14px] xl:text-[16px] 2xl:text-[16px] 3xl:text-[20px] font-[500]">
+                            <a
+                              href="#"
+                              className="max-w-20 truncate text-[12px] font-[500] text-blue-500 underline md:text-[14px] xl:text-[16px] 2xl:text-[16px] 3xl:text-[20px]"
+                            >
                               {selectedTokenization?.Address}
                             </a>
                           )}
@@ -251,18 +285,16 @@ export const Services = ({ id }: ServicesProps) => {
 
                         <span className="flex items-center gap-1 whitespace-nowrap text-[14px] font-[500] text-black 2xl:text-[16px] 3xl:text-[20px]">
                           {selectedTokenization?.Amount}{' '}
-                          
-                          
-                            <Image
-                              src="/images/appStore/svg/chains/ollama.svg"
-                              alt=""
-                              width={25}
-                              height={25}
-                            />
-                          
+                          <Image
+                            src="/images/appStore/svg/chains/ollama.svg"
+                            alt=""
+                            width={25}
+                            height={25}
+                          />
                         </span>
                       </div>
                     )}
+                  </div>
                   </div>
                 </AccordionTrigger>
 
@@ -274,7 +306,7 @@ export const Services = ({ id }: ServicesProps) => {
           })}
         </Accordion>
       </div>
-      <div >
+      <div>
         <Amount
           selectedAIModel={selectedAIModel}
           selectedProvider={selectedProvider}

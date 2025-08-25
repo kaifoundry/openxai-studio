@@ -30,7 +30,7 @@ const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, S
         <motion.div  
         initial={{ opacity: 0,  y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration:0.8,ease: [0.25, 0.1, 0.25, 1],delay:delay }}
+            transition={{ duration:0.6,ease: [0.25, 0.1, 0.25, 1],delay:delay }}
             viewport={{ once: true }}
             className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                         perspective-1000"
@@ -105,27 +105,29 @@ const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, S
                         ))}
                     </div>
 
-                    <div className='flex items-center justify-between px-4 pb-2 2xl:pt-4 3xl:pt-8'>
+                    <div className='flex items-center justify-between px-1 pb-2 2xl:pt-4 3xl:pt-8'>
                         <div className='flex items-center gap-[2vw]'>
-                            <div className='flex items-center gap-2 md:gap-2 xl:gap-2 2xl:gap-2 3xl:gap-2'>
-                                <div className='text-[14px] font-[500] text-[#1C1C1C]'>{likes}</div>
-                                <Image
+                            <div className='flex items-center gap-1'>
+                            `   <Image
                                     src='/images/appStore/svg/likes.svg'
                                     alt='likes'
                                     width={19}
                                     height={17}
                                     className='h-[17px] w-[19px]'
                                 />
+                                <div className='text-[14px] font-[500] text-[#1C1C1C]'>{likes}</div>
+                               
                             </div>
-                            <div className='flex items-center gap-2 md:gap-2 xl:gap-2 2xl:gap-2 3xl:gap-2'>
-                                <div className='text-[14px] font-[500] text-[#1C1C1C]'>{followers}</div>
+                            <div className='flex items-center gap-0'>
                                 <Image
                                     src='/images/appStore/svg/followers.svg'
                                     alt='likes'
-                                    width={19}
+                                    width={25}
                                     height={17}
-                                    className='h-[17px] w-[19px]'
+                                    className='h-[17px] w-[25px]'
                                 />
+                                <div className='text-[14px] font-[500] text-[#1C1C1C]'>{followers}</div>
+                                
                             </div>
                         </div>
                         <div className='flex items-center gap-2 md:gap-1 xl:gap-1 2xl:gap-2 3xl:gap-2'>
