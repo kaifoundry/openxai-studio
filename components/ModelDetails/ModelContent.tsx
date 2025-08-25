@@ -191,7 +191,7 @@ export function ModelContent({
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 + (i * 0.1) }}
+                transition={{ duration: 0.8, delay: (i*0.1) }}
                 viewport={{ once: true }}
                 key={`step-${item.step}`}
                 className="flex items-start space-x-3 w-full"

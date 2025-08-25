@@ -14,10 +14,10 @@ export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
         <div className="px-3">
 
             <motion.div
-                initial={{ opacity: 0, scale: 0.87, x: 30 }}
-                whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true, amount: 0.5 }}
+                initial={{ opacity: 0, scale: 0.87, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
                 className="relative group rounded-2xl lg:mx-2 mt-10 overflow-hidden aspect-[5/3] lg:aspect-[5/2]"
             >
                 <Image
@@ -30,23 +30,23 @@ export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
             </motion.div>
 
 
-            <div className="flex justify-between items-center mt-6 px-2 sm:px-4 lg:px-2 ">
+            <div className="flex justify-between items-center mt-6 px-2  lg:px-3 ">
                 <div>
                     <motion.h1
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7 }}
                         viewport={{ once: true }}
                         className="text-2xl font-semibold text-[#1F1F1F] leading-tight sm:text-4xl md:text-5xl lg:text-5xl"
                     >
                         {title}
                     </motion.h1>
                     <motion.p
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="text-base text-[#8F8F8F] lg:text-xl"
+                        className="text-base text-[#8F8F8F] lg:text-[16px]"
                     >
                         {subtitle}
                     </motion.p>
