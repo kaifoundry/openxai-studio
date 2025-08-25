@@ -6,7 +6,7 @@ import { type Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { cookies } from 'next/headers'
 import { prefix } from '@/utils/prefix'
-
+import { NavProvider } from '@/contexts/NavContext'
 import { cn } from '@/lib/utils'
 import CTAHelp from '@/components/cta-help'
 import Footer from '@/components/Footer'
@@ -36,19 +36,24 @@ export default function RootLayout({
   const sessionCookie = cookies().get('userSessionToken')
 
   return (
-    <html suppressHydrationWarning lang="en" className='hide-scrollbar'>
+    <html suppressHydrationWarning lang="en" className='hide-scrollbar '>
       <body
         className={cn(
-          'container mx-auto min-h-screen w-full max-w-[1982px] bg-background p-0 font-sans text-foreground antialiased',
+          'container mx-auto min-h-screen w-full max-w-[1982px] bg-background lg:bg-[#1C1E2A] p-0 font-sans text-foreground antialiased',
           inter.variable
         )}
       >
         <Providers>
+          <NavProvider>
           <Header sessionToken={sessionCookie?.value} />
           <NavLayout>
+          
+            <div className='lg:rounded-2xl lg:bg-white lg:mr-6 '>
             {children}
+            </div>
             <ScrollToTop />
           </NavLayout>
+          </NavProvider>
           <Footer />
           <CTAHelp />
         </Providers>

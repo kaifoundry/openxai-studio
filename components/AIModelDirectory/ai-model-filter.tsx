@@ -380,7 +380,7 @@ const ChainIcon: React.FC<{
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
       viewport={{ once: true }}
-      className={`flex cursor-pointer items-center justify-between rounded-full bg-[#F6FAFF]  md:p-1 xl:p-1 2xl:p-1 3xl:p-2  ${isSelected ? 'border border-blue-500' : 'border border-transparent'
+      className={`flex cursor-pointer items-center justify-between rounded-lg bg-[#F6F9FF] border border-[#EBF2FF]   md:py-1 md:px-3  xl:py-1 xl:px-3 2xl:py-1 2xl:px-3 3xl:py-3 3xl:px-4  ${isSelected ? 'border border-blue-500' : 'border border-transparent'
         }`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
@@ -389,6 +389,7 @@ const ChainIcon: React.FC<{
       aria-pressed={isSelected}
       aria-label={`${isSelected ? 'Remove' : 'Add'} ${getItemKey(chain)} chain filter`}
     >
+      <div className=' bg-[#FFFFFF] rounded-full p-1'>
       <Image
         src={chain.icon}
         width={25}
@@ -397,6 +398,8 @@ const ChainIcon: React.FC<{
         className="md:size-[20px] xl:size-[20px] 2xl:size-[30px] 3xl:size-[25px]"
         aria-hidden="true"
       />
+      </div>
+      
     </motion.div>
   )
 }
@@ -573,7 +576,7 @@ const Filter: React.FC<CategoryChainProps> = ({
                 className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px] focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
                 aria-label={`Show ${Math.min(UI_CONSTANTS.INCREMENT_COUNT, tagsData.length - visibleCount)} more categories`}
               >
-                More
+                More..
               </motion.button>
             )}
           </div>
@@ -595,7 +598,7 @@ const Filter: React.FC<CategoryChainProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex gap-4 rounded-xl justify-around p-2 px-3 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2"
+            className="flex gap-4 rounded-xl justify-around p-2 px-3 ] md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2"
             role="group"
             aria-label="Chain filters"
           >

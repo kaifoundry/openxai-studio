@@ -14,7 +14,7 @@ export default function Home() {
       transition={{ duration: 0.4 }}
     >
 
-      <section className="mb-12 lg:mt-24 mt-14 w-full">
+      <section className="pb-12 lg:pt-24 mt-14 lg:mt-0 w-full ">
         <div className="flex gap-12 lg:gap-0 xl:gap-0 2xl:gap-12 flex-col items-center px-4 md:px-6 xl:px-6 2xl:px-12 justify-between md:flex-row">
 
 
@@ -183,7 +183,7 @@ export default function Home() {
         </motion.div>
       </motion.section> */}
       <motion.section
-        className="my-20 space-y-4 px-4 md:px-6 lg:px-8"
+        className="my-20 pb-10 space-y-4 px-4 md:px-6 lg:px-8"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2.2, duration: 1, ease: [0.25, 0.1, 0.25, 1] }}

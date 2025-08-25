@@ -95,9 +95,10 @@
   scrollbar-width: none;
 }
 
-.filter-blue {
-  filter: invert(39%) sepia(90%) saturate(2476%) hue-rotate(202deg) brightness(97%) contrast(95%);
+.filter-white {
+  filter: brightness(0) invert(1);
 }
+
 
 input[type="radio"] {
   accent-color: blue;

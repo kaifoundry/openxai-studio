@@ -138,36 +138,7 @@ const Hosting = ({
   }
 
   return (
-    <div className="grid w-full grid-cols-[20%_10%_70%]">
-      <div className="flex flex-col">
-        <div className="text-[12px] font-[500] leading-[113%] 2xl:text-[15px] 3xl:text-[20px]">
-          I have already a GPU form OpenxAI
-        </div>
-        <div className="mt-4">
-          {isConnected ? (
-            <button
-              type="button"
-              className="flex h-10 w-full items-center rounded bg-primary px-3 text-sm text-background"
-              // onClick={pressWalletButton}
-            >
-              {address && status === 'connected' && (
-                <span className="w-full">{formatAddress(address)}</span>
-              )}
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="flex h-10 items-center gap-1.5 rounded bg-primary px-4 text-base font-semibold tracking-tighter text-background max-hdplus:h-8 max-hdplus:text-sm"
-              onClick={pressWalletButton}
-            >
-              Connect Wallet
-            </button>
-          )}
-        </div>
-      </div>
-      <div className="text-center text-[12px] font-[500] 2xl:text-[15px] 3xl:text-[20px]">
-        or
-      </div>
+    <div className="flex flex-col"> 
       <div className="flex flex-col gap-4">
         {!isConnected ? (
           <div className="grid grid-cols-2 gap-4">
@@ -295,66 +266,18 @@ const Hosting = ({
           </div>
         ) : (
           <div className="relative">
-          
-            <div className="relative w-[80%] rounded-lg border bg-white px-8 py-2 shadow-sm">
-              <div
-                className="flex cursor-pointer items-center justify-between"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <div className="flex items-center gap-10">
-                  <div className="flex items-center gap-2">
-                    <input type="radio" checked readOnly />
-                    <img
-                      src={selectedNode?.icon}
-                      alt="icon"
-                      className="h-6 w-10 object-cover"
-                    />
-                  </div>
-
-                  <div className="flex items-center gap-20">
-                    <div>
-                      <div className="font-medium">{selectedNode?.name}</div>
-                      <div className="text-sm text-blue-600">
-                        {selectedNode?.address}
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <img
-                        src={selectedNode?.Base}
-                        alt="base"
-                        className="h-5 w-5"
-                      />
-                      <span className="text-xs">Base</span>
-                    </div>
-                  </div>
-                </div>
-
-                <ChevronDown
-                  className={`transition-transform duration-500 ${
-                    isOpen ? 'rotate-180' : 'rotate-0'
-                  }`}
-                />
-              </div>
-            </div>
-
-        
-            <div
-              className={`absolute left-0 z-10 w-[80%] overflow-hidden rounded-md bg-white transition-all duration-500 ${
-                isOpen ? 'mt-2 max-h-60 border' : 'max-h-0 hidden'
-              }`}
-            >
-              {isOpen && (
-                <div className="space-y-2 px-8 py-2">
-                  {XNODEDVMs?.filter(
-                    (node) => node.name !== selectedNode?.name
-                  ).map((node, idx) => (
+                <div className="grid grid-cols-2 gap-4">
+                  {XNODEDVMs?.map((node, idx) => (
                     <div
                       key={idx}
-                      className="flex cursor-pointer items-center gap-10 rounded py-2 hover:bg-gray-50"
+                      className="flex  cursor-pointer border border-[#E0E0E0] px-4 py-4 rounded-md items-center gap-10   hover:bg-gray-50"
                       onClick={() => handleSelect(node)}
                     >
                       <div className="flex items-center gap-2">
-                        <input type="radio" readOnly />
+                        <input type="radio" readOnly 
+                        value={node?.name}
+                        checked={node.name === selectedNode?.name}
+                        />
                         <img
                           src={node.icon}
                           alt="icon"
@@ -369,30 +292,34 @@ const Hosting = ({
                             {node.address}
                           </div>
                         </div>
-                        <div className="flex flex-col items-center">
+                        {/* <div className="flex flex-col items-center">
                           <img src={node.Base} alt="base" className="h-5 w-5" />
                           <span className="text-xs">Base</span>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   ))}
 
-                  <div className="cursor-pointer pt-2 text-[12px] text-[#8E8E8E] 2xl:text-[14px] 3xl:text-[16px]">
-                    + Buy a Xnode DVM
-                  </div>
+                  
                 </div>
-              )}
-            </div>
+              
+           
           </div>
         )}
-        <button
+        
+      </div>
+      <div className='flex flex-col gap-0 mt-2'>
+      {!isConnected &&(<button
           onClick={() => setShowExtendedOptions(true)}
-          className="flex w-full flex-col items-start justify-center gap-2 py-4 text-center text-sm max-[1250px]:text-xs"
+          className="w-full  items-start text-[#525252]  font-[500] underline underline-offset-2 flex items-start  py-2 text-center text-sm max-[1250px]:text-xs"
         >
-          <div className="text-[16px]">Not happy, Scan for more</div>
-          <div className="flex cursor-pointer items-center justify-center rounded-md bg-[#383CFF] px-4 py-1 text-[14px] font-[400] text-white">
-            Compute & GPUs Scanner
-          </div>
+          Browse All Compute & GPU Options
+        </button>)}
+        <button
+          onClick={pressWalletButton}
+          className="flex w-full gap-2 items-start text-[#525252] font-[500] py-2 text-center text-sm max-[1250px]:text-xs"
+        >
+          <span>Already have a GPU? </span><span className='text-[#666666] underline underline-offset-2'>Click here to Connect Wallet</span>
         </button>
       </div>
 

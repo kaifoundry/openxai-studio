@@ -625,7 +625,7 @@ import {
 } from '@radix-ui/react-accordion'
 import { motion } from 'framer-motion'
 import { ChevronDown, PencilRuler, type LucideIcon } from 'lucide-react'
-
+import { useNavContext } from '@/contexts/NavContext'
 import { navItems, type NavItem } from '@/config/nav'
 import { cn } from '@/lib/utils'
 import { Button, type ButtonProps } from '@/components/ui/button'
@@ -697,9 +697,9 @@ const SidebarNav: React.FC<SidebarNavProps> = ({
             )
           )}
         </div>
-        <div className="mt-4 flex items-start ml-4 gap-4 text-left">
+        <div className="mt-4 flex items-start ml-3 gap-4 text-left">
           <Image src='/images/heart.svg' alt="" width={10} height={10} className="size-5 shrink-0"/>
-          <div className="text-xs text-neutral-500">
+          <div className="text-xs text-white">
             <div>Made & Powered</div>
             <div>by Xnode</div>
           </div>
@@ -723,32 +723,13 @@ const NavLayout: React.FC<React.HTMLAttributes<HTMLElement>> = ({
   )
 }
 
-const NavContext = React.createContext<{
-  collapsed: boolean
-  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>
-}>({
-  collapsed: false,
-  setCollapsed: () => {},
-})
 
-/**
- * Hook to get the collapsed state and setCollapsed function for the nav sidebar
- * @returns [collapsed, setCollapsed]
- */
-export const useNavContext = () => useContext(NavContext)
 
 const NavContainer = React.forwardRef<
   HTMLElement,
   React.HTMLAttributes<HTMLElement>
 >(({ className, children, ...props }, ref) => {
-  const [collapsed, setCollapsed] = useState(true)
-
-  
-  // Load collapsed state from local storage
-  useEffect(() => {
-    const stored = localStorage.getItem('nav-collapsed')
-    if (stored === 'true') setCollapsed(true)
-  }, [])
+  const { collapsed } = useNavContext()
 
   // Controlled state of Accordion and NavigationMenu components
   const [accordionValue, setAccordionValue] = useState([])
@@ -764,37 +745,22 @@ const NavContainer = React.forwardRef<
 
   const { demoMode } = useDemoModeContext()
 
-  const toggleCollapsed = (newCollapsed: boolean) => {
-    setCollapsed(newCollapsed)
-    localStorage.setItem('nav-collapsed', String(newCollapsed))
   
-    window.dispatchEvent(
-      new CustomEvent('nav-collapsed-change', {
-        detail: { collapsed: newCollapsed },
-      })
-    )
-  }
-  const handleMouseEnter = () => toggleCollapsed(false)
-  const handleMouseLeave = () => toggleCollapsed(true)
+  // const handleMouseEnter = () => toggleCollapsed(false)
+  // const handleMouseLeave = () => toggleCollapsed(true)
 
   return (
-    <NavContext.Provider
-      value={{
-        collapsed,
-        setCollapsed,
-        
-      }}
-    >
+    
       <aside
         className={cn(
-          'duration-plico sticky top-20 flex h-[calc(100svh-5rem)] shrink-0 flex-col px-0 justify-between border-r bg-[#FFFFFF] text-card-foreground transition-[width] delay-300 duration-500 ease-in-out max-hdplus:top-16',
+          'duration-plico sticky top-20 flex h-[calc(100svh-5rem)] shrink-0 flex-col px-0 justify-between  bg-[#1C1E2A] text-card-foreground transition-[width] delay-300 duration-500 ease-in-out max-hdplus:top-16',
           collapsed ? 'w-14' : 'w-64 max-hdplus:w-52',
           demoMode && 'top-24 max-hdplus:top-20',
           className
         )}
         ref={ref}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        // onMouseEnter={handleMouseEnter}
+        // onMouseLeave={handleMouseLeave}
         {...props}
       >
         <Accordion
@@ -808,7 +774,7 @@ const NavContainer = React.forwardRef<
           <nav className="flex h-full flex-col justify-between">{children}</nav>
         </Accordion>
       </aside>
-    </NavContext.Provider>
+   
   )
 })
 NavContainer.displayName = 'NavContainer'
@@ -1155,18 +1121,20 @@ const NavLink: React.FC<NavLinkProps> = ({
           <Link
             href={href}
             target={href.startsWith('https://') ? '_blank' : undefined}
-            className="flex h-10 items-center rounded-sm px-4 py-2 text-foreground transition-colors aria-disabled:pointer-events-none aria-disabled:cursor-not-allowed data-[active=false]:hover:bg-primary/5 max-hdplus:h-8"
+            className={cn('flex h-10 items-center rounded-sm px-3 py-2 text-foreground transition-colors aria-disabled:pointer-events-none aria-disabled:cursor-not-allowed data-[active=false]:hover:bg-primary/5 max-hdplus:h-8',
+              isActive && 'bg-[#FFFFFF0F] rounded-md'
+            )}
             aria-disabled={tag === 'Soon'}
             data-active={isActive}
           >
-            <div className="relative flex items-center gap-3">
+            <div className="relative flex items-center gap-4">
               <div className="relative size-5">
               <img 
                     src={Icon} 
                     alt={label}
                     className={cn(
                       'relative z-30 size-full shrink-0   transition-colors max-hdplus:size-4',
-                      isActive && 'filter-blue'
+                      isActive && 'filter-white'
                     )}
                   />
                 {/* <Icon
@@ -1179,9 +1147,9 @@ const NavLink: React.FC<NavLinkProps> = ({
               </div>
               <span
                 className={cn(
-                  'duration-plico relative z-10 max-w-full truncate text-sm font-medium text-neutral-700 opacity-100 transition-[margin,max-width,opacity] ease-in-out max-hdplus:text-xs',
+                  'duration-plico relative z-10 max-w-full truncate text-sm font-medium text-[#a4a5aa] opacity-100 transition-[margin,max-width,opacity] ease-in-out max-hdplus:text-xs',
                   collapsed &&
-                    'ml-0 max-w-0 opacity-0 group-[.category]:ml-4 group-[.category]:max-w-full group-[.category]:opacity-100', isActive && 'text-primary'
+                    'ml-0 max-w-0 opacity-0 group-[.category]:ml-4 group-[.category]:max-w-full group-[.category]:opacity-100', isActive && 'text-background'
                 )}
               >
                 {label}
