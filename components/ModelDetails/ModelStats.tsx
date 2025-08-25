@@ -1,86 +1,101 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 interface ModelStatsProps {
   likes: string | number
   users: string | number
-  trending: string | boolean
+  trending: string | number
   apy: string | number
-  deploy?: boolean
-  setDeploy?: React.Dispatch<React.SetStateAction<boolean>>
+   showInfo?: boolean 
 }
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, 
+      staggerChildren: 0.2,
     },
   },
 }
+
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 }
 
+
 interface StatItemProps {
-  value: string | number | boolean
+  value: string | number
   icon: string
   iconAlt: string
-  iconClass?: string
-  containerClass?: string
+  showInfo?: boolean
 }
-
-function StatItem({
-  value,
-  icon,
-  iconAlt,
-  iconClass = 'h-5 w-5',
-  containerClass = '',
-}: StatItemProps) {
+function StatItem({ value, icon, iconAlt, showInfo = false }: StatItemProps) {
   return (
     <motion.div
       variants={itemVariants}
-      className={`flex items-center space-x-4 rounded-md bg-[#F1F7FF] px-4 py-1 ${containerClass}`}
+      className="flex flex-col items-center space-y-1 px-3 py-1.5"
     >
-      <span className="font-semibold text-[#313131] text-sm md:text-md lg:text-md">
-        {value}
-      </span>
-      <img src={icon} alt={iconAlt} className={iconClass} />
+      <Image src={icon} alt={iconAlt} width={24} height={24} />
+      <div className="flex flex-row items-center space-x-2 relative">
+        <span className="text-sm font-medium text-[#3D3D3D]">{value}</span>
+
+        {showInfo && (
+          <div className="relative group">
+            <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#4787FF] text-[10px] font-bold text-white cursor-pointer">
+              i
+            </span>
+
+        
+            <div className="absolute bottom-full left-0 mb-2 w-max max-w-xs rounded-[16px] bg-[#1C1E2A] text-white text-xs px-4 py-4 opacity-0 group-hover:opacity-100 transition-opacity">
+              How many deployments
+    
+              <div className="absolute left-3 top-full border-4 border-transparent border-t-[#1C1E2A]"></div>
+            </div>
+          </div>
+        )}
+      </div>
     </motion.div>
   )
 }
 
+
 export function ModelStats({ likes, users, trending, apy }: ModelStatsProps) {
   return (
-    <div className="mx-4 md:mx-2 pt-2">
+    <div className="p-4">
+  
       <motion.div
-        variants={containerVariants}
+        variants={itemVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="relative lg:mx-auto px-0 py-4 md:py-0 md:px-0 md:pt-4 mb:pb-2 lg:px-4"
+        animate="visible"
+        className="mb-4"
       >
-        <div className="items-left flex flex-col justify-between lg:gap-4 sm:flex-row gap-2">
-          <div className="flex flex-wrap lg:items-center justify-start gap-4 sm:justify-start sm:gap-2 lg:gap-4">
-
-            <StatItem value={likes} icon="/images/project/hero/heart.svg" iconAlt="Heart icon" />
-            <StatItem value={users} icon="/images/project/hero/person.svg" iconAlt="User icon" />
-            <StatItem value={trending} icon="/images/project/hero/trending.svg" iconAlt="Trending icon" />
-            <StatItem value="~$1,456.85" icon="/images/project/hero/lock.svg" iconAlt="Lock icon" iconClass="size-4" />
-
-            <motion.div variants={itemVariants} className="flex items-center">
-              <span className="whitespace-nowrap rounded-md bg-[#8CD417] px-3 py-1 text-sm font-bold text-white sm:text-base lg:text-lg">
-                {apy} % APY
-              </span>
-            </motion.div>
-
-          </div>
-        </div>
+        <span className="whitespace-nowrap rounded-md bg-[#EBF2FF] px-4 py-1.5 text-sm font-bold text-#3D3D3D">
+          {apy} <span className='font-[400]'>% APY</span>
+        </span>
       </motion.div>
+      
+    
+     <motion.div
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  className="flex flex-wrap items-center justify-start gap-4 md:gap-10"
+>
+ 
+  <StatItem value={likes} icon="/images/project/hero/Frame.svg" iconAlt="Heart icon" />
+
+
+  <StatItem value={users} icon="/images/project/hero/Frame (1).svg" iconAlt="User icon" showInfo />
+  <StatItem value={trending} icon="/images/project/hero/Frame (2).svg" iconAlt="Trending icon" showInfo />
+  <StatItem value="~$1,476.85" icon="/images/project/hero/Frame (3).svg" iconAlt="Lock icon" showInfo />
+</motion.div>
     </div>
   )
 }
