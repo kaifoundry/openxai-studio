@@ -7,7 +7,7 @@ const Banner = () => {
     <motion.div 
     initial={{ opacity: 0,scale: 0.95, x: 20 }}
   whileInView={{ opacity: 1,scale:1, x: 0 }}
-  transition={{ duration: 0.8 }}
+  transition={{ duration: 0.6 }}
   viewport={{ once: true }}
     
     className="relative mt-8  lg:mt-4 h-[172px] w-full  md:h-[150px] xl:h-[200px] 2xl:h-[216px] 3xl:h-[216px]">
