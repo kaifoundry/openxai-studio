@@ -47,36 +47,36 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
   return (
     <>
       <motion.div
-        className="flex items-center justify-center  py-4 font-sans"
+        className="flex items-center justify-center py-4 font-sans"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         <motion.div
-          className="w-full max-w-md rounded-xl p-6 sm:p-8"
+          className="w-full max-w-lg rounded-xl p-6 sm:p-8"
           variants={containerVariants}
         >
 
-          <motion.div className="mb-8" variants={fadeUp}>
-            <p className="mb-1 text-[16px] font-medium text-[#1B1A1E]">Your Balance</p>
+          <motion.div className="mb-10 p-4 border-[1px] border-[#EBEBEB] bg-[#F5F8FF] rounded-[16px]" variants={fadeUp}>
+            <p className="mb-1 text-[16px] font-medium text-[#666666]">Your Balance</p>
             <div className="flex items-baseline space-x-2">
-              <span className="text-[36px] font-bold text-[#0A0A0A]">
+              <span className="text-[36px] font-bold text-[#0040B8]">
                 {formatBalance(balance)}
               </span>
-              <span className="text-[22px] font-[400] text-[#0A0A0A]">{tokenSymbol}</span>
-              <a href="#" className="ml-auto text-sm font-medium text-[#00B306] underline">
+              <span className="text-[22px] font-[600] text-[#0040B8]">{tokenSymbol}</span>
+              <a href="#" className="ml-auto text-sm font-medium text-[#3D3D3D] underline">
                 Claim
               </a>
             </div>
           </motion.div>
 
 
-          <motion.div className="mb-8" variants={fadeUp}>
-            <h2 className="mb-4 text-[14px] font-medium text-[#1B1A1E]">Deploy app</h2>
-            <div className="space-y-4">
+          <motion.div className="mb-8 " variants={fadeUp}>
+            <h2 className="mb-4 text-[14px] font-medium text-[#3D3D3D] rounded-[12px] border border-[#F0F0F0] bg-[#F5F5F5] p-4">Deploy app</h2>
+            <div className="space-y-4 lg:px-2 px-0 ">
               <motion.div className="flex items-center justify-between py-2" variants={fadeUp}>
-                <span className="text-[16px] font-medium text-[#000000]">Support Chain</span>
+                <span className="text-[16px] font-[400] text-[#525252]">Support Chain</span>
                 <div className="flex items-center space-x-3">
                   <img src="/images/appStore/svg/chains/etherium.svg" alt="Ethereum Logo" className="w-6 h-6" />
                   <img src="/images/appStore/svg/chains/ollama.svg" alt="Ollama Logo" className="w-6 h-6" />
@@ -85,7 +85,7 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
               </motion.div>
 
               <motion.div className="flex items-center justify-between py-2 " variants={fadeUp}>
-                <span className="text-left text-[16px] font-medium text-[#000000]">Min. Computing Cost</span>
+                <span className="text-left text-[16px] font-[400] text-[#525252]">Min. Computing Cost</span>
                 <div className="flex items-center space-x-1">
                   ~<DollarSign size={16} />
                   <span className="text-[18px] font-medium text-[#0A0A0A]">{minComputingCost}</span>
@@ -93,7 +93,7 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
               </motion.div>
 
               <motion.div className="flex items-center justify-between py-2 " variants={fadeUp}>
-                <span className="text-[16px] font-medium text-[#000000]">Gas fees</span>
+                <span className="text-[16px] font-[400] text-[#525252]">Gas fees</span>
                 <div className="flex items-center space-x-1">
                   ~<DollarSign size={16} />
                   <span className="text-[18px] font-medium text-[#0A0A0A]">{gasFees}</span>
@@ -101,13 +101,13 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
               </motion.div>
 
               <motion.div className="flex items-center justify-between py-2 " variants={fadeUp}>
-                <span className="text-[16px] font-medium text-[#000000]">Reward Priority</span>
+                <span className="text-[16px] font-[400] text-[#525252]">Reward Priority</span>
                 <span className="text-[18px] font-medium text-[#0A0A0A]">{rewardPriority}</span>
               </motion.div>
 
               <motion.div className="flex items-center justify-between py-2 " variants={fadeUp}>
-                <span className="text-[16px] font-bold text-[#000000]">App Staking Rewards</span>
-                <span className="text-[18px] font-bold text-[#0A0A0A]">{formatPercentage(appStakingRewards)}</span>
+                <span className="text-[16px] font-medium text-[#3D3D3D]">App Staking Rewards</span>
+                <span className="text-[18px] font-bold text-[#3D3D3D]">{formatPercentage(appStakingRewards)}</span>
               </motion.div>
             </div>
           </motion.div>
