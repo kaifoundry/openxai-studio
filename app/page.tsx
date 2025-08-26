@@ -483,14 +483,14 @@ export default function Home() {
 
   return (
     <motion.div
-      className="flex size-full flex-col lg:flex-row "
+      className="flex size-full flex-col lg:flex-row  "
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8 md:gap-24 md:px-12 lg:gap-24 lg:px-16">
-        <div className="mt-8 sm:mt-16 lg:mt-24">
-          <h1 className="text-balance text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl ">
+        <div className="mt-8 sm:mt-16 lg:mt-24 ">
+          <h1 className=" text-2xl  text-balance leading-tight font-semibold  sm:text-3xl md:text-4xl lg:text-4xl xl:text-6xl  ">
             Build and deploy AI agents in 5 minutes
           </h1>
           <div className="mt-6 flex flex-row gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4 lg:mt-12">

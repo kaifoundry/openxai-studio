@@ -14,7 +14,7 @@ export default function DeploymentPage() {
   };
 
   return (
-    <div className="container mx-auto md:p-6 px-2 ">
+    <div className="container mx-auto md:p-6 px-2">
 
       <section className="mb-8">
         <motion.h2 initial={{ opacity: 0, y: 50 }}

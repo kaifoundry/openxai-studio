@@ -10,12 +10,26 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0, // No delay for container
-      staggerChildren: 0.02, // Very minimal stagger
-      duration: 0.2, // Faster overall transition
+      delayChildren: 0,
+      staggerChildren: 0.02,
+      duration: 0.2,
     },
   },
 };
+
+
+const staggeredContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0,
+      staggerChildren: 0.3,
+      duration: 0.4,
+    },
+  },
+};
+
 const base = 0.8
 const step = 0.5
 
@@ -27,6 +41,7 @@ interface AppContentProps {
 const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) => {
   const [collapsed, setCollapsed] = useState(false);
   const [visibleCounts, setVisibleCounts] = useState<{ [key: string]: number }>({});
+  const [expandingCategories, setExpandingCategories] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
     const initialCollapsed = localStorage.getItem('nav-collapsed') === 'true';
@@ -75,6 +90,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     const visibleCount = visibleCounts[title] ?? getVisibleCount();
     const visibleModels = showAll ? models : models.slice(0, visibleCount);
     const hasMore = !showAll && visibleCount < models.length;
+    const isExpanding = expandingCategories[title];
 
     if (models.length === 0) return null
 
@@ -92,7 +108,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
 
         <motion.div
           layout
-          variants={containerVariants}
+          variants={isExpanding ? staggeredContainerVariants : containerVariants}
           initial="hidden"
           animate="visible"
           key={`${title}-${visibleCounts[title] ?? getVisibleCount()}`}
@@ -107,25 +123,37 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
             3xl:grid-cols-4
           `}
         >
-          {visibleModels.map((data: any, index) => (
+          {visibleModels.map((data: any, index) => {
 
-            <Card
-              key={data?.id}
-              id={data?.id}
-              delay={0.02 * index} // Very minimal delay to prevent white space
-              image={data?.image}
-              title={data?.name}
-              hashTags={data?.tags}
-              logo={data?.logo}
-              icons={data?.chains}
-              likes={data?.likes}
-              followers={data?.followers}
-              apy={data?.apy}
-              Seller={data?.Seller}
-            />
+            let cardDelay = 0;
+            if (isExpanding) {
 
+              const previousCount = (visibleCounts[title] ?? getVisibleCount()) - 4;
+              if (index >= previousCount) {
+                cardDelay = (index - previousCount) * 0.3;
+              }
+            } else {
 
-          ))}
+              cardDelay = 0.02 * index;
+            }
+
+            return (
+              <Card
+                key={data?.id}
+                id={data?.id}
+                delay={cardDelay}
+                image={data?.image}
+                title={data?.name}
+                hashTags={data?.tags}
+                logo={data?.logo}
+                icons={data?.chains}
+                likes={data?.likes}
+                followers={data?.followers}
+                apy={data?.apy}
+                Seller={data?.Seller}
+              />
+            );
+          })}
         </motion.div>
 
         {hasMore && (
@@ -136,12 +164,21 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
             className="mt-4 w-fit cursor-pointer px-2 text-[13px] font-[500] text-[#434343] transition-all duration-100 hover:underline hover:underline-offset-1"
-            onClick={() =>
+            onClick={() => {
+
+              setExpandingCategories(prev => ({ ...prev, [title]: true }));
+
+
               setVisibleCounts(prev => ({
                 ...prev,
                 [title]: (prev[title] ?? (collapsed ? 4 : 3)) + 4
-              }))
-            }
+              }));
+
+
+              setTimeout(() => {
+                setExpandingCategories(prev => ({ ...prev, [title]: false }));
+              }, 1500);
+            }}
             aria-label={`View more models in ${title}`}
           >
             View More
