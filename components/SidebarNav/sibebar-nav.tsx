@@ -753,7 +753,7 @@ const NavContainer = React.forwardRef<
     
       <aside
         className={cn(
-          'duration-plico sticky top-20 flex h-[calc(100svh-5rem)] shrink-0 flex-col px-0 justify-between  bg-[#1C1E2A] text-card-foreground transition-[width] delay-300 duration-500 ease-in-out max-hdplus:top-16',
+          'duration-plico sticky top-20 flex h-[calc(100svh-8.5rem)] shrink-0 flex-col px-0 justify-between  bg-[#1C1E2A] text-card-foreground transition-[width] delay-300 duration-500 ease-in-out max-hdplus:top-16',
           collapsed ? 'w-14' : 'w-64 max-hdplus:w-52',
           demoMode && 'top-24 max-hdplus:top-20',
           className
