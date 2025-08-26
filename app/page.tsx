@@ -98,9 +98,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between lg:justify-start   items-center w-full 2xl:w-[100%]  3xl:w-[60%] pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between lg:justify-start   items-center w-full 2xl:w-[90%]  3xl:w-[60%] pb-10">
           <div className="flex justify-start items-center border-gray-300 pb-6   border-b-2 lg:border-b-0 lg:border-r-2  ">
-            <div className="flex justify-between lg:pr-4 lg:place-items-center gap-2 w-full   lg:gap-6">
+            <div className="flex justify-between lg:justify-start lg:pr-4 lg:place-items-center gap-2 w-full   lg:gap-6">
               <div>
                 <ChartContainer
                   config={{
