@@ -49,6 +49,28 @@
       "memoryTotal": 16,
       "diskUsage": 24.71,
       "diskTotal": 313
+    },
+       {
+      "id": "3",
+      "name": "XNode DVM1",
+      "address": "xyz26et...0Bghyjkuhn05",
+      "stakingRevenue": "$567.96",
+      "cpuUsage": 83,
+      "memoryUsage": 2.62,
+      "memoryTotal": 16,
+      "diskUsage": 24.71,
+      "diskTotal": 313
+    },
+       {
+      "id": "4",
+      "name": "XNode DVM1",
+      "address": "xyz26et...0Bghyjkuhn05",
+      "stakingRevenue": "$567.96",
+      "cpuUsage": 83,
+      "memoryUsage": 2.62,
+      "memoryTotal": 16,
+      "diskUsage": 24.71,
+      "diskTotal": 313
     }
   ]
 }
