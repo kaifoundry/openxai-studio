@@ -19,28 +19,28 @@ interface cardProps {
     delay: number
 }
 
-const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
+const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
     const router = useRouter();
-    
+
     const handleClick = () => {
         router.push(`/app-store/${id}`);
     };
 
     return (
-        <motion.div  
-        initial={{ opacity: 0,  y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration:0.6,ease: [0.25, 0.1, 0.25, 1],delay:delay }}
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.15, ease: [0.25, 0.1, 0.25, 1], delay: delay }}
             viewport={{ once: true }}
             className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                         perspective-1000"
             style={{ transformStyle: 'preserve-3d' }}
             onClick={handleClick}
         >
-            
+
             <div className="transform-style-preserve-3d group transition-all duration-500 ease-in-out 
                            hover:rotate-x-[10deg] hover:rotate-y-[10deg] hover:translate-z-10">
-                
+
                 <div className="relative rounded-xl">
                     <div
                         className="absolute inset-0 z-0 h-[245px] w-full p-2 opacity-50 3xl:h-[275px]"
@@ -50,23 +50,23 @@ const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, S
                             backgroundPosition: 'center',
                             filter: 'blur(40px)',
                             transform: 'scale(0.8)',
-                        }}  
+                        }}
                     />
                     <div className='overflow-hidden rounded-xl'>
-                    <Image
-                        src={image || ''}
-                        alt="title"
-                        width={390}
-                        height={235}
-                        priority={true}
-                        blurDataURL={image}
-                        className="transition-transform  duration-1000 group-hover:scale-105 relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
-                    />
+                        <Image
+                            src={image || ''}
+                            alt="title"
+                            width={390}
+                            height={235}
+                            priority={true}
+                            blurDataURL={image}
+                            className="transition-transform  duration-1000 group-hover:scale-105 relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
+                        />
                     </div>
-                    
+
                 </div>
 
-                
+
                 <div className="transform-style-preserve-3d">
                     <div className='flex justify-between px-4 pt-4 pb-2'>
                         <div className='flex flex-col gap-0'>
@@ -88,7 +88,7 @@ const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, S
                                     height={36}
                                 />
                             )}
-                        </div>    
+                        </div>
                     </div>
 
                     <div className='flex items-center gap-0 px-2 pt-1 pb-2 lg:pb-0'>
@@ -108,7 +108,7 @@ const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, S
                     <div className='flex items-center justify-between px-1 pb-2 2xl:pt-4 3xl:pt-8'>
                         <div className='flex items-center gap-[2vw]'>
                             <div className='flex items-center gap-1'>
-                            `   <Image
+                                `   <Image
                                     src='/images/appStore/svg/likes.svg'
                                     alt='likes'
                                     width={19}
@@ -116,7 +116,7 @@ const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, S
                                     className='h-[17px] w-[19px]'
                                 />
                                 <div className='text-[14px] font-[500] text-[#1C1C1C]'>{likes}</div>
-                               
+
                             </div>
                             <div className='flex items-center gap-0'>
                                 <Image
@@ -127,7 +127,7 @@ const Card = ({ id, image,title, hashTags, logo, icons, likes, followers, apy, S
                                     className='h-[17px] w-[25px]'
                                 />
                                 <div className='text-[14px] font-[500] text-[#1C1C1C]'>{followers}</div>
-                                
+
                             </div>
                         </div>
                         <div className='flex items-center gap-2 md:gap-1 xl:gap-1 2xl:gap-2 3xl:gap-2'>

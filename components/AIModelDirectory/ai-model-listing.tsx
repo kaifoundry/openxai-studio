@@ -10,8 +10,9 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0.4,
-      staggerChildren: 0.15,  
+      delayChildren: 0, // No delay for container
+      staggerChildren: 0.02, // Very minimal stagger
+      duration: 0.2, // Faster overall transition
     },
   },
 };
@@ -55,7 +56,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
       return matchChain && matchCategory && item.category === category;
     });
   };
- 
+
   const renderCards = (title: string, models: any[], showAll: boolean = false) => {
     const getVisibleCount = () => {
       if (typeof window !== 'undefined') {
@@ -63,39 +64,41 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
         if (width >= 1920) {
           return 4;
         } else if (width >= 1000 && width <= 1300) {
-          return 3; 
-        }else if (width >= 768 && width < 1000) {
-          return 2; 
+          return 3;
+        } else if (width >= 768 && width < 1000) {
+          return 2;
         }
       }
       return collapsed ? 4 : 3;
     };
-    
+
     const visibleCount = visibleCounts[title] ?? getVisibleCount();
     const visibleModels = showAll ? models : models.slice(0, visibleCount);
     const hasMore = !showAll && visibleCount < models.length;
 
-    if(models.length === 0) return null
+    if (models.length === 0) return null
 
     return (
       <div key={title} className="hide-scrollbar mb-6 lg:mb-0 flex flex-col overflow">
         <motion.div
-        layout 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8,}}
-        viewport={{ once: true }}
-        className="hide-scrollbar mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
+          layout
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, }}
+          viewport={{ once: true }}
+          className="hide-scrollbar mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
           {title} ({models?.length})
         </motion.div>
 
         <motion.div
-        layout
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+          layout
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          key={`${title}-${visibleCounts[title] ?? getVisibleCount()}`}
+          layoutId={`grid-${title}`}
           className={`
-            grid grid-cols-1 gap-4 transition-all duration-800 delay-700
+            grid grid-cols-1 gap-4 transition-all duration-150 ease-out
             md:grid-cols-2
             3xl:gap-8
             ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'}
@@ -104,12 +107,12 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
             3xl:grid-cols-4
           `}
         >
-          {visibleModels.map((data: any,index) => (
-            
-              <Card
+          {visibleModels.map((data: any, index) => (
+
+            <Card
               key={data?.id}
               id={data?.id}
-              delay={0.3 * index }
+              delay={0.02 * index} // Very minimal delay to prevent white space
               image={data?.image}
               title={data?.name}
               hashTags={data?.tags}
@@ -120,18 +123,18 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
               apy={data?.apy}
               Seller={data?.Seller}
             />
-           
-            
+
+
           ))}
         </motion.div>
 
         {hasMore && (
           <motion.div
-          layout
-          initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        viewport={{ once: true }}
+            layout
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true }}
             className="mt-4 w-fit cursor-pointer px-2 text-[13px] font-[500] text-[#434343] transition-all duration-100 hover:underline hover:underline-offset-1"
             onClick={() =>
               setVisibleCounts(prev => ({
@@ -164,16 +167,16 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
   if ((selectedCategories.length > 0 || selectedChains.length > 0) && allMatchingModels.length === 0) {
     return (
       <div className='flex w h-[400px] items-center justify-center '>
-        <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1,delay:0.8 }}
-        viewport={{ once: true }}
-        className='flex flex-col items-center  justify-center text-gray-400'>
-          <Image src="/images/no-data-6.png" alt="" width={150} height={150}/>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          viewport={{ once: true }}
+          className='flex flex-col items-center  justify-center text-gray-400'>
+          <Image src="/images/no-data-6.png" alt="" width={150} height={150} />
           <div>No Apps Found</div>
         </motion.div>
-        
+
       </div>
     );
   }
@@ -186,7 +189,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     const categoriesToShow = selectedCategories.length > 0
       ? selectedCategories
       : matchingCategories;
-  
+
     return (
       <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20 hide-scrollbar overflow-y-hidden">
         {categoriesToShow.map(category => {
