@@ -208,8 +208,8 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
     <div className="dropdown-container relative">
       <motion.div
         ref={triggerRef}
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: UI_CONSTANTS.ANIMATION_DELAY }}
         viewport={{ once: true }}
         className={`relative flex cursor-pointer justify-between gap-4 rounded-xl px-4 py-2  ${isOpen ? 'border-[2px] border-blue-700' : 'border border-[#B8B8B8]'
@@ -322,7 +322,7 @@ const CategoryTag: React.FC<{
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
       viewport={{ once: true }}
@@ -376,7 +376,7 @@ const ChainIcon: React.FC<{
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
       viewport={{ once: true }}
@@ -535,8 +535,8 @@ const Filter: React.FC<CategoryChainProps> = ({
         <div className="flex max-w-[80%] flex-col gap-4">
           <div className="flex items-center gap-10 md:h-6 xl:h-6 2xl:h-10 3xl:h-10">
             <motion.h2
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: UI_CONSTANTS.ANIMATION_DELAY }}
               viewport={{ once: true }}
               className="font-[700] text-[#1F1F1F] md:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px]"
@@ -544,8 +544,8 @@ const Filter: React.FC<CategoryChainProps> = ({
               By Categories
             </motion.h2>
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: UI_CONSTANTS.ANIMATION_DELAY }}
               viewport={{ once: true }}
               className="font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px]"
@@ -568,7 +568,7 @@ const Filter: React.FC<CategoryChainProps> = ({
 
             {showMoreAvailable && (
               <motion.button
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 1 }}
                 viewport={{ once: true }}
@@ -584,8 +584,8 @@ const Filter: React.FC<CategoryChainProps> = ({
 
         <div className="mt-10 flex flex-col gap-6 md:mt-0">
           <motion.h2
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: UI_CONSTANTS.ANIMATION_DELAY }}
             viewport={{ once: true }}
             className="font-[700] text-[#1F1F1F] md:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px]"
@@ -594,7 +594,7 @@ const Filter: React.FC<CategoryChainProps> = ({
           </motion.h2>
 
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 }}
             viewport={{ once: true }}
