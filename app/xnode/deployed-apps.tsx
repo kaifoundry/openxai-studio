@@ -123,7 +123,7 @@ const DeployedApps = ({ services, xNode, setDeleteServiceOpen }: DeployedAppsPro
         </motion.button>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 py-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8  py-4 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-4">
         {services?.map((service,i) => {
           const servicePort = service.options
             ?.flatMap((o) => {

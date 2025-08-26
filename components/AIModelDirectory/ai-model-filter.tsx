@@ -1,10 +1,12 @@
 'use client'
-import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
+
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Poppins } from 'next/font/google'
 import Image from 'next/image'
 import { ChainData, tagsData } from '@/utils/constants'
+import { motion } from 'framer-motion'
 import { ChevronDown, Search, X } from 'lucide-react'
-import { motion } from "framer-motion";
+
 import ModelDefinitions from '../../utils/model-definitions.json'
 import { Input } from '../ui/input'
 
@@ -15,33 +17,33 @@ const poppins = Poppins({
   display: 'swap',
 })
 
-
-
 const UI_CONSTANTS = {
   INITIAL_VISIBLE_COUNT: 6,
   INCREMENT_COUNT: 2,
   DROPDOWN_WIDTH: 250,
   DROPDOWN_MAX_HEIGHT: 400,
   CHAIN_DROPDOWN_MAX_HEIGHT: 200,
-  ANIMATION_DURATION: 0.8,
+  ANIMATION_DURATION: 0.5,
   ANIMATION_DELAY: 0.3,
 }
 
 const DROPDOWN_CLASSES = {
-  container: 'absolute z-50 overflow-y-auto rounded-lg bg-white transition-all delay-300 duration-500 ease-in-out hide-scrollbar',
-  searchContainer: 'flex items-center gap-2 border-b border-[#EBEBEB] px-4 py-3',
+  container:
+    'absolute z-50 overflow-y-auto rounded-lg bg-white transition-all delay-300 duration-500 ease-in-out hide-scrollbar',
+  searchContainer:
+    'flex items-center gap-2 border-b border-[#EBEBEB] px-4 py-3',
   item: 'flex items-center gap-6 px-4 py-2',
-  checkbox: 'size-6 appearance-none rounded-md border bg-white transition duration-200',
-  checkedCheckbox: 'border-gray-600 checked:border-blue-500 checked:bg-white checked:bg-[url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA3OGZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDZsLTExIDEyLTUtNSIvPjwvc3ZnPg==")] checked:bg-[length:14px_14px] checked:bg-center checked:bg-no-repeat',
+  checkbox:
+    'size-6 appearance-none rounded-md border bg-white transition duration-200',
+  checkedCheckbox:
+    'border-gray-600 checked:border-blue-500 checked:bg-white checked:bg-[url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA3OGZmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDZsLTExIDEyLTUtNSIvPjwvc3ZnPg==")] checked:bg-[length:14px_14px] checked:bg-center checked:bg-no-repeat',
   uncheckedCheckbox: 'border-gray-400',
 }
 
-
-
 interface FilterItem {
-  label?: string;
-  name?: string;
-  icon: string;
+  label?: string
+  name?: string
+  icon: string
 }
 
 interface CategoryChainProps {
@@ -85,7 +87,6 @@ interface AccessibleDropdownProps {
   position?: 'left' | 'right'
 }
 
-
 const formatIndNumber = (num: number): string => {
   return num.toLocaleString('en-IN', {
     minimumFractionDigits: 0,
@@ -97,12 +98,11 @@ const getItemKey = (item: FilterItem): string => {
   return item.label || item.name || ''
 }
 
-
 const DropdownSearch: React.FC<DropdownSearchProps> = ({
   value,
   onChange,
   placeholder,
-  'aria-label': ariaLabel
+  'aria-label': ariaLabel,
 }) => (
   <div className={DROPDOWN_CLASSES.searchContainer}>
     <Search className="text-[#8F8F8F]" aria-hidden="true" />
@@ -121,20 +121,22 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
   item,
   isSelected,
   onToggle,
-  keyPrefix
+  keyPrefix,
 }) => {
   const itemKey = getItemKey(item)
   const handleClick = useCallback(() => {
-
     onToggle(itemKey)
   }, [onToggle, itemKey])
 
-  const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      onToggle(itemKey)
-    }
-  }, [onToggle, itemKey])
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        onToggle(itemKey)
+      }
+    },
+    [onToggle, itemKey]
+  )
 
   return (
     <div
@@ -154,7 +156,10 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
         aria-hidden="true"
         tabIndex={-1}
       />
-      <div className="text-[18px] text-[#525252]" id={`${keyPrefix}-${itemKey}-desc`}>
+      <div
+        className="text-[18px] text-[#525252]"
+        id={`${keyPrefix}-${itemKey}-desc`}
+      >
         {itemKey}
       </div>
     </div>
@@ -175,34 +180,41 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
   onItemToggle,
   dropdownId,
   maxHeight,
-  position = 'left'
+  position = 'left',
 }) => {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLDivElement>(null)
 
-  const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      onToggle()
-      triggerRef.current?.focus()
-    } else if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      onToggle()
-    }
-  }, [onToggle])
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onToggle()
+        triggerRef.current?.focus()
+      } else if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        onToggle()
+      }
+    },
+    [onToggle]
+  )
 
-  const handleClearClick = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation()
-    onClear()
-  }, [onClear])
+  const handleClearClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation()
+      onClear()
+    },
+    [onClear]
+  )
 
   useEffect(() => {
     if (isOpen && dropdownRef.current) {
       dropdownRef.current.scrollTop = 0
-      const firstFocusableElement = dropdownRef.current.querySelector('[tabindex="0"]') as HTMLElement
+      const firstFocusableElement = dropdownRef.current.querySelector(
+        '[tabindex="0"]'
+      ) as HTMLElement
       firstFocusableElement?.focus({ preventScroll: true })
     }
   }, [isOpen])
-
 
   return (
     <div className="dropdown-container relative">
@@ -210,10 +222,14 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
         ref={triggerRef}
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: UI_CONSTANTS.ANIMATION_DELAY }}
+        transition={{
+          duration: UI_CONSTANTS.ANIMATION_DURATION,
+          delay: UI_CONSTANTS.ANIMATION_DELAY,
+        }}
         viewport={{ once: true }}
-        className={`relative flex cursor-pointer justify-between gap-4 rounded-xl px-4 py-2  ${isOpen ? 'border-[2px] border-blue-700' : 'border border-[#B8B8B8]'
-          }`}
+        className={`relative flex cursor-pointer justify-between gap-4 rounded-xl px-4 py-2 ${
+          isOpen ? 'border-[2px] border-blue-700' : 'border border-[#B8B8B8]'
+        }`}
         onClick={onToggle}
         onKeyDown={handleKeyDown}
         role="combobox"
@@ -224,12 +240,10 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
         tabIndex={0}
       >
         <div className="flex items-center gap-2">
-          <div className="text-[16px] font-[500] text-[#525252]">
-            {title}
-          </div>
+          <div className="text-[16px] font-[500] text-[#525252]">{title}</div>
           {selectedCount > 0 && (
             <div
-              className="flex items-center justify-center rounded-full bg-blue-500 text-white font-[500] size-6 text-sm"
+              className="flex size-6 items-center justify-center rounded-full bg-blue-500 text-sm font-[500] text-white"
               aria-label={`${selectedCount} selected`}
             >
               {selectedCount}
@@ -238,17 +252,18 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
         </div>
         {selectedCount > 0 ? (
           <button
-            className="flex items-center justify-center focus:outline-none focus:ring-0 focus:ring-transparent focus:ring-inset rounded"
+            className="flex items-center justify-center rounded focus:outline-none focus:ring-0 focus:ring-inset focus:ring-transparent"
             onClick={handleClearClick}
             aria-label={`Clear all ${title.toLowerCase()} selections`}
             tabIndex={0}
           >
-            <X className="size-4 text-blue-500 font-[800] cursor-pointer" />
+            <X className="size-4 cursor-pointer font-[800] text-blue-500" />
           </button>
         ) : (
           <ChevronDown
-            className={`cursor-pointer text-[#525252] transition-all delay-200 duration-500 ease-in-out ${isOpen ? 'rotate-180' : 'rotate-0'
-              }`}
+            className={`cursor-pointer text-[#525252] transition-all delay-200 duration-500 ease-in-out ${
+              isOpen ? 'rotate-180' : 'rotate-0'
+            }`}
             aria-hidden="true"
           />
         )}
@@ -259,12 +274,14 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
         id={dropdownId}
         role="listbox"
         aria-label={`Select ${title}`}
-        className={`${DROPDOWN_CLASSES.container} w-[${UI_CONSTANTS.DROPDOWN_WIDTH}px] ${position === 'right' ? '-right-0' : ''
-          } top-14 ${isOpen ? `max-h-[${maxHeight}px] opacity-100` : 'max-h-0 opacity-0'
-          }`}
+        className={`${DROPDOWN_CLASSES.container} w-[${UI_CONSTANTS.DROPDOWN_WIDTH}px] ${
+          position === 'right' ? '-right-0' : ''
+        } top-14 ${
+          isOpen ? `max-h-[${maxHeight}px] opacity-100` : 'max-h-0 opacity-0'
+        }`}
         style={{
           boxShadow: 'rgba(17, 17, 26, 0.1) 0px 0px 16px',
-          width: UI_CONSTANTS.DROPDOWN_WIDTH
+          width: UI_CONSTANTS.DROPDOWN_WIDTH,
         }}
         aria-hidden={!isOpen}
       >
@@ -304,33 +321,40 @@ const AccessibleDropdown: React.FC<AccessibleDropdownProps> = ({
 }
 
 const CategoryTag: React.FC<{
-  tag: FilterItem;
-  isSelected: boolean;
-  onToggle: (label: string) => void;
-  index: number;
+  tag: FilterItem
+  isSelected: boolean
+  onToggle: (label: string) => void
+  index: number
 }> = ({ tag, isSelected, onToggle, index }) => {
   const handleClick = useCallback(() => {
     onToggle(getItemKey(tag))
   }, [tag, onToggle])
 
-  const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      onToggle(getItemKey(tag))
-    }
-  }, [tag, onToggle])
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        onToggle(getItemKey(tag))
+      }
+    },
+    [tag, onToggle]
+  )
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION }}
+      transition={{
+        duration: UI_CONSTANTS.ANIMATION_DURATION,
+        delay: 0.2 * index,
+      }}
       viewport={{ once: true }}
-      whileTap={{ scale: 0.95, transition: { duration: 0.2, delay: 0.04 * index } }}
-      className={`flex cursor-pointer items-center gap-4 rounded-xl bg-[#F6FAFF] px-4 py-3 shadow-sm md:gap-2 md:px-6 xl:gap-2 xl:py-2 2xl:gap-2 2xl:py-2 3xl:gap-2 3xl:py-2  ${isSelected
-        ? 'border border-blue-500 bg-blue-50'
-        : 'border border-transparent bg-[#F6FAFF]'
-        }`}
+      whileTap={{ scale: 0.95, transition: { duration: 0.2, delay: 0 } }}
+      className={`flex cursor-pointer items-center gap-4 rounded-xl bg-[#F6FAFF] px-4 py-3 shadow-sm md:gap-2 md:px-6 xl:gap-2 xl:py-2 2xl:gap-2 2xl:py-2 3xl:gap-2 3xl:py-2 ${
+        isSelected
+          ? 'border border-blue-500 bg-blue-50'
+          : 'border border-transparent bg-[#F6FAFF]'
+      }`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
@@ -358,30 +382,37 @@ const CategoryTag: React.FC<{
 }
 
 const ChainIcon: React.FC<{
-  chain: FilterItem;
-  isSelected: boolean;
-  onToggle: (name: string) => void;
-  index: number;
+  chain: FilterItem
+  isSelected: boolean
+  onToggle: (name: string) => void
+  index: number
 }> = ({ chain, isSelected, onToggle, index }) => {
   const handleClick = useCallback(() => {
     onToggle(getItemKey(chain))
   }, [chain, onToggle])
 
-  const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      onToggle(getItemKey(chain))
-    }
-  }, [chain, onToggle])
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        onToggle(getItemKey(chain))
+      }
+    },
+    [chain, onToggle]
+  )
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
+      transition={{
+        duration: UI_CONSTANTS.ANIMATION_DURATION,
+        delay: index ,
+      }}
       viewport={{ once: true }}
-      className={`flex cursor-pointer items-center justify-between rounded-lg bg-[#F6F9FF] border border-[#EBF2FF]   md:py-1 md:px-3  xl:py-1 xl:px-3 2xl:py-1 2xl:px-3 3xl:py-3 3xl:px-4  ${isSelected ? 'border border-blue-500' : 'border border-transparent'
-        }`}
+      className={`flex cursor-pointer items-center justify-between rounded-lg border border-[#EBF2FF] bg-[#F6F9FF] md:px-3 md:py-1 xl:px-3 xl:py-1 2xl:px-3 2xl:py-1 3xl:px-4 3xl:py-3 ${
+        isSelected ? 'border border-blue-500' : 'border border-transparent'
+      }`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
@@ -389,17 +420,16 @@ const ChainIcon: React.FC<{
       aria-pressed={isSelected}
       aria-label={`${isSelected ? 'Remove' : 'Add'} ${getItemKey(chain)} chain filter`}
     >
-      <div className=' bg-[#FFFFFF] rounded-full p-1'>
-      <Image
-        src={chain.icon}
-        width={25}
-        height={25}
-        alt=""
-        className="md:size-[20px] xl:size-[20px] 2xl:size-[30px] 3xl:size-[25px]"
-        aria-hidden="true"
-      />
+      <div className="rounded-full bg-[#FFFFFF] p-1">
+        <Image
+          src={chain.icon}
+          width={25}
+          height={25}
+          alt=""
+          className="md:size-[20px] xl:size-[20px] 2xl:size-[30px] 3xl:size-[25px]"
+          aria-hidden="true"
+        />
       </div>
-      
     </motion.div>
   )
 }
@@ -410,18 +440,22 @@ const Filter: React.FC<CategoryChainProps> = ({
   onToggleChain,
   onToggleCategory,
   onClearCategories,
-  onClearChain
+  onClearChain,
 }) => {
-
-  const [visibleCount, setVisibleCount] = useState(UI_CONSTANTS.INITIAL_VISIBLE_COUNT)
+  const [visibleCount, setVisibleCount] = useState(
+    UI_CONSTANTS.INITIAL_VISIBLE_COUNT
+  )
   const [isOpenCategory, setIsOpenCategory] = useState(false)
   const [isOpenChain, setIsOpenChain] = useState(false)
   const [categorySearch, setCategorySearch] = useState('')
   const [chainSearch, setChainSearch] = useState('')
-
+  const [lastVisibleCount, setLastVisibleCount] = useState(UI_CONSTANTS.INITIAL_VISIBLE_COUNT)
   const handleShowMore = useCallback(() => {
-    setVisibleCount((prev) => Math.min(prev + UI_CONSTANTS.INCREMENT_COUNT, tagsData.length))
-  }, [])
+    setLastVisibleCount(visibleCount)
+    setVisibleCount((prev) =>
+      Math.min(prev + UI_CONSTANTS.INCREMENT_COUNT, tagsData.length)
+    )
+  }, [visibleCount])
 
   const handleToggleCategory = useCallback(() => {
     setIsOpenChain(false)
@@ -433,51 +467,57 @@ const Filter: React.FC<CategoryChainProps> = ({
     setIsOpenChain(!isOpenChain)
   }, [isOpenChain])
 
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Element;
-      if (!target) return;
+      const target = event.target as Element
+      if (!target) return
 
-      const dropdownContainer = target.closest(".dropdown-container");
-      if (dropdownContainer) return;
+      const dropdownContainer = target.closest('.dropdown-container')
+      if (dropdownContainer) return
 
-      const dropdownItem = target.closest('[role="option"]');
-      if (dropdownItem) return;
+      const dropdownItem = target.closest('[role="option"]')
+      if (dropdownItem) return
 
       setIsOpenCategory(false)
       setIsOpenChain(false)
-    };
+    }
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
-
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [])
 
   const filteredTags = useMemo(() => {
-    return tagsData.filter(tag =>
+    return tagsData.filter((tag) =>
       tag.label.toLowerCase().includes(categorySearch.toLowerCase())
-    );
-  }, [categorySearch]);
+    )
+  }, [categorySearch])
 
   const filteredChains = useMemo(() => {
-    return ChainData.filter(chain =>
+    return ChainData.filter((chain) =>
       chain.name.toLowerCase().includes(chainSearch.toLowerCase())
-    );
-  }, [chainSearch]);
+    )
+  }, [chainSearch])
 
   const { selected: selectedTags, unselected: unselectedTags } = useMemo(() => {
-    const selected = filteredTags.filter(tag => selectedCategories.includes(tag.label));
-    const unselected = filteredTags.filter(tag => !selectedCategories.includes(tag.label));
-    return { selected, unselected };
-  }, [filteredTags, selectedCategories]);
+    const selected = filteredTags.filter((tag) =>
+      selectedCategories.includes(tag.label)
+    )
+    const unselected = filteredTags.filter(
+      (tag) => !selectedCategories.includes(tag.label)
+    )
+    return { selected, unselected }
+  }, [filteredTags, selectedCategories])
 
-  const { selected: selectedChain, unselected: unselectedChain } = useMemo(() => {
-    const selected = filteredChains.filter(chain => selectedChains.includes(chain.name));
-    const unselected = filteredChains.filter(chain => !selectedChains.includes(chain.name));
-    return { selected, unselected };
-  }, [filteredChains, selectedChains]);
-
+  const { selected: selectedChain, unselected: unselectedChain } =
+    useMemo(() => {
+      const selected = filteredChains.filter((chain) =>
+        selectedChains.includes(chain.name)
+      )
+      const unselected = filteredChains.filter(
+        (chain) => !selectedChains.includes(chain.name)
+      )
+      return { selected, unselected }
+    }, [filteredChains, selectedChains])
 
   const showMoreAvailable = visibleCount < tagsData.length
   const modelCount = ModelDefinitions?.length || 0
@@ -492,8 +532,7 @@ const Filter: React.FC<CategoryChainProps> = ({
 
   return (
     <div>
-
-      <div className="my-4 flex gap-4 lg:hidden pb-4 lg:pb-0">
+      <div className="my-4 flex gap-4 pb-4 lg:hidden lg:pb-0">
         <AccessibleDropdown
           isOpen={isOpenCategory}
           onToggle={handleToggleCategory}
@@ -530,14 +569,16 @@ const Filter: React.FC<CategoryChainProps> = ({
         />
       </div>
 
-
       <div className="my-14 hidden flex-col justify-between md:flex-row lg:flex">
         <div className="flex max-w-[80%] flex-col gap-4">
           <div className="flex items-center gap-10 md:h-6 xl:h-6 2xl:h-10 3xl:h-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: UI_CONSTANTS.ANIMATION_DELAY }}
+              transition={{
+                duration: UI_CONSTANTS.ANIMATION_DURATION,
+                delay: UI_CONSTANTS.ANIMATION_DELAY,
+              }}
               viewport={{ once: true }}
               className="font-[700] text-[#1F1F1F] md:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px]"
             >
@@ -546,7 +587,10 @@ const Filter: React.FC<CategoryChainProps> = ({
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: UI_CONSTANTS.ANIMATION_DELAY }}
+              transition={{
+                duration: UI_CONSTANTS.ANIMATION_DURATION,
+                delay: UI_CONSTANTS.ANIMATION_DELAY,
+              }}
               viewport={{ once: true }}
               className="font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px]"
               aria-live="polite"
@@ -555,25 +599,41 @@ const Filter: React.FC<CategoryChainProps> = ({
             </motion.div>
           </div>
 
-          <div className="flex flex-wrap gap-4 md:flex-row md:gap-2 xl:gap-4 2xl:gap-4 3xl:gap-8" role="group" aria-label="Category filters">
-            {tagsData.slice(0, visibleCount).map((tag, index) => (
-              <CategoryTag
-                key={tag.label}
-                tag={tag}
-                isSelected={selectedCategories.includes(tag.label)}
-                onToggle={onToggleCategory}
-                index={index}
-              />
-            ))}
+          <div
+            className="flex flex-wrap gap-4 md:flex-row md:gap-2 xl:gap-4 2xl:gap-4 3xl:gap-8"
+            role="group"
+            aria-label="Category filters"
+          >
+            {tagsData.slice(0, visibleCount).map((tag, index) => {
+              const delayIndex =
+                index >= lastVisibleCount
+                  ? index - lastVisibleCount
+                  : index < 6
+                    ? index
+                    : 0
+
+              return (
+                <CategoryTag
+                  key={tag.label}
+                  tag={tag}
+                  isSelected={selectedCategories.includes(tag.label)}
+                  onToggle={onToggleCategory}
+                  index={delayIndex}
+                />
+              )
+            })}
 
             {showMoreAvailable && (
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 1 }}
+                transition={{
+                  duration: UI_CONSTANTS.ANIMATION_DURATION,
+                  delay: 1.4,
+                }}
                 viewport={{ once: true }}
                 onClick={handleShowMore}
-                className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px]  rounded px-2 py-1"
+                className="cursor-pointer self-center rounded px-2 py-1 font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px]"
                 aria-label={`Show ${Math.min(UI_CONSTANTS.INCREMENT_COUNT, tagsData.length - visibleCount)} more categories`}
               >
                 More..
@@ -586,7 +646,10 @@ const Filter: React.FC<CategoryChainProps> = ({
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: UI_CONSTANTS.ANIMATION_DELAY }}
+            transition={{
+              duration: UI_CONSTANTS.ANIMATION_DURATION,
+              delay: 1.5,
+            }}
             viewport={{ once: true }}
             className="font-[700] text-[#1F1F1F] md:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px]"
           >
@@ -596,21 +659,26 @@ const Filter: React.FC<CategoryChainProps> = ({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 }}
+            transition={{
+              duration: UI_CONSTANTS.ANIMATION_DURATION,
+              delay: 0.2,
+            }}
             viewport={{ once: true }}
-            className="flex gap-4 rounded-xl justify-around p-2 px-3 ] md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2"
+            className="] flex justify-around gap-4 rounded-xl p-2 px-3 md:gap-2 md:py-1 xl:gap-4 xl:py-2 2xl:gap-4 2xl:py-2 3xl:gap-10 3xl:py-2"
             role="group"
             aria-label="Chain filters"
           >
-            {ChainData.map((chain, index) => (
+            {ChainData.map((chain, index) => {
+              const delayIndex = index === 0? 0.2 * lastVisibleCount : 0.3* lastVisibleCount;
+              return(
               <ChainIcon
                 key={chain.name}
                 chain={chain}
                 isSelected={selectedChains.includes(chain.name)}
                 onToggle={onToggleChain}
-                index={index}
-              />
-            ))}
+                index={delayIndex}
+              />)
+            })}
           </motion.div>
         </div>
       </div>
