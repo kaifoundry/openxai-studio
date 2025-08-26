@@ -23,14 +23,14 @@ export const useNavContext = () => useContext(NavContext)
 export const NavProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true)
 
-  // Load collapsed state from local storage
+ 
   useEffect(() => {
     const stored = localStorage.getItem('nav-collapsed')
     if (stored === 'true') setCollapsed(true)
   }, [])
 
   const toggleCollapsed = (newCollapsed: boolean) => {
-    console.log("Calling toggleCollapsed:", newCollapsed)
+    
     setCollapsed(newCollapsed)
     localStorage.setItem('nav-collapsed', String(newCollapsed))
   
