@@ -1,157 +1,230 @@
+
 'use client'
 
+import { useMemo } from 'react'
 import Link from 'next/link'
-import { Blocks, Cloud, IdCard, Server } from 'lucide-react'
+import { ArrowRight, Earth, Rocket, Triangle } from 'lucide-react'
+import {
+  Label,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
+} from 'recharts'
 import { motion } from 'framer-motion'
-import { SimpleTooltip } from '@/components/Common/SimpleTooltip'
-import YouTube from 'react-youtube'
+
+import { ChartContainer } from '@/components/ui/chart'
 
 export default function Home() {
+  const { data: activeDeployments } = { data: 22652 * 0.67 }
+  const { data: deploymentStock } = { data: 22652 * (1 - 0.67) }
+  const { data: dailyDeployments } = {
+    data: Array.from({ length: 30 }).map((_) =>
+      Math.round(Math.random() * 100)
+    ),
+  }
+  const maxDailyDeploymentCount = useMemo(() => {
+    return Math.max(...dailyDeployments)
+  }, [dailyDeployments])
+
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
+      className="grid size-full grid-cols-1 lg:grid-cols-[3fr_1fr]  "
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <section className="pb-12 lg:pt-24 mt-14 lg:mt-0 w-full">
-        <div className="flex gap-12 lg:gap-0 xl:gap-0 2xl:gap-12 flex-col items-center px-4 md:px-6 xl:px-6 2xl:px-12 justify-between md:flex-row">
-
-          <div className="w-full text-left xl:w-3/5">
-
-            <motion.h1
-              className="text-[43px] leading-snug xl:leading-tight font-bold md:text-[30px] lg:text-[4vw] xl:text-[65px]"
-              initial={{ y: 60, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+      <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8 md:gap-24 md:px-12 lg:gap-24 lg:px-16">
+        <div className="mt-8 sm:mt-16 lg:mt-24 ">
+          <h1 className=" text-4xl  text-balance leading-tight font-semibold    lg:text-5xl xl:text-7xl  ">
+            Build and deploy AI agents in 5 minutes
+          </h1>
+          <div className="mt-6 flex flex-row gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4 lg:mt-12">
+            <Link
+              href="/app-store"
+              className="flex h-12 items-center justify-center rounded-full bg-primary px-8 text-lg font-medium text-background transition-colors hover:bg-primary/90 sm:h-14 sm:px-10 lg:px-12 lg:text-xl"
             >
-              Build AI applications <span>& agents in lightning</span> speed.
-            </motion.h1>
-
-            <motion.p
-              className="text-lg mt-4 font-medium md:text-xl lg:text-[2vw] xl:text-3xl"
-              initial={{ y: 60, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
+              Build Now
+            </Link>
+            <Link
+              href="https://docs.openxai.org"
+              target="_blank"
+              className="flex h-12 items-center justify-center gap-2 rounded-lg px-4 font-medium text-blue-600 transition-colors hover:bg-foreground/10 sm:h-14 sm:px-6"
             >
-              You own your model, data & infrastructure
-            </motion.p>
-
-            <motion.div
-              className="mt-12 flex flex-row items-center gap-3 justify-start"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: { delayChildren: 0.3, staggerChildren: 0.15 }
-                }
-              }}
-            >
-              <motion.a
-                variants={{
-                  hidden: { y: 60, opacity: 0 },
-                  visible: { y: 0, opacity: 1 }
-                }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                href="/app-store"
-                className="whitespace-nowrap flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl bg-primary px-4 sm:px-8 text-sm font-medium text-background transition-colors hover:bg-primary/90"
-              >
-                Build for Free
-              </motion.a>
-
-              <motion.a
-                variants={{
-                  hidden: { y: 60, opacity: 0 },
-                  visible: { y: 0, opacity: 1 }
-                }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                href="/explore"
-                className="whitespace-nowrap flex h-12 sm:h-14 items-center rounded-lg sm:rounded-xl px-4 sm:px-8 text-sm font-medium underline transition-colors hover:bg-foreground/10"
-              >
-                Earn free server
-              </motion.a>
-            </motion.div>
+              <span>Quick guide</span>
+              <ArrowRight className="size-4" />
+            </Link>
           </div>
-
-          <motion.div
-            className="relative w-full xl:w-2/5 overflow-hidden rounded-xl flex justify-center"
-            initial={{ y: 60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-          >
-            <YouTube
-              videoId="3wy3vgErmrk"
-              className="rounded-xl p-3 bg-foreground/10 w-full md:max-w-[500px] lg:w-[500px] h-[280px]"
-              opts={{
-                width: "100%",
-                height: "100%",
-                playerVars: {
-                  autoplay: 0,
-                  modestbranding: 1,
-                  rel: 0,
-                },
-              }}
-            />
-          </motion.div>
         </div>
-      </section>
 
-      <motion.section
-        className="my-20 pb-10 space-y-4 px-4 md:px-6 lg:px-8"
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.5, ease: "easeOut" }}
-      >
-        <h2 className="text-xl font-bold md:text-2xl">Quick Access</h2>
+        <div className="grid grid-cols-2  lg:grid-cols-4 w-full  lg:w-full 3xl:w-[80%] gap-4 lg:gap-0 py-4 lg:py-0 ">
+          <div className="flex justify-start items-center  border-r-2 border-gray-300 py-2 ">
+            <div className="flex flex-col ">
+              <div className="flex ">
+                <span className="text-2xl font-medium lg:text-3xl 3xl:text-4xl">{'>'}50</span>
+                <span className="text-sm  lg:text-[12px]">K</span>
+              </div>
+              <span className="text-xs font-semibold lg:text-[12px]">Transaction /s</span>
+            </div>
+          </div>
+          <div className="flex justify-center items-center  lg:border-r-2 border-gray-300 py-2   px-5">
+            <div className="flex flex-col   ">
+              <div className="flex  justify-center ">
+                <span className="text-2xl font-medium lg:text-3xl 3xl:text-4xl">600</span>
+                <span className="text-sm  lg:text-[12px]">ms</span>
+              </div>
+              <span className="text-xs font-semibold lg:text-[12px]">Time to Finality (avg)</span>
+            </div>
+          </div>
+          <div className="flex w-full justify-start lg:justify-center    border-gray-300 border-r-2 py-2 lg:px-5">
 
-        <motion.div
-          className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 lg:gap-6"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: {},
-            visible: {
-              transition: { delayChildren: 0.7, staggerChildren: 0.15 },
-            },
-          }}
-        >
-          {[
-            { href: "/claim", icon: <IdCard className="size-8" strokeWidth={1.5} />, label: "Redeem an Xnode DVM" },
-            { href: "/app-store", icon: <Server className="size-8" strokeWidth={1.5} />, label: "About Xnode One" },
-            { href: "/app-store", icon: <Blocks className="size-8" strokeWidth={1.5} />, label: "Run a Node" },
-            { href: "/", icon: <Cloud className="size-8" strokeWidth={1.5} />, label: "Provide Resources", tooltip: "Coming Soon!" }
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              variants={{
-                hidden: { y: 60, opacity: 0 },
-                visible: { y: 0, opacity: 1 },
-              }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            >
-              {item.tooltip ? (
-                <SimpleTooltip tooltip={item.tooltip}>
-                  <Link
-                    href={item.href}
-                    className="flex cursor-default items-center gap-2 rounded border bg-foreground/10 p-4 text-sm font-semibold text-gray-400 transition-colors"
-                  >
-                    {item.icon}
-                    {item.label}
-                  </Link>
-                </SimpleTooltip>
-              ) : (
-                <Link
-                  href={item.href}
-                  className="flex items-center gap-2 rounded-xl border p-4 text-sm font-semibold transition-colors hover:bg-foreground/5"
+            <div className="flex flex-col ">
+              <div className="flex  ">
+                <span className="text-2xl font-medium lg:text-3xl 3xl:text-4xl">{'>'}50</span>
+                <span className="text-sm  lg:text-[12px]">K</span>
+              </div>
+              <span className="text-xs font-semibold lg:text-[12px]">Transaction /s</span>
+            </div>
+          </div>
+          <div className="flex justify-center items-center py-2  px-5">
+            <div className="flex flex-col ">
+              <div className="flex justify-center ">
+                <span className="text-2xl font-medium lg:text-3xl 3xl:text-4xl">600</span>
+                <span className="text-sm  lg:text-[12px]">ms</span>
+              </div>
+              <span className="text-xs font-semibold lg:text-[12px]">Time to Finality (avg)</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between lg:justify-start   items-center w-full 2xl:w-[80%]  3xl:w-[60%] pb-10">
+          <div className="flex justify-start items-center border-gray-300 pb-6   border-b-2 lg:border-b-0 lg:border-r-2  ">
+            <div className="flex justify-between lg:place-items-center gap-2 w-full   lg:gap-6">
+              <div>
+                <ChartContainer
+                  config={{
+                    data: {
+                      color: 'hsl(var(--primary))',
+                    },
+                  }}
+                  className="size-[60px] sm:size-[75px] lg:size-[90px]"
                 >
-                  {item.icon}
-                  {item.label}
-                </Link>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
+                  <RadialBarChart
+                    accessibilityLayer
+                    data={[
+                      {
+                        data: Math.round(
+                          (100 * activeDeployments) /
+                          (activeDeployments + deploymentStock)
+                        ),
+                        fill: 'hsl(var(--primary))',
+                      },
+                    ]}
+                    startAngle={90}
+                    endAngle={-270}
+                    innerRadius={30}
+                    outerRadius={25}
+                  >
+                    <PolarAngleAxis
+                      type="number"
+                      domain={[0, 100]}
+                      angleAxisId={0}
+                      tick={false}
+                    />
+                    <PolarGrid
+                      gridType="circle"
+                      radialLines={false}
+                      stroke="none"
+                      className="first:fill-[#EBF2FF] last:fill-[#FFFFFF]"
+                      polarRadius={[28, 25]}
+                    />
+                    <PolarRadiusAxis
+                      angle={90}
+                      domain={[0, 100]}
+                      tick={false}
+                      axisLine={false}
+                    />
+                    <RadialBar dataKey="data" cornerRadius={2} />
+                    <PolarRadiusAxis
+                      tick={false}
+                      tickLine={false}
+                      axisLine={false}
+                    >
+                      <Label
+                        content={({ viewBox }) => {
+                          if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
+                            return (
+                              <text
+                                x={viewBox.cx}
+                                y={viewBox.cy}
+                                textAnchor="middle"
+                                dominantBaseline="middle"
+                              >
+                                <tspan
+                                  x={viewBox.cx}
+                                  y={viewBox.cy}
+                                  className="fill-foreground font-mono text-lg font-bold sm:text-xl lg:text-2xl"
+                                >
+                                  {(
+                                    (100 * activeDeployments) /
+                                    (activeDeployments + deploymentStock)
+                                  ).toFixed(0)}
+                                  %
+                                </tspan>
+                              </text>
+                            )
+                          }
+                        }}
+                      />
+                    </PolarRadiusAxis>
+                  </RadialBarChart>
+                </ChartContainer>
+              </div>
+              <div className="flex flex-col place-content-center">
+                <span className="text-lg font-semibold sm:text-xl lg:text-2xl">
+                  {(activeDeployments + deploymentStock).toLocaleString(
+                    'en-US'
+                  )}
+                </span>
+                <span className="text-xs text-muted-foreground sm:text-sm">
+                  Network Capacity
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="flex pt-6 lg:pt-0   pl-3 lg:pl-8">
+            <div className="flex justify-between lg:justify-center w-full gap-3 sm:gap-4 lg:gap-6">
+              <div className="grid size-12 grid-cols-3 gap-0.5  lg:size-20">
+                {dailyDeployments.map((deploymentCount, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      backgroundColor: `hsla(219, 100%, 50%, ${(0.1 + 0.9 * (deploymentCount / maxDailyDeploymentCount)).toFixed(2)})`,
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="flex flex-col place-content-center">
+                <div className="flex place-items-center gap-2 text-lg sm:gap-3 sm:text-xl lg:gap-4 lg:text-2xl">
+                  <span className="font-semibold">324</span>
+                  <div className="flex place-items-center gap-1 text-green-600">
+                    <Triangle className="size-3 fill-green-600 sm:size-4" />
+                    <span>300%</span>
+                  </div>
+                </div>
+                <span className="text-xs text-muted-foreground sm:text-sm">
+                  30 Days Deployments
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex w-full place-content-center place-items-center px-4 py-8 lg:px-8">
+        <Earth className="size-[200px] md:size-[400px] lg:size-[500px] xl:size-[600px] 2xl:size-[600px] 3xl:size-[800px]" />
+      </div>
     </motion.div>
   )
 }

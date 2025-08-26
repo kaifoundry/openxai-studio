@@ -14,7 +14,7 @@ export default function DeploymentPage() {
   };
 
   return (
-    <div className="container mx-auto md:p-6 px-2">
+    <div className=" mx-auto md:p-6 px-2">
 
       <section className="mb-8">
         <motion.h2 initial={{ opacity: 0, y: 50 }}
@@ -200,7 +200,7 @@ export default function DeploymentPage() {
           className="md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">
           Your personal servers ({personalServers.length})
         </motion.h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
           {personalServers.map((server, index) => (
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -233,7 +233,7 @@ export default function DeploymentPage() {
 
 
                   {server.expiringIn && (
-                    <div className="bg-[#FBEFEF] text-[#C73A3A] px-3 py-1 rounded-lg flex items-center gap-2">
+                    <div className="bg-[#FBEFEF] text-[#C73A3A] px-3 py-1 rounded-lg flex items-center gap-2 whitespace-nowrap">
                       <div className="w-4 h-4 border-[1px] border-[#C73A3A] rounded-full flex items-center justify-center">
                         <span className="text-[#C73A3A] text-xs ">i</span>
                       </div>

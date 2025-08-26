@@ -39,7 +39,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en" className='hide-scrollbar '>
       <body
         className={cn(
-          'container mx-auto min-h-screen w-full max-w-[1982px] bg-background lg:bg-[#1C1E2A] p-0 font-sans text-foreground antialiased',
+          'container mx-auto  w-full max-w-[1982px] bg-background lg:bg-[#1C1E2A] p-0 font-sans text-foreground antialiased',
           inter.variable
         )}
       >
@@ -48,8 +48,9 @@ export default function RootLayout({
           <Header sessionToken={sessionCookie?.value} />
           <NavLayout>
           
-            <div className='lg:rounded-2xl lg:bg-white lg:mr-6 lg:h-screen lg:overflow-y-auto hide-scrollbar'>
+            <div className='lg:rounded-2xl lg:bg-white lg:mr-6 lg:h-screen lg:overflow-y-auto hide-scrollbar p-0'>
             {children}
+            
             </div>
             <ScrollToTop />
           </NavLayout>

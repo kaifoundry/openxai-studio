@@ -456,7 +456,7 @@ const [errors, setErrors] = useState<{ amount?: string; fundWallet?: string; agr
                   </Select>
                 </div>
                 {errors.buildamount && (
-  <p className="text-sm text-red-500 mt-1">{errors.amount}</p>
+  <p className="text-sm text-red-500 mt-1">{errors.buildamount}</p>
 )}
                 </div>
                 

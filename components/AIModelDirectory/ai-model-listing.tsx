@@ -79,20 +79,20 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     return (
       <div key={title} className="hide-scrollbar mb-6 lg:mb-0 flex flex-col overflow">
         <motion.div
-        layout 
-        initial={{ opacity: 0, y: 50 }}
+        // layout 
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8,}}
+        transition={{ duration: 0.6,}}
         viewport={{ once: true }}
         className="hide-scrollbar mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
           {title} ({models?.length})
         </motion.div>
 
-        <motion.div
-        layout
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        <div
+        // layout
+        // variants={containerVariants}
+        // initial="hidden"
+        // animate="visible"
           className={`
             grid grid-cols-1 gap-4 transition-all duration-800 delay-700
             md:grid-cols-2
@@ -103,31 +103,61 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
             3xl:grid-cols-4
           `}
         >
-          {visibleModels.map((data: any,index) => (
-            
+          {visibleModels.map((data: any, index) => {
+            const previousCount = (visibleCounts[title] ?? getVisibleCount()) - 4;
+            const isNewCard =  index >= previousCount;
+
+            if (isNewCard) {
+              return (
+                <motion.div
+                  key={`new-${data?.id}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0}}
+                  transition={{
+                    duration: 0.4,
+                    delay: (index - previousCount) * 0.3
+                  }}
+                >
+                  <Card
+                    id={data?.id}
+                    delay={0}
+                    image={data?.image}
+                    title={data?.name}
+                    hashTags={data?.tags}
+                    logo={data?.logo}
+                    icons={data?.chains}
+                    likes={data?.likes}
+                    followers={data?.followers}
+                    apy={data?.apy}
+                    Seller={data?.Seller}
+                  />
+                </motion.div>
+              );
+            }
+
+            return (
               <Card
-              key={data?.id}
-              id={data?.id}
-              delay={0.3 * index }
-              image={data?.image}
-              title={data?.name}
-              hashTags={data?.tags}
-              logo={data?.logo}
-              icons={data?.chains}
-              likes={data?.likes}
-              followers={data?.followers}
-              apy={data?.apy}
-              Seller={data?.Seller}
-            />
-           
-            
-          ))}
-        </motion.div>
+                key={data?.id}
+                id={data?.id}
+                delay={0}
+                image={data?.image}
+                title={data?.name}
+                hashTags={data?.tags}
+                logo={data?.logo}
+                icons={data?.chains}
+                likes={data?.likes}
+                followers={data?.followers}
+                apy={data?.apy}
+                Seller={data?.Seller}
+              />
+            );
+          })}
+        </div>
 
         {hasMore && (
           <motion.div
-          layout
-          initial={{ opacity: 0, y: 50 }}
+          // layout
+          initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         viewport={{ once: true }}
