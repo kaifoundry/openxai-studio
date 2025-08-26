@@ -573,7 +573,7 @@ const Filter: React.FC<CategoryChainProps> = ({
                 transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 1 }}
                 viewport={{ once: true }}
                 onClick={handleShowMore}
-                className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px] focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
+                className="cursor-pointer self-center font-[500] text-[#434343] md:text-[10px] xl:text-[13px] 2xl:text-[13px] 3xl:text-[13px]  rounded px-2 py-1"
                 aria-label={`Show ${Math.min(UI_CONSTANTS.INCREMENT_COUNT, tagsData.length - visibleCount)} more categories`}
               >
                 More..

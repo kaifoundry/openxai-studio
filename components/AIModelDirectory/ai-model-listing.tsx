@@ -10,28 +10,12 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0,
-      staggerChildren: 0.02,
-      duration: 0.2,
+      delayChildren: 0.4,
+      staggerChildren: 0.15,  
     },
   },
 };
 
-
-const staggeredContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0,
-      staggerChildren: 0.3,
-      duration: 0.4,
-    },
-  },
-};
-
-const base = 0.8
-const step = 0.5
 
 
 interface AppContentProps {
@@ -41,7 +25,6 @@ interface AppContentProps {
 const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) => {
   const [collapsed, setCollapsed] = useState(false);
   const [visibleCounts, setVisibleCounts] = useState<{ [key: string]: number }>({});
-  const [expandingCategories, setExpandingCategories] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
     const initialCollapsed = localStorage.getItem('nav-collapsed') === 'true';
@@ -71,7 +54,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
       return matchChain && matchCategory && item.category === category;
     });
   };
-
+ 
   const renderCards = (title: string, models: any[], showAll: boolean = false) => {
     const getVisibleCount = () => {
       if (typeof window !== 'undefined') {
@@ -79,42 +62,39 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
         if (width >= 1920) {
           return 4;
         } else if (width >= 1000 && width <= 1300) {
-          return 3;
-        } else if (width >= 768 && width < 1000) {
-          return 2;
+          return 3; 
+        }else if (width >= 768 && width < 1000) {
+          return 2; 
         }
       }
       return collapsed ? 4 : 3;
     };
-
+    
     const visibleCount = visibleCounts[title] ?? getVisibleCount();
     const visibleModels = showAll ? models : models.slice(0, visibleCount);
     const hasMore = !showAll && visibleCount < models.length;
-    const isExpanding = expandingCategories[title];
 
-    if (models.length === 0) return null
+    if(models.length === 0) return null
 
     return (
       <div key={title} className="hide-scrollbar mb-6 lg:mb-0 flex flex-col overflow">
         <motion.div
-          layout
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, }}
-          viewport={{ once: true }}
-          className="hide-scrollbar mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
+        // layout 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6,}}
+        viewport={{ once: true }}
+        className="hide-scrollbar mb-4 ml-2 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]">
           {title} ({models?.length})
         </motion.div>
 
-        <motion.div
-          layout
-          variants={isExpanding ? staggeredContainerVariants : containerVariants}
-          initial="hidden"
-          animate="visible"
-          key={`${title}-${visibleCounts[title] ?? getVisibleCount()}`}
-          layoutId={`grid-${title}`}
+        <div
+        // layout
+        // variants={containerVariants}
+        // initial="hidden"
+        // animate="visible"
           className={`
-            grid grid-cols-1 gap-4 transition-all duration-150 ease-out
+            grid grid-cols-1 gap-4 transition-all duration-800 delay-700
             md:grid-cols-2
             3xl:gap-8
             ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'}
@@ -124,24 +104,42 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
           `}
         >
           {visibleModels.map((data: any, index) => {
+            const previousCount = (visibleCounts[title] ?? getVisibleCount()) - 4;
+            const isNewCard =  index >= previousCount;
 
-            let cardDelay = 0;
-            if (isExpanding) {
-
-              const previousCount = (visibleCounts[title] ?? getVisibleCount()) - 4;
-              if (index >= previousCount) {
-                cardDelay = (index - previousCount) * 0.3;
-              }
-            } else {
-
-              cardDelay = 0.02 * index;
+            if (isNewCard) {
+              return (
+                <motion.div
+                  key={`new-${data?.id}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0}}
+                  transition={{
+                    duration: 0.4,
+                    delay: (index - previousCount) * 0.3
+                  }}
+                >
+                  <Card
+                    id={data?.id}
+                    delay={0}
+                    image={data?.image}
+                    title={data?.name}
+                    hashTags={data?.tags}
+                    logo={data?.logo}
+                    icons={data?.chains}
+                    likes={data?.likes}
+                    followers={data?.followers}
+                    apy={data?.apy}
+                    Seller={data?.Seller}
+                  />
+                </motion.div>
+              );
             }
 
             return (
               <Card
                 key={data?.id}
                 id={data?.id}
-                delay={cardDelay}
+                delay={0}
                 image={data?.image}
                 title={data?.name}
                 hashTags={data?.tags}
@@ -154,31 +152,22 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
               />
             );
           })}
-        </motion.div>
+        </div>
 
         {hasMore && (
           <motion.div
-            layout
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
+          // layout
+          initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        viewport={{ once: true }}
             className="mt-4 w-fit cursor-pointer px-2 text-[13px] font-[500] text-[#434343] transition-all duration-100 hover:underline hover:underline-offset-1"
-            onClick={() => {
-
-              setExpandingCategories(prev => ({ ...prev, [title]: true }));
-
-
+            onClick={() =>
               setVisibleCounts(prev => ({
                 ...prev,
                 [title]: (prev[title] ?? (collapsed ? 4 : 3)) + 4
-              }));
-
-
-              setTimeout(() => {
-                setExpandingCategories(prev => ({ ...prev, [title]: false }));
-              }, 1500);
-            }}
+              }))
+            }
             aria-label={`View more models in ${title}`}
           >
             View More
@@ -204,16 +193,16 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
   if ((selectedCategories.length > 0 || selectedChains.length > 0) && allMatchingModels.length === 0) {
     return (
       <div className='flex w h-[400px] items-center justify-center '>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          viewport={{ once: true }}
-          className='flex flex-col items-center  justify-center text-gray-400'>
-          <Image src="/images/no-data-6.png" alt="" width={150} height={150} />
+        <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1,delay:0.8 }}
+        viewport={{ once: true }}
+        className='flex flex-col items-center  justify-center text-gray-400'>
+          <Image src="/images/no-data-6.png" alt="" width={150} height={150}/>
           <div>No Apps Found</div>
         </motion.div>
-
+        
       </div>
     );
   }
@@ -226,7 +215,7 @@ const ModelListing = ({ selectedChains, selectedCategories }: AppContentProps) =
     const categoriesToShow = selectedCategories.length > 0
       ? selectedCategories
       : matchingCategories;
-
+  
     return (
       <div className="flex w-full flex-col overflow-x-auto 2xl:gap-14 3xl:gap-20 hide-scrollbar overflow-y-hidden">
         {categoriesToShow.map(category => {
