@@ -47,7 +47,7 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
   return (
     <>
       <motion.div
-        className="flex items-start justify-center py-0  font-sans"
+        className="flex items-start justify-center py-10 lg:py-0  font-sans"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -55,7 +55,7 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
       >
         <motion.div
           className="w-full max-w-lg rounded-xl py-0 -mt-4 px-6 sm:p-8"
-          variants={containerVariants} 
+          variants={containerVariants}
         >
 
           <motion.div className="mb-5 px-4 py-3 border-[1px] border-[#EBEBEB] bg-[#F5F8FF] rounded-[16px]" variants={fadeUp}>
