@@ -324,9 +324,9 @@ const CategoryTag: React.FC<{
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION, delay: 0.2 * index }}
+      transition={{ duration: UI_CONSTANTS.ANIMATION_DURATION }}
       viewport={{ once: true }}
-      whileTap={{ scale: 0.95, transition: { duration: 0.2, delay: 0 } }}
+      whileTap={{ scale: 0.95, transition: { duration: 0.2, delay: 0.04 * index } }}
       className={`flex cursor-pointer items-center gap-4 rounded-xl bg-[#F6FAFF] px-4 py-3 shadow-sm md:gap-2 md:px-6 xl:gap-2 xl:py-2 2xl:gap-2 2xl:py-2 3xl:gap-2 3xl:py-2  ${isSelected
         ? 'border border-blue-500 bg-blue-50'
         : 'border border-transparent bg-[#F6FAFF]'
