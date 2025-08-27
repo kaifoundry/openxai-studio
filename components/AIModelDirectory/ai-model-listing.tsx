@@ -12,8 +12,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      duration:0.8,
-      delay:1.5
+      duration: 0.8,
+      delay: 1.5,
     },
   },
 }
@@ -33,13 +33,14 @@ const ModelListing = ({
   const [lastVisibleCounts, setLastVisibleCounts] = useState<{
     [key: string]: number
   }>({})
-  useEffect(() => {
-//     const initialCollapsed = localStorage.getItem("nav-collapsed");
-// if (initialCollapsed !== null) {
-//   setCollapsed(initialCollapsed === "true"); 
-// }
+  const [firstLoad, setFirstLoad] = useState(true)
 
-    
+  useEffect(() => {
+    //     const initialCollapsed = localStorage.getItem("nav-collapsed");
+    // if (initialCollapsed !== null) {
+    //   setCollapsed(initialCollapsed === "true");
+    // }
+
     const handler = (e: CustomEvent) => {
       setCollapsed(e.detail.collapsed)
     }
@@ -106,14 +107,14 @@ const ModelListing = ({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
-          className="hide-scrollbar mb-4  text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]"
+          className="hide-scrollbar mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]"
         >
           {title} ({models?.length})
         </motion.div>
 
         <motion.div
-           variants={containerVariants}
-          className={`duration-500 grid grid-cols-1 gap-4 transition-all delay-300 md:grid-cols-2 3xl:gap-8 ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'} ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'} ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} 3xl:grid-cols-4`}
+          variants={containerVariants}
+          className={`grid grid-cols-1 gap-4 transition-all delay-300 duration-500 md:grid-cols-2 3xl:gap-8 ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'} ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'} ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} 3xl:grid-cols-4`}
         >
           {visibleModels.map((data: any, index) => {
             const prevCount = lastVisibleCounts[title] ?? 0
@@ -124,30 +125,36 @@ const ModelListing = ({
             } else if (index >= prevCount) {
               delayIndex = index - prevCount
             }
-             const baseDelay = 0.2;
-    //         const delay = showAll 
-    // ? baseDelay * (index + 0.5)   
-    // : 0.4 * delayIndex
+            const baseDelay = 0.2
+            //         const delay = showAll
+            // ? baseDelay * (index + 0.5)
+            // : 0.4 * delayIndex
 
-    const columns = collapsed ? 4 : 3; 
-   
+            const columns = collapsed ? 4 : 3
 
-    let delay = 0;
-    if (showAll) {
-      const rowIndex = Math.floor(index / columns);
-      const colIndex = index % columns;
+            let delay = 0
+            if (showAll) {
+              const rowIndex = Math.floor(index / columns)
+              const colIndex = index % columns
 
-      delay = baseDelay * (rowIndex + colIndex * 0.5); 
-     
-    } else {
-      delay = 0.4 * delayIndex;
-    }
+              delay = baseDelay * (rowIndex + colIndex * 0.5)
+            } else {
+              if (firstLoad) {
+                if (index === 1) {
+                  delay = 1 * delayIndex
+                } else {
+                  delay = 0.5 * delayIndex
+                }
+              } else {
+                delay = 0.2 * delayIndex
+              }
+            }
 
             return (
               <Card
                 key={data?.id}
                 id={data?.id}
-                delay={  delay}
+                delay={firstLoad && index === 0 ? 0.8 : delay}
                 image={data?.image}
                 title={data?.name}
                 hashTags={data?.tags}
@@ -170,6 +177,7 @@ const ModelListing = ({
             viewport={{ once: true }}
             className="mt-4 w-fit cursor-pointer px-2 text-[13px] font-[500] text-[#434343] transition-all duration-100 hover:underline hover:underline-offset-1"
             onClick={() => {
+              setFirstLoad(false)
               setLastVisibleCounts((prev) => ({
                 ...prev,
                 [title]: visibleCount,
