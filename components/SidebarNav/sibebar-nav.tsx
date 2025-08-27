@@ -667,7 +667,7 @@ const SidebarNav: React.FC<SidebarNavProps> = ({
 
   return (
     <NavContainer className={className}>
-      <NavContent className="h-full overflow-y-auto overflow-x-clip p-2 flex flex-col">
+      <NavContent className="h-full overflow-y-hidden overflow-x-clip p-2 flex flex-col">
         <div className="mt-0 flex flex-col space-y-2">
           {(demoMode ? demoMainNavItems : navItems.main).map((navItem) =>
             navItem.type === 'item' ? (
@@ -767,11 +767,11 @@ const NavContainer = React.forwardRef<
           type="multiple" // Allow multiple accordion items to be open at the same time with 'multiple', change to 'single' to allow only one item to be open
           value={accordionValue}
           onValueChange={setAccordionValue}
-          className="h-full"
+          className="h-full "
           orientation={collapsed ? 'horizontal' : 'vertical'}
           asChild
         >
-          <nav className="flex h-full flex-col justify-between">{children}</nav>
+          <nav className="flex h-full  flex-col justify-between">{children}</nav>
         </Accordion>
       </aside>
    
