@@ -39,8 +39,7 @@ const ModelListing = ({
 //   setCollapsed(initialCollapsed === "true"); 
 // }
 
-    console.log("collpased ==>",collapsed)
-
+    
     const handler = (e: CustomEvent) => {
       setCollapsed(e.detail.collapsed)
     }
@@ -114,7 +113,7 @@ const ModelListing = ({
 
         <motion.div
            variants={containerVariants}
-          className={`duration-800 grid grid-cols-1 gap-4 transition-all delay-700 md:grid-cols-2 3xl:gap-8 ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'} ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'} ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} 3xl:grid-cols-4`}
+          className={`duration-500 grid grid-cols-1 gap-4 transition-all delay-300 md:grid-cols-2 3xl:gap-8 ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'} ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'} ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} 3xl:grid-cols-4`}
         >
           {visibleModels.map((data: any, index) => {
             const prevCount = lastVisibleCounts[title] ?? 0
@@ -125,12 +124,30 @@ const ModelListing = ({
             } else if (index >= prevCount) {
               delayIndex = index - prevCount
             }
+             const baseDelay = 0.2;
+    //         const delay = showAll 
+    // ? baseDelay * (index + 0.5)   
+    // : 0.4 * delayIndex
+
+    const columns = collapsed ? 4 : 3; 
+   
+
+    let delay = 0;
+    if (showAll) {
+      const rowIndex = Math.floor(index / columns);
+      const colIndex = index % columns;
+
+      delay = baseDelay * (rowIndex + colIndex * 0.5); 
+     
+    } else {
+      delay = 0.4 * delayIndex;
+    }
 
             return (
               <Card
                 key={data?.id}
                 id={data?.id}
-                delay={0.4 * delayIndex}
+                delay={  delay}
                 image={data?.image}
                 title={data?.name}
                 hashTags={data?.tags}
