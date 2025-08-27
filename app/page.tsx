@@ -2,8 +2,10 @@
 'use client'
 
 import { useMemo } from 'react'
+import Lottie from "lottie-react";
 import Link from 'next/link'
 import { ArrowRight, Earth, Rocket, Triangle } from 'lucide-react'
+import globeAnimation from "../utils/Anim.json";
 import {
   Label,
   PolarAngleAxis,
@@ -37,9 +39,10 @@ export default function Home() {
     >
       <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8 md:gap-24 md:px-12 lg:gap-24 lg:px-16">
         <div className="mt-8 sm:mt-16 lg:mt-24 ">
-          <h1 className=" text-4xl  text-balance leading-tight font-semibold    lg:text-5xl xl:text-7xl  ">
+          <h1 className="text-4xl text-balance leading-none font-semibold lg:text-5xl xl:text-7xl">
             Build and deploy AI agents in 5 minutes
           </h1>
+
           <div className="mt-6 flex flex-row gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4 lg:mt-12">
             <Link
               href="/app-store"
@@ -58,8 +61,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2  lg:grid-cols-4 w-full  lg:w-full 3xl:w-[80%] gap-4 lg:gap-0 py-4 lg:py-0 ">
-          <div className="flex justify-start items-center  border-r-2 border-gray-300 py-2 ">
+        <div className="grid grid-cols-2  lg:grid-cols-4 w-full  lg:w-full 3xl:w-[80%] gap-4 lg:gap-0 py-4 lg:py-0 ml-0 lg:-ml-12 ">
+          <div className="flex justify-center items-center  border-r-2 border-gray-300 py-2 ">
             <div className="flex flex-col ">
               <div className="flex ">
                 <span className="text-2xl font-medium lg:text-3xl 3xl:text-4xl">{'>'}50</span>
@@ -77,7 +80,7 @@ export default function Home() {
               <span className="text-xs font-semibold lg:text-[12px]">Time to Finality (avg)</span>
             </div>
           </div>
-          <div className="flex w-full justify-start lg:justify-center    border-gray-300 border-r-2 py-2 lg:px-5">
+          <div className="flex w-full justify-center    border-gray-300 border-r-2 py-2 lg:px-5">
 
             <div className="flex flex-col ">
               <div className="flex  ">
@@ -98,9 +101,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 justify-between lg:justify-start   items-center w-full 2xl:w-[90%]  3xl:w-[60%] pb-10">
-          <div className="flex justify-start items-center border-gray-300 pb-6   border-b-2 lg:border-b-0 lg:border-r-2  ">
-            <div className="flex justify-between lg:justify-start lg:pr-4 lg:place-items-center gap-2 w-full   lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2  lg:justify-start ml-0 lg:-ml-9 items-center w-full 2xl:w-[90%]  3xl:w-[60%] pb-10">
+          <div className="flex justify-start  items-center border-gray-300 pb-6   border-b-2 lg:border-b-0 lg:border-r-2  ">
+            <div className="flex justify-between lg:justify-center  lg:pr-4 lg:place-items-center gap-2 w-full   lg:gap-6">
               <div>
                 <ChartContainer
                   config={{
@@ -222,9 +225,16 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex w-full place-content-center place-items-center px-4 py-8 lg:px-8">
-        <Earth className="size-[200px] md:size-[400px] lg:size-[500px] xl:size-[600px] 2xl:size-[600px] 3xl:size-[800px]" />
-      </div>
+      <div className="flex w-full place-content-center place-items-center px-4 py-8 lg:px-8"> <Earth className="size-[200px] md:size-[400px] lg:size-[500px] xl:size-[600px] 2xl:size-[600px] 3xl:size-[800px]" /> </div>
+
+      {/* <div className="flex w-full h-screen place-content-center place-items-center px-4 py-8 lg:px-8">
+      <Lottie
+        animationData={globeAnimation}
+        loop={true}
+        className="w-full h-full max-w-[1000px]"
+      />
+    </div> */}
+
     </motion.div>
   )
 }
