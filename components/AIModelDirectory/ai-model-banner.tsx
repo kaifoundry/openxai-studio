@@ -1,8 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from "framer-motion";
+import { ChainData } from '@/utils/constants'
 
-const Banner = () => {
+interface BannerProps {
+  selectedChain?:string,
+}
+
+const Banner = ({selectedChain}:BannerProps) => {
+ 
+  const chain = ChainData.find(c => c.name === selectedChain);
+const image = chain?.icon;
   return (
     <motion.div 
     initial={{ opacity: 0, x: 20 }}
@@ -10,23 +18,32 @@ const Banner = () => {
   transition={{ duration: 0.5 }}
   viewport={{ once: true }}
     
-    className="relative mt-8  lg:mt-4 h-[172px] w-full  md:h-[150px] xl:h-[200px] 2xl:h-[216px] 3xl:h-[216px]">
+    className="relative mt-8  lg:mt-4 h-[172px] w-full  md:h-[150px] xl:h-[200px]   2xl:h-[216px] 3xl:h-[216px]">
       <div className="relative size-full rounded-tr-2xl rounded-br-2xl ">
-      <Image
+        <Image
           src="/images/appStore/banner-mask.png"
           alt="Mask Images"
           fill
-          className="rounded-2xl object-cover hidden lg:block"
+          className="rounded-2xl object-cover hidden opacity-70  lg:block"
+          
         />
         <Image
           src="/images/appStore/banner-mask-mobile.png"
           alt="Mask Images"
           fill
-          className="rounded-2xl object-container lg:hidden block"
+          className="rounded-2xl object-container opacity-70  lg:hidden block"
         />
       </div>
-      <div className="absolute left-0 top-0 z-10 size-full rounded-2xl bg-[#0997FF] opacity-65"></div>
-
+      <div className="absolute left-0 top-0 z-10 size-full rounded-2xl bg-[#0997FF] mix-blend-multiply "></div>
+      {image && (
+    <div className=" overflow-hidden  "> 
+      <Image src={image} alt="" width={60} height={60} className="absolute  z-20 2xl:size-[40px] 3xl:size-[60px] opacity-60 blur-[1.5px] -top-0 left-20 rotate-[21.95deg]" />
+      <Image src={image} alt="" width={60} height={60} className="absolute z-20 2xl:size-[80px] 3xl:size-[100px] opacity-60 blur-[1.5px] top-0 right-1/4 -rotate-[16.16deg]" />
+      <Image src={image} alt="" width={60} height={60} className="absolute z-20 2xl:size-[80px] 3xl:size-[100px] opacity-60 blur-[1px] -bottom-0 left-1/2 -rotate-[16.16deg]" />
+    </div>
+  )}
+      
+      
       <div className="absolute -top-4 z-20 h-full px-5 lg:top-0">
         <div className="flex items-center justify-between">
           <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4 xl:gap-14 2xl:gap-28 3xl:gap-28">

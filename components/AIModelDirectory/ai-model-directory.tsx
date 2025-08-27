@@ -279,6 +279,7 @@ export default function AppDirectory() {
     setSelectedChains(prev =>
       prev.includes(chain) ? prev.filter(c => c !== chain) : [...prev, chain]
     );
+  
   };
 
   const toggleCategory = (category: string) => {
@@ -295,7 +296,9 @@ export default function AppDirectory() {
 
   return (
     <div className='px-4 py-2 md:py-2 md:px-4 xl:px-6 xl:py-4 2xl:px-6 2xl:py-4 3xl:py-6 3xl:px-8'>
-      <Banner />
+      <Banner 
+     selectedChain={selectedChains[selectedChains.length - 1]}
+      />
       <Fillter
         selectedChains={selectedChains}
         selectedCategories={selectedCategories}
