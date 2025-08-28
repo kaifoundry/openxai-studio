@@ -12,18 +12,18 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.8,
+      staggerChildren: 0.3,
+     
     },
   },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
@@ -54,7 +54,7 @@ const ModelBalance = ({ id }: ModelBlanceDetails) => {
         viewport={{ once: true }}
       >
         <motion.div
-          className="w-full max-w-lg rounded-xl py-0 -mt-4 px-6 sm:p-8"
+          className="w-full max-w-lg rounded-xl py-0 -mt-3 px-6 sm:p-8"
           variants={containerVariants}
         >
 

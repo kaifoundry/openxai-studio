@@ -41,7 +41,7 @@ export default function BTCOraclePage() {
         }
     }, []);
 
-    if (!data) return <div className="relative flex justify-center items-center w-full h-screen lg:h-full">
+    if (!data) return <div className="relative flex justify-center items-center w-full h-screen lg:min-h-screen">
         <div className="w-12 h-12 rounded-full absolute border-2 border-solid border-gray-200"></div>
         <div
             className="w-12 h-12 rounded-full animate-spin absolute border-2 border-solid border-violet-500 border-t-transparent shadow-md">
