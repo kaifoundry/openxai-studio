@@ -75,7 +75,8 @@ const ModelListing = ({
   const renderCards = (
     title: string,
     models: any[],
-    showAll: boolean = false
+    showAll: boolean = false,
+    index:number
   ) => {
     const getVisibleCount = () => {
       if (typeof window !== 'undefined') {
@@ -100,14 +101,14 @@ const ModelListing = ({
     return (
       <div
         key={title}
-        className="hide-scrollbar overflow mb-6 flex flex-col lg:mb-0"
+        className="hide-scrollbar overflow mb-6 flex flex-col lg:mb-6 2xl:mb-0 3xl:mb-0 "
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
-          className="hide-scrollbar mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]"
+          className={`hide-scrollbar ${index === 0 ?'mt-10':'mt-0'} mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]`}
         >
           {title} ({models?.length})
         </motion.div>
@@ -126,9 +127,7 @@ const ModelListing = ({
               delayIndex = index - prevCount
             }
             const baseDelay = 0.2
-            //         const delay = showAll
-            // ? baseDelay * (index + 0.5)
-            // : 0.4 * delayIndex
+            
 
             const columns = collapsed ? 4 : 3
 
@@ -146,7 +145,7 @@ const ModelListing = ({
                   delay = 0.5 * delayIndex
                 }
               } else {
-                delay = 0.2 * delayIndex
+                delay = Math.min(0.2 * delayIndex,0.5)
               }
             }
 
@@ -173,7 +172,7 @@ const ModelListing = ({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3 }}
             viewport={{ once: true }}
             className="mt-4 w-fit cursor-pointer px-2 text-[13px] font-[500] text-[#434343] transition-all duration-100 hover:underline hover:underline-offset-1"
             onClick={() => {
@@ -239,20 +238,20 @@ const ModelListing = ({
       selectedCategories.length > 0 ? selectedCategories : matchingCategories
 
     return (
-      <div className="hide-scrollbar flex w-full flex-col overflow-x-auto overflow-y-hidden 2xl:gap-14 3xl:gap-20">
-        {categoriesToShow.map((category) => {
+      <div className="hide-scrollbar flex w-full flex-col overflow-x-auto overflow-y-hidden 2xl:gap-10 3xl:gap-16">
+        {categoriesToShow.map((category,index) => {
           const models = filterModels(category)
-          return renderCards(category, models, true)
+          return renderCards(category, models, true,index)
         })}
       </div>
     )
   }
 
   return (
-    <div className="hide-scrollbar flex w-full flex-col overflow-x-auto overflow-y-hidden 2xl:gap-14 3xl:gap-20">
-      {uniqueCategories?.map((category) => {
+    <div className="hide-scrollbar flex w-full flex-col overflow-x-auto overflow-y-hidden 2xl:gap-10 3xl:gap-16">
+      {uniqueCategories?.map((category,index) => {
         const models = filterModels(category)
-        return models?.length > 0 ? renderCards(category, models, false) : null
+        return models?.length > 0 ? renderCards(category, models, false,index) : null
       })}
     </div>
   )
