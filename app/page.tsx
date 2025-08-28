@@ -59,13 +59,13 @@ export default function Home() {
               <ArrowRight className="size-4" />
             </Link>
           </div>
-          <div className="flex w-full justify-center items-center px-4 pt-4 lg:hidden -ml-6 md:-ml-0">
+          <div className="flex w-full justify-center items-center px-4 pt-4 lg:hidden  ">
             <Image
               src="/globe-unscreen.gif"
               alt="Earth"
               width={400}
               height={400}
-              className="size-[400px] sm:size-[400px] md:size-[400px] bg-red-400"
+              className="size-[400px] sm:size-[400px] md:size-[400px] "
               draggable={false}
             />
           </div>
