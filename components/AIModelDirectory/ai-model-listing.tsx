@@ -8,12 +8,13 @@ import ModelDefinitions from '../../utils/model-definitions.json'
 import Card from './ai-model-card'
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
+    y: 0,
     transition: {
-      duration: 0.8,
-      delay: 1.5,
+      staggerChildren: 0.2,
+      delayChildren: 0.5,
     },
   },
 }
@@ -72,11 +73,15 @@ const ModelListing = ({
     })
   }
 
+  const filterKey = useMemo(() => {
+    return `${selectedChains.join(',')} -${selectedCategories.join(',')}`;
+  }, [selectedChains, selectedCategories]);
+
   const renderCards = (
     title: string,
     models: any[],
     showAll: boolean = false,
-    indexCategory:number
+    indexCategory: number
   ) => {
     const getVisibleCount = () => {
       if (typeof window !== 'undefined') {
@@ -96,8 +101,12 @@ const ModelListing = ({
     const visibleModels = showAll ? models : models.slice(0, visibleCount)
     const hasMore = !showAll && visibleCount < models.length
 
+
+    const previousVisibleCount = lastVisibleCounts[title] ?? getVisibleCount()
+    const newlyAddedCount = Math.max(0, visibleCount - previousVisibleCount)
+
     if (models.length === 0) return null
-    const titleDealy = indexCategory === 0? 0.4:0.2
+    const titleDealy = indexCategory === 0 ? 0.4 : 0.2
     return (
       <div
         key={title}
@@ -106,69 +115,67 @@ const ModelListing = ({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay:titleDealy }}
+          transition={{ duration: 0.4, delay: titleDealy }}
           viewport={{ once: true }}
-          className={`hide-scrollbar ${indexCategory === 0 ?'mt-10':'mt-0'} mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]`}
+          className={`hide-scrollbar ${indexCategory === 0 ? 'mt-10' : 'mt-0'} mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]`}
         >
           {title} ({models?.length})
         </motion.div>
 
         <motion.div
           variants={containerVariants}
+          key={`${title}-${filterKey}`}
+          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
           className={`grid grid-cols-1 gap-4 transition-all delay-300 duration-500 md:grid-cols-2 3xl:gap-8 ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'} ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'} ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} 3xl:grid-cols-4`}
         >
           {visibleModels.map((data: any, index) => {
-            const prevCount = lastVisibleCounts[title] ?? 0
-            let delayIndex = 0
 
-            if (!lastVisibleCounts[title]) {
-              delayIndex = index
-            } else if (index >= prevCount) {
-              delayIndex = index - prevCount
-            }
-            const baseDelay = 0.2
-            
+            const isNewlyAdded = index >= previousVisibleCount
 
-            const columns = collapsed ? 4 : 3
+            if (isNewlyAdded) {
 
-            let delay = 0
-            if (showAll) {
-              const rowIndex = Math.floor(index / columns)
-              const colIndex = index % columns
-
-              delay = baseDelay * (rowIndex + colIndex * 0.5)
+              return (
+                <motion.div
+                  key={data?.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: (index - previousVisibleCount) * 0.1 }}
+                >
+                  <Card
+                    id={data?.id}
+                    image={data?.image}
+                    title={data?.name}
+                    hashTags={data?.tags}
+                    logo={data?.logo}
+                    icons={data?.chains}
+                    likes={data?.likes}
+                    followers={data?.followers}
+                    apy={data?.apy}
+                    Seller={data?.Seller}
+                  />
+                </motion.div>
+              )
             } else {
-              if (firstLoad) {
-                if (index === 1) {
-                  delay = 1 * delayIndex
-                } else {
-                  delay = 0.5 * delayIndex
-                }
-              } else {
-                if(indexCategory === 0){
-                delay = Math.min(0.2 * delayIndex)}
-                else{
-                  delay = titleDealy * delayIndex *0.1
-                }
-              }
-            }
 
-            return (
-              <Card
-                key={data?.id}
-                id={data?.id}
-                delay={firstLoad && index === 0 ? 0.8 : delay}
-                image={data?.image}
-                title={data?.name}
-                hashTags={data?.tags}
-                logo={data?.logo}
-                icons={data?.chains}
-                likes={data?.likes}
-                followers={data?.followers}
-                apy={data?.apy}
-                Seller={data?.Seller}
-              />
-            )
+              return (
+                <motion.div key={data?.id} variants={containerVariants}>
+                  <Card
+                    id={data?.id}
+                    image={data?.image}
+                    title={data?.name}
+                    hashTags={data?.tags}
+                    logo={data?.logo}
+                    icons={data?.chains}
+                    likes={data?.likes}
+                    followers={data?.followers}
+                    apy={data?.apy}
+                    Seller={data?.Seller}
+                  />
+                </motion.div>
+              )
+            }
           })}
         </motion.div>
 
@@ -243,9 +250,9 @@ const ModelListing = ({
 
     return (
       <div className="hide-scrollbar flex w-full flex-col overflow-x-auto overflow-y-hidden 2xl:gap-10 3xl:gap-16">
-        {categoriesToShow.map((category,index) => {
+        {categoriesToShow.map((category, index) => {
           const models = filterModels(category)
-          return renderCards(category, models, true,index)
+          return renderCards(category, models, true, index)
         })}
       </div>
     )
@@ -253,9 +260,9 @@ const ModelListing = ({
 
   return (
     <div className="hide-scrollbar flex w-full flex-col overflow-x-auto overflow-y-hidden 2xl:gap-10 3xl:gap-16">
-      {uniqueCategories?.map((category,index) => {
+      {uniqueCategories?.map((category, index) => {
         const models = filterModels(category)
-        return models?.length > 0 ? renderCards(category, models, false,index) : null
+        return models?.length > 0 ? renderCards(category, models, false, index) : null
       })}
     </div>
   )
