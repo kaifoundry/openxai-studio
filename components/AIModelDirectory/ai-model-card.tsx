@@ -81,7 +81,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                             <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.2}}
+                            transition={{duration:0.5,delay:delay*0.15}}
                             viewport={{once:true}}
                             className='text-[11.39px] font-[400] text-[#918C8C]'>
                                 {hashTags?.map((tag, index) => (
@@ -110,7 +110,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                             <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.3}}
+                            transition={{duration:0.5,delay:delay*0.25}}
                             viewport={{once:true}} key={index} className="relative flex size-[36px] items-center justify-center">
                                 <Image
                                     src={item?.chain || ''}
@@ -128,7 +128,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                             <motion.div
                             initial={{ opacity: 0, y:10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.4}}
+                            transition={{duration:0.5,delay:delay*0.35}}
                             viewport={{once:true}} className='flex items-center gap-1'>
                                 `   <Image
                                     src='/images/appStore/svg/likes.svg'
@@ -143,7 +143,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                             <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.5}}
+                            transition={{duration:0.5,delay:delay*0.45}}
                             viewport={{once:true}} className='flex items-center gap-0'>
                                 <Image
                                     src='/images/appStore/svg/followers.svg'
@@ -159,7 +159,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.6}}
+                            transition={{duration:0.5,delay:delay*0.55}}
                             viewport={{once:true}} className='flex items-center gap-2 md:gap-1 xl:gap-1 2xl:gap-2 3xl:gap-2'>
                             <span className='text-[18px] font-[500]'>{apy}%</span>
                             <span className='text-[14px] font-[300]'>APY</span>

@@ -346,7 +346,7 @@ const CategoryTag: React.FC<{
       whileInView={{ opacity: 1, y: 0 }}
       transition={{
         duration: UI_CONSTANTS.ANIMATION_DURATION,
-        delay: 0.2 * index,
+        delay: 0.15 * index,
       }}
       viewport={{ once: true }}
       whileTap={{ scale: 0.95, transition: { duration: 0.2, delay: 0 } }}
