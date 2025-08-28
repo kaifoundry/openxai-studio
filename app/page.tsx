@@ -32,14 +32,14 @@ export default function Home() {
 
   return (
     <motion.div
-      className="grid size-full grid-cols-1 lg:grid-cols-[3fr_3fr]  "
+      className="grid size-full grid-cols-1 xl:grid-cols-[1fr_1fr] lg:grid-cols-[55%_45%] "
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8 md:gap-24 md:px-12 lg:gap-24 lg:px-16 ">
         <div className="mt-8 sm:mt-16 lg:mt-12 ">
-          <h1 className="text-4xl text-balance leading-none font-semibold lg:text-5xl xl:text-7xl">
+          <h1 className="text-[42px] text-balance leading-none font-semibold lg:text-5xl xl:text-7xl">
             Build and deploy AI agents in 5 minutes
           </h1>
 
@@ -63,37 +63,38 @@ export default function Home() {
             <Image
               src="/globe-unscreen.gif"
               alt="Earth"
-              width={300}
-              height={300}
-              className="size-[200px] sm:size-[250px] md:size-[300px]"
+              width={400}
+              height={400}
+              className="size-[300px] sm:size-[300px] md:size-[400px]"
+              draggable={false}
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-2  lg:grid-cols-[25%_28%_25%_25%] md:grid-cols-4  w-full  lg:w-full 3xl:w-[80%] md:w-full gap-4 lg:gap-0 py-4 lg:py-0 ml-0 lg:-ml-12 ">
+        <div className="grid grid-cols-2  lg:grid-cols-[25%_28%_25%_25%] md:grid-cols-4  w-full lg:w-full 3xl:w-[80%] md:w-full gap-4 lg:gap-0 py-4 lg:py-0 ml-0 lg:-ml-12 ">
           <div className="flex justify-center items-center  border-r-2 border-gray-300 py-2 ">
             <div className="flex flex-col ">
               <div className="flex ">
-                <span className="text-xl font-medium lg:text-3xl 3xl:text-4xl">{'>'}50</span>
+                <span className="text-xl font-medium xl:text-3xl lg:text-2xl 3xl:text-4xl">{'>'}50</span>
                 <span className="text-sm  lg:text-[12px]">K</span>
               </div>
-              <span className="text-xs font-semibold lg:text-[12px]">Transaction /s</span>
+              <span className="text-[10px] font-semibold lg:text-[12px]">Transaction /s</span>
             </div>
           </div>
           <div className="flex justify-center items-center  lg:border-r-2 md:border-r-2 border-gray-300 py-2   px-5">
             <div className="flex flex-col   ">
               <div className="flex  justify-center ">
-                <span className="text-xl font-medium lg:text-3xl 3xl:text-4xl">600</span>
+                <span className="text-xl font-medium xl:text-3xl lg:text-2xl  3xl:text-4xl">600</span>
                 <span className="text-sm  lg:text-[12px]">ms</span>
               </div>
-              <span className="text-xs font-semibold lg:text-[12px]">Time to Finality (avg)</span>
+              <span className="text-[10px] font-semibold lg:text-[12px]">Time to Finality (avg)</span>
             </div>
           </div>
           <div className="flex w-full justify-center    border-gray-300 border-r-2 py-2 lg:px-5">
 
             <div className="flex flex-col ">
               <div className="flex  ">
-                <span className="text-xl font-medium lg:text-3xl 3xl:text-4xl">{'>'}50</span>
+                <span className="text-xl font-medium xl:text-3xl lg:text-2xl  3xl:text-4xl">{'>'}50</span>
                 <span className="text-sm  lg:text-[12px]">K</span>
               </div>
               <span className="text-xs font-semibold lg:text-[12px]">Transaction /s</span>
@@ -102,16 +103,16 @@ export default function Home() {
           <div className="flex justify-center items-center py-2  px-5">
             <div className="flex flex-col ">
               <div className="flex justify-center ">
-                <span className="text-xl font-medium lg:text-3xl 3xl:text-4xl">600</span>
+                <span className="text-xl font-medium xl:text-3xl lg:text-2xl 3xl:text-4xl">600</span>
                 <span className="text-sm  lg:text-[12px]">ms</span>
               </div>
-              <span className="text-xs font-semibold lg:text-[12px] whitespace-nowrap">Time to Finality (avg)</span>
+              <span className="text-[10px] font-semibold lg:text-[12px]  ">Time to Finality (avg)</span>
             </div>
           </div>
         </div>
 
 
-        <div className="grid grid-cols-1 lg:grid-cols-2  lg:justify-start ml-0 lg:-ml-9 items-center w-full 2xl:w-[90%]  3xl:w-[60%] pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2  lg:justify-start ml-0 lg:-ml-9  lg:px-0 px-4  items-center w-full 2xl:w-[90%]  3xl:w-[60%] pb-10">
           <div className="flex justify-start  items-center border-gray-300 pb-6   border-b-2 lg:border-b-0 lg:border-r-2  ">
             <div className="flex justify-between lg:justify-center  lg:pr-4 lg:place-items-center gap-2 w-full   lg:gap-6">
               <div>
@@ -234,16 +235,15 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <div className="hidden lg:flex w-full place-content-center place-items-center px-4 py-8 lg:px-8">
-  <Earth className="size-[200px] md:size-[400px] lg:size-[500px] xl:size-[600px] 2xl:size-[600px] 3xl:size-[800px]" />
-</div> */}
+
       <div className="hidden lg:flex w-full h-full place-content-center place-items-center px-4 pb-8 lg:px-8">
         <Image
           src="/globe-unscreen.gif"
           alt="Earth"
           width={800}
           height={800}
-          className=""
+          className="w-full h-full max-w-[1000px]"
+          draggable={false}
         />
       </div>
 

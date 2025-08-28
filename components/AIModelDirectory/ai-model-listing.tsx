@@ -76,7 +76,7 @@ const ModelListing = ({
     title: string,
     models: any[],
     showAll: boolean = false,
-    index:number
+    indexCategory:number
   ) => {
     const getVisibleCount = () => {
       if (typeof window !== 'undefined') {
@@ -97,7 +97,7 @@ const ModelListing = ({
     const hasMore = !showAll && visibleCount < models.length
 
     if (models.length === 0) return null
-
+    const titleDealy = indexCategory === 0? 0.4:0.2
     return (
       <div
         key={title}
@@ -106,9 +106,9 @@ const ModelListing = ({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.4, delay:titleDealy }}
           viewport={{ once: true }}
-          className={`hide-scrollbar ${index === 0 ?'mt-10':'mt-0'} mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]`}
+          className={`hide-scrollbar ${indexCategory === 0 ?'mt-10':'mt-0'} mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]`}
         >
           {title} ({models?.length})
         </motion.div>
@@ -145,7 +145,11 @@ const ModelListing = ({
                   delay = 0.5 * delayIndex
                 }
               } else {
-                delay = Math.min(0.2 * delayIndex,0.5)
+                if(indexCategory === 0){
+                delay = Math.min(0.2 * delayIndex)}
+                else{
+                  delay = titleDealy * delayIndex *0.1
+                }
               }
             }
 
