@@ -39,7 +39,7 @@ export default function Home() {
     >
       <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8  md:gap-24 md:px-12 lg:gap-24  lg:px-8 2xl:px-16 ">
         <div className="mt-8 sm:mt-16 lg:mt-12  ">
-          <h1 className="text-[42px]  leading-none font-semibold lg:text-[1.9rem] xl:text-[4rem]">
+          <h1 className="text-[43px]  leading-none font-semibold lg:text-[2.9rem] xl:text-[4rem]">
             Build and deploy AI agents in 5 minutes
           </h1>
 
@@ -59,29 +59,29 @@ export default function Home() {
               <ArrowRight className="size-4" />
             </Link>
           </div>
-          <div className="flex w-full justify-center items-center px-4 pt-4 lg:hidden">
+          <div className="flex w-full justify-center items-center px-4 pt-4 lg:hidden -ml-6 md:-ml-0">
             <Image
               src="/globe-unscreen.gif"
               alt="Earth"
               width={400}
               height={400}
-              className="size-[300px] sm:size-[300px] md:size-[400px]"
+              className="size-[400px] sm:size-[400px] md:size-[400px] bg-red-400"
               draggable={false}
             />
           </div>
         </div>
 
         <div className="grid grid-cols-2  md:grid-cols-4  w-full  3xl:w-[80%] md:w-full gap-4 lg:gap-0 py-4 lg:py-0 ">
-        <div className="flex w-full justify-center   border-gray-300 border-r-2 py-2 px-5 lg:px-2 xl:px-5">
+          <div className="flex w-full justify-center   border-gray-300 border-r-2 py-2 px-5 lg:px-2 xl:px-5">
 
-<div className="flex flex-col ">
-  <div className="flex  ">
-    <span className="text-xl font-medium xl:text-3xl lg:text-xl  3xl:text-4xl">{'>'}50</span>
-    <span className="text-sm  lg:text-[12px]">K</span>
-  </div>
-  <span className="text-[10px] font-semibold xl:text-[12px]">Transaction /s</span>
-</div>
-</div>
+            <div className="flex flex-col ">
+              <div className="flex  ">
+                <span className="text-xl font-medium xl:text-3xl lg:text-xl  3xl:text-4xl">{'>'}50</span>
+                <span className="text-sm  lg:text-[12px]">K</span>
+              </div>
+              <span className="text-[10px] font-semibold xl:text-[12px]">Transaction /s</span>
+            </div>
+          </div>
           <div className="flex justify-center items-center  lg:border-r-2 md:border-r-2 border-gray-300 py-2   px-5 lg:px-2 xl:px-5">
             <div className="flex flex-col   ">
               <div className="flex  justify-center ">

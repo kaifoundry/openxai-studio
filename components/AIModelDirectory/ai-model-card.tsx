@@ -16,7 +16,7 @@ interface cardProps {
     followers?: number
     apy?: string
     Seller?: { name: string; logo?: string }[]
-    delay: number
+    delay?: number
 }
 
 const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
@@ -71,19 +71,19 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                     <div className='flex justify-between px-4 pt-4 pb-2'>
                         <div className='flex flex-col gap-0'>
                             <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.1}}
-                            viewport={{once:true}}
-                            className='text-[15.08px] font-[600] text-black md:text-[14.08px] xl:text-[16.08px] 2xl:text-[19.08px] 3xl:text-[23.08px]'>
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: delay * 0.1 }}
+                                viewport={{ once: true }}
+                                className='text-[15.08px] font-[600] text-black md:text-[14.08px] xl:text-[16.08px] 2xl:text-[19.08px] 3xl:text-[23.08px]'>
                                 {title}
                             </motion.div>
                             <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.15}}
-                            viewport={{once:true}}
-                            className='text-[11.39px] font-[400] text-[#918C8C]'>
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: delay * 0.15 }}
+                                viewport={{ once: true }}
+                                className='text-[11.39px] font-[400] text-[#918C8C]'>
                                 {hashTags?.map((tag, index) => (
                                     <span key={index}>#{tag.replace(/^#/, '')} </span>
                                 ))}
@@ -92,8 +92,8 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.1}}
-                            viewport={{once:true}}>
+                            transition={{ duration: 0.5, delay: delay * 0.1 }}
+                            viewport={{ once: true }}>
                             {Seller && Seller?.length > 0 && (
                                 <Image
                                     src={Seller?.[0]?.logo || ''}
@@ -108,10 +108,10 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                     <div className='flex items-center gap-0 px-2 pt-1 pb-2 lg:pb-0'>
                         {icons?.map((item, index) => (
                             <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.25}}
-                            viewport={{once:true}} key={index} className="relative flex size-[36px] items-center justify-center">
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: delay * 0.25 }}
+                                viewport={{ once: true }} key={index} className="relative flex size-[36px] items-center justify-center">
                                 <Image
                                     src={item?.chain || ''}
                                     alt="icon"
@@ -126,10 +126,10 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                     <div className='flex items-center justify-between px-1 pb-2 2xl:pt-4 3xl:pt-8'>
                         <div className='flex items-center gap-[2vw]'>
                             <motion.div
-                            initial={{ opacity: 0, y:10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.35}}
-                            viewport={{once:true}} className='flex items-center gap-1'>
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: delay * 0.35 }}
+                                viewport={{ once: true }} className='flex items-center gap-1'>
                                 `   <Image
                                     src='/images/appStore/svg/likes.svg'
                                     alt='likes'
@@ -141,10 +141,10 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
 
                             </motion.div>
                             <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.45}}
-                            viewport={{once:true}} className='flex items-center gap-0'>
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: delay * 0.45 }}
+                                viewport={{ once: true }} className='flex items-center gap-0'>
                                 <Image
                                     src='/images/appStore/svg/followers.svg'
                                     alt='likes'
@@ -159,8 +159,8 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{duration:0.5,delay:delay*0.55}}
-                            viewport={{once:true}} className='flex items-center gap-2 md:gap-1 xl:gap-1 2xl:gap-2 3xl:gap-2'>
+                            transition={{ duration: 0.5, delay: delay * 0.55 }}
+                            viewport={{ once: true }} className='flex items-center gap-2 md:gap-1 xl:gap-1 2xl:gap-2 3xl:gap-2'>
                             <span className='text-[18px] font-[500]'>{apy}%</span>
                             <span className='text-[14px] font-[300]'>APY</span>
                         </motion.div>
