@@ -37,9 +37,9 @@ const image = chain?.icon;
       <div className="absolute left-0 top-0 z-10 size-full rounded-2xl bg-[#0997FF] mix-blend-multiply "></div>
       {image && (
     <div className=" overflow-hidden  "> 
-      <Image src={image} alt="" width={60} height={60} className="absolute  z-20 2xl:size-[40px] 3xl:size-[60px] opacity-60 blur-[1.5px] -top-0 left-20 rotate-[21.95deg]" />
-      <Image src={image} alt="" width={60} height={60} className="absolute z-20 2xl:size-[80px] 3xl:size-[100px] opacity-60 blur-[1.5px] top-0 right-1/4 -rotate-[16.16deg]" />
-      <Image src={image} alt="" width={60} height={60} className="absolute z-20 2xl:size-[80px] 3xl:size-[100px] opacity-60 blur-[1px] -bottom-0 left-1/2 -rotate-[16.16deg]" />
+      <Image src={image} alt="" width={60} height={60} className="absolute  z-20 size-[30px] lg:size-[25px] 2xl:size-[40px] 3xl:size-[60px] opacity-60 blur:[1.2px] lg:blur-[1.5px] -top-0 left-20 rotate-[21.95deg]" />
+      <Image src={image} alt="" width={60} height={60} className="absolute z-20 size-[30px] lg:size-[30px] 2xl:size-[60px] 3xl:size-[80px] opacity-60 blur:[1.2px] lg:blur-[1.5px] top-0 right-1/4 -rotate-[16.16deg]" />
+      <Image src={image} alt="" width={60} height={60} className="absolute z-20 size-[30px] lg:size-[30px] 2xl:size-[60px] 3xl:size-[80px] opacity-60 blur:[1.2px] lg:blur-[1px] -bottom-0 left-1/2 -rotate-[16.16deg]" />
     </div>
   )}
       

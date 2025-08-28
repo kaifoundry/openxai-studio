@@ -10,6 +10,7 @@ const MOBILE_BREAKPOINT = 1024
 
 export default function DeploymentsPage() {
   const [showDialog, setShowDialog] = useState(false);
+  const { isConnected,status } = useAccount();
   useEffect(() => {
     if (window.visualViewport.width < MOBILE_BREAKPOINT) {
       setShowDialog(true)
@@ -25,7 +26,14 @@ export default function DeploymentsPage() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [window.visualViewport.width])
-  const { isConnected } = useAccount();
+ 
+
+  const Loader = () => (
+    <div className="relative flex justify-center items-center w-full h-screen lg:min-h-screen">
+      <div className="w-12 h-12 rounded-full absolute border-2 border-solid border-gray-200"></div>
+      <div className="w-12 h-12 rounded-full animate-spin absolute border-2 border-solid border-violet-500 border-t-transparent shadow-md"></div>
+    </div>
+  );
 
   return (
     <>
@@ -36,8 +44,9 @@ export default function DeploymentsPage() {
       )
         : (
           <div className="  my-12 lg:my-6 w-full md:px-8 px-2">
-            {!isConnected ? (
-
+            {status === "connecting" ? (
+            <Loader />
+          ) :!isConnected ? (
               <div className="flex items-center justify-center w-full">
                 <div className="bg-[#F5F8FF] border-2 border-dashed border-[#99BDFF] rounded-lg p-12 text-center w-full">
                   <div className="mb-4">
