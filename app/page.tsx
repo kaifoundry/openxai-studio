@@ -32,28 +32,28 @@ export default function Home() {
 
   return (
     <motion.div
-      className="grid size-full grid-cols-1 xl:grid-cols-[1fr_1fr] lg:grid-cols-[55%_45%] "
+      className="grid size-full grid-cols-1 xl:grid-cols-[1fr_1fr] lg:grid-cols-[2fr_1fr] "
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8 md:gap-24 md:px-12 lg:gap-24 lg:px-16 ">
-        <div className="mt-8 sm:mt-16 lg:mt-12 ">
-          <h1 className="text-[42px] text-balance leading-none font-semibold lg:text-5xl xl:text-7xl">
+      <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8  md:gap-24 md:px-12 lg:gap-24  lg:px-8 2xl:px-16 ">
+        <div className="mt-8 sm:mt-16 lg:mt-12  ">
+          <h1 className="text-[42px]  leading-none font-semibold lg:text-[1.9rem] xl:text-[4rem]">
             Build and deploy AI agents in 5 minutes
           </h1>
 
           <div className="mt-6 flex flex-row gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4 lg:mt-12">
             <Link
               href="/app-store"
-              className="flex h-12 items-center justify-center rounded-full bg-primary px-8 text-lg font-medium text-background transition-colors hover:bg-primary/90 sm:h-14 sm:px-10 lg:px-12 lg:text-xl"
+              className="flex h-12 items-center whitespace-nowrap justify-center rounded-full bg-primary px-8 text-lg font-medium text-background transition-colors hover:bg-primary/90 sm:h-14 sm:px-10 lg:px-12 lg:text-lg xl:text-xl"
             >
               Build Now
             </Link>
             <Link
               href="https://docs.openxai.org"
               target="_blank"
-              className="flex h-12 items-center justify-center gap-2 rounded-lg px-4 font-medium text-blue-600 transition-colors hover:bg-foreground/10 sm:h-14 sm:px-6"
+              className="flex h-12 items-center justify-center gap-2 rounded-lg whitespace-nowrap px-4 font-medium text-blue-600 transition-colors hover:bg-foreground/10 sm:h-14 sm:px-6"
             >
               <span>Quick guide</span>
               <ArrowRight className="size-4" />
@@ -71,48 +71,49 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2  lg:grid-cols-[25%_28%_25%_25%] md:grid-cols-4  w-full lg:w-full 3xl:w-[80%] md:w-full gap-4 lg:gap-0 py-4 lg:py-0 ml-0 lg:-ml-12 ">
-          <div className="flex justify-center items-center  border-r-2 border-gray-300 py-2 ">
-            <div className="flex flex-col ">
-              <div className="flex ">
-                <span className="text-xl font-medium xl:text-3xl lg:text-2xl 3xl:text-4xl">{'>'}50</span>
-                <span className="text-sm  lg:text-[12px]">K</span>
-              </div>
-              <span className="text-[10px] font-semibold lg:text-[12px]">Transaction /s</span>
-            </div>
-          </div>
-          <div className="flex justify-center items-center  lg:border-r-2 md:border-r-2 border-gray-300 py-2   px-5">
+        <div className="grid grid-cols-2  md:grid-cols-4  w-full  3xl:w-[80%] md:w-full gap-4 lg:gap-0 py-4 lg:py-0 ">
+        <div className="flex w-full justify-center   border-gray-300 border-r-2 py-2 px-5 lg:px-2 xl:px-5">
+
+<div className="flex flex-col ">
+  <div className="flex  ">
+    <span className="text-xl font-medium xl:text-3xl lg:text-xl  3xl:text-4xl">{'>'}50</span>
+    <span className="text-sm  lg:text-[12px]">K</span>
+  </div>
+  <span className="text-[10px] font-semibold xl:text-[12px]">Transaction /s</span>
+</div>
+</div>
+          <div className="flex justify-center items-center  lg:border-r-2 md:border-r-2 border-gray-300 py-2   px-5 lg:px-2 xl:px-5">
             <div className="flex flex-col   ">
               <div className="flex  justify-center ">
-                <span className="text-xl font-medium xl:text-3xl lg:text-2xl  3xl:text-4xl">600</span>
+                <span className="text-xl font-medium xl:text-3xl lg:text-xl  3xl:text-4xl">600</span>
                 <span className="text-sm  lg:text-[12px]">ms</span>
               </div>
-              <span className="text-[10px] font-semibold lg:text-[12px]">Time to Finality (avg)</span>
+              <span className="text-[10px] font-semibold xl:text-[12px]  text-center">Time to Finality (avg)</span>
             </div>
           </div>
-          <div className="flex w-full justify-center    border-gray-300 border-r-2 py-2 lg:px-5">
+          <div className="flex w-full justify-center   border-gray-300 border-r-2 py-2 px-5 lg:px-2 xl:px-5">
 
             <div className="flex flex-col ">
               <div className="flex  ">
-                <span className="text-xl font-medium xl:text-3xl lg:text-2xl  3xl:text-4xl">{'>'}50</span>
+                <span className="text-xl font-medium xl:text-3xl lg:text-xl  3xl:text-4xl">{'>'}50</span>
                 <span className="text-sm  lg:text-[12px]">K</span>
               </div>
-              <span className="text-xs font-semibold lg:text-[12px]">Transaction /s</span>
+              <span className="text-[10px] font-semibold xl:text-[12px]">Transaction /s</span>
             </div>
           </div>
-          <div className="flex justify-center items-center py-2  px-5">
+          <div className="flex justify-center items-center py-2 px-5 lg:px-2 xl:px-5">
             <div className="flex flex-col ">
               <div className="flex justify-center ">
-                <span className="text-xl font-medium xl:text-3xl lg:text-2xl 3xl:text-4xl">600</span>
+                <span className="text-xl font-medium xl:text-3xl lg:text-xl  3xl:text-4xl">600</span>
                 <span className="text-sm  lg:text-[12px]">ms</span>
               </div>
-              <span className="text-[10px] font-semibold lg:text-[12px]  ">Time to Finality (avg)</span>
+              <span className="text-[10px] font-semibold xl:text-[12px]  text-center ">Time to Finality (avg)</span>
             </div>
           </div>
         </div>
 
 
-        <div className="grid grid-cols-1 lg:grid-cols-2  lg:justify-start ml-0 lg:-ml-9  lg:px-0 px-4  items-center w-full 2xl:w-[90%]  3xl:w-[60%] pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2  lg:justify-start   lg:px-0 px-4  items-center w-full  2xl:w-[90%]  3xl:w-[60%] pb-10">
           <div className="flex justify-start  items-center border-gray-300 pb-6   border-b-2 lg:border-b-0 lg:border-r-2  ">
             <div className="flex justify-between lg:justify-center  lg:pr-4 lg:place-items-center gap-2 w-full   lg:gap-6">
               <div>
@@ -242,7 +243,7 @@ export default function Home() {
           alt="Earth"
           width={800}
           height={800}
-          className="w-full h-full max-w-[1000px]"
+          className="w-full h-full lg:w-[350px] lg:h-[350px] xl:h-[500px] xl:w-[500px] 2xl:h-[700px] 2xl:w-[700px] max-w-[800px] max-h-[800px]"
           draggable={false}
         />
       </div>
