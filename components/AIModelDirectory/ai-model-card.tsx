@@ -130,7 +130,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: delay * 0.35 }}
                                 viewport={{ once: true }} className='flex items-center gap-1'>
-                                `   <Image
+                                  <Image
                                     src='/images/appStore/svg/likes.svg'
                                     alt='likes'
                                     width={19}
