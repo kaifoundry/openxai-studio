@@ -27,12 +27,15 @@ export function ModelDeployment({ deployments }: { deployments?: Deployment[] })
 
     return (
         <>
-            <div>
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.7 }}>
                 <div className="mb-4 flex ">
                     <h2 className="text-lg font-medium"> Latest Deployments</h2>
 
                 </div>
-            </div>
+            </motion.div>
             <Card>
                 <CardContent className="p-0">
                     <div className="overflow-x-auto hide-scrollbar">
