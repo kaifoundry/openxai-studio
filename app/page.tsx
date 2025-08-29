@@ -39,7 +39,7 @@ export default function Home() {
     >
       <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8  md:gap-24 md:px-12 lg:gap-24  lg:px-8 2xl:px-16 ">
         <div className="mt-8 sm:mt-16 lg:mt-12  ">
-          <h1 className="text-[43px]  leading-none font-semibold lg:text-[2.9rem] xl:text-[4rem]">
+          <h1 className="text-[43px]  leading-tight lg:leading-none font-semibold lg:text-[2.9rem] xl:text-[4rem]">
             Build and deploy AI agents in 5 minutes
           </h1>
 
