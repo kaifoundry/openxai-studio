@@ -6,7 +6,7 @@ import {
     ModelStats,
     ModelContent,
     // ModelSidebar,
-    ModelStat,
+    ModelDeployment,
     ModelBalance
 } from '@/components/ModelDetails';
 import { useEffect, useRef, useState } from 'react';
@@ -74,7 +74,7 @@ export default function BTCOraclePage() {
                                 howItWorks={data.howItWorks}
                             />
 
-                            <ModelStat transactions={data?.transactions ?? []} />
+                            <ModelDeployment deployments={data?.deployments ?? []} />
                         </div>
                     </div>
                 </div>
