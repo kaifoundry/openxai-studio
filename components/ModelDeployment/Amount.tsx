@@ -17,24 +17,13 @@ import { useToast } from '@/components/ui/use-toast'
 import { motion } from 'framer-motion'
 import { LoadingOverlay } from '../ui/loading-overlay'
 
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3, // Adjust this value to control the delay between children
-    },
-  },
-}
-
 const itemVariants = (delay: number) => ({
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       delay: delay,
     },
   },
@@ -501,7 +490,12 @@ export default function Amount({
             )}
 
           {!final_amount && (
-            <div className="my-6 border-b border-[#D4D4D4] text-end">
+            <motion.div
+            variants={itemVariants(0.45)}
+            initial="hidden"
+        whileInView="visible"
+        viewport={{once:true}}
+            className="my-6 border-b border-[#D4D4D4] text-end">
               <motion.p
                variants={itemVariants(0.35)}
                 initial="hidden"
@@ -530,7 +524,7 @@ export default function Amount({
                 </p>
                 <p className="text-[16px] font-[400] text-[#01CA1F]">$0.00/mo</p>
               </motion.div>
-            </div>
+            </motion.div>
           )}
 
           <motion.button
