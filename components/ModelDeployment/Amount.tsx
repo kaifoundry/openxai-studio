@@ -34,7 +34,7 @@ const itemVariants = (delay: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.6,
       delay: delay,
     },
   },
@@ -537,8 +537,9 @@ export default function Amount({
            variants={itemVariants(0.5)}
             initial="hidden"
             whileInView="visible"
+          
             viewport={{once:true}}
-            className={`mt-6 w-full rounded-md py-2 text-white transition ${selectedAIModel && selectedProvider && selectedTokenization && final_amount ? 'bg-[#0058FF]' : 'bg-[#0058FF] opacity-55 cursor-not-allowed'}`}
+            className={`mt-6 w-full rounded-md py-2 text-white  ${selectedAIModel && selectedProvider && selectedTokenization && final_amount ? 'bg-[#0058FF]' : 'bg-[#0058FF]/50 opacity-10 cursor-not-allowed'}`}
             onClick={() => {
               setDeploying(true)
               deployOnDemo()
