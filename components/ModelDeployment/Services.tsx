@@ -15,6 +15,29 @@ import AIModels from './AIModels'
 import Amount from './Amount'
 import Hosting from './Hosting'
 import Tokenization from './Tokenization'
+import { motion } from 'framer-motion'
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, 
+    },
+  },
+}
+
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+}
 
 interface ServicesProps {
   id: String
@@ -127,6 +150,13 @@ export const Services = ({ id }: ServicesProps) => {
           onValueChange={setExpandedItem}
           className="w-full"
         >
+          
+          <motion.div
+          variants={containerVariants}
+         initial="hidden"
+         whileInView="visible"
+         viewport={{ once: true }}
+        >
           {accordionData.map((accordion, index) => {
             const isAIModel = index === 0
             const isHosting = index === 1
@@ -142,6 +172,10 @@ export const Services = ({ id }: ServicesProps) => {
             }
 
             return (
+             <motion.div
+             key={accordion.id} 
+             variants={itemVariants}
+             >
               <AccordionItem
                 key={index}
                 value={String(index)}
@@ -151,40 +185,6 @@ export const Services = ({ id }: ServicesProps) => {
                     : 'bg-[#F2F6FF]'
                 }`}
               >
-                {/* {isAIModel && selectedAIModel && (
-                  <div className="absolute -right-2 top-2 z-10">
-                    <Image
-                      src="/images/tick.svg"
-                      alt=""
-                      width={15}
-                      height={15}
-                      className="z-10"
-                    />
-                  </div>
-                )}
-                {isHosting && selectedProvider && (
-                  <div className="absolute -right-2 top-2 z-10">
-                    <Image
-                      src="/images/tick.svg"
-                      alt=""
-                      width={15}
-                      height={15}
-                      className="z-10"
-                    />
-                  </div>
-                )}
-                {isTokenization && selectedTokenization && final_amount &&  (
-                  <div className="absolute -right-2 top-2 z-10">
-                    <Image
-                      src="/images/tick.svg"
-                      alt=""
-                      width={15}
-                      height={15}
-                      className="z-10"
-                    />
-                  </div>
-                )} */}
-
                 <AccordionTrigger className="flex  w-full  items-start justify-start gap-4 px-4 py-3 hover:no-underline ">
                   <div className='flex flex-col gap-4 w-full'>
                   <div className="text-left flex items-center gap-3 text-[18px] font-[600] text-[#000000] 3xl:text-[32px]">
@@ -302,8 +302,12 @@ export const Services = ({ id }: ServicesProps) => {
                   {accordion.component}
                 </AccordionContent>
               </AccordionItem>
+              </motion.div>
             )
+            
           })}
+          </motion.div>
+          
         </Accordion>
       </div>
       <div>

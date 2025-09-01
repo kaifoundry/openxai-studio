@@ -14,8 +14,31 @@ import {
   type DemoXnode,
 } from '@/lib/xnode-demo'
 import { useToast } from '@/components/ui/use-toast'
-
+import { motion } from 'framer-motion'
 import { LoadingOverlay } from '../ui/loading-overlay'
+
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // Adjust this value to control the delay between children
+    },
+  },
+}
+
+const itemVariants = (delay: number) => ({
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: delay,
+    },
+  },
+});
 
 export default function Amount({
   selectedAIModel,
@@ -28,7 +51,7 @@ export default function Amount({
   const [hourlyRate, setHourlyRate] = useState(0.0)
   const [monthlyRate, setMontlyRate] = useState(0.0)
   const [totalSavings, setTotalSavings] = useState(0.0)
-  // const monthlyRate = (selectedServices.length * hourlyRate * 24 * 30).toFixed(2);
+
   const [deploying, setDeploying] = useState<boolean>(false)
   const router = useRouter()
   const { toast } = useToast()
@@ -140,30 +163,21 @@ export default function Amount({
       if (activeReservation) {
         deployOnXnode = reservedXnode.xnode
       } else {
-        // dismiss = toast({
-        //   title: 'Reserving Xnode...',
-        //   description: 'This can take up to 1 minute..',
-        //   duration: 60_000,
-        // }).dismiss
+        
         deployOnXnode = await reserveDemo({ xnode_id: demoXnode.id })
       }
 
-      //console.log('Selected model:', step.modelSize)
-
-      // Use templateId to find the correct model definition
+      
       const selectedModel = ModelDefinitions.find(
         (m) => m.nixName === templateId
       )
-      //console.log('Found model definition:', selectedModel)
-
-      // Get the selected size from the UI
+      
       const modelSize = selectedAIModel?.name
-      //console.log('Model size:', modelSize)
+     
 
       const ollamaCommand =
         selectedModel?.options[0].requirements[modelSize]?.ollamaCommand
-      //console.log('Ollama command:', ollamaCommand)
-
+     
       if (!ollamaCommand) {
         throw new Error('Selected model configuration not found')
       }
@@ -206,39 +220,63 @@ export default function Amount({
     <div className="flex py-4 pl-0 pr-4">
       <LoadingOverlay isVisible={deploying} />
 
-      <div className="flex w-full py-4 pl-0 pr-4">
+      <motion.div
+      // variants={containerVariants}
+      // initial="hidden"
+      // whileInView="visible"
+      className="flex w-full py-4 pl-0 pr-4">
         <div className="w-full bg-white">
           {!final_amount && (
-            <div className="mb-6 rounded-md bg-[#EEEEEE] px-4 py-2 text-left text-[21px] font-[400]">
+            <motion.div
+            variants={itemVariants(0.2)}
+             initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+            className="mb-6 rounded-md bg-[#EEEEEE] px-4 py-2 text-left lg:text-[16px] 3xl:text-[21px] font-[400]">
               Hosting costs
-            </div>
+            </motion.div>
           )}
 
           {!final_amount && (
-            <div className="flex cursor-pointer items-center justify-between border-b border-[#D4D4D4] py-3">
-              <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
-                Service
+            <motion.div
+            variants={itemVariants(0.2)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+            className="flex cursor-pointer items-center justify-between border-b border-[#D4D4D4] py-3">
+              <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
+                --
               </span>
               {selectedAIModel && (
-                <span className="text-[14px] text-[#4D4D4D] 2xl:text-[16px] 3xl:text-[18px]">
-                  xx
+                <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
+                  $00.00
                 </span>
               )}
-            </div>
+            </motion.div>
           )}
 
           {(selectedProvider || selectedTokenization) && !final_amount && (
             <div>
-              <div className="flex cursor-pointer items-center justify-between border-b border-[#D4D4D4] py-3">
-                <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
-                  Service
+              <motion.div
+              variants={itemVariants(0.05)}
+               initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="flex cursor-pointer items-center justify-between border-b border-[#D4D4D4] py-3">
+                <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
+                  --
                 </span>
-                <span className="text-[14px] text-[#4D4D4D] 2xl:text-[16px] 3xl:text-[18px]">
-                  xx
+                <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
+                 $00.00
                 </span>
-              </div>
-              <div className="flex items-center justify-between py-8">
-                <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
+              </motion.div>
+              <motion.div 
+              variants={itemVariants(0.1)}
+               initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="flex items-center justify-between py-6">
+                <span className="text-[14px]  2xl:text-[14px] 3xl:text-[18px]">
                   Discount code
                 </span>
                 <div className="max-w-30 flex items-center rounded-full border border-[#D4D4D4] px-4 py-1">
@@ -255,76 +293,111 @@ export default function Amount({
                     Apply
                   </button>
                 </div>
-              </div>
-              <div className="flex flex-col items-start border-b border-[#D4D4D4] pb-8">
+              </motion.div>
+              <motion.div 
+              variants={itemVariants(0.2)}
+               initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="flex flex-col items-start border-b border-[#D4D4D4] pb-8">
                 <div className="flex w-full items-center justify-between pt-4">
-                  <span className="text-xl font-medium text-darkGray">
+                  <span className="text-[16px] font-medium text-darkGray">
                     Sub Total
                   </span>
-                  <span className="text-3xl font-bold text-darkGray">
+                  <span className="text-2xl font-bold text-darkGray">
                     ${BASE_SUB_TOTAL.toFixed(2)}/
-                    <span className="text-[24px]">mo</span>
+                    <span className="text-[16px]">mo</span>
                   </span>
                 </div>
-                <p className="mt-1 self-end text-right text-[16px] text-[#8E8E8E]">
+                <p className="mt-1 self-end text-right text-[14px] ">
                   That’s about ${hourlyRate.toFixed(2)} hourly
                 </p>
-              </div>
+              </motion.div>
             </div>
           )}
           {selectedTokenization && !final_amount && (
             <>
-              <div className="mb-6 mt-6 rounded-md bg-[#EEEEEE] px-4 py-2 text-left text-[21px] font-[400]">
+              <motion.div 
+              variants={itemVariants(0.1)}
+               initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="mb-6 mt-6 rounded-md bg-[#EEEEEE] px-4 py-2 text-left text-[16px] 3xl:text-[21px]  font-[400]">
                 OpenXAI Magic
-              </div>
+              </motion.div>
 
-              <div className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
-                <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
+              <motion.div
+              variants={itemVariants(0.15)}
+               initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-1">
+                <span className="text-[14px]  2xl:text-[14px] 3xl:text-[18px]">
                   App staking rewards <span className="text-gray-400">?</span>
                 </span>
-                <span className="text-[14px] font-[700] text-darkGray 2xl:text-[16px] 3xl:text-[18px]">
+                <span className="text-[14px] font-[700] text-darkGray 2xl:text-[14px] 3xl:text-[18px]">
                   {APP_STAKING_REWARDS_PERCENTAGE}%
                 </span>
-              </div>
-              <div className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
-                <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
+              </motion.div>
+              <motion.div
+              variants={itemVariants(0.2)}
+               initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-1">
+                <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
                   Ave. monthly rewards
                 </span>
-                <span className="text-[14px] font-[700] text-darkGray 2xl:text-[16px] 3xl:text-[18px]">
+                <span className="text-[14px] font-[700] text-darkGray 2xl:text-[14px] 3xl:text-[18px]">
                   ~${AVE_MONTHLY_REWARDS.toFixed(2)}
                 </span>
-              </div>
-              <div className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
-                <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
+              </motion.div>
+              <motion.div 
+              variants={itemVariants(0.25)}
+               initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-1">
+                <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
                   Gas fees rebates
                 </span>
-                <span className="text-[14px] font-[700] text-[#4D4D4D] 2xl:text-[16px] 3xl:text-[18px]">
+                <span className="text-[14px] font-[700] text-darkGray 2xl:text-[14px] 3xl:text-[18px]">
                   ~${GAS_FEES_REBATES.toFixed(2)}
                 </span>
-              </div>
-              <div className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
-                <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
+              </motion.div>
+              <motion.div 
+              variants={itemVariants(0.3)}
+               initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-1">
+                <span className="text-[14px]  2xl:text-[14px] 3xl:text-[18px]">
                   Chain rewards
                 </span>
-                <span className="text-[14px] font-[700] text-[#4D4D4D] 2xl:text-[16px] 3xl:text-[18px]">
+                <span className="text-[14px] font-[700] text-darkGray 2xl:text-[14px] 3xl:text-[18px]">
                   ~${CHAIN_REWARDS.toFixed(2)}
                 </span>
-              </div>
+              </motion.div>
 
-              <div className="flex items-center justify-between border-b border-[#D4D4D4] pb-10 pt-2">
-                <span className="text-[14px] font-medium text-[#4D4D4D] 2xl:text-[16px] 3xl:text-[18px]">
+              <motion.div
+              variants={itemVariants(0.35)}
+               initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="flex items-center justify-between border-b border-[#D4D4D4] pb-10 pt-1">
+                <span className="text-[14px] font-medium  2xl:text-[14px] 3xl:text-[18px]">
                   Sub Total
                 </span>
-                <span className="text-3xl font-[700] text-darkGray">
+                <span className="text-2xl font-[700] text-darkGray">
                   $
                   {(
                     AVE_MONTHLY_REWARDS +
                     GAS_FEES_REBATES +
                     CHAIN_REWARDS
                   ).toFixed(2)}
-                  /<span className="text-[24px]">mo</span>
+                  /<span className="text-[16px]">mo</span>
                 </span>
-              </div>
+              </motion.div>
             </>
           )}
           {selectedAIModel &&
@@ -332,22 +405,36 @@ export default function Amount({
             selectedTokenization &&
             final_amount && (
               <>
-                <div className="mb-6 mt-6 rounded-md bg-[#EEEEEE] px-4 py-2 text-left text-[21px] font-[400]">
+                <motion.div variants={itemVariants(0.05)} 
+                 initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+                className="mb-6 mt-6 rounded-md bg-[#EEEEEE] px-4 py-2 text-left text-[16px] 3xl:text-[21px] font-[400]">
                   Summary
-                </div>
-                <div className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
-                  <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
-                    Services
+                </motion.div>
+                <motion.div
+                variants={itemVariants(0.1)}
+                 initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+                className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
+                  <span className="text-[14px]  2xl:text-[14px] 3xl:text-[18px]">
+                    --
                   </span>
 
-                  <span className="text-[14px] font-[700] text-darkGray 2xl:text-[16px] 3xl:text-[18px]">
-                    xxx
+                  <span className="text-[14px] font-[700] text-darkGray 2xl:text-[14px] 3xl:text-[18px]">
+                    $00.00
                   </span>
-                </div>
+                </motion.div>
 
-                <div className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
+                <motion.div
+                variants={itemVariants(0.15)}
+                 initial="hidden"
+                 viewport={{once:true}}
+            whileInView="visible"
+                className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
                   <div className="flex items-center justify-center gap-2">
-                    <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
+                    <span className="text-[14px]  2xl:text-[14px] 3xl:text-[18px]">
                       App staking rewards
                     </span>
                     <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#5A5A5A] text-xs text-white">
@@ -355,69 +442,103 @@ export default function Amount({
                     </span>
                   </div>
 
-                  <span className="text-[14px] font-[700] text-darkGray 2xl:text-[16px] 3xl:text-[18px]">
+                  <span className="text-[14px] font-[700] text-darkGray 2xl:text-[14px] 3xl:text-[18px]">
                     {APP_STAKING_REWARDS_PERCENTAGE}%
                   </span>
-                </div>
-                <div className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
+                </motion.div>
+                <motion.div
+                 variants={itemVariants(0.2)}
+                  initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+                className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-1">
                   <div className="flex items-center justify-center gap-2">
-                    <span className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
+                    <span className="text-[14px]  2xl:text-[14px] 3xl:text-[18px]">
                       Tot. Montly rewards
                     </span>
                     <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#5A5A5A] text-xs text-white">
                       ?
                     </span>
                   </div>
-                  <span className="text-[14px] font-[700] text-darkGray 2xl:text-[16px] 3xl:text-[18px]">
+                  <span className="text-[14px] font-[700] text-darkGray 2xl:text-[14px] 3xl:text-[18px]">
                     {APP_STAKING_REWARDS_PERCENTAGE}%
                   </span>
-                </div>
-                <div className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-2">
-                  <p className="text-[14px] text-[#8E8E8E] 2xl:text-[16px] 3xl:text-[18px]">
+                </motion.div>
+                <motion.div
+                 variants={itemVariants(0.25)}
+                  initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+                className="my-8 flex items-center justify-between border-b border-[#D4D4D4] py-1">
+                  <p className="text-[14px]  2xl:text-[14px] 3xl:text-[18px]">
                     Total Savings
                   </p>
-                  <p className="text-[14px] text-[#01CA1F] 2xl:text-[16px] 3xl:text-[18px]">
+                  <p className="text-[14px] text-[#01CA1F] 2xl:text-[14px] 3xl:text-[18px]">
                     $0.00/mo
                   </p>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center justify-between border-b border-[#D4D4D4] pb-10 pt-2">
-                  <span className="text-[14px] font-medium text-[#4D4D4D] 2xl:text-[16px] 3xl:text-[18px]">
+                <motion.div 
+                 variants={itemVariants(0.3)}
+                  initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+                className="flex items-center justify-between border-b border-[#D4D4D4] pb-10 pt-2">
+                  <span className="text-[14px] font-medium  2xl:text-[16px] 3xl:text-[18px]">
                     Sub Total
                   </span>
-                  <span className="text-3xl font-[700] text-[#0058FF]">
+                  <span className="text-2xl font-[700] text-[#0058FF]">
                     $
                     {(
                       AVE_MONTHLY_REWARDS +
                       GAS_FEES_REBATES +
                       CHAIN_REWARDS
                     ).toFixed(2)}
-                    /<span className="text-[24px] text-[#4D4D4D]">mo</span>
+                    /<span className="text-[20px] text-[#4D4D4D]">mo</span>
                   </span>
-                </div>
+                </motion.div>
               </>
             )}
 
           {!final_amount && (
             <div className="my-6 border-b border-[#D4D4D4] text-end">
-              <p className="text-[24px] font-[700] text-[#0058FF] 2xl:text-[34px] 3xl:text-[44.91px]">
+              <motion.p
+               variants={itemVariants(0.35)}
+                initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+               className="text-[20px] font-[700] text-[#0058FF] 2xl:text-2xl 3xl:text-[44.91px]">
                 ${monthlyRate.toFixed(2)}/
-                <span className="text-[24px] font-[700]">mo</span>
-              </p>
-              <p className="mt-1 text-[20px] text-[#236FFD]">
+                <span className="text-[20px] font-[700]">mo</span>
+              </motion.p>
+              <motion.p
+               variants={itemVariants(0.4)}
+                initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+               className="mt-1 text-[14px] text-[#236FFD]">
                 That’s about ${hourlyRate.toFixed(2)} hourly
-              </p>
-              <div className="flex items-center justify-end gap-14 pb-8 pt-4">
+              </motion.p>
+              <motion.div
+               variants={itemVariants(0.45)}
+                initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+              className="flex items-center justify-end gap-14 pb-8 pt-4">
                 <p className="text-sm font-medium text-[#8E8E8E]">
                   Total Savings
                 </p>
-                <p className="text-lg font-[400] text-[#01CA1F]">$0.00/mo</p>
-              </div>
+                <p className="text-[16px] font-[400] text-[#01CA1F]">$0.00/mo</p>
+              </motion.div>
             </div>
           )}
 
-          <button
-            className={`mt-6 w-full rounded-md py-2 text-white transition ${selectedAIModel && selectedProvider && selectedTokenization && final_amount ? 'bg-[#0058FF]' : 'bg-[#757575]'}`}
+          <motion.button
+           variants={itemVariants(0.5)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+            className={`mt-6 w-full rounded-md py-2 text-white transition ${selectedAIModel && selectedProvider && selectedTokenization && final_amount ? 'bg-[#0058FF]' : 'bg-[#0058FF] opacity-55 cursor-not-allowed'}`}
             onClick={() => {
               setDeploying(true)
               deployOnDemo()
@@ -426,10 +547,10 @@ export default function Amount({
             }}
           >
             Deploy
-          </button>
+          </motion.button>
         </div>
-      </div>
-      {/* )} */}
+      </motion.div>
+      
     </div>
   )
 }
