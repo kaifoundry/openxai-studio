@@ -117,7 +117,7 @@ const ModelListing = ({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: titleDealy }}
           viewport={{ once: true }}
-          className={`hide-scrollbar ${indexCategory === 0 ? 'mt-10' : 'mt-0'} mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]`}
+          className={`hide-scrollbar ${indexCategory === 0 ? 'mt-0 lg:mt-10' : 'mt-0'} mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]`}
         >
           {title} ({models?.length})
         </motion.div>
