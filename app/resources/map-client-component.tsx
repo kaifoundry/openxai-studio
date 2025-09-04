@@ -267,10 +267,11 @@ const MapComponent: React.FC<MapClientComponentProps> = ({ providers, searchQuer
 function StatCard({ title, value, isText = false }: { title: string; value: number | string; isText?: boolean }) {
   return (
     <div className="bg-[#F5F8FF] border border-[#EBEBEB] rounded-[10px]  flex flex-col gap-3 p-4">
-      <h3 className="text-sm font-medium text-[#666666]  dark:text-gray-400">{title}</h3>
+     
       <p className="text-lg  md:text-xl lg:text-3xl bold text-[#0047CC]">
         {isText ? value : (value as number).toLocaleString()}
       </p>
+      <h3 className="text-sm font-medium text-[#666666]  dark:text-gray-400">{title}</h3>
     </div>
   );
 }
