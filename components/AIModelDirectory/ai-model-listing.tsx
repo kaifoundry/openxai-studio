@@ -78,27 +78,42 @@ const ModelListing = ({
     return `${selectedChains.join(',')} -${selectedCategories.join(',')}`;
   }, [selectedChains, selectedCategories]);
 
+  const getVisibleCount = () => {
+    if (typeof window !== 'undefined') {
+      const width = visualViewport.width
+      if (width >= 1920) {
+        return 4
+      } else if (width >= 1000 && width <= 1300) {
+        return 3
+      }
+      else if (width > 1300 && width < 1500 ) {
+        return 3
+      }else if (width >= 1500 ) {
+        return 4
+      } else if (width >= 768 && width < 1000) {
+        return 2
+      }
+    }
+    return collapsed ? 4 : 3
+  }
+
+  useEffect(() => {
+      
+      const handleResize = () => {
+        getVisibleCount();
+      }
+  
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }, [window.innerWidth])
+
   const renderCards = (
     title: string,
     models: any[],
     showAll: boolean = false,
     indexCategory: number
   ) => {
-    const getVisibleCount = () => {
-      if (typeof window !== 'undefined') {
-        const width = window.innerWidth
-        if (width >= 1920) {
-          return 4
-        } else if (width >= 1000 && width <= 1300) {
-          return 3
-        }else if (width > 1300 ) {
-          return 4
-        } else if (width >= 768 && width < 1000) {
-          return 2
-        }
-      }
-      return collapsed ? 4 : 3
-    }
+    
 
     const visibleCount = visibleCounts[title] ?? getVisibleCount()
     const visibleModels = showAll ? models : models.slice(0, visibleCount)
