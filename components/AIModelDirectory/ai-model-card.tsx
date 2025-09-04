@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { useNavContext } from '@/contexts/NavContext'
 
 interface cardProps {
     id?: string,
@@ -21,7 +22,8 @@ interface cardProps {
 
 const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
     const router = useRouter();
-
+    const { collapsed } = useNavContext()
+    
     const handleClick = () => {
         router.push(`/app-store/${id}`);
     };
@@ -30,7 +32,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ delay:delay,duration:0.4 }}
             viewport={{ once: true }}
             className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                         perspective-1000"
@@ -52,7 +54,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                             transform: 'scale(0.8)',
                         }}
                     />
-                    <div className='overflow-hidden rounded-xl aspect-[16/9]'>
+                    <div className={`overflow-hidden rounded-xl  max-h-[200px]`}>
                         <Image
                             src={image || ''}
                             alt="title"
@@ -60,7 +62,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                             height={235}
                             priority={true}
                             blurDataURL={image}
-                            className="transition-transform  duration-1000 group-hover:scale-105 relative z-20  w-full rounded-xl  ease-in-out object-container"
+                            className="transition-transform  duration-1000 group-hover:scale-105 relative z-20 aspect-[4/3] w-full object-container rounded-xl  ease-in-out "
                         />
                     </div>
 

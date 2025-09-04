@@ -15,7 +15,7 @@ const containerVariants = (isFirst: boolean) => ({
     y: 0,
     transition: {
       staggerChildren: 0.1,
-      delayChildren: isFirst ? 0.5 : 0.25, 
+      delayChildren: isFirst ? 0.5 : 0.2, 
     },
   },
 });
@@ -89,7 +89,7 @@ const ModelListing = ({
       else if (width > 1300 && width < 1500 ) {
         return 3
       }else if (width >= 1500 ) {
-        return 4
+        return collapsed ? 4 : 3
       } else if (width >= 768 && width < 1000) {
         return 2
       }
@@ -105,7 +105,7 @@ const ModelListing = ({
   
       window.addEventListener('resize', handleResize)
       return () => window.removeEventListener('resize', handleResize)
-    }, [window.innerWidth])
+    }, [window.innerWidth,collapsed])
 
   const renderCards = (
     title: string,
@@ -148,7 +148,7 @@ const ModelListing = ({
           viewport={{ once: true }}
           initial="hidden"
           whileInView="visible"
-          className={`grid grid-cols-1 gap-4 transition-all  delay-300 duration-500 md:grid-cols-2 3xl:gap-8 ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'} ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'} ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} 3xl:grid-cols-4`}
+          className={`grid grid-cols-1 gap-4 transition-all   duration-500 md:grid-cols-2 3xl:gap-8 ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'} ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'} ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} 3xl:grid-cols-4`}
         >
           {visibleModels.map((data: any, index) => {
 
@@ -180,7 +180,7 @@ const ModelListing = ({
             } else {
 
               return (
-                <motion.div key={data?.id} variants={containerVariants(indexCategory === 0)}>
+                // <motion.div key={data?.id} variants={containerVariants(indexCategory === 0)}>
                   <Card
                     id={data?.id}
                     image={data?.image}
@@ -192,8 +192,9 @@ const ModelListing = ({
                     followers={data?.followers}
                     apy={data?.apy}
                     Seller={data?.Seller}
+                    delay={0.15*index}
                   />
-                </motion.div>
+                // </motion.div> 
               )
             }
           })}
