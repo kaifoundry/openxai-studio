@@ -54,7 +54,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                             transform: 'scale(0.8)',
                         }}
                     />
-                    <div className={`overflow-hidden rounded-xl  max-h-[200px]`}>
+                    <div className={`overflow-hidden rounded-xl max-h-[320px] lg:max-h-[200px] 3xl:max-h-[250px]`}>
                         <Image
                             src={image || ''}
                             alt="title"
