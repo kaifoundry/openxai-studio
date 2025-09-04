@@ -729,7 +729,7 @@ const NavContainer = React.forwardRef<
   HTMLElement,
   React.HTMLAttributes<HTMLElement>
 >(({ className, children, ...props }, ref) => {
-  const { collapsed } = useNavContext()
+  const { collapsed,toggleCollapsed } = useNavContext()
 
   // Controlled state of Accordion and NavigationMenu components
   const [accordionValue, setAccordionValue] = useState([])
@@ -746,8 +746,8 @@ const NavContainer = React.forwardRef<
   const { demoMode } = useDemoModeContext()
 
   
-  // const handleMouseEnter = () => toggleCollapsed(false)
-  // const handleMouseLeave = () => toggleCollapsed(true)
+  const handleMouseEnter = () => toggleCollapsed(false)
+  const handleMouseLeave = () => toggleCollapsed(true)
 
   return (
     
@@ -759,12 +759,12 @@ const NavContainer = React.forwardRef<
           className
         )}
         ref={ref}
-        // onMouseEnter={handleMouseEnter}
-        // onMouseLeave={handleMouseLeave}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         {...props}
       >
         <Accordion
-          type="multiple" // Allow multiple accordion items to be open at the same time with 'multiple', change to 'single' to allow only one item to be open
+          type="multiple" 
           value={accordionValue}
           onValueChange={setAccordionValue}
           className="h-full "

@@ -6,18 +6,19 @@ import { motion } from 'framer-motion'
 
 import ModelDefinitions from '../../utils/model-definitions.json'
 import Card from './ai-model-card'
+import { cp } from 'fs'
 
-const containerVariants = {
+const containerVariants = (isFirst: boolean) => ({
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.5,
+      staggerChildren: 0.1,
+      delayChildren: isFirst ? 0.5 : 0.25, 
     },
   },
-}
+});
 
 interface AppContentProps {
   selectedChains: string[]
@@ -90,6 +91,8 @@ const ModelListing = ({
           return 4
         } else if (width >= 1000 && width <= 1300) {
           return 3
+        }else if (width > 1300 ) {
+          return 4
         } else if (width >= 768 && width < 1000) {
           return 2
         }
@@ -105,8 +108,10 @@ const ModelListing = ({
     const previousVisibleCount = lastVisibleCounts[title] ?? getVisibleCount()
     const newlyAddedCount = Math.max(0, visibleCount - previousVisibleCount)
 
+    console.log("collpased value ==>",collapsed)
     if (models.length === 0) return null
-    const titleDealy = indexCategory === 0 ? 0.4 : 0.2
+    const titleDealy = indexCategory === 0 ? 0.35 : 0.2
+    const titleDuration = indexCategory === 0 ? 0.3 : 0.25
     return (
       <div
         key={title}
@@ -115,20 +120,20 @@ const ModelListing = ({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: titleDealy }}
+          transition={{ duration: titleDuration, delay: titleDealy }}
           viewport={{ once: true }}
-          className={`hide-scrollbar ${indexCategory === 0 ? 'mt-0 lg:mt-10' : 'mt-0'} mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[20px] 3xl:text-[26px]`}
+          className={`hide-scrollbar ${indexCategory === 0 ? 'mt-0 lg:mt-10' : 'mt-0'}  mb-4 text-[18px] font-[700] text-[#1F1F1F] md:text-[16px] xl:text-[18px] 2xl:text-[18px] 3xl:text-[26px]`}
         >
           {title} ({models?.length})
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={containerVariants(indexCategory === 0)}
           //key={`${title}-${filterKey}`}
           viewport={{ once: true }}
           initial="hidden"
           whileInView="visible"
-          className={`grid grid-cols-1 gap-4 transition-all delay-300 duration-500 md:grid-cols-2 3xl:gap-8 ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'} ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'} ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} 3xl:grid-cols-4`}
+          className={`grid grid-cols-1 gap-4 transition-all  delay-300 duration-500 md:grid-cols-2 3xl:gap-8 ${collapsed ? 'lg:grid-cols-3' : 'lg:grid-cols-3'} ${collapsed ? 'xl:grid-cols-3' : 'xl:grid-cols-3'} ${collapsed ? '2xl:grid-cols-4' : '2xl:grid-cols-3'} 3xl:grid-cols-4`}
         >
           {visibleModels.map((data: any, index) => {
 
@@ -160,7 +165,7 @@ const ModelListing = ({
             } else {
 
               return (
-                <motion.div key={data?.id} variants={containerVariants}>
+                <motion.div key={data?.id} variants={containerVariants(indexCategory === 0)}>
                   <Card
                     id={data?.id}
                     image={data?.image}

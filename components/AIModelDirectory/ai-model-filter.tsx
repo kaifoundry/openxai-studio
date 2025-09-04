@@ -23,8 +23,8 @@ const UI_CONSTANTS = {
   DROPDOWN_WIDTH: 250,
   DROPDOWN_MAX_HEIGHT: 400,
   CHAIN_DROPDOWN_MAX_HEIGHT: 200,
-  ANIMATION_DURATION: 0.5,
-  ANIMATION_DELAY: 0.3,
+  ANIMATION_DURATION: 0.4,
+  ANIMATION_DELAY: 0.2,
 }
 
 const DROPDOWN_CLASSES = {
@@ -346,7 +346,7 @@ const CategoryTag: React.FC<{
       whileInView={{ opacity: 1, y: 0 }}
       transition={{
         duration: UI_CONSTANTS.ANIMATION_DURATION,
-        delay: 0.15 * index,
+        delay: 0.05 * index,
       }}
       viewport={{ once: true }}
       whileTap={{ scale: 0.95, transition: { duration: 0.2, delay: 0 } }}
@@ -629,7 +629,7 @@ const Filter: React.FC<CategoryChainProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: UI_CONSTANTS.ANIMATION_DURATION,
-                  delay: 1.4,
+                  delay: 0.6,
                 }}
                 viewport={{ once: true }}
                 onClick={handleShowMore}
@@ -648,7 +648,7 @@ const Filter: React.FC<CategoryChainProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
               duration: UI_CONSTANTS.ANIMATION_DURATION,
-              delay: 1.5,
+              delay: 0.65,
             }}
             viewport={{ once: true }}
             className="font-[700] text-[#1F1F1F] md:text-[12px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px]"
@@ -669,7 +669,7 @@ const Filter: React.FC<CategoryChainProps> = ({
             aria-label="Chain filters"
           >
             {ChainData.map((chain, index) => {
-              const delayIndex = index === 0? 0.2 * lastVisibleCount : 0.3* lastVisibleCount;
+              const delayIndex = index === 0? 0.05 * lastVisibleCount : 0.1* lastVisibleCount;
               return(
               <ChainIcon
                 key={chain.name}
