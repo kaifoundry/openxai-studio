@@ -230,7 +230,7 @@ export default function ResourcesTable({ providers, onSearchChange, onFiltersCha
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="relative flex max-w-96 items-center">
+      <div className="relative flex max-w-96 items-center my-2">
         <Search className="absolute left-3 size-4" />
         <Input
           type="text"
@@ -250,9 +250,9 @@ export default function ResourcesTable({ providers, onSearchChange, onFiltersCha
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                   </TableHead>
                 ))}
               </TableRow>
