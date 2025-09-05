@@ -19,7 +19,7 @@ export default function DeploymentPage() {
       <section className="mb-8">
         <motion.h2 initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true }}
           className="md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">Summary</motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -27,7 +27,7 @@ export default function DeploymentPage() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.05 }}
               viewport={{ once: true }}
 
               key={index} className="bg-[#F5F8FF] border border-[#EBEBEB] rounded-[16px]">
@@ -35,13 +35,13 @@ export default function DeploymentPage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 + 0.2 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.05 + 0.1 }}
                   viewport={{ once: true }}
                   className="text-xl  md:text-2xl lg:text-4xl bold text-[#0047CC]">{item.value}</motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 + 0.4 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.05 + 0.15 }}
                   viewport={{ once: true }}
                   className="text-sm text-[#666666] mt-2">{item.label}</motion.div>
               </div>
@@ -55,7 +55,7 @@ export default function DeploymentPage() {
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
           viewport={{ once: true }}
           className=" md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">
           Your Marketplace Entries ({marketplaceEntries.length})
@@ -66,7 +66,7 @@ export default function DeploymentPage() {
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay:0.4 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay:0.25 }}
                 viewport={{ once: true }}
                 className="relative">
 
@@ -194,7 +194,7 @@ export default function DeploymentPage() {
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
           viewport={{ once: true }}
 
           className="md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">
@@ -205,7 +205,7 @@ export default function DeploymentPage() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.4 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
               viewport={{ once: true }}
               key={server.id} className="border-[1px] border-[#EBEBEB] rounded-[12px]">
               <div className="md:p-6 p-2">

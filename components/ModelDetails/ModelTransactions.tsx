@@ -30,7 +30,9 @@ export function ModelDeployment({ deployments }: { deployments?: Deployment[] })
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.7 }}>
+                viewport={{once:true}}
+                transition={{ duration: 0.4, delay: 0.15 }}>
+
                 <div className="mb-4 flex ">
                     <h2 className="text-lg font-medium"> Latest Deployments</h2>
 
@@ -42,7 +44,7 @@ export function ModelDeployment({ deployments }: { deployments?: Deployment[] })
                         <motion.table
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.8 }}
+                            transition={{ duration: 0.4, delay: 0.2 }}
                             viewport={{ once: true }}
                             className="w-full min-w-[800px]">
                             <thead className="bg-gray-50">
@@ -72,7 +74,7 @@ export function ModelDeployment({ deployments }: { deployments?: Deployment[] })
                                     <motion.tr
                                         initial={{ opacity: 0, y: 10 }}
                                         whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.8, delay: 0.2 }}
+                                        transition={{ duration: 0.4, delay: 0.05 }}
                                         viewport={{ once: true }}
                                         key={index} className="hover:bg-gray-50">
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">

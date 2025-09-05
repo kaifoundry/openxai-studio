@@ -13,9 +13,9 @@ const Banner = ({selectedChain}:BannerProps) => {
 const image = chain?.icon;
   return (
     <motion.div 
-    initial={{ opacity: 0, x: 20 }}
+    initial={{ opacity: 0.3, x: 10 }}
   whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.5 }}
+  transition={{ duration: 0.3 }}
   viewport={{ once: true }}
     
     className="relative mt-8  lg:mt-4 h-[172px] w-full  md:h-[150px] xl:h-[200px]   2xl:h-[216px] 3xl:h-[216px]">

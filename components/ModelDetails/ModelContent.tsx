@@ -127,8 +127,8 @@ function AnimatedText({
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ 
-            duration: 0.8, 
-            delay: initialDelay + (index * 0.15)
+            duration: 0.5, 
+            delay: initialDelay + (index * 0.05)
           }}
           viewport={{ once: true }}
           className=" text-[12px] lg:text-[16px] w-full"
@@ -156,7 +156,7 @@ export function ModelContent({
           <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8,  }}
+          transition={{ duration: 0.4,  }}
           viewport={{ once: true }}
           className=" leading-relaxed text-[#393939] sm:text-[16px] md:text-md w-full break-words"
           >
@@ -168,7 +168,7 @@ export function ModelContent({
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8,  }}
+          transition={{ duration: 0.4,  }}
           viewport={{ once: true }}
           className=" leading-relaxed text-[#393939] text-[16px] md:text-md w-full break-words"
           >
@@ -180,7 +180,7 @@ export function ModelContent({
           <motion.h3
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, }}
+            transition={{ duration: 0.4, }}
             viewport={{ once: true }}
             className="font-semibold text-[#393939] text-[16px] md:text-md"
           >
@@ -191,7 +191,7 @@ export function ModelContent({
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: (i*0.1) }}
+                transition={{ duration: 0.4, delay: (i*0.05) }}
                 viewport={{ once: true }}
                 key={`step-${item.step}`}
                 className="flex items-start space-x-3 w-full"

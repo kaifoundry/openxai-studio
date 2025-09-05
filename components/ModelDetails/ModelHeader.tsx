@@ -14,9 +14,9 @@ export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
         <div className="px-3">
 
             <motion.div
-                initial={{ opacity: 0, scale: 0.87, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
+                initial={{ opacity: 0.3, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
                 viewport={{ once: true }}
                 className="relative group rounded-2xl lg:mx-2 mt-10 overflow-hidden aspect-[5/3] lg:aspect-[5/2]"
             >
@@ -35,7 +35,7 @@ export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7 }}
+                        transition={{ duration: 0.4 }}
                         viewport={{ once: true }}
                         className="text-2xl font-semibold text-[#1F1F1F] leading-tight sm:text-4xl md:text-5xl lg:text-5xl"
                     >
@@ -44,7 +44,7 @@ export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
                     <motion.p
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
                         viewport={{ once: true }}
                         className="text-base text-[#8F8F8F] lg:text-[16px]"
                     >
@@ -53,10 +53,15 @@ export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
                 </div>
 
 
-                <button className="p-2 rounded-full hover:bg-gray-100 transition">
+                <motion.button 
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.4, delay: 0.1 }}
+                 viewport={{ once: true }}
+                className="p-2 rounded-full hover:bg-gray-100 transition">
                     <Edit className="h-5 w-5 text-[#3D3D3D] font-bold" />
 
-                </button>
+                </motion.button>
 
             </div>
         </div>

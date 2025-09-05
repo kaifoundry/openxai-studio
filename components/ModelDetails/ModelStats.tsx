@@ -16,13 +16,13 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2 },
+    transition: { staggerChildren: 0.1 },
   },
 }
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 }
 
 interface StatItemProps {
@@ -66,7 +66,8 @@ export function ModelStats({ likes, users, trending, apy, profileName, profileIm
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex items-center justify-between mb-4 px-3"
+        transition={{duration:0.4,delay:0.1}}
+        className="flex items-center justify-between mb-4 px-3 "
       >
         <div className="flex items-center gap-4 my-2">
           <Image
