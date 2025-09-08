@@ -11,14 +11,14 @@ interface ModelHeaderProps {
 
 export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
     return (
-        <div className="px-3">
+        <div className="px-3 ">
 
             <motion.div
                 initial={{ opacity: 0.3, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 viewport={{ once: true }}
-                className="relative group rounded-2xl lg:mx-2 mt-10 overflow-hidden aspect-[5/3] lg:aspect-[5/2]"
+                className="relative group rounded-2xl lg:mx-2 mt-10 overflow-hidden aspect-[5/3] lg:aspect-[5/2] "
             >
                 <Image
                     src={image}
@@ -30,7 +30,7 @@ export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
             </motion.div>
 
 
-            <div className="flex justify-between items-center mt-6 px-2  lg:px-3 ">
+            <div className="flex justify-between items-center mt-6 px-2  lg:px-3">
                 <div>
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
@@ -46,7 +46,7 @@ export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: 0.1 }}
                         viewport={{ once: true }}
-                        className="text-base text-[#8F8F8F] lg:text-[16px]"
+                        className="text-base text-[#8F8F8F] lg:text-[16px] mt-2"
                     >
                         {subtitle}
                     </motion.p>

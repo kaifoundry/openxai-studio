@@ -178,7 +178,7 @@ export function ModelContent({
         
         <div className="space-y-3 sm:space-y-4 w-full">
           <motion.h3
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, }}
             viewport={{ once: true }}

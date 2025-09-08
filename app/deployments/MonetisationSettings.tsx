@@ -19,8 +19,8 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.15,
-            delayChildren: 0.2,
+            staggerChildren: 0.05,
+            delayChildren: 0.1,
         },
     },
 };
@@ -30,7 +30,7 @@ const fadeUp = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.8, ease: "easeOut" },
+        transition: { duration: 0.4, ease: "easeOut" },
     },
 };
 

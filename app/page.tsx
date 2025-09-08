@@ -1,7 +1,7 @@
 
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import Lottie from "lottie-react";
 import Link from 'next/link'
 import { ArrowRight, Triangle } from 'lucide-react'
@@ -19,6 +19,23 @@ import Image from "next/image";
 import { ChartContainer } from '@/components/ui/chart'
 
 export default function Home() {
+  const [collapsed, setCollapsed] = useState(true)
+
+  useEffect(() => {
+    const handler = (e: CustomEvent) => {
+      setCollapsed(e.detail.collapsed)
+    }
+    window.addEventListener('nav-collapsed-change', handler as EventListener)
+    return () =>
+      window.removeEventListener(
+        'nav-collapsed-change',
+        handler as EventListener
+      )
+  }, [])
+  const gridClasses = `grid size-full grid-cols-1 ${collapsed ? "xl:grid-cols-[1fr_1fr]" : "xl:grid-cols-[2fr_1fr] "
+    } lg:grid-cols-[2fr_1fr]`;
+
+
   const { data: activeDeployments } = { data: 22652 * 0.67 }
   const { data: deploymentStock } = { data: 22652 * (1 - 0.67) }
   const { data: dailyDeployments } = {
@@ -32,12 +49,12 @@ export default function Home() {
 
   return (
     <motion.div
-      className="grid size-full grid-cols-1 xl:grid-cols-[1fr_1fr] lg:grid-cols-[2fr_1fr] "
+      className={gridClasses}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8  md:gap-24 md:px-12 lg:gap-24  lg:px-8 2xl:px-16 ">
+      <div className="flex flex-col gap-8 px-4 py-8 sm:gap-16 sm:px-8  md:gap-24 md:px-12 lg:gap-24  lg:px-8 2xl:px-16  ">
         <div className="mt-8 sm:mt-16 lg:mt-12  ">
           <h1 className="text-[43px]  leading-tight lg:leading-none font-semibold lg:text-[2.9rem] xl:text-[4rem]">
             Build and deploy AI agents in 5 minutes
@@ -236,16 +253,18 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div className="hidden lg:flex w-full h-full place-content-center place-items-center px-4 pb-8 lg:px-8">
         <Image
           src="/globe-unscreen.gif"
           alt="Earth"
-          width={800}
-          height={800}
-          className="w-full h-full lg:w-[350px] lg:h-[350px] xl:h-[500px] xl:w-[500px] 2xl:h-[700px] 2xl:w-[700px] max-w-[800px] max-h-[800px]"
+          width={700}
+          height={700}
+          className={`w-full h-full lg:w-[350px] lg:h-[350px]
+  ${collapsed ? "xl:w-[600px] xl:h-[600px]" : "xl:w-[550px] xl:h-[550px]"} 
+  max-w-[700px] max-h-[700px]`}
           draggable={false}
         />
+
       </div>
 
       {/* <div className="flex w-full h-screen place-content-center place-items-center px-4 py-8 lg:px-8">

@@ -36,11 +36,11 @@ function StatItem({ value, icon, iconAlt, showInfo = false }: StatItemProps) {
   return (
     <motion.div
       variants={itemVariants}
-      className="flex flex-col items-center space-y-1 px-3 py-1.5"
+      className="flex flex-col items-center space-y-1 px-3 py-1.5 cursor-pointer "
     >
       <Image src={icon} alt={iconAlt} width={24} height={24} />
       <div className="flex flex-row items-center space-x-2 relative">
-        <span className="text-sm font-medium text-[#3D3D3D]">{value}</span>
+        <span className="text-sm font-medium text-[#3D3D3D] ">{value}</span>
 
         {showInfo && (
           <div className="relative group">
@@ -66,10 +66,10 @@ export function ModelStats({ likes, users, trending, apy, profileName, profileIm
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{duration:0.4,delay:0.1}}
+        transition={{ duration: 0.4, delay: 0.1 }}
         className="flex items-center justify-between mb-4 px-3 "
       >
-        <div className="flex items-center gap-4 my-2">
+        <div className="flex items-center gap-4 my-2 cursor-pointer">
           <Image
             src={profileImage || '/images/appStore/contentlogo.png'}
             alt={profileName || 'Samuel Mens'}
