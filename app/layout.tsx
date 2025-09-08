@@ -12,7 +12,7 @@ import CTAHelp from '@/components/cta-help'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { NavLayout } from '@/components/SidebarNav/sibebar-nav'
-
+import { LoadingOverlay } from '@/components/ui/loading-overlay'
 import { Providers } from './providers'
 
 const inter = Inter({
@@ -50,8 +50,9 @@ export default function RootLayout({
           
             <div className='lg:rounded-2xl lg:bg-white lg:mr-6 lg:min-h-screen lg:overflow-y-auto hide-scrollbar p-0'>
             {children}
-            
+           
             </div>
+            <LoadingOverlay/>
             <ScrollToTop />
           </NavLayout>
           </NavProvider>

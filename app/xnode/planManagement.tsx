@@ -21,7 +21,7 @@ const fadeUp = (delay = 0) => ({
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay },
+    transition: { duration: 0.4, delay },
   },
 })
 
@@ -66,7 +66,7 @@ export default function PlanManagement({
           />
           <div>
             <motion.h2
-              variants={fadeUp(delayStart + 0.1)}
+              variants={fadeUp(delayStart + 0.05)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
@@ -81,7 +81,7 @@ export default function PlanManagement({
               />
             </motion.h2>
             <motion.p
-              variants={fadeUp(delayStart + 0.2)}
+              variants={fadeUp(delayStart + 0.1)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
@@ -93,7 +93,7 @@ export default function PlanManagement({
         </div>
 
         <motion.button
-          variants={fadeUp(delayStart + 0.3)}
+          variants={fadeUp(delayStart + 0.15)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
@@ -107,7 +107,7 @@ export default function PlanManagement({
 
       <div className="space-y-6">
         <motion.div
-          variants={fadeUp(delayStart + 0.6)}
+          variants={fadeUp(delayStart + 0.2)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
@@ -116,7 +116,7 @@ export default function PlanManagement({
         </motion.div>
 
         <motion.div
-          variants={fadeUp(delayStart + 1)}
+          variants={fadeUp(delayStart + 0.25)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}

@@ -118,12 +118,12 @@ const AIModels = ({
                 </label>
               </div>
               <div className="flex gap-3">
-                <Image
+                {/* <Image
                   src={modelDefinition.image}
                   alt=""
                   width={30}
                   height={30}
-                />
+                /> */}
                 <div className="text-[10px] font-[500] 2xl:text-[15px] 3xl:text-[15.94px]">
                   {modelDefinition.name}
                 </div>

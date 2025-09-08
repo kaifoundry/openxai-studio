@@ -16,10 +16,9 @@ const container = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 1.6,
-      duration: 0.8,
-      delayChildren: 0.3,
-      staggerChildren: 0.5,
+      duration: 0.4,
+      delayChildren: 0.05,
+      staggerChildren: 0.05,
     },
   },
 }
@@ -30,8 +29,7 @@ const fadeUp = (delay = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      delay,
+      duration: 0.4,
       ease: 'easeOut',
     },
   },
@@ -58,11 +56,9 @@ const ResourceCard = ({
 }) => (
   <motion.div
     variants={fadeUp(delay)}
-    initial="hidden"
-    whileInView="show"
     whileHover={{ scale: 1.05}}
     whileTap={{ scale: 0.95 }}
-    viewport={{ once: true, amount: 0.4 }}
+    viewport={{ once: true}}
     className="flex flex-col items-center gap-2 rounded-2xl border-[1.2px] border-[#E0E0E0] px-4 pb-0 pt-4"
   >
     <div className="text-center">
@@ -128,16 +124,19 @@ const Resources = ({ xNode, lastUpdated }: XNodeResourcesProps) => {
     >
       <div className="flex items-center cursor-pointer justify-between  cursor-pointer gap-4">
         <div>
-          <motion.h2 variants={fadeUp(1.2)} className="text-xl font-bold">
+          <motion.h2 variants={fadeUp(0.1)} className="text-xl font-bold">
             Resources
           </motion.h2>
-          <motion.p variants={fadeUp(1.4)} className="text-xs text-[#8F8F8F]">
+          <motion.p variants={fadeUp(0.15)} className="text-xs text-[#8F8F8F]">
             Last updated {lastUpdated} ago
           </motion.p>
         </div>
       </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-14 lg:grid-cols-3">
+      <motion.div 
+       variants={container}
+       
+      className="mt-6 grid grid-cols-1 gap-14 lg:grid-cols-3">
         {cards.map((c, i) => (
           <ResourceCard
             key={c.key}
@@ -145,10 +144,9 @@ const Resources = ({ xNode, lastUpdated }: XNodeResourcesProps) => {
             subtitle={c.subtitle}
             type={c.type}
             value={c.value}
-            delay={base + i * step}
           />
         ))}
-      </div>
+      </motion.div>
     </motion.div>
   )
 }

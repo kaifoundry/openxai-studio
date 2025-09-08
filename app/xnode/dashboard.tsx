@@ -47,14 +47,14 @@ export default function XNodeDashboard({ xNodeId }: XnodePageProps) {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.4,
+        staggerChildren: 0.1,
       },
     },
   }
 
   const item = {
     hidden: { opacity: 0, y: 50 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   }
 
   {
@@ -208,7 +208,7 @@ export default function XNodeDashboard({ xNodeId }: XnodePageProps) {
                 {xNode.name}
               </span>
             </motion.div>
-            <PlanManagement xnode={xNode} delayStart={0.6} />
+            <PlanManagement xnode={xNode} delayStart={0.2} />
           </motion.div>
           <Resources xNode={xNode} lastUpdated={lastUpdated} />
 

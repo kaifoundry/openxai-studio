@@ -5,13 +5,18 @@ import Image from 'next/image'
 import { useRouter } from "next/navigation";
 
 import deploymentsData from '@/utils/deployments-data.json'
-
+import { mockXNodes } from '@/config/demo-mode';
 export default function DeploymentPage() {
   const router = useRouter();
   const { summaryData, marketplaceEntries, personalServers } = deploymentsData as any
   const handleClick = (id: string) => {
     router.push(`/app-store/${id}?deploy=true`);
   };
+
+  const formatGB = (mb: number | undefined): string => {
+    if (!mb || mb <= 0) return '0'
+    return (mb / 1024).toFixed(2)
+  }
 
   return (
     <div className=" mx-auto md:p-6 px-2">
@@ -192,7 +197,7 @@ export default function DeploymentPage() {
 
       <section className="mb-8">
         <motion.h2
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
           viewport={{ once: true }}
@@ -201,18 +206,28 @@ export default function DeploymentPage() {
           Your personal servers ({personalServers.length})
         </motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
-          {personalServers.map((server, index) => (
+          {mockXNodes.map((server, index) => {
+            const ramUsedGB = formatGB(server?.heartbeatData?.ramMbUsed)
+            const ramTotalGB = formatGB(server?.heartbeatData?.ramMbTotal)
+            const ramUsagePercent = (server?.heartbeatData?.ramMbUsed / server?.heartbeatData?.ramMbTotal) * 100
+          
+            const storageUsedGB = formatGB(server?.heartbeatData?.storageMbUsed)
+            const storageTotalGB = formatGB(server?.heartbeatData?.storageMbTotal)
+            const storageUsagePercent = (server?.heartbeatData?.storageMbUsed / server?.heartbeatData?.storageMbTotal) * 100
+            return(
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
               viewport={{ once: true }}
-              key={server.id} className="border-[1px] border-[#EBEBEB] rounded-[12px]">
+              whileHover={{scale:1.02}}
+              onClick={()=>{router.push(`/xnode?uuid=${server?.id}`)}}
+              key={server?.id} className="border-[1px] border-[#EBEBEB] cursor-pointer rounded-[12px]">
               <div className="md:p-6 p-2">
 
 
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4 gap-3">
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3 ">
 
                     <div className=" rounded flex items-center justify-center">
                       <img src="/images/viewDeployment/xnode.svg" alt="" />
@@ -232,17 +247,17 @@ export default function DeploymentPage() {
                   </div>
 
 
-                  {server.expiringIn && (
-                    <div className="bg-[#FBEFEF] text-[#C73A3A] px-3 py-1 rounded-lg flex items-center gap-2 whitespace-nowrap">
+                  {server?.expiringIn && (
+                    <div className="bg-[#FBEFEF] text-[#C73A3A] px-3 py-1 rounded-lg flex items-center gap-2 whitespace-nowrap ">
                       <div className="w-4 h-4 border-[1px] border-[#C73A3A] rounded-full flex items-center justify-center">
                         <span className="text-[#C73A3A] text-xs ">i</span>
                       </div>
-                      <span className="text-sm font-medium">Expiring in {server.expiringIn} days!</span>
+                      <span className="text-[8px] font-medium">Expiring in {server?.expiringIn} days!</span>
                     </div>
                   )}
                 </div>
                 <div className="text-sm text-gray-700 mb-6">
-                  Staking revenue <span className="font-bold text-gray-900">{server.stakingRevenue}</span>
+                  Staking revenue <span className="font-bold text-gray-900">{server?.stakingRevenue}</span>
                 </div>
 
 
@@ -253,7 +268,7 @@ export default function DeploymentPage() {
                       {[...Array(7)].map((_, i) => (
                         <div
                           key={i}
-                          className={`w-8 h-6  ${i < Math.ceil((server.cpuUsage / 100) * 7) ? 'bg-[#56A23A]' : 'bg-gray-200'
+                          className={`w-8 h-6  ${i < Math.ceil((server?.heartbeatData?.cpuPercent / 100) * 7) ? 'bg-[#56A23A]' : 'bg-gray-200'
                             }`}
                         />
                       ))}
@@ -266,11 +281,11 @@ export default function DeploymentPage() {
                       <div className="flex-1 bg-[#EBF2FF] rounded-full h-2">
                         <div
                           className="bg-[#0059FF] h-2 rounded-full transition-all duration-300"
-                          style={{ width: `${(server.memoryUsage / server.memoryTotal) * 100}%` }}
+                          style={{ width: `${ramUsagePercent}%` }}
                         />
                       </div>
                       <span className="text-sm text-gray-500">
-                        {server.memoryUsage}GB/{server.memoryTotal}GB
+                        {ramUsedGB}GB/{ramTotalGB}GB
                       </span>
                     </div>
                   </div>
@@ -283,18 +298,19 @@ export default function DeploymentPage() {
                       <div className="flex-1 bg-gray-200 rounded-full h-2">
                         <div
                           className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                          style={{ width: `${(server.diskUsage / server.diskTotal) * 100}%` }}
+                          style={{ width: `${storageUsagePercent}%` }}
                         />
                       </div>
                       <span className="text-sm text-gray-500">
-                        {server.diskUsage}GB/{server.diskTotal}GB
+                        {storageUsedGB}GB/{storageTotalGB}GB
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
             </motion.div>
-          ))}
+            )
+          })}
         </div>
       </section>
     </div>
