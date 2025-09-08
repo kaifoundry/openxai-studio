@@ -47,10 +47,8 @@ export default function RootLayout({
           <NavProvider>
           <Header sessionToken={sessionCookie?.value} />
           <NavLayout>
-          
             <div className='lg:rounded-2xl lg:bg-white lg:mr-6 lg:min-h-screen lg:overflow-y-auto hide-scrollbar p-0'>
-            {children}
-           
+              {children}
             </div>
             <LoadingOverlay/>
             <ScrollToTop />
