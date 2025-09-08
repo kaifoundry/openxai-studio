@@ -70,7 +70,7 @@ export default function TransferNFT({
         <h2 className="text-xl font-semibold text-[#000000]">Transfer NFT</h2>
         <motion.div
           animate={{ rotate: isExpanded ? 0 : 180 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4 }}
         >
           <ChevronUp className="size-5 text-[#959595]" />
         </motion.div>
@@ -83,7 +83,7 @@ export default function TransferNFT({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
         <div  className="px-4 pb-4">

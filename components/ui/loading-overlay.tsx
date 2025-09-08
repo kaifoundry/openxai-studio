@@ -1,57 +1,120 @@
 'use client'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { useLoading } from '@/contexts/LoadingContext'
+import { usePathname } from 'next/navigation'
 
-import { useEffect, useState } from 'react'
-import Lottie from 'lottie-react'
-import flowAnimation from '@/utils/loading.json'
+export function LoadingOverlay() {
+  const { isLoading, loadingMessage,setCompleted } = useLoading()
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [shouldRender, setShouldRender] = useState(isLoading)
+  const [loop, setLoop] = useState(true)
+  const [fastForward, setFastForward] = useState(false)
+  const pathname = usePathname()
 
-interface LoadingOverlayProps {
-  isVisible: boolean
-  message?: string
-  fadeOut?: boolean
-}
+  
+  const FAST_FORWARD_START = 300 
 
-export function LoadingOverlay({ isVisible, message = 'Reserving Xnode...', fadeOut = false }: LoadingOverlayProps) {
-  const [isMounted, setIsMounted] = useState(false)
-  const [isEntering, setIsEntering] = useState(false)
-
-  useEffect(() => {
-    if (isVisible) {
-      setIsEntering(true)
-
-      setTimeout(() => setIsEntering(false), 50)
+  const applySpeed = (speed: number) => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = speed
     }
-  }, [isVisible])
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  if (!isVisible || !isMounted) {
-    return null
   }
 
+  const forceSpeedApplication = useCallback((speed: number) => {
+    setTimeout(() => {
+      applySpeed(speed)
+      setTimeout(() => applySpeed(speed), 100)
+    }, 50)
+  }, [])
+
+  const jumpToTimeAndSpeed = useCallback((time: number, speed: number) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = time
+      setTimeout(() => {
+        forceSpeedApplication(speed)
+      }, 100)
+    }
+  }, [forceSpeedApplication])
+
+  useEffect(() => {
+    if (isLoading) {
+      setShouldRender(true)
+      setLoop(true)
+      setFastForward(false)
+      
+      if (videoRef.current) {
+        
+        videoRef.current.currentTime = 0
+        videoRef.current.play()
+        forceSpeedApplication(1)
+      }
+    } else if (videoRef.current) {
+      setLoop(false)
+      setFastForward(true)
+      
+     
+      jumpToTimeAndSpeed(FAST_FORWARD_START, 16)
+    }
+  }, [isLoading, forceSpeedApplication, jumpToTimeAndSpeed, FAST_FORWARD_START])
+
+  useEffect(() => {
+    if (shouldRender && videoRef.current) {
+      const intervalId = setInterval(() => {
+        if (isLoading) {
+         
+          applySpeed(1)
+        } else if (fastForward && pathname === '/deployments') {
+         
+          applySpeed(16)
+        }
+      }, 100)
+
+      return () => clearInterval(intervalId)
+    }
+  }, [shouldRender, isLoading, fastForward, pathname])
+
+  const handleVideoEnd = () => {
+    if (!loop) {
+      setShouldRender(false)
+      setCompleted(false)
+    }
+  }
+
+  const handleVideoLoaded = () => {
+    if (isLoading) {
+     
+      forceSpeedApplication(1)
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0
+      }
+    } else if (fastForward) {
+    
+      jumpToTimeAndSpeed(FAST_FORWARD_START, 16)
+    }
+  }
+
+  if (!shouldRender) return null
+
   return (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm transition-all duration-300 ease-in-out ${fadeOut ? 'opacity-0 scale-95 backdrop-blur-none' : isEntering ? 'opacity-0 scale-105 backdrop-blur-none' : 'opacity-100 scale-100 backdrop-blur-sm'
-        }`}
-    >
-      <div className={`flex flex-col items-center space-y-20 text-white transition-all duration-500 delay-100 ${fadeOut ? 'opacity-0 translate-y-2' : isEntering ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
-        }`}>
-        <div className="w-60 h-60 flex items-center justify-center">
-          <Lottie
-            animationData={flowAnimation}
-            loop={true}
-            autoplay={true}
-          />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+      <div className="flex flex-col items-center space-y-10">
+        <div className="flex size-1/2 items-center justify-center">
+          <video
+            ref={videoRef}
+            className="h-full w-full object-contain"
+            loop={loop} 
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            onEnded={handleVideoEnd}
+            onLoadedMetadata={handleVideoLoaded}
+          >
+            <source src="/videos/layers-animation.webm" type="video/webm"/>
+          </video>
         </div>
-        <div className="text-center mt-20">
-          <h3 className="text-xl font-semibold mb-2">
-            {message}
-          </h3>
-          <p className="text-gray-300 text-sm">
-            This can take up to 1 minute...
-          </p>
-        </div>
+       
+        
       </div>
     </div>
   )

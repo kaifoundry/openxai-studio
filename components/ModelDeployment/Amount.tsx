@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useDemoContext, useSetDemoContext } from '@/contexts/XnodeDemoContext'
 import ModelDefinitions from '@/utils/model-definitions.json'
 import { xnode } from '@openmesh-network/xnode-manager-sdk'
-
+import { useLoading } from '@/contexts/LoadingContext'
 import {
   demoSession,
   reserveDemo,
@@ -15,7 +15,7 @@ import {
 } from '@/lib/xnode-demo'
 import { useToast } from '@/components/ui/use-toast'
 import { motion } from 'framer-motion'
-import { LoadingOverlay } from '../ui/loading-overlay'
+
 
 const itemVariants = (delay: number) => ({
   hidden: { opacity: 0, y: 20 },
@@ -40,7 +40,7 @@ export default function Amount({
   const [hourlyRate, setHourlyRate] = useState(0.0)
   const [monthlyRate, setMontlyRate] = useState(0.0)
   const [totalSavings, setTotalSavings] = useState(0.0)
-
+  const {setLoading,setCompleted}=useLoading();
   const [deploying, setDeploying] = useState<boolean>(false)
   const router = useRouter()
   const { toast } = useToast()
@@ -197,7 +197,7 @@ export default function Amount({
         deploymentId,
         processes: ['open-webui', 'ollama', 'ollama-model-loader'],
       })
-
+      setLoading(false)
       router.push('/deployments')
     } catch (e) {
       console.error(e)
@@ -207,7 +207,7 @@ export default function Amount({
   }
   return (
     <div className="flex py-4 pl-0 pr-4">
-      <LoadingOverlay isVisible={deploying} />
+      
 
       <motion.div
       // variants={containerVariants}
@@ -234,7 +234,7 @@ export default function Amount({
             viewport={{once:true}}
             className="flex cursor-pointer items-center justify-between border-b border-[#D4D4D4] py-3">
               <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
-                --
+                {selectedAIModel ?'AI Model':'--'}
               </span>
               {selectedAIModel && (
                 <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
@@ -253,10 +253,10 @@ export default function Amount({
             viewport={{once:true}}
               className="flex cursor-pointer items-center justify-between border-b border-[#D4D4D4] py-3">
                 <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
-                  --
+                  {selectedProvider? `${selectedProvider?.name}`:' --'}
                 </span>
                 <span className="text-[14px]  2xl:text-[16px] 3xl:text-[18px]">
-                 $00.00
+                 $12.78
                 </span>
               </motion.div>
               <motion.div 
@@ -535,6 +535,8 @@ export default function Amount({
             viewport={{once:true}}
             className={`mt-6 w-full rounded-md py-2 text-white  ${selectedAIModel && selectedProvider && selectedTokenization && final_amount ? 'bg-[#0058FF]' : 'bg-[#0058FF]/50 opacity-10 cursor-not-allowed'}`}
             onClick={() => {
+              setCompleted(true)
+              setLoading(true)
               setDeploying(true)
               deployOnDemo()
                 .catch(console.error)

@@ -55,8 +55,8 @@ const Hosting = ({
       name: 'Xnode DVM',
       icon: '/images/xnode-card/silvercard-front.webp',
       features: ['Web3 Ready', 'No KYC'],
-      action: { label: '500 OPENX' },
-      disabled: true,
+      action: { label: '150 GPU Credits' },
+      disabled: false,
       isDecentralized: false,
     },
     {
@@ -100,12 +100,20 @@ const Hosting = ({
       icon: '/images/xnode-card/silvercard-front.webp',
       address: address && formatAddress(address),
       Base: '/images/appStore/svg/chains/ollama.svg',
+      features: ['Web3 Ready', 'No KYC'],
+      action: { label: '$1234p/m' },
+      
+      isDecentralized: true,
     },
     {
       name: 'Xnode DVM 2',
       icon: '/images/xnode-card/silvercard-front.webp',
       address: address && formatAddress(address),
       Base: '/images/appStore/svg/chains/ollama.svg',
+      features: ['Web3 Ready', 'No KYC'],
+      action: { label: '$4567p/m' },
+      
+      isDecentralized: true,
     },
   ]
 
@@ -297,6 +305,7 @@ const Hosting = ({
                           <span className="text-xs">Base</span>
                         </div> */}
                       </div>
+                      
                     </div>
                   ))}
 

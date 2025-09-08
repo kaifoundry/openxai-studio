@@ -13,8 +13,7 @@ const container = {
     opacity: 1,
     y: 0,
     transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2, 
+      staggerChildren: 0.1, 
     },
   },
 };
@@ -25,7 +24,7 @@ const fadeUp = (delay = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       delay,
       ease: "easeOut",
     },
@@ -109,11 +108,11 @@ const DeployedApps = ({ services, xNode, setDeleteServiceOpen }: DeployedAppsPro
           viewport={{ once: true }}
     >
       <div className="flex items-center justify-between pb-2 pt-8">
-        <motion.div variants={fadeUp(0.2)} className="text-sm font-bold text-[#141414] xl:text-base 2xl:text-xl 3xl:text-2xl">
+        <motion.div variants={fadeUp(0.1)} className="text-sm font-bold text-[#141414] xl:text-base 2xl:text-xl 3xl:text-2xl">
           Apps ({services.length})
         </motion.div>
         <motion.button
-        variants={fadeUp(0.4)}
+        variants={fadeUp(0.2)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
           onClick={() => push('/app-store')}
@@ -151,7 +150,7 @@ const DeployedApps = ({ services, xNode, setDeleteServiceOpen }: DeployedAppsPro
             service.options?.find(
               (option) => option.nixName === 'openFirewall'
             )?.value === 'true'
-            const delay = 1 + i * 0.4;
+            const delay =  i * 0.05;
           return (
             <motion.div
               key={service.nixName}

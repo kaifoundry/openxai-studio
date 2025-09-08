@@ -9,7 +9,7 @@ import { defaultWagmiConfig } from '@web3modal/wagmi/react/config'
 import { ThemeProvider } from 'next-themes'
 import { ToastContainer } from 'react-toastify'
 import { WagmiProvider, type State } from 'wagmi'
-
+import { LoadingProvider } from '@/contexts/LoadingContext'
 import { Toaster } from '@/components/ui/toaster'
 import DemoModeProvider from '@/components/demo-mode'
 import ScreenProvider from '@/components/screen-provider'
@@ -91,6 +91,7 @@ export function Providers({
       <WagmiProvider config={wagmiConfig} initialState={initialState}>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider attribute="class" enableSystem={false}>
+            <LoadingProvider>
             <DemoModeProvider>
               <SelectedXnodeProvider>
                 <DemoContextProvider>
@@ -102,6 +103,7 @@ export function Providers({
                 </DemoContextProvider>
               </SelectedXnodeProvider>
             </DemoModeProvider>
+            </LoadingProvider>
           </ThemeProvider>
         </QueryClientProvider>
       </WagmiProvider>

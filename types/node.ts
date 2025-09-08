@@ -21,6 +21,11 @@ export type Xnode = {
   heartbeatData?: HeartbeatData
 
   name: string
+  address:string // V5
+  stakingRevenue:string //V5
+  chain:string //V5
+  server_image:string //V5
+  expiringIn?:number //V5
   description: string
   status: string
   deploymentAuth: string
