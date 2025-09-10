@@ -306,16 +306,18 @@ export default function Home() {
       </div>
       <div className="flex w-full flex-1  mt-10 basis-1/2 max-xl:basis-1/2">
         {/* <Earth className="w-full h-full earth-height" /> */}
-        <Image
-          src="/video/globe-unscreen.gif"
-          alt="Earth"
-          width={700}
-          height={700}
-          className={`2xl:w-full 2xl:h-[650px] lg:w-[500px] lg:h-[500px]
-           xl:w-[600px] xl:h-[600px]" : "xl:w-full xl:h-[600px]
-            max-w-[700px] max-h-[700px] earth-height`}
-          draggable={false}
-        />
+       <video
+          
+            className="size-full object-contain"
+            loop={true} 
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+  
+          >
+            <source src="/video/globe.webm" type="video/webm"/>
+          </video>
       </div>
     </div>
   )
