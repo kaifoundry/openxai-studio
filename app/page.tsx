@@ -117,8 +117,8 @@ export default function Home() {
   return (
     <div className="flex size-full">
       <div className="flex flex-1 basis-1/2 pl-16 flex-col   max-xl:basis-2/3 ">
-        <div className="mt-4 ">
-          <h1 className="text-balance pr-0 text-5xl font-semibold 2xl:text-7xl" style={{ lineHeight: '1.1' }}>
+        <div className="mt-10 ">
+          <h1 className="text-balance pr-0 text-5xl font-semibold 2xl:text-7xl" style={{ lineHeight: '1.2' }}>
             Build and deploy AI agents in 5 minutes
           </h1>
           <div className="mt-12 flex items-center gap-4">
@@ -138,15 +138,15 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-2  md:grid-cols-4  my-14 xl:my-14 w-full 3xl:w-[80%] md:w-full gap-4 lg:gap-0 py-4 lg:py-0 ">
-          <div className="flex w-[90%] justify-start  items-start  border-gray-400 border-r py-2 pr-0 lg:pr-0 xl:pr-0">
+        <div className="grid grid-cols-2  md:grid-cols-4  my-14 xl:my-20 w-full 3xl:w-[80%] md:w-full gap-4 lg:gap-0 py-4 lg:py-0 ">
+          <div className="flex w-full justify-start  items-start  border-gray-400 border-r py-2 pr-0 lg:pr-0 xl:pr-0">
 
             <div className="flex flex-col ">
               <div className="flex justify-center ">
                 <span className="text-xl font-medium xl:text-3xl lg:text-xl  3xl:text-4xl"> {totalDeployments ?? '...'}</span>
 
               </div>
-              <span className="text-[10px] font-medium whitespace-normal xl:whitespace-nowrap xl:text-[12px]">
+              <span className="text-[10px] font-medium  xl:text-[12px]">
                 Total Deployments
               </span>
 
