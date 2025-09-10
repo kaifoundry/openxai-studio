@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import * as d3 from "d3";
-import { hexbin as d3Hexbin, HexbinBin } from "d3-hexbin";
+import { hexbin as d3Hexbin } from "d3-hexbin";
+import type { HexbinBin } from "d3-hexbin";
 import * as topojson from "topojson-client";
 
 interface Provider {
@@ -101,7 +102,7 @@ const MapComponent: React.FC<MapClientComponentProps> = ({ providers, searchQuer
     svg.selectAll("*").remove();
 
     
-    let tooltip = d3.select<HTMLElement, unknown>(tooltipRef.current);
+    let tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any> = d3.select(tooltipRef.current as HTMLDivElement);
     if (tooltip.empty()) {
       tooltip = d3.select("body")
         .append<HTMLDivElement>("div")
@@ -247,7 +248,9 @@ const MapComponent: React.FC<MapClientComponentProps> = ({ providers, searchQuer
         .attr("stroke-width", 0.3)
         .style("cursor", (d) => (d.providers.length > 0 ? "pointer" : "default"))
         .on("mousemove", (event, d) => {
-          const t = d3.select(tooltipRef.current ?? "body");
+          const t = tooltipRef.current
+            ? d3.select(tooltipRef.current)
+            : d3.select("body");
           const names = d.providers.slice(0, 6).map((p) => p.providerName || p.name || "Unknown").join(", ");
           const more = d.providers.length > 6 ? ` +${d.providers.length - 6} more` : "";
           t
@@ -257,7 +260,11 @@ const MapComponent: React.FC<MapClientComponentProps> = ({ providers, searchQuer
             .style("top", `${event.pageY + 12}px`);
         })
         .on("mouseleave", () => {
-          d3.select(tooltipRef.current ?? "body").style("display", "none");
+          if (tooltipRef.current) {
+            d3.select(tooltipRef.current).style("display", "none");
+          } else {
+            d3.select("body").select(".hex-tooltip").style("display", "none");
+          }
         })
         .on("click", (event, d) => {
         
