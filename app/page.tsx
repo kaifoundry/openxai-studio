@@ -307,7 +307,7 @@ export default function Home() {
       <div className="flex w-full flex-1  mt-10 basis-1/2 max-xl:basis-1/2">
         {/* <Earth className="w-full h-full earth-height" /> */}
         <video
-          className="size-full object-contain"
+          className="size-full object-contain earth-height"
           loop={true}
           autoPlay
           muted
