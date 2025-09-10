@@ -93,14 +93,14 @@ html {
 }
 
 @layer utilities {
-  @media (min-height: 1400px) {
+  @media (min-height: 1300px) {
     .earth-height {
-      height: 60vh;
+      height: 50vh;
     }
   }
   @media (min-height: 1800px) {
     .earth-height {
-      height: 50vh;
+      height: 30vh;
     }
   }
 }

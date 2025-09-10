@@ -117,8 +117,8 @@ export default function Home() {
   return (
     <div className="flex size-full">
       <div className="flex flex-1 basis-1/2 pl-16 flex-col   max-xl:basis-2/3 ">
-        <div className="mt-16">
-          <h1 className="text-balance pr-0 text-5xl font-semibold 2xl:text-7xl" style={{ lineHeight: '1.2' }}>
+        <div className="mt-4 ">
+          <h1 className="text-balance pr-0 text-5xl font-semibold 2xl:text-7xl" style={{ lineHeight: '1.1' }}>
             Build and deploy AI agents in 5 minutes
           </h1>
           <div className="mt-12 flex items-center gap-4">
@@ -138,7 +138,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-2  md:grid-cols-4  my-14 xl:my-20 w-full 3xl:w-[80%] md:w-full gap-4 lg:gap-0 py-4 lg:py-0 ">
+        <div className="grid grid-cols-2  md:grid-cols-4  my-14 xl:my-14 w-full 3xl:w-[80%] md:w-full gap-4 lg:gap-0 py-4 lg:py-0 ">
           <div className="flex w-[90%] justify-start  items-start  border-gray-400 border-r py-2 pr-0 lg:pr-0 xl:pr-0">
 
             <div className="flex flex-col ">
@@ -146,13 +146,16 @@ export default function Home() {
                 <span className="text-xl font-medium xl:text-3xl lg:text-xl  3xl:text-4xl"> {totalDeployments ?? '...'}</span>
 
               </div>
-              <span className="text-[10px] font-medium xl:text-[12px]">Total Deployments</span>
+              <span className="text-[10px] font-medium whitespace-normal xl:whitespace-nowrap xl:text-[12px]">
+                Total Deployments
+              </span>
+
             </div>
           </div>
-          <div className="flex justify-center   border-r border-gray-400 py-2 -ml-1  px-4 lg:px-2 xl:px-4">
-            <div className="flex flex-col   ">
-              <div className="flex  justify-center ">
-                <span className="text-xl font-medium xl:text-3xl lg:text-xl  3xl:text-4xl "> {ModelDefinitions.length}</span>
+          <div className="flex justify-center border-r border-gray-400 py-2 -ml-1  px-4 lg:px-2 xl:px-4">
+            <div className="flex flex-col ">
+              <div className="flex justify-center">
+                <span className="text-xl font-medium xl:text-3xl lg:text-xl 3xl:text-4xl "> {ModelDefinitions.length}</span>
 
               </div>
               <span className="text-[10px] font-medium xl:text-[12px]  text-center">Apps</span>
@@ -178,7 +181,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 mb-14 w-full 2xl:w-[90%] ">
+        <div className="grid grid-cols-2 mb-14 w-full 2xl:w-[90%] 3xl:w-[70%] ">
           <div className="flex items-start justify-start border-r border-gray-400">
             <div className="flex place-items-center gap-3">
               <div>
@@ -311,7 +314,7 @@ export default function Home() {
       <div className="flex w-full flex-1  mt-10 basis-1/2 max-xl:basis-1/2">
         {/* <Earth className="w-full h-full earth-height" /> */}
         <video
-          className="size-full object-contain"
+          className="size-full object-contain earth-height"
           loop={true}
           autoPlay
           muted
