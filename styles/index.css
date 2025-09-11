@@ -84,6 +84,14 @@
   }
 }
 
+
+html {
+  
+  -ms-scroll-chaining: none; 
+  overscroll-behavior: none; 
+  
+}
+
 /* New Stylings adding for v5  */
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -126,4 +134,17 @@ input[type="checkbox"] {
 
 .hover\:rotate-y-5:hover {
   transform: rotateY(10deg);
+}
+
+@layer utilities {
+  @media (min-height: 1300px) {
+    .earth-height {
+      height: 50vh;
+    }
+  }
+  @media (min-height: 1800px) {
+    .earth-height {
+      height: 30vh;
+    }
+  }
 }

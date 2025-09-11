@@ -1,34 +1,52 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef, useState, useMemo } from 'react';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
+import * as d3 from "d3";
+import { hexbin as d3Hexbin } from "d3-hexbin";
+import type { HexbinBin } from "d3-hexbin";
+import * as topojson from "topojson-client";
 
-// Fix Leaflet icon issues - use only this approach
-const DefaultIcon = L.icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
-
-// Define props interface
-interface MapClientComponentProps {
-  providers: any[];
-  searchQuery?: string;
-  filters?: any;
+interface Provider {
+  name?: string;
+  location?: string;
+  description?: string;
+  providerName?: string;
+  coordinates?: [number, number]; 
+  storage?: number;
+  ram?: number;
+  gpus?: number;
+  bandwidth?: number;
 }
 
+interface Filters {
+  provider?: string;
+  minStorage?: number;
+  minRAM?: number;
+  minGPUs?: number;
+  minBandwidth?: number;
+}
+
+interface MapClientComponentProps {
+  providers: Provider[];
+  searchQuery?: string;
+  filters?: Filters;
+}
+
+// Cache world data globally
+let cachedWorldData: any = null;
+const landCache = new Map<string, boolean>();
+
 const MapComponent: React.FC<MapClientComponentProps> = ({ providers, searchQuery, filters }) => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const leafletMap = useRef<L.Map | null>(null);
-  const markersLayer = useRef<L.LayerGroup | null>(null);
-  const [visibleProviders, setVisibleProviders] = useState<any[]>([]);
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
+  
+  const [loading, setLoading] = useState(true);
+  const [mapInitialized, setMapInitialized] = useState(false);
+  const [providersVisible, setProvidersVisible] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [error, setError] = useState<string | null>(null);
+  const [processingProviders, setProcessingProviders] = useState(false);
+  
   const [stats, setStats] = useState({
     countries: 0,
     providers: 0,
@@ -36,33 +54,58 @@ const MapComponent: React.FC<MapClientComponentProps> = ({ providers, searchQuer
     storage: 0,
     ram: 0,
     bandwidth: 0,
-    gpus: 0
+    gpus: 0,
   });
 
-  // Log only once when providers are initially received
-  useEffect(() => {
-    const validCoordinatesCount = providers.filter(p => p.coordinates).length;
-    console.log(`MapComponent: Processing ${providers.length} providers (${validCoordinatesCount} with valid coordinates)`);
+  const width = 1000;
+  const height = 600;
 
-    // Rest of your initialization code...
-  }, [providers]); // Changed from providers.length to providers
+  // Memoized projection and path
+  const projection = useMemo(() => 
+    d3.geoNaturalEarth1().scale(180).translate([width / 2, height / 2]), 
+    [width, height]
+  );
 
-  // Filter providers based on search query and filters
+  const path = useMemo(() => d3.geoPath().projection(projection), [projection]);
+
+  // Memoized hexbin generator
+  const hexbin = useMemo(() => 
+    d3Hexbin<[number, number]>()
+      .radius(5)
+      .extent([[0, 0], [width, height]]),
+    [width, height]
+  );
+
+  // Pre-calculated hex centers
+  const hexCenters = useMemo(() => {
+    const hexRadius = 5;
+    const dx = hexRadius * 1.5;
+    const dy = hexRadius * Math.sqrt(3);
+    const centers: [number, number][] = [];
+    
+    let row = 0;
+    for (let y = 0; y <= height + dy; y += dy, row++) {
+      const offset = (row % 2) * (dx / 2);
+      for (let x = 0; x <= width + dx; x += dx) {
+        centers.push([x + offset, y]);
+      }
+    }
+    return centers;
+  }, [width, height]);
+
+  // Filter providers with debounce effect
   const filteredProviders = useMemo(() => {
-    return providers.filter(provider => {
-      // Apply search filter if provided
-      if (searchQuery && searchQuery.trim() !== '') {
+    return providers.filter((provider) => {
+      if (searchQuery && searchQuery.trim() !== "") {
         const query = searchQuery.toLowerCase();
         const matchesSearch =
-          (provider.name?.toLowerCase().includes(query)) ||
-          (provider.location?.toLowerCase().includes(query)) ||
-          (provider.description?.toLowerCase().includes(query)) ||
-          (provider.providerName?.toLowerCase().includes(query));
-
+          provider.name?.toLowerCase().includes(query) ||
+          provider.location?.toLowerCase().includes(query) ||
+          provider.description?.toLowerCase().includes(query) ||
+          provider.providerName?.toLowerCase().includes(query);
         if (!matchesSearch) return false;
       }
 
-      // Apply other filters if provided
       if (filters) {
         if (filters.provider && filters.provider !== '' &&
           provider.name !== filters.provider &&
@@ -72,186 +115,327 @@ const MapComponent: React.FC<MapClientComponentProps> = ({ providers, searchQuer
         if (filters.minGPUs > 0 && provider.gpus < filters.minGPUs) return false;
         if (filters.minBandwidth > 0 && provider.bandwidth < filters.minBandwidth) return false;
       }
-
       return true;
     });
   }, [providers, searchQuery, filters]);
 
-  // Calculate final stats with real world values
-  const finalStats = useMemo(() => ({
-    countries: 172, // Total countries
-    providers: 32,  // Total bare metal providers
-    regions: 482,   // Total regions
-    storage: 900 * 1024 * 1024, // 900PB in TB
-    ram: 26 * 1024 * 1024,      // 26PB in GB
-    bandwidth: 900 * 1024 * 1024, // 900PB in Gbps
-    gpus: 335
-  }), []);
-
-  console.log(`MapComponent received ${providers.length} providers`);
+  const [debouncedProviders, setDebouncedProviders] = useState(filteredProviders);
 
   useEffect(() => {
-    // Initialize map if it doesn't exist yet
-    if (!leafletMap.current && mapRef.current) {
-      leafletMap.current = L.map(mapRef.current, {
+    const handler = setTimeout(() => {
+      setDebouncedProviders(filteredProviders);
+    }, 200);
 
-      }).setView([20, 0], 2);
+    return () => clearTimeout(handler);
+  }, [filteredProviders]);
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(leafletMap.current);
+  const finalStats = useMemo(
+    () => ({
+      countries: 172,
+      providers: 32,
+      regions: 482,
+      storage: 900 * 1024 * 1024, 
+      ram: 26 * 1024 * 1024, 
+      bandwidth: 900 * 1024 * 1024, 
+      gpus: 335,
+    }),
+    []
+  );
 
-      markersLayer.current = L.layerGroup().addTo(leafletMap.current);
+  // Optimized land detection with caching
+  const isPointOnLand = useCallback((lonLat: [number, number], land: any) => {
+    const key = `${lonLat[0].toFixed(2)}_${lonLat[1].toFixed(2)}`;
+    if (landCache.has(key)) {
+      return landCache.get(key);
+    }
+    
+    const result = d3.geoContains(land as any, lonLat);
+    landCache.set(key, result);
+    return result;
+  }, []);
+
+  // Loading messages based on progress
+  const getLoadingMessage = useCallback(() => {
+    if (loadingProgress < 30) return "Calculating provider locations...";
+   
+    return "Finalizing visualization...";
+  }, [loadingProgress]);
+
+  // Update progress function
+  const updateProgress = useCallback((newProgress: number) => {
+    setLoadingProgress(prev => Math.max(prev, Math.min(newProgress, 100)));
+  }, []);
+
+  // Main rendering function
+  const renderMap = useCallback((worldData: any) => {
+    if (!svgRef.current) return;
+
+    const svg = d3.select(svgRef.current);
+    svg.selectAll("*").remove();
+
+    let tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any> = d3.select(tooltipRef.current as HTMLDivElement);
+    if (tooltip.empty()) {
+      tooltip = d3.select("body")
+        .append<HTMLDivElement>("div")
+        .attr("class", "hex-tooltip")
+        .style("position", "absolute")
+        .style("pointer-events", "none")
+        .style("padding", "6px 8px")
+        .style("background", "rgba(0,0,0,0.75)")
+        .style("color", "white")
+        .style("font-size", "12px")
+        .style("border-radius", "4px")
+        .style("display", "none");
+    
+      tooltipRef.current = tooltip.node();
     }
 
-    // Reset when providers change
-    setVisibleProviders([]);
+    // Draw countries
+    const land = topojson.merge(worldData, (worldData.objects.countries as any).geometries);
+    const countries = topojson.feature(worldData, worldData.objects.countries);
+    
+    svg.append("g")
+      .selectAll("path")
+      .data((countries as any).features)
+      .join("path")
+      .attr("d", path as any)
+      .attr("fill", "#ffffff")
+      .attr("stroke", "#e6e9ef")
+      .attr("stroke-width", 0.4);
+
+    setMapInitialized(true);
+   
+
+    setProcessingProviders(true);
+
+   
+    const bins: HexbinBin<[number, number]>[] = hexbin(hexCenters);
+   
+    const validProviders = debouncedProviders.filter((p) => p.coordinates && p.coordinates.length === 2);
+    updateProgress(50);
+
+    const projectedProviders: { x: number; y: number; provider: Provider }[] = validProviders
+      .map((p) => {
+        const projected = projection([p.coordinates![1], p.coordinates![0]]);
+        return projected ? { x: projected[0], y: projected[1], provider: p } : null;
+      })
+      .filter((d): d is { x: number; y: number; provider: Provider } => d !== null);
+
+    updateProgress(60);
+
+   
+    type BinKey = string;
+    const binMap = new Map<BinKey, Provider[]>();
+
+    bins.forEach((b) => {
+      const key = `${Math.round(b.x)}_${Math.round(b.y)}`;
+      binMap.set(key, []);
+    });
+
+    projectedProviders.forEach((pt, index) => {
+      let bestBin: HexbinBin<[number, number]> | null = null;
+      let bestDist = Infinity;
+      
+      for (const b of bins) {
+        const dxp = b.x - pt.x;
+        const dyp = b.y - pt.y;
+        const dist = dxp * dxp + dyp * dyp;
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestBin = b;
+        }
+      }
+      
+      if (bestBin) {
+        const key = `${Math.round(bestBin.x)}_${Math.round(bestBin.y)}`;
+        const arr = binMap.get(key);
+        if (arr) arr.push(pt.provider);
+      }
+
+     
+      if (index % Math.max(1, Math.floor(projectedProviders.length / 10)) === 0) {
+        updateProgress(60 + Math.floor((index / projectedProviders.length) * 20));
+      }
+    });
+
+    updateProgress(80);
+
+   
+    const landBins: { bin: HexbinBin<[number, number]>; providers: Provider[] }[] = [];
+    
+    bins.forEach((b, index) => {
+      const inv = projection.invert([b.x, b.y]);
+      if (!inv) return;
+      
+      const lonLat: [number, number] = [inv[0], inv[1]];
+      if (isPointOnLand(lonLat, land)) {
+        const key = `${Math.round(b.x)}_${Math.round(b.y)}`;
+        const list = binMap.get(key) ?? [];
+        landBins.push({ bin: b, providers: list });
+      }
+
+     
+      if (index % Math.max(1, Math.floor(bins.length / 10)) === 0) {
+        updateProgress(80 + Math.floor((index / bins.length) * 15));
+      }
+    });
+
+    updateProgress(95);
+
+    const maxCount = d3.max(landBins, (d) => d.providers.length) ?? 1;
+    const color = d3.scaleSequential<number>()
+      .domain([0, maxCount])
+      .interpolator(
+        d3.interpolateRgbBasis([
+          "#1E90FF", 
+          "#FF69B4", 
+          "#8A2BE2", 
+          "#FF8C00"  
+        ])
+      );
+
+    
+    const hexLayer = svg.append("g").attr("class", "hex-layer");
+    hexLayer
+      .selectAll("path")
+      .data(landBins)
+      .join("path")
+      .attr("d", (d) => hexbin.hexagon() as string)
+      .attr("transform", (d) => `translate(${d.bin.x},${d.bin.y})`)
+      .attr("fill", (d) => (d.providers.length > 0 ? color(d.providers.length) : "#ffffff"))
+      .attr("stroke", "#ebebeb")
+      .attr("stroke-width", 0.3)
+      .style("cursor", (d) => (d.providers.length > 0 ? "pointer" : "default"))
+      .on("mousemove", (event, d) => {
+        const t = tooltipRef.current
+          ? d3.select(tooltipRef.current)
+          : d3.select("body");
+        const names = d.providers.slice(0, 6).map((p) => p.providerName || p.name || "Unknown").join(", ");
+        const more = d.providers.length > 6 ? ` +${d.providers.length - 6} more` : "";
+        t
+          .style("display", "block")
+          .html(`<strong>${d.providers.length}</strong> providers<br/>${names}${more}`)
+          .style("left", `${event.pageX + 12}px`)
+          .style("top", `${event.pageY + 12}px`);
+      })
+      .on("mouseleave", () => {
+        if (tooltipRef.current) {
+          d3.select(tooltipRef.current).style("display", "none");
+        } else {
+          d3.select("body").select(".hex-tooltip").style("display", "none");
+        }
+      })
+      .on("click", (event, d) => {
+        console.log("Providers in hex:", d.providers);
+      });
+
+    const progress = validProviders.length / providers.length || 1;
     setStats({
-      countries: 0,
-      providers: 0,
-      regions: 0,
-      storage: 0,
-      ram: 0,
-      bandwidth: 0,
-      gpus: 0
+      countries: Math.floor(finalStats.countries * progress),
+      providers: Math.floor(finalStats.providers * progress),
+      regions: Math.floor(finalStats.regions * progress),
+      storage: Math.floor(finalStats.storage * progress),
+      ram: Math.floor(finalStats.ram * progress),
+      bandwidth: Math.floor(finalStats.bandwidth * progress),
+      gpus: Math.floor(finalStats.gpus * progress),
     });
 
-    // Filter providers with valid coordinates
-    const validProviders = filteredProviders.filter(p => p.coordinates && p.coordinates.length === 2);
+   
+    updateProgress(100);
+    setProvidersVisible(true);
+    
+    setProcessingProviders(false);
+    setLoading(false);
+  }, [hexbin, hexCenters, projection, path, isPointOnLand, debouncedProviders, providers.length, finalStats, updateProgress]);
 
-    console.log(`MapComponent: Starting to add ${validProviders.length} valid providers to map`);
-
-    // For better performance, add providers in larger batches
-    const BATCH_SIZE = 500; // Increased batch size
-    let currentIndex = 0;
-
-    const addBatch = () => {
-      const endIndex = Math.min(currentIndex + BATCH_SIZE, validProviders.length);
-      const batch = validProviders.slice(currentIndex, endIndex);
-
-      setVisibleProviders(prev => [...prev, ...batch]);
-
-      // Update stats with percentage of completion
-      const progress = endIndex / validProviders.length;
-      setStats({
-        countries: Math.floor(finalStats.countries * progress),
-        providers: Math.floor(finalStats.providers * progress),
-        regions: Math.floor(finalStats.regions * progress),
-        storage: Math.floor(finalStats.storage * progress),
-        ram: Math.floor(finalStats.ram * progress),
-        bandwidth: Math.floor(finalStats.bandwidth * progress),
-        gpus: Math.floor(finalStats.gpus * progress)
-      });
-
-      currentIndex = endIndex;
-
-      // Log progress at 25%, 50%, 75% and 100%
-      const progressPercent = Math.round((endIndex / validProviders.length) * 100);
-      if (progressPercent === 25 || progressPercent === 50 ||
-        progressPercent === 75 || progressPercent === 100) {
-        console.log(`MapComponent: Loaded ${progressPercent}% of providers (${endIndex}/${validProviders.length})`);
-      }
-
-      if (currentIndex < validProviders.length) {
-        setTimeout(addBatch, 100); // Increased delay between batches
-      } else {
-        // Set final stats when complete
-        setStats(finalStats);
-        console.log(`MapComponent: Finished loading all ${validProviders.length} providers`);
-      }
-    };
-
-    // Start adding batches
-    if (validProviders.length > 0) {
-      addBatch();
-    } else {
-      setStats(finalStats);
-    }
-
-    return () => {
-      // No need to clear interval as we're using setTimeout
-    };
-  }, [providers, searchQuery, filters, filteredProviders, finalStats]);
-
+  
   useEffect(() => {
-    // Clear existing markers
-    if (markersLayer.current) {
-      markersLayer.current.clearLayers();
-    }
+    setLoading(true);
+    setLoadingProgress(0);
+    setMapInitialized(false);
+    setProvidersVisible(false);
+    setProcessingProviders(false);
+    setError(null);
 
-    // Group providers by coordinates to avoid overlapping markers
-    const locationGroups: { [key: string]: any[] } = {};
-
-    visibleProviders.forEach(provider => {
-      if (provider.coordinates) {
-        const key = `${provider.coordinates[0]},${provider.coordinates[1]}`;
-        if (!locationGroups[key]) {
-          locationGroups[key] = [];
+    const loadAndRenderMap = async () => {
+      try {
+        if (cachedWorldData) {
+          updateProgress(20);
+          renderMap(cachedWorldData);
+        } else {
+          updateProgress(10);
+          const worldData = await d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json");
+          cachedWorldData = worldData;
+          updateProgress(25);
+          renderMap(worldData);
         }
-        locationGroups[key].push(provider);
+      } catch (error) {
+        console.error("Failed to load world data:", error);
+        setError("Failed to load map data. Please check your connection and try again.");
+        setLoading(false);
+        setProcessingProviders(false);
       }
-    });
+    };
 
-    // Add markers for each location group
-    Object.entries(locationGroups).forEach(([key, providersAtLocation]) => {
-      const [lat, lng] = key.split(',').map(Number);
-
-      // De-duplicate providers by provider name + location
-      const uniqueProviders = new Map();
-      providersAtLocation.forEach(provider => {
-        const providerName = provider.providerName || provider.name || provider.provider || 'Unknown Provider';
-        const location = provider.location || provider.region || 'Unknown Location';
-        const uniqueKey = `${providerName}:${location}`;
-
-        if (!uniqueProviders.has(uniqueKey)) {
-          uniqueProviders.set(uniqueKey, provider);
-        }
-      });
-
-      // Create popup content with unique providers at this location
-      const popupContent = Array.from(uniqueProviders.values()).map(provider =>
-        `<strong>${provider.providerName || provider.name || provider.provider || 'Unknown Provider'}</strong><br>
-         Location: ${provider.location || provider.region || 'Unknown Location'}<br>
-         ${provider.description ? `Description: ${provider.description}<br>` : ''}`
-      ).join('<hr>');
-
-      const marker = L.marker([lat, lng])
-        .bindPopup(popupContent)
-        .addTo(markersLayer.current!);
-    });
-
-    // Log only when markers are first added or when the count changes significantly
-    const markerCount = Object.keys(locationGroups).length;
-    if (markerCount > 0 &&
-      (prevMarkerCountRef.current === 0 ||
-        Math.abs(markerCount - prevMarkerCountRef.current) > 10 ||
-        markerCount === visibleProviders.length)) {
-      console.log(`MapComponent: Added ${markerCount} markers to the map (${Math.round(markerCount / providers.length * 100)}% of total)`);
-      prevMarkerCountRef.current = markerCount;
-    }
-
-  }, [visibleProviders, providers.length]);
-
-  // Add this ref to track previous marker count
-  const prevMarkerCountRef = useRef(0);
+    loadAndRenderMap();
+  }, [renderMap, updateProgress]);
 
   return (
     <div className="flex flex-col gap-6">
-      <div style={{ position: 'relative', overflow: 'hidden' }}>
-        <div
-          ref={mapRef}
+      <div className="overflow-hidden bg-[#ebebeb] rounded-lg  flex justify-center items-center relative min-h-[500px]">
+       
+        {loading && !mapInitialized && (
+          <div className="absolute inset-0 flex items-center justify-center  z-10 rounded-lg">
+            <div className="text-center p-6 ">
+              <div className="mx-auto mb-4 size-12 animate-spin rounded-full border-b-2 border-blue-500"></div>
+              <p className="mb-2 text-lg font-medium text-gray-700">{getLoadingMessage()}</p>
+            </div>
+          </div>
+        )}
+        
+        {((processingProviders && mapInitialized) && (!providersVisible)) && (
+          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10 bg-white bg-opacity-90 px-4 py-2 rounded-lg shadow-md border border-gray-200">
+            <p className="text-sm font-medium text-gray-700 mb-1">Locating providers on map...</p>
+            <div className="w-64 h-2 rounded-full bg-gray-200">
+              <div
+                className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"
+                style={{ width: `${loadingProgress}%` }}
+              ></div>
+            </div>
+            <p className="text-xs text-gray-500 mt-1 text-center">
+              {loadingProgress}% complete • {debouncedProviders.length} providers
+            </p>
+          </div>
+        )}
+        
+        {error && (
+          <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 z-10">
+            <div className="text-center p-4 bg-red-50 rounded-lg">
+              <p className="text-red-600 mb-2">{error}</p>
+              <button 
+                onClick={() => window.location.reload()} 
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                Retry
+              </button>
+            </div>
+          </div>
+        )}
+
+        <svg
+          ref={svgRef}
+          className="rounded-lg shadow-sm"
           style={{
-            height: '600px',
-            width: '100%',
-            overflow: 'hidden',
-            position: 'relative',
-            transform: 'translateZ(0)'
+            height: "500px",
+            width: "100%",
+            overflow: "hidden",
+            borderRadius: "16px",
+            background: "#ebebeb",
           }}
         />
       </div>
 
-      {/* Stats Section */}
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-7 my-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-7">
         <StatCard title="Countries" value={stats.countries} />
         <StatCard title="Providers" value={stats.providers} />
         <StatCard title="Regions" value={stats.regions} />
@@ -264,14 +448,21 @@ const MapComponent: React.FC<MapClientComponentProps> = ({ providers, searchQuer
   );
 };
 
-function StatCard({ title, value, isText = false }: { title: string; value: number | string; isText?: boolean }) {
+function StatCard({
+  title,
+  value,
+  isText = false,
+}: {
+  title: string;
+  value: number | string;
+  isText?: boolean;
+}) {
   return (
-    <div className="bg-[#F5F8FF] border border-[#EBEBEB] rounded-[10px]  flex flex-col gap-3 p-4">
-     
-      <p className="text-lg  md:text-xl lg:text-3xl bold text-[#0047CC]">
+    <div className="bg-[#F5F8FF] border border-[#EBEBEB] rounded-[10px] flex flex-col gap-3 p-4">
+      <p className="text-lg md:text-xl lg:text-3xl font-semibold text-[#0047CC]">
         {isText ? value : (value as number).toLocaleString()}
       </p>
-      <h3 className="text-sm font-medium text-[#666666]  dark:text-gray-400">{title}</h3>
+      <h3 className="text-sm font-[400] text-[#666666] ">{title}</h3>
     </div>
   );
 }
