@@ -1,63 +1,62 @@
 [
-    {
-      "logo": "/images/appStore/contentlogo.png",
-      "name": "Sam Lee",
-      "username": "@samlee",
-      "following": false
-    },
-    {
-      "logo": "/images/appStore/followlogo2.png",
-      "name": "Jane Donald",
-      "username": "@janeDonal",
-      "following": true
-    },
-    {
-      "logo": "/images/appStore/followlogo5.png",
-      "name": "Lois Lane",
-      "username": "@supermanschic",
-      "following": false
-    },
-    {
-      "logo": "/images/appStore/followlogo3.png",
-      "name": "Barry Allen",
-      "username": "@Flash",
-      "following": false
-    },
-    {
-      "logo": "/images/appStore/followlog4.png",
-      "name": "Jenner Foster",
-      "username": "@jaennerfos",
-      "following": false
-    },
-    {
-      "logo": "/images/appStore/contentlogo.png",
-      "name": "Sam Lee",
-      "username": "@samlee",
-      "following": false
-    },
-    {
-      "logo": "/images/appStore/followlogo2.png",
-      "name": "Jane Donald",
-      "username": "@janedoe",
-      "following": true
-    },
-    {
-      "logo": "/images/appStore/followlogo5.png",
-      "name": "Lois Lane",
-      "username": "@supermanschic",
-      "following": false
-    },
-    {
-      "logo": "/images/appStore/followlogo3.png",
-      "name": "Barry Allen",
-      "username": "@Flash",
-      "following": false
-    },
-    {
-      "logo": "/images/appStore/followlog4.png",
-      "name": "Jenner Foster",
-      "username": "@jaennerfos",
-      "following": false
-    }
-  ]
-  
+  {
+    "logo": "/images/appStore/profile.png",
+    "name": "Sam Lee",
+    "username": "@samlee",
+    "following": false
+  },
+  {
+    "logo": "/images/appStore/followlogo2.png",
+    "name": "Jane Donald",
+    "username": "@janeDonal",
+    "following": true
+  },
+  {
+    "logo": "/images/appStore/followlogo5.png",
+    "name": "Lois Lane",
+    "username": "@supermanschic",
+    "following": false
+  },
+  {
+    "logo": "/images/appStore/followlogo3.png",
+    "name": "Barry Allen",
+    "username": "@Flash",
+    "following": false
+  },
+  {
+    "logo": "/images/appStore/followlog4.png",
+    "name": "Jenner Foster",
+    "username": "@jaennerfos",
+    "following": false
+  },
+  {
+    "logo": "/images/appStore/profile.png",
+    "name": "Sam Lee",
+    "username": "@samlee",
+    "following": false
+  },
+  {
+    "logo": "/images/appStore/followlogo2.png",
+    "name": "Jane Donald",
+    "username": "@janedoe",
+    "following": true
+  },
+  {
+    "logo": "/images/appStore/followlogo5.png",
+    "name": "Lois Lane",
+    "username": "@supermanschic",
+    "following": false
+  },
+  {
+    "logo": "/images/appStore/followlogo3.png",
+    "name": "Barry Allen",
+    "username": "@Flash",
+    "following": false
+  },
+  {
+    "logo": "/images/appStore/followlog4.png",
+    "name": "Jenner Foster",
+    "username": "@jaennerfos",
+    "following": false
+  }
+]

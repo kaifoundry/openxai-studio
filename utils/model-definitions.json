@@ -2,7 +2,7 @@
   {
     "id": "0",
     "image": "/images/appStore/mock-card9.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -99,7 +99,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -221,7 +221,7 @@
   {
     "id": "1",
     "image": "/images/appStore/mock-card2.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "deepseekr1",
     "category": "Art",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -266,7 +266,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -416,7 +416,7 @@
   {
     "id": "2",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "Chatgpt-5",
     "category": "Games",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -481,7 +481,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -603,7 +603,7 @@
   {
     "id": "3",
     "image": "/images/appStore/mock-card1.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "dolphin-mixtral",
     "category": "Photography",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -720,7 +720,7 @@
   {
     "id": "4",
     "image": "/images/appStore/mock-card2.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "mistral-nemo",
     "category": "Voice Cloning",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -758,7 +758,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -885,7 +885,7 @@
   {
     "id": "5",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "phi3",
     "category": "Edge TTS",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -923,7 +923,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -1014,7 +1014,7 @@
   {
     "id": "6",
     "image": "/images/appStore/mock-card1.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "codegemma",
     "category": "Instruction Tuned",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -1062,7 +1062,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -1143,7 +1143,7 @@
   {
     "id": "7",
     "image": "/images/appStore/mock-card2.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "gemma2",
     "category": "Chat Assistants",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -1195,7 +1195,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -1288,7 +1288,7 @@
   {
     "id": "8",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "codegeex4",
     "category": "Music",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -1337,7 +1337,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -1411,7 +1411,7 @@
   {
     "id": "9",
     "image": "/images/appStore/mock-card1.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "aya",
     "category": "Sports",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -1460,7 +1460,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -1496,7 +1496,7 @@
   {
     "id": "10",
     "image": "/images/appStore/mock-card4.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "deepseekr1",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -1545,7 +1545,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -1625,7 +1625,7 @@
   {
     "id": "11",
     "image": "/images/appStore/mock-card2.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "wizardlm2",
     "category": "Chat Assistants",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -1674,7 +1674,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -1754,7 +1754,7 @@
   {
     "id": "12",
     "image": "/images/appStore/mock-card2.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "llava",
     "category": "Voice Cloning",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -1803,7 +1803,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -1883,7 +1883,7 @@
   {
     "id": "13",
     "image": "/images/appStore/mock-card5.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "Chatgpt",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -1936,7 +1936,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -2016,7 +2016,7 @@
   {
     "id": "14",
     "image": "/images/appStore/mock-card6.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "llama2",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -2073,7 +2073,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -2153,7 +2153,7 @@
   {
     "id": "15",
     "image": "/images/appStore/mock-card7.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "llama3.2-vision",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -2202,7 +2202,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -2288,7 +2288,7 @@
   {
     "id": "16",
     "image": "/images/appStore/mock-card8.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "llama3.2-vision",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -2345,7 +2345,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -2431,7 +2431,7 @@
   {
     "id": "17",
     "image": "/images/appStore/mock-card1.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "deepseek-coder-v2",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -2488,7 +2488,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -2574,7 +2574,7 @@
   {
     "id": "18",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "starcoder2",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -2631,7 +2631,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -2741,7 +2741,7 @@
   {
     "id": "19",
     "image": "/images/appStore/mock-card1.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "codestral",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -2798,7 +2798,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -2872,7 +2872,7 @@
   {
     "id": "20",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "granite-code",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -2929,7 +2929,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -2959,7 +2959,7 @@
   {
     "id": "21",
     "image": "/images/appStore/mock-card2.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "internlm2",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3016,7 +3016,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3070,7 +3070,7 @@
   {
     "id": "22",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "codestral",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3127,7 +3127,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3169,7 +3169,7 @@
   {
     "id": "23",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "openchat",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3226,7 +3226,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3250,7 +3250,7 @@
   {
     "id": "24",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3307,7 +3307,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3331,7 +3331,7 @@
   {
     "id": "25",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3388,7 +3388,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3412,7 +3412,7 @@
   {
     "id": "26",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3469,7 +3469,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3511,7 +3511,7 @@
   {
     "id": "27",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3568,7 +3568,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3610,7 +3610,7 @@
   {
     "id": "28",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3667,7 +3667,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3703,7 +3703,7 @@
   {
     "id": "29",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3760,7 +3760,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3796,7 +3796,7 @@
   {
     "id": "30",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3853,7 +3853,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3889,7 +3889,7 @@
   {
     "id": "31",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -3946,7 +3946,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -3970,7 +3970,7 @@
   {
     "id": "32",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -4027,7 +4027,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -4051,7 +4051,7 @@
   {
     "id": "33",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -4108,7 +4108,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -4138,7 +4138,7 @@
   {
     "id": "34",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -4195,7 +4195,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -4231,7 +4231,7 @@
   {
     "id": "35",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -4288,7 +4288,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -4312,7 +4312,7 @@
   {
     "id": "36",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -4369,7 +4369,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -4393,7 +4393,7 @@
   {
     "id": "37",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -4450,7 +4450,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -4480,7 +4480,7 @@
   {
     "id": "38",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -4536,7 +4536,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -4560,7 +4560,7 @@
   {
     "id": "39",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -4617,7 +4617,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
@@ -4641,7 +4641,7 @@
   {
     "id": "40",
     "image": "/images/appStore/mock-card3.png",
-    "logo": "/images/appStore/contentlogo.png",
+    "logo": "/images/appStore/profile.png",
     "name": "BTC Oracle",
     "category": "Popular",
     "tags": ["#Chatbot", "#Prediction Game"],
@@ -4697,7 +4697,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
+        "logo": "/images/appStore/profile.png",
         "name": "Christian Grey"
       }
     ],
