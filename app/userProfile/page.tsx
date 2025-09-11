@@ -2,10 +2,18 @@
 
 import React from 'react'
 import UserModelInfo from '@/components/UserProfile/user-model-info'
-const page = () => {
+import UserProfileDetails from '@/components/UserProfile/user-profile-details'
+const Page = () => {
   return (
+    <div className="mx-auto w-full  px-4 py-6">
+    <UserProfileDetails />
     <UserModelInfo/>
+
+</div>
   )
 }
 
-export default page
+export default Page
+
+
+

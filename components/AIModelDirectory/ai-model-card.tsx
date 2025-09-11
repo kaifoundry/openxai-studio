@@ -23,7 +23,7 @@ interface cardProps {
 const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, Seller, delay }: cardProps) => {
     const router = useRouter();
     const { collapsed } = useNavContext()
-    
+
     const handleClick = () => {
         router.push(`/app-store/${id}`);
     };
@@ -32,7 +32,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay:delay,duration:0.4 }}
+            transition={{ delay: delay, duration: 0.4 }}
             viewport={{ once: true }}
             className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                         perspective-1000"
@@ -54,7 +54,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                             transform: 'scale(0.8)',
                         }}
                     />
-                    <div className={`overflow-hidden rounded-xl aspect-[16/9] `}> 
+                    <div className={`overflow-hidden rounded-xl aspect-[16/9] `}>
                         <Image
                             src={image || ''} //max-h-[320px] lg:max-h-[200px] 3xl:max-h-[250px]
                             alt="title"
@@ -102,6 +102,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                                     alt="logo"
                                     width={36}
                                     height={36}
+                                    className='rounded-full bg-[#73C255]'
                                 />
                             )}
                         </motion.div>
@@ -132,7 +133,7 @@ const Card = ({ id, image, title, hashTags, logo, icons, likes, followers, apy, 
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: delay * 0.35 }}
                                 viewport={{ once: true }} className='flex items-center gap-1'>
-                                  <Image
+                                <Image
                                     src='/images/appStore/svg/likes.svg'
                                     alt='likes'
                                     width={19}

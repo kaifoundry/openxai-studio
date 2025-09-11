@@ -61,9 +61,9 @@ export default function BTCOraclePage() {
                     users={data.followers.toString()}
                     trending={data.trending.toString()}
                     apy={data.apy.toString()}
-                    profileName={data?.profile?.name}
-                    profileImage={data?.profile?.image}
-
+                    profileName={(data?.Seller?.[0]?.name) || data?.name}
+                    profileImage={(data?.Seller?.[0]?.logo) || data?.logo}
+                    modelId={id as string}
                 />
                 <div className="mx-auto px-4 sm:px-0 lg:px-6 py-4 lg:py-6 ">
                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">

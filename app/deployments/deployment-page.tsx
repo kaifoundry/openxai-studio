@@ -129,6 +129,7 @@ export default function DeploymentPage() {
                               alt="logo"
                               width={36}
                               height={36}
+                              className='rounded-full bg-[#73C255]'
                             />
                           )}
                         </div>
