@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface ModelStatsProps {
   likes: string | number
@@ -70,16 +71,21 @@ export function ModelStats({ likes, users, trending, apy, profileName, profileIm
         className="flex items-center justify-between mb-4 px-3 "
       >
         <div className="flex items-center gap-4 my-2 cursor-pointer">
-          <Image
+          <Link href="/userProfile">
+                  <Image
             src={profileImage || '/images/appStore/contentlogo.png'}
             alt={profileName || 'Samuel Mens'}
             width={32}
             height={32}
-            className="rounded-full object-cover"
+            className="rounded-full object-cover cursor-pointer"
           />
-          <span className="text-sm text-[#8F8F8F] underline underline-offset-2">
+          </Link>
+          <Link href="/userProfile">
+            <span className="text-sm text-[#8F8F8F] underline underline-offset-2">
             {profileName || 'Samuel Mens'}
           </span>
+          </Link>
+          
         </div>
 
 
