@@ -1,0 +1,720 @@
+[{
+    "id": "0",
+    "image": "/images/appStore/mock-card9.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "BTC Oracle",
+    "category": "Popular",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
+    "isUnitRunnable": true,
+    "last_updated": "8 days ago",
+    "likes": 120,
+    "followers": 50,
+    "trending": 123,
+    "apy": 5.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains": [
+      {
+        "name": "Solona",
+        "chain": "/images/appStore/svg/chains/solona.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "options": [
+      {
+        "name": "model_size",
+        "desc": "Size of the DeepSeek R1 model to deploy.",
+        "nixName": "model.size",
+        "type": "string",
+        "requirements": {
+          "1.5b": {
+            "ram": 8000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "deepseek-r1:1.5b"
+          },
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "deepseek-r1:7b"
+          },
+          "8b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "deepseek-r1:8b"
+          },
+          "14b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "deepseek-r1:14b"
+          },
+          "32b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "deepseek-r1:32b"
+          },
+          "70b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "deepseek-r1:70b"
+          },
+          "671b": {
+            "ram": 512000,
+            "storage": 700000,
+            "cpu": 64,
+            "ollamaCommand": "deepseek-r1:671b"
+          }
+        }
+      }
+    ],
+    "Seller": [
+      {
+        "logo": "/images/appStore/contentlogo.png",
+        "name": "Christian Grey"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "0x1Tdc7eb37...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "MEV Builder: Default...",
+        "status": "success"
+      },
+      {
+        "id": "0x17c3cd99c...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "Lido.id",
+        "status": "success"
+      },
+      {
+        "id": "0x92bb63f1e8...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "0x76034e1e..d60636da3",
+        "status": "success"
+      },
+      {
+        "id": "0x74d8e6270c...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "0x201f1Cf1..c70e70f83",
+        "status": "success"
+      },
+      {
+        "id": "0x245e8b036...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "0xeC8c324..0f9672207",
+        "status": "success"
+      }
+    ],
+    "deployments": [
+      {
+        "timeAndDate": "8/28/2025 2:28:56 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "9 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 2:05:46 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "9 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 1:15:49 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "10 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 9:47:40 AM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "14 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/27/2025 10:26:22 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "1 days ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/27/2025 9:33:06 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "1 days ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      }
+    ],
+    "claims": [
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      },
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      },
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      },
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "image": "/images/appStore/mock-card2.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "deepseekr1",
+    "category": "Art",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
+    "isUnitRunnable": true,
+    "last_updated": "8 days ago",
+    "likes": 12,
+    "followers": 500,
+    "trending": 193,
+    "apy": 9.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains": [
+      {
+        "name": "Chain",
+        "chain": "/images/appStore/svg/chains/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "Seller": [
+      {
+        "logo": "/images/appStore/contentlogo.png",
+        "name": "Christian Grey"
+      }
+    ],
+    "options": [
+      {
+        "name": "model_size",
+        "desc": "Size of the Llama 2 model to deploy.",
+        "nixName": "model.size",
+        "type": "string",
+        "requirements": {
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "llama2:7b"
+          },
+          "13b": {
+            "ram": 16000,
+            "storage": 20000,
+            "cpu": 4,
+            "ollamaCommand": "llama2:13b"
+          },
+          "70b": {
+            "ram": 48000,
+            "storage": 100000,
+            "cpu": 8,
+            "ollamaCommand": "llama2:70b"
+          }
+        }
+      }
+    ],
+    "transactions": [
+      {
+        "id": "0x1Tdc7eb37...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "MEV Builder: Default...",
+        "status": "success"
+      },
+      {
+        "id": "0x17c3cd99c...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "Lido.id",
+        "status": "success"
+      },
+      {
+        "id": "0x92bb63f1e8...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "0x76034e1e..d60636da3",
+        "status": "success"
+      },
+      {
+        "id": "0x74d8e6270c...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "0x201f1Cf1..c70e70f83",
+        "status": "success"
+      },
+      {
+        "id": "0x245e8b036...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "0xeC8c324..0f9672207",
+        "status": "success"
+      }
+    ],
+    "deployments": [
+      {
+        "timeAndDate": "8/28/2025 2:28:56 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "9 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 2:05:46 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "9 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 1:15:49 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "10 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 9:47:40 AM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "14 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/27/2025 10:26:22 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "1 days ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/27/2025 9:33:06 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "1 days ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      }
+    ],
+    "claims": [
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      },
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      },
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      },
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "image": "/images/appStore/mock-card3.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "Chatgpt-5",
+    "category": "Games",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
+    "isUnitRunnable": true,
+    "last_updated": "8 days ago",
+    "likes": 100,
+    "followers": 40,
+    "trending": 183,
+    "apy": 6.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "chains": [
+      {
+        "name": "Etherium",
+        "chain": "/images/appStore/svg/chains/etherium.svg"
+      },
+      {
+        "name": "Chain",
+        "chain": "/images/appStore/svg/chains/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "options": [
+      {
+        "name": "model_size",
+        "desc": "Size of the Mistral model to deploy.",
+        "nixName": "model.size",
+        "type": "string",
+        "requirements": {
+          "7b": {
+            "ram": 16000,
+            "storage": 10000,
+            "cpu": 2,
+            "ollamaCommand": "mistral:7b"
+          }
+        }
+      }
+    ],
+    "Seller": [
+      {
+        "logo": "/images/appStore/contentlogo.png",
+        "name": "Christian Grey"
+      }
+    ],
+    "transactions": [
+      {
+        "id": "0x1Tdc7eb37...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "MEV Builder: Default...",
+        "status": "success"
+      },
+      {
+        "id": "0x17c3cd99c...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "Lido.id",
+        "status": "success"
+      },
+      {
+        "id": "0x92bb63f1e8...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "0x76034e1e..d60636da3",
+        "status": "success"
+      },
+      {
+        "id": "0x74d8e6270c...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "0x201f1Cf1..c70e70f83",
+        "status": "success"
+      },
+      {
+        "id": "0x245e8b036...",
+        "type": "Transfer",
+        "amount": "2272572",
+        "timeAgo": "16 secs ago",
+        "details": "0xeC8c324..0f9672207",
+        "status": "success"
+      }
+    ],
+    "deployments": [
+      {
+        "timeAndDate": "8/28/2025 2:28:56 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "9 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 2:05:46 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "9 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 1:15:49 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "10 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 9:47:40 AM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "14 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/27/2025 10:26:22 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "1 days ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/27/2025 9:33:06 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "1 days ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      }
+    ],
+    "claims": [
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      },
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      },
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      },
+      {
+        "time": "12:32 PM UTC",
+        "address": "0×836...9465c87",
+        "amount": "500 OPENX"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "image": "/images/appStore/mock-card1.png",
+    "logo": "/images/appStore/contentlogo.png",
+    "name": "dolphin-mixtral",
+    "category": "Photography",
+    "tags": ["#Chatbot", "#Prediction Game"],
+    "desc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. A simple BTC guessing game where the closest prediction each day wins the biggest $OPENX reward.",
+    "longDesc": "A Bitcoin-native prediction chatbot agent that hosts a daily BTC guessing game. This is very similar to the ChatBot game before. Users mint a personalized chatbot (NFT) designed only for prediction entry. The NFT will act as the pass. Each day, users pay a small BTC fee to submit a price guess on the main BTC Oracle chatbot game . The 3 closest guesses win $OPENX rewards, with the closest receiving the highest share. We can decide 3 winners or 1 winner. Daily rewards start at 10,000 $OPENX and decrease linearly over 30 days to 0. Predictions must be submitted by 12PM UTC, and winners are selected at 12AM UTC the following day.",
+    "nixName": "deepseekr1",
+    "implemented": true,
+    "isUnitRunnable": true,
+    "last_updated": "8 days ago",
+    "likes": 128,
+    "followers": 145,
+    "trending": 78,
+    "apy": 7.4,
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Mint your prediction agent."
+      },
+      {
+        "step": 2,
+        "description": "Stake it to earn passive $OPENX."
+      },
+      {
+        "step": 3,
+        "description": "Pay BTC to enter the daily game."
+      },
+      {
+        "step": 4,
+        "description": "Submit your BTC price guess by 12PM UTC."
+      },
+      {
+        "step": 5,
+        "description": "Check results at 12AM UTC and collect winnings if you win."
+      }
+    ],
+    "deployments": [
+      {
+        "timeAndDate": "8/28/2025 2:28:56 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "9 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 2:05:46 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "9 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 1:15:49 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "10 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/28/2025 9:47:40 AM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "14 hours ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/27/2025 10:26:22 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "1 days ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      },
+      {
+        "timeAndDate": "8/27/2025 9:33:06 PM",
+        "version": "20b",
+        "deployer": "-",
+        "age": "1 days ago",
+        "type": "Deployment (D)",
+        "signature": "-"
+      }
+    ],
+    "chains": [
+      {
+        "name": "Bitcoin",
+        "chain": "/images/appStore/svg/chains/bitcoin.svg"
+      },
+      {
+        "name": "Chain",
+        "chain": "/images/appStore/svg/chains/chain.svg"
+      }
+    ],
+    "dateAdded": "2024-03-22T12:00:00Z",
+    "options": [
+      {
+        "name": "model_size",
+        "desc": "Size of the Mixtral model to deploy.",
+        "nixName": "model.size",
+        "type": "string",
+        "requirements": {
+          "8x7b": {
+            "ram": 24000,
+            "storage": 40000,
+            "cpu": 4,
+            "ollamaCommand": "mixtral:8x7b"
+          }
+        }
+      }
+    ]
+  }
+ 
+]

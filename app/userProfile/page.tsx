@@ -1,8 +1,10 @@
-import React from 'react'
+"use client";
 
+import React from 'react'
+import UserModelInfo from '@/components/UserProfile/user-model-info'
 const page = () => {
   return (
-    <div>page</div>
+    <UserModelInfo/>
   )
 }
 

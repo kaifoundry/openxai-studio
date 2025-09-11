@@ -13,9 +13,9 @@ interface cardProps {
     hashTags?: string[],
     logo?: string,
     icons?: { chain?: string }[],
-    likes?: string
+    likes?: number
     followers?: number
-    apy?: string
+    apy?: number
     Seller?: { name: string; logo?: string }[]
     delay?: number
 }
