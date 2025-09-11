@@ -162,7 +162,21 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
 
                             <div className="flex items-center justify-between gap-4 pt-2 w-full">
                                 <Button variant="outline" onClick={() => onOpenChange(false)} disabled={isUploading} className="w-full">Cancel</Button>
-                                <Button onClick={() => setStep(3)} disabled={!name} className="w-full">Add Details</Button>
+
+                                <Button
+                                    onClick={() => {
+                                        if (file) {
+                                            setStep(3)
+                                        } else {
+                                            setStep(4)
+                                        }
+                                    }}
+                                    disabled={!name}
+                                    className="w-full"
+                                >
+                                    Add Details
+                                </Button>
+
                             </div>
                         </div>
                     </>
@@ -197,7 +211,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
                                             <img src={preview} alt="preview" className="size-full object-cover" />
                                         </div>
                                     )}
-                                    <div className="text-sm">{`Uploading ${uploadProgress}%...`}</div>
+                                    {isUploading && (<div className="text-sm">{`Uploading ${uploadProgress}%...`}</div>)}
                                 </div>
 
 
