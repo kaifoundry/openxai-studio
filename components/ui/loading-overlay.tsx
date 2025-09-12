@@ -58,6 +58,20 @@ export function LoadingOverlay() {
   }, [isLoading, forceSpeedApplication, jumpToTimeAndSpeed, FAST_FORWARD_START])
 
   useEffect(() => {
+    const handleVisibility = () => {
+      if (videoRef.current && !document.hidden) {
+        videoRef.current.play().catch(() => {})
+      }
+    }
+  
+    document.addEventListener("visibilitychange", handleVisibility)
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibility)
+    }
+  }, [])
+  
+
+  useEffect(() => {
     if (shouldRender && videoRef.current) {
       const intervalId = setInterval(() => {
         if (isLoading) {
