@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLoading } from '@/contexts/LoadingContext'
 import { usePathname } from 'next/navigation'
 import { useDeploymentQueueContext } from '../deployment-queue'
+import { useRouter } from 'next/navigation'
 
 export function LoadingOverlay() {
   const { isLoading, loadingMessage } = useLoading()
@@ -13,7 +14,7 @@ export function LoadingOverlay() {
   const [loop, setLoop] = useState(true)
   const [fastForward, setFastForward] = useState(false)
   const pathname = usePathname()
-
+  const router=useRouter();
   const FAST_FORWARD_START = 300 
 
   const applySpeed = (speed: number) => {
@@ -48,7 +49,7 @@ export function LoadingOverlay() {
       if (videoRef.current) {
         videoRef.current.currentTime = 0
         videoRef.current.play()
-        forceSpeedApplication(3)
+        forceSpeedApplication(8)
       }
     } else if (videoRef.current) {
       setLoop(false)
@@ -68,7 +69,7 @@ export function LoadingOverlay() {
         // jumpToTimeAndSpeed(FAST_FORWARD_START, 16)
       } else {
         
-        forceSpeedApplication(3)
+        forceSpeedApplication(8)
       }
     }
   }, [isLoading, forceSpeedApplication, jumpToTimeAndSpeed, FAST_FORWARD_START, pathname, isDeploymentComplete])
@@ -77,7 +78,7 @@ export function LoadingOverlay() {
     if (shouldRender && videoRef.current) {
       const intervalId = setInterval(() => {
         if (isLoading) {
-          applySpeed(3)
+          applySpeed(8)
         } else if (fastForward && pathname === '/deployments' && isDeploymentComplete) {
           applySpeed(16)
         }
@@ -90,17 +91,18 @@ export function LoadingOverlay() {
   const handleVideoEnd = () => {
     if (!loop) {
       setShouldRender(false)
+      router.push('/deployments')
     }
   }
 
   const handleVideoLoaded = () => {
     if (isLoading) {
-      forceSpeedApplication(3)
+      forceSpeedApplication(8)
       if (videoRef.current) {
         videoRef.current.currentTime = 0
       }
     } else if (fastForward) {
-      forceSpeedApplication(3)
+      forceSpeedApplication(8)
     }
   }
 
