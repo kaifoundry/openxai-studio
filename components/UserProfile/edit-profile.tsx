@@ -1,7 +1,7 @@
 "use client"
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-
+import { usePathname } from "next/navigation";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
@@ -35,7 +35,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
     const [showRemoveConfirm, setShowRemoveConfirm] = useState<boolean>(false)
     const [step, setStep] = useState<number>(1)
     const [fileName, setFileName] = useState<string | undefined>(undefined)
-
+    const pathname = usePathname(); 
     const fileInputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
@@ -46,7 +46,11 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
             setUploadProgress(0)
             setIsUploading(false)
             setShowRemoveConfirm(false)
-            setStep(1)
+            if(pathname === '/'){
+            setStep(1);}
+            else{
+                setStep(2)
+            }
         }
     }, [open, defaultName, defaultImage])
 

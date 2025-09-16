@@ -1,11 +1,14 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useNavContext } from '@/contexts/NavContext'
 import { formatAddress } from '@/utils/functions'
 import { useXueNfts, useXuNfts } from '@/utils/nft'
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 import {
+  AlignJustify,
   BellDot,
   Check,
   ChevronsUpDown,
@@ -15,11 +18,10 @@ import {
   Search,
   Settings,
   TriangleAlert,
-  AlignJustify,
   User2,
 } from 'lucide-react'
 import { useAccount } from 'wagmi'
-import Image from 'next/image'
+
 import { mockXNodes } from '@/config/demo-mode'
 import { cn, formatSelectedXNodeName } from '@/lib/utils'
 import {
@@ -44,21 +46,23 @@ import { useXnodes } from '@/app/dashboard/health-data'
 
 import { useDemoModeContext } from '../demo-mode'
 import { Button } from '../ui/button'
+import EditProfile from '../UserProfile/edit-profile'
 import ActivateXNodeDialog from '../xnode/activate-dialog'
 import Sidebar from './header-sidebar'
-import { useNavContext } from '@/contexts/NavContext'
 
 export default function Header({ sessionToken }: { sessionToken?: string }) {
-  const { address, status } = useAccount()
+  const { address, status, isConnected } = useAccount()
   const { data: activeXNodes } = useXuNfts(address)
   const { data: inactiveXNodes } = useXueNfts(address)
   const { data: deployedXnodes } = useXnodes(sessionToken)
-  const [isSidebarOpen,setIsSidebarOpen]=useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const { open } = useWeb3Modal()
   const { push } = useRouter()
-  const {toggleCollapsed,collapsed}=useNavContext();
+  const { toggleCollapsed, collapsed } = useNavContext()
   const { demoMode, setDemoMode } = useDemoModeContext()
-
+  const [modalOpen, setModalOpen] = useState(false)
+  const [currentImage, setCurrentImage] = useState('')
+  const [currentName, setCurrentName] = useState('')
   const allXnodes: SelectedXnode[] = demoMode
     ? mockXNodes.map((xnode) => {
         return { type: 'Unit', id: BigInt(xnode.deploymentAuth) }
@@ -128,24 +132,46 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
   }, [])
 
   const pressWalletButton = () => {
-    if (window.location.pathname.endsWith('login')) {
-      // If we are already on the login page, they probably want the wallet popup
-      open()
-      return
-    }
 
-    push('/login')
+    open()
+    
   }
+
+  useEffect(() => {
+    if (isConnected && address) {
+      fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          address,
+          name: 'Unknown',
+          profilePic: '',
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('Response:', data)
+  
+          setCurrentName(data.user?.name || 'Unknown')
+  
+          if (data.isNewUser) {
+            
+            setModalOpen(true)
+          }
+        })
+        .catch((err) => console.error(err))
+    }
+  }, [isConnected, address])
+  
 
   return (
     <>
-      
-        <Sidebar
+      <Sidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
         sessionToken={sessionToken}
-        />
-      
+      />
+
       <ActivateXNodeDialog
         address={address}
         open={!!activationOpen}
@@ -177,13 +203,25 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
           </div>
         )}
         {/* max-hdplus:gap-x-20 */}
-        <div className="flex grow items-center justify-between gap-x-0 lg:gap-x-32 px-4 lg:pr-6 lg:pl-4 ">
-        
+        <div className="flex grow items-center justify-between gap-x-0 px-4 lg:gap-x-32 lg:pl-4 lg:pr-6">
           <div className="flex items-center gap-2 lg:gap-4">
-            <AlignJustify className='block text-white lg:hidden cursor-pointer' onClick={()=>setIsSidebarOpen(true)}/>
-           
-              <Image src='/images/header/toggle.svg' alt='' width={20} height={20} className='hidden lg:block cursor-pointer' onClick={()=>{console.log("Clicking",collapsed,toggleCollapsed);toggleCollapsed(!collapsed)}}/> 
-           
+            <AlignJustify
+              className="block cursor-pointer text-white lg:hidden"
+              onClick={() => setIsSidebarOpen(true)}
+            />
+
+            <Image
+              src="/images/header/toggle.svg"
+              alt=""
+              width={20}
+              height={20}
+              className="hidden cursor-pointer lg:block"
+              onClick={() => {
+                console.log('Clicking', collapsed, toggleCollapsed)
+                toggleCollapsed(!collapsed)
+              }}
+            />
+
             <div className="shrink-0 text-4xl font-bold text-background max-hdplus:text-xl">
               OpenxAI
               <sup className="relative top-[-10px] text-sm font-normal">
@@ -323,10 +361,11 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
                 />
               </button>
             </div>
+
             {!address && status === 'disconnected' && !demoMode ? (
               <button
                 type="button"
-                className="flex h-fit lg:h-10 items-center gap-0 lg:gap-1.5 rounded bg-primary px-4 text-base font-semibold tracking-tighter text-background max-hdplus:h-8 max-hdplus:text-sm"
+                className="flex h-fit items-center gap-0 rounded bg-primary px-4 text-base font-semibold tracking-tighter text-background max-hdplus:h-8 max-hdplus:text-sm lg:h-10 lg:gap-1.5"
                 onClick={pressWalletButton}
               >
                 Connect Wallet
@@ -349,6 +388,30 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
             )}
           </div>
         </div>
+        <EditProfile
+          open={modalOpen}
+          onOpenChange={setModalOpen}
+          defaultName={currentName}
+          defaultImage={currentImage}
+          onSave={async ({ name, imageUrl }) => {
+            if (!address) return
+            const res = await fetch('/api/users', {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                address,
+                name,
+                profilePic: imageUrl,
+              }),
+            })
+            const data = await res.json()
+            if (data.success && data.user) {
+              setCurrentName(data.user.name)
+              setCurrentImage(data.user.profilePic)
+              push(`/userProfile/${data.user.id}`)
+            }
+          }}
+        />
       </header>
     </>
   )

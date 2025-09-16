@@ -85,8 +85,23 @@ const UserProfileDetails = ({
         defaultName={currentName}
         defaultImage={currentImage}
         onSave={async ({ name, imageUrl }) => {
-          setCurrentName(name)
-          setCurrentImage(imageUrl ?? undefined)
+          // setCurrentName(name)
+          // setCurrentImage(imageUrl ?? undefined)
+          if (!address) return
+            const res = await fetch('/api/users', {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                address,
+                name,
+                profilePic: imageUrl,
+              }),
+            })
+            const data = await res.json()
+            if (data.success && data.user) {
+              setCurrentName(data.user.name)
+              setCurrentImage(data.user.profilePic)
+            }
         }}
       />
     </div>
