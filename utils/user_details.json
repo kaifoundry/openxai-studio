@@ -5,5 +5,12 @@
     "name": "Christian Gray",
     "profilePic": "blob:http://localhost:3000/f9be702d-be6c-43b0-ad2a-224e202eb180",
     "firstConnected": "2025-09-16T03:09:38.008Z"
+  },
+  {
+    "id": 2,
+    "address": "0x3A0C4a1A646B037a2F063bAE595E39a15d0ec0fB",
+    "name": "Unknown",
+    "profilePic": null,
+    "firstConnected": "2025-09-17T09:35:04.310Z"
   }
 ]

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 interface ModelStatsProps {
   likes: string | number
@@ -32,13 +33,17 @@ interface StatItemProps {
   icon: string
   iconAlt: string
   showInfo?: boolean
+  onClick?: () => void
 }
 
-function StatItem({ value, icon, iconAlt, showInfo = false }: StatItemProps) {
+
+function StatItem({ value, icon, iconAlt, showInfo = false, onClick }: StatItemProps) {
+
   return (
     <motion.div
       variants={itemVariants}
       className="flex flex-col items-center space-y-1 px-3 py-1.5 cursor-pointer "
+      onClick={onClick}
     >
       <Image src={icon} alt={iconAlt} width={24} height={24} />
       <div className="flex flex-row items-center space-x-2 relative">
@@ -62,6 +67,9 @@ function StatItem({ value, icon, iconAlt, showInfo = false }: StatItemProps) {
 }
 
 export function ModelStats({ likes, users, trending, apy, profileName, profileImage, modelId }: ModelStatsProps) {
+  const [isLiked, setIsLiked] = useState(false)
+  const [currentLikes, setCurrentLikes] = useState<number>(Number(likes));
+
   return (
     <div className="p-4">
 
@@ -72,7 +80,7 @@ export function ModelStats({ likes, users, trending, apy, profileName, profileIm
         className="flex items-center justify-between mb-4 px-3 "
       >
         <div className="flex items-center gap-4 my-2 cursor-pointer">
-          <Link href={modelId ? `/userProfile/${modelId}` : { pathname: '/userProfile', query: { name: profileName, image: profileImage } }}>
+          <Link href={modelId ? `/userProfile/1` : { pathname: '/userProfile', query: { name: profileName, image: profileImage } }}>
             <Image
               src={profileImage || '/images/appStore/profile.png'}
               alt={profileName || 'Samuel Mens'}
@@ -81,7 +89,7 @@ export function ModelStats({ likes, users, trending, apy, profileName, profileIm
               className="rounded-full object-cover cursor-pointer bg-[#73C255] "
             />
           </Link>
-          <Link href={modelId ? `/userProfile/${modelId}` : { pathname: '/userProfile', query: { name: profileName, image: profileImage } }}>
+          <Link href={modelId ? `/userProfile/1` : { pathname: '/userProfile', query: { name: profileName, image: profileImage } }}>
             <span className="text-sm text-[#8F8F8F] underline underline-offset-2">
               {profileName || 'Samuel Mens'}
             </span>
@@ -103,7 +111,12 @@ export function ModelStats({ likes, users, trending, apy, profileName, profileIm
         viewport={{ once: true }}
         className="flex flex-wrap items-center justify-start gap-4 md:gap-10"
       >
-        <StatItem value={likes} icon="/images/project/hero/Frame.svg" iconAlt="Heart icon" />
+        <StatItem
+          value={currentLikes}
+          icon={isLiked ? "/images/project/hero/heart.svg" : "/images/project/hero/Frame.svg"}
+          iconAlt="Heart icon"
+          onClick={() => { setIsLiked(prev => !prev); setCurrentLikes(prev => isLiked ? prev - 1 : prev + 1); }}
+        />
         <StatItem value={users} icon="/images/project/hero/Frame (1).svg" iconAlt="User icon" showInfo />
         <StatItem value={trending} icon="/images/project/hero/Frame (2).svg" iconAlt="Trending icon" showInfo />
         <StatItem value="~$1,476.85" icon="/images/project/hero/Frame (3).svg" iconAlt="Lock icon" showInfo />
