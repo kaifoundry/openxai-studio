@@ -2,11 +2,13 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useAccount } from 'wagmi'
 import { useRouter } from "next/navigation";
-
+import userDetails from '@/utils/user_details.json'
 import deploymentsData from '@/utils/deployments-data.json'
 import { mockXNodes } from '@/config/demo-mode';
 export default function DeploymentPage() {
+  const {address}=useAccount();
   const router = useRouter();
   const { summaryData, marketplaceEntries, undeploymentData, personalServers } = deploymentsData as any
   const handleClick = (id: string) => {
@@ -19,8 +21,7 @@ export default function DeploymentPage() {
   }
 
   return (
-    <div className=" mx-auto md:p-6 px-2">
-      {/* Summary */}
+    <div className=" mx-auto md:py-6  px-2">
       <section className="mb-8">
         <motion.h2 initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +56,7 @@ export default function DeploymentPage() {
         </div>
       </section>
 
-      {/* Marketplace */}
+      
       <section className="mb-8">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
@@ -66,7 +67,16 @@ export default function DeploymentPage() {
           Your Marketplace Entries ({marketplaceEntries.length})
         </motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
-          {marketplaceEntries.map((entry) => (
+          {marketplaceEntries.map((entry) => {
+            let sellerImage: string | undefined = undefined
+            let displayName: string | null = null
+            if (entry?.Seller && entry?.Seller.length > 0) {
+              
+              const matchedUser = userDetails.find((user: any) => user.address === address)
+              sellerImage = matchedUser?.profilePic || undefined
+              displayName = matchedUser?.name || 'UnKnown'
+            }
+            return(
             <div key={entry.id}>
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
@@ -123,15 +133,23 @@ export default function DeploymentPage() {
                           </div>
                         </div>
                         <div>
-                          {entry.Seller && entry.Seller.length > 0 && (
-                            <Image
-                              src={entry.Seller[0].logo || ''}
-                              alt="logo"
-                              width={36}
-                              height={36}
-                              className='rounded-full bg-[#73C255]'
-                            />
-                          )}
+                          {entry.Seller && entry.Seller.length > 0 && (sellerImage ? (
+                                            <div className="rounded-full">
+                                              <Image
+                                                src={sellerImage || '/images/default-avatar.png'}
+                                                alt="logo"
+                                                width={36}
+                                                height={36}
+                                                className="size-10 rounded-full bg-[#73C255]"
+                                              />
+                                            </div>
+                                          ) : (
+                                            <div className="relative size-10 overflow-hidden rounded-full bg-[#73C255]">
+                                              <div className="flex size-full items-center justify-center font-semibold text-green-900">
+                                                {displayName.charAt(0)}
+                                              </div>
+                                            </div>
+                                          ))}
                         </div>
                       </div>
 
@@ -184,10 +202,12 @@ export default function DeploymentPage() {
 
 
               </motion.div>
-            </div>
-          ))}
+            </div>)
+          })}
         </div>
       </section>
+
+
       {/* Undeployment */}
 
 
@@ -201,7 +221,16 @@ export default function DeploymentPage() {
           Your Undeployed Apps ({undeploymentData.length})
         </motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
-          {undeploymentData.map((entry) => (
+          {undeploymentData.map((entry) => {
+            let sellerImage: string | undefined = undefined
+            let displayName: string | null = null
+            if (entry?.Seller && entry?.Seller.length > 0) {
+              
+              const matchedUser = userDetails.find((user: any) => user.address === address)
+              sellerImage = matchedUser?.profilePic || undefined
+              displayName = matchedUser?.name || 'UnKnown'
+            }
+            return(
             <div key={entry.id}>
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
@@ -213,7 +242,7 @@ export default function DeploymentPage() {
                 <div className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                                         perspective-1000"
                   style={{ transformStyle: 'preserve-3d' }}
-                  onClick={() => handleClick(entry.id)}
+                  onClick={() => {router.push(`/app-store/${entry?.id}?undeployed=true`);}}
                 >
 
                   <div className="transform-style-preserve-3d group transition-all duration-500 ease-in-out 
@@ -258,15 +287,23 @@ export default function DeploymentPage() {
                           </div>
                         </div>
                         <div>
-                          {entry.Seller && entry.Seller.length > 0 && (
-                            <Image
-                              src={entry.Seller[0].logo || ''}
-                              alt="logo"
-                              width={36}
-                              height={36}
-                              className='rounded-full bg-[#73C255]'
-                            />
-                          )}
+                          {entry.Seller && entry.Seller.length > 0 && (sellerImage ? (
+                                            <div className="rounded-full">
+                                              <Image
+                                                src={sellerImage || '/images/default-avatar.png'}
+                                                alt="logo"
+                                                width={36}
+                                                height={36}
+                                                className="size-10 rounded-full bg-[#73C255]"
+                                              />
+                                            </div>
+                                          ) : (
+                                            <div className="relative size-10 overflow-hidden rounded-full bg-[#73C255]">
+                                              <div className="flex size-full items-center justify-center font-semibold text-green-900">
+                                                {displayName.charAt(0)}
+                                              </div>
+                                            </div>
+                                          ))}
                         </div>
                       </div>
 
@@ -319,8 +356,8 @@ export default function DeploymentPage() {
 
 
               </motion.div>
-            </div>
-          ))}
+            </div>)
+          })}
         </div>
       </section>
       {/* Personal Servers */}
@@ -352,7 +389,7 @@ export default function DeploymentPage() {
                 whileHover={{ scale: 1.02 }}
                 onClick={() => { router.push(`/xnode?uuid=${server?.id}`) }}
                 key={server?.id} className="border-[1px] border-[#EBEBEB] cursor-pointer rounded-[12px]">
-                <div className="md:p-6 p-2">
+                <div className="md:py-3 p-2">
 
 
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4 gap-3">
@@ -365,7 +402,7 @@ export default function DeploymentPage() {
 
                       <div className='flex flex-col'>
                         <div className="flex items-center gap-2">
-                          <h3 className="text-lg font-bold text-gray-900">{server.name}</h3>
+                          <h3 className="text-lg font-bold text-gray-900 whitespace-nowrap">{server.name}</h3>
 
                           <div className="rounded-full flex items-center justify-center">
                             <img src="/images/viewDeployment/ollama.svg" alt="" />

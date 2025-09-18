@@ -120,13 +120,14 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
           setIsUploading(false)
         }
       
-        await onSave({ name, file })   // ✅ only send name + file
+        await onSave({ name, file })   
         onOpenChange(false)
       }, [file, onOpenChange, onSave, name])
       
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-[720px] px-0" canClose={!isUploading}>
+            <DialogContent className="sm:max-w-[720px] px-0" canClose={!isUploading && step !== 1}
+  data-step={step} >
                 {step === 1 && (
                     <div className="text-center py-10">
                         <p className="text-lg text-[#1F1F1F]">We&apos;re excited to have you join our community!<br />Get ready to make your profile unique!</p>

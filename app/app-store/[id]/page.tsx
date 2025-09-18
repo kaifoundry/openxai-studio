@@ -11,11 +11,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useSearchParams, useParams } from 'next/navigation';
 import userDetails from '@/utils/user_details.json'
 import MonetisationSettings from '@/app/deployments/MonetisationSettings';
+import { ERCOptions } from '@/app/deploy/one-click/components/erc-options';
 
 export default function BTCOraclePage() {
     const searchParams = useSearchParams();
     const deployed = searchParams.get('deploy') === 'true';
-
+    const Undeployed = searchParams.get('undeployed') === 'true';
     const [data, setData] = useState<any>(null);
     const [deploy, setDeploy] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -74,7 +75,7 @@ export default function BTCOraclePage() {
                     image={data.image}
                     title={data.name}
                     subtitle={Array.isArray(data.tags) ? data.tags.join(', ') : data.tags}
-                    showEdit={deployed}
+                    showEdit={deployed || Undeployed}
                 />
                 <ModelStats
                     likes={data.likes.toString()}
@@ -99,7 +100,7 @@ export default function BTCOraclePage() {
                 </div>
             </div>
             <div className="md:w-[35%] w-full">
-                {!deployed && (
+                {(!deployed && !Undeployed)&&(
                     <div className="sticky top-6" style={{ height: contentHeight }}>
                         <ModelBalance id={id} />
                     </div>
@@ -113,6 +114,9 @@ export default function BTCOraclePage() {
                         estimatedRevenuePeriod="mo"
                         serverExpiryDays={3}
                     />
+                )}
+                {Undeployed &&(
+                    <ERCOptions/>
                 )}
             </div>
         </section>

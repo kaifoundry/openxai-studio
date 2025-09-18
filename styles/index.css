@@ -148,3 +148,8 @@ input[type="checkbox"] {
     }
   }
 }
+
+
+[data-step="1"] [data-close-button] {
+  display: none;
+}

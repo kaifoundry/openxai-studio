@@ -98,8 +98,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
-        "name": "Christian Grey"
+        "id": 1
       }
     ],
     "transactions": [
@@ -265,8 +264,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
-        "name": "Christian Grey"
+        "id": 2
       }
     ],
     "options": [
@@ -480,8 +478,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/contentlogo.png",
-        "name": "Christian Grey"
+        "id": 2
       }
     ],
     "transactions": [
@@ -686,6 +683,11 @@
         "age": "1 days ago",
         "type": "Deployment (D)",
         "signature": "-"
+      }
+    ],
+    "Seller": [
+      {
+        "id": 2
       }
     ],
     "chains": [

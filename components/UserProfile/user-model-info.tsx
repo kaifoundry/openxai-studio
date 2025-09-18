@@ -10,7 +10,7 @@ const UserModelInfo = () => {
 
   const tabData = [
     { value: "deployed", label: "Deployed Apps" },
-    { value: "undeployed", label: "Undeployed Apps" },
+    // { value: "undeployed", label: "Undeployed Apps" },
   ];
 
   useEffect(() => {

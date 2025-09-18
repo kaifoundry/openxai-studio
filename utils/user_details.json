@@ -12,5 +12,12 @@
     "name": "Neeraja",
     "profilePic": "/uploads/1758109960762-Screenshot_2025-09-17_114332.png",
     "firstConnected": "2025-09-17T11:51:48.112Z"
+  },
+  {
+    "id": 3,
+    "address": "0x6c4e8E36dEB08c72a420f24c096f5A365CF31be7",
+    "name": "Unknown",
+    "profilePic": null,
+    "firstConnected": "2025-09-18T06:41:40.455Z"
   }
 ]

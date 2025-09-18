@@ -19,7 +19,9 @@
       "likes": 120,
       "followers": 1500,
       "apy": 320,
-      "Seller": [{ "name": "User", "logo": "/images/appStore/profile.png" }],
+      "Seller": [{
+        "id":1
+      }],
       "stakingRevenue": "$567.96",
       "marketplaceRevenue": "$88.98",
       "views": "1.5K",
@@ -40,7 +42,9 @@
       "likes": 120,
       "followers": 1500,
       "apy": 320,
-      "Seller": [{ "name": "User", "logo": "/images/appStore/profile.png" }],
+      "Seller": [{
+        "id":1
+      }],
       "stakingRevenue": "$567.96",
       "marketplaceRevenue": "$88.98",
       "views": "1.5K",
@@ -59,7 +63,9 @@
       "likes": 120,
       "followers": 1500,
       "apy": 320,
-      "Seller": [{ "name": "User", "logo": "/images/appStore/profile.png" }],
+      "Seller": [{
+        "id":1
+      }],
       "stakingRevenue": "$567.96",
       "marketplaceRevenue": "$88.98",
       "views": "1.5K",
@@ -78,7 +84,9 @@
       "likes": 120,
       "followers": 1500,
       "apy": 320,
-      "Seller": [{ "name": "User", "logo": "/images/appStore/profile.png" }],
+      "Seller": [{
+        "id":1
+      }],
       "stakingRevenue": "$567.96",
       "marketplaceRevenue": "$88.98",
       "views": "1.5K",
@@ -97,7 +105,9 @@
       "likes": 120,
       "followers": 1500,
       "apy": 320,
-      "Seller": [{ "name": "User", "logo": "/images/appStore/profile.png" }],
+      "Seller": [{
+        "id":1
+      }],
       "stakingRevenue": "$567.96",
       "marketplaceRevenue": "$88.98",
       "views": "1.5K",
