@@ -12,7 +12,7 @@ interface ModelStatsProps {
   apy: string | number
   profileName?: string
   profileImage?: string
-  modelId?: string
+  modelId?: number
 }
 
 const containerVariants = {
@@ -80,16 +80,26 @@ export function ModelStats({ likes, users, trending, apy, profileName, profileIm
         className="flex items-center justify-between mb-4 px-3 "
       >
         <div className="flex items-center gap-4 my-2 cursor-pointer">
-          <Link href={modelId ? `/userProfile/1` : { pathname: '/userProfile', query: { name: profileName, image: profileImage } }}>
-            <Image
+          <Link href={ `/userProfile/${modelId}`  }>
+            {profileImage ?(
+              <div className='rounded-full'>
+<Image
               src={profileImage || '/images/appStore/profile.png'}
               alt={profileName || 'Samuel Mens'}
               width={32}
               height={32}
-              className="rounded-full object-cover cursor-pointer bg-[#73C255] "
+              className="rounded-full size-10 object-cover cursor-pointer bg-[#73C255] "
             />
+              </div>
+              ):(
+<div className="relative size-10 overflow-hidden rounded-full bg-[#73C255]">
+                    <div className="flex size-full items-center justify-center font-semibold text-green-900">
+                      {profileName?.charAt(0)}
+                    </div>
+                  </div>
+            )}
           </Link>
-          <Link href={modelId ? `/userProfile/1` : { pathname: '/userProfile', query: { name: profileName, image: profileImage } }}>
+          <Link href={ `/userProfile/${modelId}` }>
             <span className="text-sm text-[#8F8F8F] underline underline-offset-2">
               {profileName || 'Samuel Mens'}
             </span>

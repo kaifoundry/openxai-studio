@@ -102,28 +102,28 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
     }, [])
 
     const handleSave = useCallback(async () => {
-        let imageUrl: string | undefined | null = preview
         if (file) {
-            setIsUploading(true)
-
-            await new Promise<void>((resolve) => {
-                let pct = 0
-                const id = setInterval(() => {
-                    pct = Math.min(100, pct + Math.round(Math.random() * 18 + 6))
-                    setUploadProgress(pct)
-                    if (pct >= 100) {
-                        clearInterval(id)
-                        resolve()
-                    }
-                }, 200)
-            })
-            imageUrl = preview || null
-            setIsUploading(false)
+          setIsUploading(true)
+      
+          await new Promise<void>((resolve) => {
+            let pct = 0
+            const id = setInterval(() => {
+              pct = Math.min(100, pct + Math.round(Math.random() * 18 + 6))
+              setUploadProgress(pct)
+              if (pct >= 100) {
+                clearInterval(id)
+                resolve()
+              }
+            }, 200)
+          })
+      
+          setIsUploading(false)
         }
-        await onSave({ name, imageUrl: imageUrl ?? null, file })
+      
+        await onSave({ name, file })   // ✅ only send name + file
         onOpenChange(false)
-    }, [file, onOpenChange, onSave, name, preview])
-
+      }, [file, onOpenChange, onSave, name])
+      
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-[720px] px-0" canClose={!isUploading}>

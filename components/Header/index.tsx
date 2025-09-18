@@ -12,15 +12,18 @@ import {
   BellDot,
   Check,
   ChevronsUpDown,
+  Copy,
   HelpCircle,
+  LogOut,
   PanelLeft,
   Plus,
   Search,
   Settings,
   TriangleAlert,
   User2,
+  Pencil
 } from 'lucide-react'
-import { useAccount } from 'wagmi'
+import { useAccount, useDisconnect } from 'wagmi'
 
 import { mockXNodes } from '@/config/demo-mode'
 import { cn, formatSelectedXNodeName } from '@/lib/utils'
@@ -37,6 +40,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 import { GlobalSearch } from '@/components/global-search'
 import {
   useSelectedXNode,
@@ -50,6 +59,20 @@ import EditProfile from '../UserProfile/edit-profile'
 import ActivateXNodeDialog from '../xnode/activate-dialog'
 import Sidebar from './header-sidebar'
 
+interface User {
+  id: number
+  address: string
+  name: string
+  profilePic: string | null
+  firstConnected: string
+}
+
+interface ApiResponse {
+  success: boolean
+  isNewUser: boolean
+  user: User
+}
+
 export default function Header({ sessionToken }: { sessionToken?: string }) {
   const { address, status, isConnected } = useAccount()
   const { data: activeXNodes } = useXuNfts(address)
@@ -58,11 +81,23 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const { open } = useWeb3Modal()
   const { push } = useRouter()
+  const { disconnect } = useDisconnect()
+  const [openProfile, setOpenProfile] = useState(false)
   const { toggleCollapsed, collapsed } = useNavContext()
   const { demoMode, setDemoMode } = useDemoModeContext()
   const [modalOpen, setModalOpen] = useState(false)
   const [currentImage, setCurrentImage] = useState('')
   const [currentName, setCurrentName] = useState('')
+  const [userData, setUserData] = useState<ApiResponse | null>(null)
+  const [copied, setCopied] = useState(false)
+  const handleCopy = () => {
+    if (userData?.user?.address) {
+      navigator.clipboard.writeText(userData.user.address)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
+  }
+
   const allXnodes: SelectedXnode[] = demoMode
     ? mockXNodes.map((xnode) => {
         return { type: 'Unit', id: BigInt(xnode.deploymentAuth) }
@@ -132,9 +167,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
   }, [])
 
   const pressWalletButton = () => {
-
     open()
-    
   }
 
   useEffect(() => {
@@ -151,18 +184,16 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
         .then((res) => res.json())
         .then((data) => {
           console.log('Response:', data)
-  
+          setUserData(data)
           setCurrentName(data.user?.name || 'Unknown')
-  
+
           if (data.isNewUser) {
-            
             setModalOpen(true)
           }
         })
         .catch((err) => console.error(err))
     }
   }, [isConnected, address])
-  
 
   return (
     <>
@@ -361,6 +392,82 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
                 />
               </button>
             </div>
+            <div
+              className="relative"
+              onClick={() => {
+                setOpenProfile(!openProfile)
+                console.log('Clciked')
+              }}
+            >
+              {address &&
+              status === 'connected' &&
+              userData?.user?.profilePic !== null ? (
+                <div className="relative rounded-full">
+                  <Image
+                    src={userData?.user?.profilePic}
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="size-8 cursor-pointer rounded-full object-cover"
+                  />
+                </div>
+              ) : (
+                <User2 className="relative size-4 cursor-pointer text-white" />
+              )}
+              <div
+                className={`absolute -left-28 top-16 flex w-[250px] flex-col shadow-md ${openProfile ? 'h-60 opacity-100' : 'h-0 overflow-hidden opacity-0'} z-20 rounded-lg bg-white py-10 transition-all delay-200 duration-500`}
+              >
+                <div className="flex items-center justify-between border-b-2 border-gray-200 px-4 pb-3">
+                  <div className='flex items-center gap-4'>
+                    <div className="rounded-full">
+                      <Image
+                        src={userData?.user?.profilePic}
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="size-10 cursor-pointer rounded-full object-cover"
+                      />
+                    </div>
+                    <div className="text-[13px] font-bold">
+                      {userData?.user?.name}
+                    </div>
+                  </div>
+                 
+                  <div className='flex justify-end'><Pencil className=' size-4 cursor-pointer' onClick={()=>{push(`/userProfile/${userData?.user?.id}`)}}/></div>
+                  
+                </div>
+                <div className="flex items-center justify-between px-4 py-4">
+                  <div className="text-[13px] font-bold">
+                    {userData?.user?.address
+                      ? formatAddress(userData.user.address, 12)
+                      : ''}
+                  </div>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Copy
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleCopy()
+                          }}
+                          className="size-4 cursor-pointer text-gray-600 hover:text-black"
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{copied ? 'Copied!' : 'Copy'}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <div
+                  className="flex w-fit cursor-pointer items-center gap-2 px-4 py-4"
+                  onClick={() => disconnect()}
+                >
+                  <LogOut className="size-4 font-bold text-gray-500" />
+                  <div className="text-[13px]">Disconnect</div>
+                </div>
+              </div>
+            </div>
 
             {!address && status === 'disconnected' && !demoMode ? (
               <button
@@ -393,18 +500,23 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
           onOpenChange={setModalOpen}
           defaultName={currentName}
           defaultImage={currentImage}
-          onSave={async ({ name, imageUrl }) => {
+          onSave={async ({ name, file }) => {
             if (!address) return
+
+            const formData = new FormData()
+            formData.append('address', address)
+            formData.append('name', name)
+            if (file) {
+              formData.append('profilePic', file)
+            }
+
             const res = await fetch('/api/users', {
               method: 'PUT',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                address,
-                name,
-                profilePic: imageUrl,
-              }),
+              body: formData,
             })
+
             const data = await res.json()
+            
             if (data.success && data.user) {
               setCurrentName(data.user.name)
               setCurrentImage(data.user.profilePic)

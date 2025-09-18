@@ -2,36 +2,53 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { Edit } from 'lucide-react'
+import { Edit,Copy } from 'lucide-react'
 import { useAccount } from 'wagmi'
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 import EditProfile from '@/components/UserProfile/edit-profile'
 
 interface UserProfileDetailsProps {
   name?: string
   image?: string
-  walletShort?: string
-  joined?: string
+  Joined?: string
+  userAddress?:string
 }
 
 const UserProfileDetails = ({
   name,
   image,
-  walletShort = '0x74...6504',
-  joined = 'Joined Aug 24',
+  
+  Joined = 'Joined Aug 24',
+  userAddress
 }: UserProfileDetailsProps) => {
   const [open, setOpen] = useState(false)
   const [currentName, setCurrentName] = useState<string>(name || 'Sam Lee')
   const [currentImage, setCurrentImage] = useState<string | undefined>(image)
   const displayName = currentName
   const { address, isConnected } = useAccount()
-
+  const [copied, setCopied] = useState(false)
+  const handleCopy = () => {
+    if (userAddress) {
+      navigator.clipboard.writeText(userAddress)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
+  }
   const displayAddress = isConnected ? address : ''
   function formatAddress(address?: string): string {
     if (!address) return ''
     return `${address.slice(0, 6)}...${address.slice(-4)}`
   }
 
+  const date = new Date(Joined)
+
+  const options: Intl.DateTimeFormatOptions = { month: "short", day: "numeric" }
+  const formattedDate = date.toLocaleDateString("en-US", options)
   return (
     <div className="mb-6 w-full px-2 lg:px-6">
       <div className="mb-10 text-xl font-medium text-[#525252]">
@@ -60,48 +77,69 @@ const UserProfileDetails = ({
               {displayName}
             </div>
             <div className="mt-6 flex items-center gap-6">
+              <div className='flex gap-2 items-center'>
               <span className="rounded-[10px] bg-[#EBF2FF] px-3 py-2 text-[16px] font-[400] text-[#3D3D3D]">
-                {isConnected ? formatAddress(address) : walletShort}
+                { formatAddress(userAddress) }
               </span>
+              <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Copy
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleCopy()
+                          }}
+                          className="size-4 cursor-pointer text-gray-600 hover:text-black"
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{copied ? 'Copied!' : 'Copy'}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+              </div>
+             
 
               <span className="rounded-[10px] bg-[#EBF2FF] px-3 py-2 text-[16px] font-[400] text-[#3D3D3D]">
-                {joined}
+                 Joined {formattedDate}
               </span>
             </div>
           </div>
         </div>
 
-        <button
+        {address === userAddress &&(<button
           aria-label="Share profile"
           className="inline-flex items-start justify-center text-[#111111]"
           onClick={() => setOpen(true)}
         >
           <Edit className="size-6" />
-        </button>
+        </button>)}
       </div>
       <EditProfile
         open={open}
         onOpenChange={setOpen}
         defaultName={currentName}
         defaultImage={currentImage}
-        onSave={async ({ name, imageUrl }) => {
-          // setCurrentName(name)
-          // setCurrentImage(imageUrl ?? undefined)
+        onSave={async ({ name, file }) => {
           if (!address) return
-            const res = await fetch('/api/users', {
-              method: 'PUT',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                address,
-                name,
-                profilePic: imageUrl,
-              }),
-            })
-            const data = await res.json()
-            if (data.success && data.user) {
-              setCurrentName(data.user.name)
-              setCurrentImage(data.user.profilePic)
-            }
+
+          const formData = new FormData()
+          formData.append('address', address)
+          formData.append('name', name)
+          if (file) {
+            formData.append('profilePic', file)
+          }
+
+          const res = await fetch('/api/users', {
+            method: 'PUT',
+            body: formData,
+          })
+
+          const data = await res.json()
+          if (data.success && data.user) {
+            setCurrentName(data.user.name)
+            setCurrentImage(data.user.profilePic)
+          }
         }}
       />
     </div>
