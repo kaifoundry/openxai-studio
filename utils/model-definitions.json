@@ -99,8 +99,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "transactions": [
@@ -266,8 +265,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -481,8 +479,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "transactions": [
@@ -758,8 +755,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "chains": [
@@ -923,8 +919,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "chains": [
@@ -1062,8 +1057,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1195,8 +1189,7 @@
     ],
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
@@ -1335,10 +1328,9 @@
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
-    "Seller": [
+   "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -1460,8 +1452,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -1545,8 +1536,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -1674,8 +1664,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -1803,8 +1792,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -1936,8 +1924,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -2073,8 +2060,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -2202,8 +2188,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -2345,8 +2330,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -2488,8 +2472,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -2629,10 +2612,9 @@
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
-    "Seller": [
+   "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -2798,8 +2780,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -2927,10 +2908,9 @@
       }
     ],
     "dateAdded": "2024-03-22T12:00:00Z",
-    "Seller": [
+   "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":2
       }
     ],
     "options": [
@@ -3016,8 +2996,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3127,8 +3106,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3226,8 +3204,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3307,8 +3284,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3388,8 +3364,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3469,8 +3444,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3568,8 +3542,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3667,8 +3640,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3760,8 +3732,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3853,8 +3824,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -3946,8 +3916,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -4027,8 +3996,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -4108,8 +4076,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -4195,8 +4162,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -4288,8 +4254,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -4369,8 +4334,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -4450,8 +4414,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -4536,8 +4499,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -4617,8 +4579,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
@@ -4697,8 +4658,7 @@
     "dateAdded": "2024-03-22T12:00:00Z",
     "Seller": [
       {
-        "logo": "/images/appStore/profile.png",
-        "name": "Christian Grey"
+        "id":1
       }
     ],
     "options": [
