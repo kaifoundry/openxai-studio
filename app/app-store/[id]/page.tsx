@@ -55,6 +55,7 @@ export default function BTCOraclePage() {
                     image={data.image}
                     title={data.name}
                     subtitle={Array.isArray(data.tags) ? data.tags.join(', ') : data.tags}
+                    showEdit={deployed}
                 />
                 <ModelStats
                     likes={data.likes.toString()}

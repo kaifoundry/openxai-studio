@@ -7,9 +7,10 @@ interface ModelHeaderProps {
     image: string
     title: string
     subtitle: string
+    showEdit?: boolean
 }
 
-export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
+export function ModelHeader({ image, title, subtitle, showEdit }: ModelHeaderProps) {
     return (
         <div className="px-3 ">
 
@@ -53,15 +54,17 @@ export function ModelHeader({ image, title, subtitle }: ModelHeaderProps) {
                 </div>
 
 
-                <motion.button 
-                 initial={{ opacity: 0, y: 30 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 0.4, delay: 0.1 }}
-                 viewport={{ once: true }}
-                className="p-2 rounded-full hover:bg-gray-100 transition">
-                    <Edit className="h-5 w-5 text-[#3D3D3D] font-bold" />
+                {showEdit && (
+                    <motion.button
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
+                        viewport={{ once: true }}
+                        className="p-2 rounded-full hover:bg-gray-100 transition">
+                        <Edit className="h-5 w-5 text-[#3D3D3D] font-bold" />
 
-                </motion.button>
+                    </motion.button>
+                )}
 
             </div>
         </div>

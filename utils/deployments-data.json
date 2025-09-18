@@ -26,6 +26,84 @@
       "users": "144"
     }
   ],
+  "undeploymentData": [
+    {
+      "id": "1",
+      "image": "/images/appStore/mock-card1.png",
+      "title": "Onchain Dating Agent",
+      "hashTags": ["Chatbot", "AI"],
+      "logo": "/images/models/llama.png",
+      "icons": [
+        { "chain": "/images/appStore/svg/chains/bitcoin.svg" },
+        { "chain": "/images/viewDeployment/ollama.svg" }
+      ],
+      "likes": 120,
+      "followers": 1500,
+      "apy": 320,
+      "Seller": [{ "name": "User", "logo": "/images/appStore/profile.png" }],
+      "stakingRevenue": "$567.96",
+      "marketplaceRevenue": "$88.98",
+      "views": "1.5K",
+      "users": "144"
+    },
+     {
+      "id": "2",
+      "image": "/images/appStore/mock-card1.png",
+      "title": "Onchain Dating Agent",
+      "hashTags": ["Chatbot", "AI"],
+      "logo": "/images/models/llama.png",
+      "icons": [
+        { "chain": "/images/appStore/svg/chains/bitcoin.svg" },
+        { "chain": "/images/viewDeployment/ollama.svg" }
+      ],
+      "likes": 120,
+      "followers": 1500,
+      "apy": 320,
+      "Seller": [{ "name": "User", "logo": "/images/appStore/profile.png" }],
+      "stakingRevenue": "$567.96",
+      "marketplaceRevenue": "$88.98",
+      "views": "1.5K",
+      "users": "144"
+    },
+     {
+      "id": "3",
+      "image": "/images/appStore/mock-card1.png",
+      "title": "Onchain Dating Agent",
+      "hashTags": ["Chatbot", "AI"],
+      "logo": "/images/models/llama.png",
+      "icons": [
+        { "chain": "/images/appStore/svg/chains/bitcoin.svg" },
+        { "chain": "/images/viewDeployment/ollama.svg" }
+      ],
+      "likes": 120,
+      "followers": 1500,
+      "apy": 320,
+      "Seller": [{ "name": "User", "logo": "/images/appStore/profile.png" }],
+      "stakingRevenue": "$567.96",
+      "marketplaceRevenue": "$88.98",
+      "views": "1.5K",
+      "users": "144"
+    },
+     {
+      "id": "4",
+      "image": "/images/appStore/mock-card1.png",
+      "title": "Onchain Dating Agent",
+      "hashTags": ["Chatbot", "AI"],
+      "logo": "/images/models/llama.png",
+      "icons": [
+        { "chain": "/images/appStore/svg/chains/bitcoin.svg" },
+        { "chain": "/images/viewDeployment/ollama.svg" }
+      ],
+      "likes": 120,
+      "followers": 1500,
+      "apy": 320,
+      "Seller": [{ "name": "User", "logo": "/images/appStore/profile.png" }],
+      "stakingRevenue": "$567.96",
+      "marketplaceRevenue": "$88.98",
+      "views": "1.5K",
+      "users": "144"
+    }
+  ],
   "personalServers": [
     {
       "id": "1",
