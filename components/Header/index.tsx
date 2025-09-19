@@ -187,7 +187,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
           setUserData(data)
           setCurrentName(data.user?.name || 'Unknown')
 
-          if (data.isNewUser) {
+          if (data.isNewUser && data.user?.name === "Unknown") {
             setModalOpen(true)
           }
         })
@@ -401,7 +401,8 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
             >
               {address &&
               status === 'connected' &&
-              userData?.user?.profilePic !== null ? (
+               (
+                userData?.user?.profilePic !== null?(
                 <div className="relative rounded-full">
                   <Image
                     src={userData?.user?.profilePic}
@@ -410,9 +411,13 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
                     height={20}
                     className="size-8 cursor-pointer rounded-full object-cover"
                   />
+                </div>):(
+                  <div className="relative size-10 cursor-pointer overflow-hidden rounded-full bg-[#73C255]">
+                  <div className="flex size-full items-center justify-center font-semibold text-green-900">
+                    {userData?.user?.name.charAt(0)}
+                  </div>
                 </div>
-              ) : (
-                <User2 className="relative size-4 cursor-pointer text-white" />
+                )
               )}
               <div
                 className={`absolute -left-28 top-16 flex w-[250px] flex-col shadow-md ${openProfile ? 'h-60 opacity-100' : 'h-0 overflow-hidden opacity-0'} z-20 rounded-lg bg-white py-10 transition-all delay-200 duration-500`}
@@ -420,13 +425,20 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
                 <div className="flex items-center justify-between border-b-2 border-gray-200 px-4 pb-3">
                   <div className='flex items-center gap-4'>
                     <div className="rounded-full">
+                    {userData?.user?.profilePic !== null ?(
                       <Image
                         src={userData?.user?.profilePic}
                         alt=""
                         width={20}
                         height={20}
                         className="size-10 cursor-pointer rounded-full object-cover"
-                      />
+                      />):(
+                        <div className="relative size-10 overflow-hidden rounded-full bg-[#73C255]">
+                    <div className="flex size-full items-center justify-center font-semibold text-green-900">
+                      {userData?.user?.name.charAt(0)}
+                    </div>
+                  </div>
+                      )}
                     </div>
                     <div className="text-[13px] font-bold">
                       {userData?.user?.name}

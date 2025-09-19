@@ -16,6 +16,7 @@ import { ERCOptions } from '@/app/deploy/one-click/components/erc-options';
 export default function BTCOraclePage() {
     const searchParams = useSearchParams();
     const deployed = searchParams.get('deploy') === 'true';
+    const passingAddress =searchParams.get('address')
     const Undeployed = searchParams.get('undeployed') === 'true';
     const [data, setData] = useState<any>(null);
     const [deploy, setDeploy] = useState(false);
@@ -41,9 +42,12 @@ export default function BTCOraclePage() {
             if (found?.Seller && found.Seller.length > 0) {
               
                 const seller = found.Seller[0];
-              
-                const matchedUser = userDetails.find((user: any) => user.id === seller.id);
-
+                let matchedUser;
+                if(passingAddress){
+                    matchedUser = userDetails.find((user: any) => user.address === passingAddress);
+                }else{
+                 matchedUser = userDetails.find((user: any) => user.id === seller.id);
+                }
                 setSellerImage(matchedUser?.profilePic || undefined);
                 setDisplayName(matchedUser?.name || 'Unknown');
                 setSellerId(matchedUser?.id ?? null);

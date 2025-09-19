@@ -7,12 +7,13 @@ import { useRouter } from "next/navigation";
 import userDetails from '@/utils/user_details.json'
 import deploymentsData from '@/utils/deployments-data.json'
 import { mockXNodes } from '@/config/demo-mode';
+
 export default function DeploymentPage() {
   const {address}=useAccount();
   const router = useRouter();
   const { summaryData, marketplaceEntries, undeploymentData, personalServers } = deploymentsData as any
   const handleClick = (id: string) => {
-    router.push(`/app-store/${id}?deploy=true`);
+    router.push(`/app-store/${id}?deploy=true?address=${address}`);
   };
 
   const formatGB = (mb: number | undefined): string => {

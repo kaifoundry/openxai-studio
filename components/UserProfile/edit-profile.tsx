@@ -46,11 +46,12 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
             setUploadProgress(0)
             setIsUploading(false)
             setShowRemoveConfirm(false)
-            if(pathname === '/'){
-            setStep(1);}
-            else{
-                setStep(2)
+            if (/^\/userProfile\/\d+$/.test(pathname)) {
+                setStep(2);
+            } else{
+                setStep(1);
             }
+              
         }
     }, [open, defaultName, defaultImage])
 
