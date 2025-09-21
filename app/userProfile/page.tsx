@@ -6,10 +6,8 @@ import UserProfileDetails from '@/components/UserProfile/user-profile-details'
 const Page = () => {
   return (
     <div className="mx-auto w-full  px-4 py-6">
-    <UserProfileDetails />
-    <UserModelInfo/>
-
-</div>
+Hello
+    </div>
   )
 }
 
