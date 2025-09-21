@@ -13,7 +13,7 @@ export default function DeploymentPage() {
   const router = useRouter();
   const { summaryData, marketplaceEntries, undeploymentData, personalServers } = deploymentsData as any
   const handleClick = (id: string) => {
-    router.push(`/app-store/${id}?deploy=true?address=${address}`);
+    router.push(`/app-store/${id}?deploy=true&address=${address}`);
   };
 
   const formatGB = (mb: number | undefined): string => {
@@ -67,7 +67,7 @@ export default function DeploymentPage() {
           className=" md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">
           Your Marketplace Entries ({marketplaceEntries.length})
         </motion.h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {marketplaceEntries.map((entry) => {
             let sellerImage: string | undefined = undefined
             let displayName: string | null = null
@@ -106,17 +106,18 @@ export default function DeploymentPage() {
                           transform: 'scale(0.8)',
                         }}
                       />
-                      <div className='overflow-hidden rounded-xl'>
-                        <Image
-                          src={entry.image || ''}
-                          alt="title"
-                          width={390}
-                          height={235}
-                          priority={true}
-                          blurDataURL={entry.image}
-                          className="transition-transform  duration-1000 group-hover:scale-105  relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
-                        />
-                      </div>
+                      
+                      <div className={`aspect-[16/9] overflow-hidden rounded-xl`}>
+                                  <Image
+                                    src={entry.image || ''}
+                                    alt="title"
+                                    width={390}
+                                    height={235}
+                                    priority={true}
+                                    blurDataURL={entry.image}
+                                    className="object-container relative z-20 aspect-[4/3] w-full rounded-xl transition-transform duration-1000 ease-in-out group-hover:scale-105"
+                                  />
+                                </div>
 
                     </div>
 
@@ -141,11 +142,11 @@ export default function DeploymentPage() {
                                                 alt="logo"
                                                 width={36}
                                                 height={36}
-                                                className="size-10 rounded-full bg-[#73C255]"
+                                                className="size-8 rounded-full bg-[#73C255]"
                                               />
                                             </div>
                                           ) : (
-                                            <div className="relative size-10 overflow-hidden rounded-full bg-[#73C255]">
+                                            <div className="relative size-8 overflow-hidden rounded-full bg-[#73C255]">
                                               <div className="flex size-full items-center justify-center font-semibold text-green-900">
                                                 {displayName.charAt(0)}
                                               </div>
@@ -166,6 +167,15 @@ export default function DeploymentPage() {
                             />
                           </div>
                         ))}
+                      </div>
+
+                      <div className="space-y-2 mb-4 px-4 mt-4">
+                        <div className="text-sm text-[#525252]">
+                          Staking revenue <span className="font-semibold text-[#141414]">{entry.stakingRevenue}</span>
+                        </div>
+                        <div className="text-sm text-gray-700">
+                          Marketplace revenue <span className="font-semibold">{entry.marketplaceRevenue}</span>
+                        </div>
                       </div>
 
 
@@ -221,7 +231,7 @@ export default function DeploymentPage() {
           className=" md:text-xl text-lg lg:text-2xl font-bold text-gray-900 mb-6">
           Your Undeployed Apps ({undeploymentData.length})
         </motion.h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {undeploymentData.map((entry) => {
             let sellerImage: string | undefined = undefined
             let displayName: string | null = null
@@ -260,17 +270,17 @@ export default function DeploymentPage() {
                           transform: 'scale(0.8)',
                         }}
                       />
-                      <div className='overflow-hidden rounded-xl'>
-                        <Image
-                          src={entry.image || ''}
-                          alt="title"
-                          width={390}
-                          height={235}
-                          priority={true}
-                          blurDataURL={entry.image}
-                          className="transition-transform  duration-1000 group-hover:scale-105  relative z-20 h-[190px] md:h-[150px] lg:h-[150px] xl:h-[170px] 2xl:h-[190px] w-full rounded-xl  ease-in-out 3xl:h-[235px]"
-                        />
-                      </div>
+                      <div className={`aspect-[16/9] overflow-hidden rounded-xl`}>
+                                  <Image
+                                    src={entry.image || ''}
+                                    alt="title"
+                                    width={390}
+                                    height={235}
+                                    priority={true}
+                                    blurDataURL={entry.image}
+                                    className="object-container relative z-20 aspect-[4/3] w-full rounded-xl transition-transform duration-1000 ease-in-out group-hover:scale-105"
+                                  />
+                                </div>
 
                     </div>
 
@@ -295,11 +305,11 @@ export default function DeploymentPage() {
                                                 alt="logo"
                                                 width={36}
                                                 height={36}
-                                                className="size-10 rounded-full bg-[#73C255]"
+                                                className="size-8 rounded-full bg-[#73C255]"
                                               />
                                             </div>
                                           ) : (
-                                            <div className="relative size-10 overflow-hidden rounded-full bg-[#73C255]">
+                                            <div className="relative size-8 overflow-hidden rounded-full bg-[#73C255]">
                                               <div className="flex size-full items-center justify-center font-semibold text-green-900">
                                                 {displayName.charAt(0)}
                                               </div>

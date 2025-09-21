@@ -124,7 +124,7 @@ const Card = ({
                       alt="logo"
                       width={36}
                       height={36}
-                      className="size-10 rounded-full bg-[#73C255]"
+                      className="size-8 rounded-full bg-[#73C255]"
                     />
                   </div>
                 ) : (

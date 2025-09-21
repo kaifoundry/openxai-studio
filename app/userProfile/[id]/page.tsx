@@ -24,13 +24,14 @@ const Page = () => {
   const image = data.profilePic
   const userAddress=data?.address
   const Joined =data?.firstConnected
+  const id=data.id
 
   
 
   return (
     <div className="mx-auto w-full px-4 py-6">
       <UserProfileDetails name={name} image={image} userAddress={userAddress} Joined={Joined} />
-      <UserModelInfo />
+      <UserModelInfo id={id}/>
       
     </div>
   )

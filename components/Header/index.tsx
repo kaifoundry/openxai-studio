@@ -187,13 +187,17 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
           setUserData(data)
           setCurrentName(data.user?.name || 'Unknown')
 
-          if (data.isNewUser && data.user?.name === "Unknown") {
+          if (data.isNewUser && data.user?.name === 'Unknown') {
             setModalOpen(true)
           }
         })
         .catch((err) => console.error(err))
     }
   }, [isConnected, address])
+
+  useEffect(()=>{
+    console.log("Data ==>",userData)
+  },[userData])
 
   return (
     <>
@@ -420,7 +424,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
                 )
               )}
               <div
-                className={`absolute -left-28 top-16 flex w-[250px] flex-col shadow-md ${openProfile ? 'h-60 opacity-100' : 'h-0 overflow-hidden opacity-0'} z-20 rounded-lg bg-white py-10 transition-all delay-200 duration-500`}
+                className={`absolute -left-28 top-12 flex w-[250px] flex-col shadow-md ${openProfile ? ' h-48 opacity-100' : 'h-0 overflow-hidden opacity-0'} z-20 rounded-lg bg-white py-6 transition-all delay-200 duration-500`}
               >
                 <div className="flex items-center justify-between border-b-2 border-gray-200 px-4 pb-3">
                   <div className='flex items-center gap-4'>
@@ -530,6 +534,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
             const data = await res.json()
             
             if (data.success && data.user) {
+              setUserData(data)
               setCurrentName(data.user.name)
               setCurrentImage(data.user.profilePic)
               push(`/userProfile/${data.user.id}`)

@@ -1,3 +1,16 @@
 [
-  
+  {
+    "id": 1,
+    "address": "0x94B4057C9Ba143da5710516e1860939e0c6E7A6a",
+    "name": "Christian",
+    "profilePic": "/uploads/1758269315052-2.jpg",
+    "firstConnected": "2025-09-19T08:07:33.949Z"
+  },
+  {
+    "id": 2,
+    "address": "0xD45033e2c5A0564644AC7a71DEB8003084B3DF88",
+    "name": "Neeraja",
+    "profilePic": "/uploads/1758270278085-Screenshot_2024-04-14_162353.png",
+    "firstConnected": "2025-09-19T08:22:24.302Z"
+  }
 ]

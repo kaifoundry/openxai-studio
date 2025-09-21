@@ -109,7 +109,7 @@ export default function BTCOraclePage() {
                         <ModelBalance id={id} />
                     </div>
                 )}
-                {deployed && (
+                {(deployed && !Undeployed) && (
                     <MonetisationSettings
                         walletAddress="xyz6etbhbjd...8ghyuhn75"
                         price={123.45}
