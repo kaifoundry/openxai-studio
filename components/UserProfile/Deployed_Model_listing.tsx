@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-
+import { useAccount } from 'wagmi'
 import DeployedModels from '../../utils/deployed-apps.json'
 import Card from '../AIModelDirectory/ai-model-card'
 
@@ -22,12 +22,16 @@ interface AppContentProps {
   selectedCategories?: string[]
   show?: boolean
   app?: string
+  userAddress?:string
+  userId?:string
 }
 const Deployed_Model_listing = ({
   selectedChains,
   selectedCategories,
   show,
   app,
+  userAddress,
+  userId
 }: AppContentProps) => {
   const [collapsed, setCollapsed] = useState(true)
   const [visibleCounts, setVisibleCounts] = useState<{ [key: string]: number }>(
@@ -37,6 +41,7 @@ const Deployed_Model_listing = ({
     [key: string]: number
   }>({})
   const [firstLoad, setFirstLoad] = useState(true)
+ const {address,isConnected}=useAccount();
 
   useEffect(() => {
     const handler = (e: CustomEvent) => {
@@ -50,6 +55,7 @@ const Deployed_Model_listing = ({
         handler as EventListener
       )
   }, [])
+ 
 
   const filteredModels = useMemo(() => {
     return DeployedModels.filter((item) => {
@@ -57,19 +63,34 @@ const Deployed_Model_listing = ({
         selectedChains?.length > 0
           ? item?.chains?.some((c: any) => selectedChains.includes(c.name))
           : true
-
+  
       const matchCategory =
         selectedCategories?.length > 0
           ? selectedCategories.includes(item.category)
           : true
-
+  
       const matchSearch = app
         ? item?.name?.toLowerCase().includes(app.toLowerCase())
         : true
-
-      return matchChain && matchCategory && matchSearch
+      
+      
+      const matchUser =
+      userAddress &&
+      userAddress.trim().length > 0 &&
+     
+      userAddress.toLowerCase() !== address?.toLowerCase()
+        ? item?.Seller?.some((s) =>{
+            
+            return s.id === Number(userId)
+        }
+          )
+        : true
+  
+      return matchChain && matchCategory && matchSearch && matchUser
     })
-  }, [selectedChains, selectedCategories, app])
+  }, [selectedChains, selectedCategories, app, userAddress,isConnected])
+  
+  console.log("Filtering ==>",filteredModels)
 
   const getVisibleCount = () => {
     if (typeof window !== 'undefined') {
@@ -124,6 +145,8 @@ const Deployed_Model_listing = ({
       className={`grid ${show ? 'lg:grid-cols-2 2xl:grid-cols-2 3xl:grid-cols-3' : 'grid-cols-4'} gap-4 py-3 transition delay-300 duration-700`}
     >
       {filteredModels.map((data, id) => {
+        const isSameUser =
+        userAddress?.toLowerCase() === address?.toLowerCase()
         return (
           <motion.div
             key={data?.id}
@@ -141,7 +164,15 @@ const Deployed_Model_listing = ({
               likes={data?.likes}
               followers={data?.followers}
               apy={data?.apy}
-              Seller={data?.Seller}
+              Seller={
+                isSameUser
+                  ? address
+                    ? [{ id: data?.Seller?.[0].id }]
+                    : []
+                  : data?.Seller
+              }
+              
+              pass_address={isSameUser ? true : false}
             />
           </motion.div>
         )

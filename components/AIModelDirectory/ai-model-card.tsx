@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useNavContext } from '@/contexts/NavContext'
-import userDetails from '@/utils/user_details.json'
 import { motion } from 'framer-motion'
-
+import userDetails from '@/utils/user_details.json'
+import { useAccount } from 'wagmi'
 interface cardProps {
   id?: string
   image?: string
@@ -19,6 +19,17 @@ interface cardProps {
   apy?: number
   Seller?: { id: number }[]
   delay?: number
+  pass_address?:boolean
+}
+
+interface User {
+  id?: string
+  _id?: string
+  address: string
+  name: string
+  profilePic: string | null
+  firstConnected?: string
+  createdAt?: string
 }
 
 const Card = ({
@@ -33,19 +44,60 @@ const Card = ({
   apy,
   Seller,
   delay,
+  pass_address
 }: cardProps) => {
   const router = useRouter()
   const { collapsed } = useNavContext()
-
+  const {address}=useAccount();
   const handleClick = () => {
+    if(pass_address){
+      router.push(`/app-store/${id}?address=${address}`)
+    }else{
     router.push(`/app-store/${id}`)
+    }
   }
+  const [users, setUsers] = useState<User[]>([]) 
+  const [sellerUser, setSellerUser] = useState<User | null>(null)
+
+  // useEffect(() => {
+  //   if (!Seller || Seller.length === 0) return
+  //   // fetch(`/api/users`)
+  //   //   .then((res) => {
+  //   //     if (!res.ok) {
+  //   //       throw new Error('Failed to fetch users')
+  //   //     }
+  //   //     return res.json()
+  //   //   })
+  //   //   .then((usersData: User[]) => { 
+  //   //     setUsers(usersData)
+        
+       
+  //   //     const sellerId = Seller[0].id
+  //   //     const matchedUser = usersData.find((user: User) => 
+  //   //       user.id === sellerId || user._id === sellerId || user.address.toLocaleLowerCase() === sellerId.toLocaleLowerCase()
+  //   //     )
+  //   //     setSellerUser(matchedUser || null)
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.error('Error fetching users:', error)
+  //   //     setUsers([])
+  //   //     setSellerUser(null)
+  //   //   })
+  //   // const sellerId = Seller[0].id
+  //   //     const matchedUser = userDetails.find(() => 
+  //   //       user.id === sellerId || user._id === sellerId || user.address.toLocaleLowerCase() === sellerId.toLocaleLowerCase()
+  //   //     )
+  //   //     setSellerUser(matchedUser || null)
+  // }, [Seller?.[0]?.id]) 
 
   let sellerImage: string | undefined = undefined
-  let displayName: string | null = null
+  let displayName: string = 'Unknown'
+
   if (Seller && Seller.length > 0) {
     const sellerId = Seller[0].id
-    const matchedUser = userDetails.find((user: any) => user.id === sellerId)
+    
+    const matchedUser = userDetails.find((user: any) => user.id === sellerId || user._id === sellerId )
+    
     sellerImage = matchedUser?.profilePic || undefined
     displayName = matchedUser?.name || 'UnKnown'
   }

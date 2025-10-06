@@ -10,6 +10,7 @@ import { ThemeProvider } from 'next-themes'
 import { ToastContainer } from 'react-toastify'
 import { WagmiProvider, type State } from 'wagmi'
 import { LoadingProvider } from '@/contexts/LoadingContext'
+import { UserProvider } from '@/contexts/UserContext'
 import { Toaster } from '@/components/ui/toaster'
 import DemoModeProvider from '@/components/demo-mode'
 import ScreenProvider from '@/components/screen-provider'
@@ -96,9 +97,11 @@ export function Providers({
               <SelectedXnodeProvider>
                 <DemoContextProvider>
                   {/* <ScreenProvider> */}
+                  <UserProvider>
                     {children}
                     <ToastContainer />
                     <Toaster />
+                    </UserProvider>
                   {/* </ScreenProvider> */}
                 </DemoContextProvider>
               </SelectedXnodeProvider>

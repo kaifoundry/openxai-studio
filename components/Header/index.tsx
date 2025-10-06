@@ -52,7 +52,7 @@ import {
   type SelectedXnode,
 } from '@/components/selected-xnode'
 import { useXnodes } from '@/app/dashboard/health-data'
-
+import { useUser } from '@/contexts/UserContext'
 import { useDemoModeContext } from '../demo-mode'
 import { Button } from '../ui/button'
 import EditProfile from '../UserProfile/edit-profile'
@@ -79,6 +79,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
   const { data: inactiveXNodes } = useXueNfts(address)
   const { data: deployedXnodes } = useXnodes(sessionToken)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const { user, updateUser } = useUser()
   const { open } = useWeb3Modal()
   const { push } = useRouter()
   const { disconnect } = useDisconnect()
@@ -86,13 +87,11 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
   const { toggleCollapsed, collapsed } = useNavContext()
   const { demoMode, setDemoMode } = useDemoModeContext()
   const [modalOpen, setModalOpen] = useState(false)
-  const [currentImage, setCurrentImage] = useState('')
-  const [currentName, setCurrentName] = useState('')
-  const [userData, setUserData] = useState<ApiResponse | null>(null)
   const [copied, setCopied] = useState(false)
+
   const handleCopy = () => {
-    if (userData?.user?.address) {
-      navigator.clipboard.writeText(userData.user.address)
+    if (user?.address) {
+      navigator.clipboard.writeText(user.address)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     }
@@ -127,7 +126,6 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
 
   useEffect(() => {
     if (!allXnodes.length) {
-      // No nodes
       selectXNode(null)
       return
     }
@@ -139,7 +137,6 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
           xnode.type === selectedXNode.type && xnode.id === selectedXNode.id
       )
     ) {
-      // There is a valid node selected
       return
     }
 
@@ -171,7 +168,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
   }
 
   useEffect(() => {
-    if (isConnected && address) {
+    if (isConnected && address && !user) {
       fetch('/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -184,20 +181,17 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
         .then((res) => res.json())
         .then((data) => {
           console.log('Response:', data)
-          setUserData(data)
-          setCurrentName(data.user?.name || 'Unknown')
-
-          if (data.isNewUser && data.user?.name === 'Unknown') {
-            setModalOpen(true)
+          if (data.success && data.user) {
+            updateUser(data.user)
+            console.log("yes updating ===>",data.user)
+            if (data.isNewUser && data.user?.name === 'Unknown') {
+              setModalOpen(true)
+            }
           }
         })
         .catch((err) => console.error(err))
     }
-  }, [isConnected, address])
-
-  useEffect(()=>{
-    console.log("Data ==>",userData)
-  },[userData])
+  }, [isConnected, address, user, updateUser])
 
   return (
     <>
@@ -400,27 +394,26 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
               className="relative"
               onClick={() => {
                 setOpenProfile(!openProfile)
-                console.log('Clciked')
+                
               }}
             >
-              {address &&
-              status === 'connected' &&
-               (
-                userData?.user?.profilePic !== null?(
-                <div className="relative rounded-full">
-                  <Image
-                    src={userData?.user?.profilePic}
-                    alt=""
-                    width={20}
-                    height={20}
-                    className="size-8 cursor-pointer rounded-full object-cover"
-                  />
-                </div>):(
-                  <div className="relative size-10 cursor-pointer overflow-hidden rounded-full bg-[#73C255]">
-                  <div className="flex size-full items-center justify-center font-semibold text-green-900">
-                    {userData?.user?.name.charAt(0)}
+              {address && status === 'connected' && user && (
+                user.profilePic ? (
+                  <div className="relative rounded-full">
+                    <Image
+                      src={user.profilePic}
+                      alt="User profile"
+                      width={32}
+                      height={32}
+                      className="size-8 cursor-pointer rounded-full object-cover"
+                    />
                   </div>
-                </div>
+                ) : (
+                  <div className="relative size-8 cursor-pointer overflow-hidden rounded-full bg-[#73C255]">
+                    <div className="flex size-full items-center justify-center text-sm font-semibold text-green-900">
+                      {user.name?.charAt(0) || 'U'}
+                    </div>
+                  </div>
                 )
               )}
               <div
@@ -429,34 +422,37 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
                 <div className="flex items-center justify-between border-b-2 border-gray-200 px-4 pb-3">
                   <div className='flex items-center gap-4'>
                     <div className="rounded-full">
-                    {userData?.user?.profilePic !== null ?(
-                      <Image
-                        src={userData?.user?.profilePic}
-                        alt=""
-                        width={20}
-                        height={20}
-                        className="size-10 cursor-pointer rounded-full object-cover"
-                      />):(
+                      {user?.profilePic  ? (
+                        <Image
+                          src={user.profilePic}
+                          alt="User profile"
+                          width={40}
+                          height={40}
+                          className="size-10 cursor-pointer rounded-full object-cover"
+                        />
+                      ) : (
                         <div className="relative size-10 overflow-hidden rounded-full bg-[#73C255]">
-                    <div className="flex size-full items-center justify-center font-semibold text-green-900">
-                      {userData?.user?.name.charAt(0)}
-                    </div>
-                  </div>
+                          <div className="flex size-full items-center justify-center font-semibold text-green-900">
+                            {user?.name?.charAt(0) || 'U'}
+                          </div>
+                        </div>
                       )}
                     </div>
                     <div className="text-[13px] font-bold">
-                      {userData?.user?.name}
+                      {user?.name || 'Unknown'}
                     </div>
                   </div>
                  
-                  <div className='flex justify-end'><Pencil className=' size-4 cursor-pointer' onClick={()=>{push(`/userProfile/${userData?.user?.id}`)}}/></div>
-                  
+                  <div className='flex justify-end'>
+                    <Pencil 
+                      className='size-4 cursor-pointer' 
+                      onClick={() => user?.id && push(`/userProfile/${user.id}`)}
+                    />
+                  </div>
                 </div>
                 <div className="flex items-center justify-between px-4 py-4">
                   <div className="text-[13px] font-bold">
-                    {userData?.user?.address
-                      ? formatAddress(userData.user.address, 12)
-                      : ''}
+                    {user?.address ? formatAddress(user.address, 12) : ''}
                   </div>
                   <TooltipProvider>
                     <Tooltip>
@@ -514,8 +510,8 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
         <EditProfile
           open={modalOpen}
           onOpenChange={setModalOpen}
-          defaultName={currentName}
-          defaultImage={currentImage}
+          defaultName={user?.name || 'Unknown'}
+          defaultImage={user?.profilePic || ''}
           onSave={async ({ name, file }) => {
             if (!address) return
 
@@ -534,9 +530,7 @@ export default function Header({ sessionToken }: { sessionToken?: string }) {
             const data = await res.json()
             
             if (data.success && data.user) {
-              setUserData(data)
-              setCurrentName(data.user.name)
-              setCurrentImage(data.user.profilePic)
+              updateUser(data.user)
               push(`/userProfile/${data.user.id}`)
             }
           }}

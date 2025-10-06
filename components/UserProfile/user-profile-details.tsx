@@ -11,7 +11,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 import EditProfile from '@/components/UserProfile/edit-profile'
-
+ import { useUser } from '@/contexts/UserContext'
 interface UserProfileDetailsProps {
   name?: string
   image?: string
@@ -22,11 +22,11 @@ interface UserProfileDetailsProps {
 const UserProfileDetails = ({
   name,
   image,
-  
   Joined = 'Joined Aug 24',
   userAddress
 }: UserProfileDetailsProps) => {
   const [open, setOpen] = useState(false)
+   const { user, updateUser } = useUser()
   const [currentName, setCurrentName] = useState<string>(name || 'Sam Lee')
   const [currentImage, setCurrentImage] = useState<string | undefined>(image)
   const displayName = currentName
@@ -46,6 +46,7 @@ const UserProfileDetails = ({
   }
 
   const date = new Date(Joined)
+  
 
   const options: Intl.DateTimeFormatOptions = { month: "short", day: "numeric" }
   const formattedDate = date.toLocaleDateString("en-US", options)
@@ -107,7 +108,7 @@ const UserProfileDetails = ({
           </div>
         </div>
 
-        {address === userAddress &&(<button
+        {address?.toLowerCase() === userAddress?.toLowerCase() &&(<button
           aria-label="Share profile"
           className="inline-flex items-start justify-center text-[#111111]"
           onClick={() => setOpen(true)}
@@ -122,13 +123,13 @@ const UserProfileDetails = ({
         defaultImage={currentImage}
         onSave={async ({ name, file }) => {
           if (!address) return
-
+         
           const formData = new FormData()
           formData.append('address', address)
           formData.append('name', name)
-          if (file) {
+          // if (file) {
             formData.append('profilePic', file)
-          }
+          // }
 
           const res = await fetch('/api/users', {
             method: 'PUT',
@@ -137,6 +138,7 @@ const UserProfileDetails = ({
 
           const data = await res.json()
           if (data.success && data.user) {
+            updateUser(data.user)
             setCurrentName(data.user.name)
             setCurrentImage(data.user.profilePic)
           }

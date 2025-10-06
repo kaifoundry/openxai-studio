@@ -36,7 +36,7 @@ export default function XNodeDashboard({ xNodeId }: XnodePageProps) {
   const { address } = useAccount()
   const { demoMode } = useDemoModeContext()
   const testXNode = useMemo<Xnode | null>(() => {
-    if (!demoMode) return null
+    //if (!demoMode) return null
     return mockXNodes.find((node) => node.id === xNodeId) ?? null
   }, [demoMode, xNodeId])
 
@@ -181,7 +181,7 @@ export default function XNodeDashboard({ xNodeId }: XnodePageProps) {
   return (
     <div className="container mx-auto mb-12 mt-0 max-w-screen-3xl">
       {isLoading && !demoMode ? <Skeleton_deployment /> : null}
-      {(isSuccess || demoMode) && user?.sessionToken ? (
+      {/* {(isSuccess || demoMode) && user?.sessionToken ? ( */}
         <>
           {/* ---------------------------- New code based on new UI ----------------------------------------------- */}
 
@@ -218,8 +218,8 @@ export default function XNodeDashboard({ xNodeId }: XnodePageProps) {
             setDeleteServiceOpen={setDeleteServiceOpen}
           />
         </>
-      ) : null}
-      {!isFetching && !isSuccess && !demoMode ? <Signup /> : null}
+      {/* ) : null} */}
+      {/* {!isFetching && !isSuccess && !demoMode ? <Signup /> : null} */}
     </div>
   )
 }

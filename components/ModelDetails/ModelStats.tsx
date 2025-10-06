@@ -12,7 +12,7 @@ interface ModelStatsProps {
   apy: string | number
   profileName?: string
   profileImage?: string
-  modelId?: number
+  modelId?: string
 }
 
 const containerVariants = {

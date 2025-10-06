@@ -5,7 +5,12 @@ import React, { useState } from 'react'
 import Deployed_models from './Deployed_models'
 import Filter from './filter'
 
-const DeployedApps = () => {
+interface DeployedAppsProps{
+ userAddress?:string
+ userId?:string
+}
+
+const DeployedApps = ({userAddress,userId}:DeployedAppsProps) => {
   const [show, setShow] = useState(true)
   const [selectedChains, setSelectedChains] = useState<string[]>([])
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
@@ -35,6 +40,8 @@ const DeployedApps = () => {
           show={show}
           selectedChains={selectedChains}
           selectedCategories={selectedCategories}
+          userAddress={userAddress}
+          userId={userId}
         />
       </div>
     </div>

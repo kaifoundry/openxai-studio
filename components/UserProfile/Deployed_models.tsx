@@ -10,6 +10,8 @@ interface Deployed_models_props {
   selectedChains?: string[]
   selectedCategories?: string[]
   setShow: React.Dispatch<React.SetStateAction<boolean>>
+  userAddress?:string
+  userId?:string
 }
 
 const Deployed_models = ({
@@ -17,6 +19,9 @@ const Deployed_models = ({
   setShow,
   selectedCategories,
   selectedChains,
+  userAddress,
+  userId
+
 }: Deployed_models_props) => {
   const [app, setApp] = useState('')
   return (
@@ -52,6 +57,8 @@ const Deployed_models = ({
         selectedCategories={selectedCategories}
         selectedChains={selectedChains}
         app={app}
+        userAddress={userAddress}
+        userId={userId}
       />
     </div>
   )

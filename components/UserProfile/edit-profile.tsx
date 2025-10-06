@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
 
+
 type EditProfileProps = {
     open: boolean
     onOpenChange: (open: boolean) => void
@@ -37,6 +38,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
     const [fileName, setFileName] = useState<string | undefined>(undefined)
     const pathname = usePathname(); 
     const fileInputRef = useRef<HTMLInputElement>(null)
+    const [isSaving, setIsSaving] = useState(false);
 
     useEffect(() => {
         if (open) {
@@ -46,11 +48,12 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
             setUploadProgress(0)
             setIsUploading(false)
             setShowRemoveConfirm(false)
-            if (/^\/userProfile\/\d+$/.test(pathname)) {
+            if (/^\/userProfile\/[^/]+$/.test(pathname)) {
                 setStep(2);
-            } else{
+            } else {
                 setStep(1);
             }
+            
               
         }
     }, [open, defaultName, defaultImage])
@@ -103,27 +106,37 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
     }, [])
 
     const handleSave = useCallback(async () => {
-        if (file) {
-          setIsUploading(true)
-      
-          await new Promise<void>((resolve) => {
-            let pct = 0
-            const id = setInterval(() => {
-              pct = Math.min(100, pct + Math.round(Math.random() * 18 + 6))
-              setUploadProgress(pct)
-              if (pct >= 100) {
-                clearInterval(id)
-                resolve()
-              }
-            }, 200)
-          })
-      
-          setIsUploading(false)
+        try {
+            setIsSaving(true);
+          if (file) {
+            setIsUploading(true);
+            
+            
+            await new Promise<void>((resolve) => {
+              let pct = 0;
+              const id = setInterval(() => {
+                pct = Math.min(100, pct + Math.round(Math.random() * 18 + 6));
+                setUploadProgress(pct);
+                if (pct >= 100) {
+                  clearInterval(id);
+                  resolve();
+                }
+              }, 200);
+            });
+            
+            setIsUploading(false);
+          }
+         
+          await onSave({ name, file });
+          onOpenChange(false);
+        } catch (error) {
+          console.error('Error in handleSave:', error);
+          setIsUploading(false);
+         
+        }finally {
+            setIsSaving(false); 
         }
-      
-        await onSave({ name, file })   
-        onOpenChange(false)
-      }, [file, onOpenChange, onSave, name])
+      }, [file, onOpenChange, onSave, name]);
       
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
@@ -321,7 +334,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
                                                 </div>
                                                 <div className="mt-4 flex justify-end gap-2">
                                                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                                    <AlertDialogAction onClick={removeImage}>Remove</AlertDialogAction>
+                                                    <AlertDialogAction onClick={()=>{removeImage();}}>Remove</AlertDialogAction>
                                                 </div>
                                             </AlertDialogContent>
                                         </AlertDialog>
@@ -334,9 +347,10 @@ const EditProfile: React.FC<EditProfileProps> = ({ open, onOpenChange, defaultNa
                                 <Button variant="outline" onClick={() => setStep(2)} className="w-full">
                                     Cancel
                                 </Button>
-                                <Button onClick={handleSave} className="w-full">
-                                    Add Details
+                                <Button onClick={handleSave} className="w-full" disabled={isSaving}>
+                                    {isSaving ? <><span className="animate-spin mr-2">⏳</span>Saving...</> : 'Add Details'}
                                 </Button>
+
                             </div>
                         </div>
                     </>

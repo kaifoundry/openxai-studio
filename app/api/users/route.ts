@@ -76,7 +76,7 @@ export async function PUT(req: Request) {
     const formData = await req.formData();
     const address = formData.get("address") as string;
     const name = formData.get("name") as string;
-    const file = formData.get("profilePic") as File | null;
+    const profilePic = formData.get("profilePic");
 
     let users = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
@@ -91,14 +91,18 @@ export async function PUT(req: Request) {
     // update fields
     users[index].name = name || users[index].name;
 
-    if (file) {
-      const bytes = Buffer.from(await file.arrayBuffer());
-      const fileName = Date.now() + "-" + file.name.replace(/\s+/g, "_");
+    if (profilePic && profilePic instanceof File) {
+      console.log("Yes, file uploaded:", profilePic);
+      const bytes = Buffer.from(await profilePic.arrayBuffer());
+      const fileName = Date.now() + "-" + profilePic.name.replace(/\s+/g, "_");
       const filePathOnDisk = path.join(uploadDir, fileName);
 
       fs.writeFileSync(filePathOnDisk, bytes);
 
       users[index].profilePic = `/uploads/${fileName}`;
+    } else {
+      console.log("No file uploaded");
+      users[index].profilePic = null;
     }
 
     fs.writeFileSync(filePath, JSON.stringify(users, null, 2));

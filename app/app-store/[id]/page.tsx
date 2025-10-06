@@ -13,6 +13,16 @@ import userDetails from '@/utils/user_details.json'
 import MonetisationSettings from '@/app/deployments/MonetisationSettings';
 import { ERCOptions } from '@/app/deploy/one-click/components/erc-options';
 
+
+interface User {
+    id?: string;
+    _id?: string;
+    address: string;
+    name: string;
+    profilePic?: string;
+    createdAt?: string;
+}
+
 export default function BTCOraclePage() {
     const searchParams = useSearchParams();
     const deployed = searchParams.get('deploy') === 'true';
@@ -25,7 +35,7 @@ export default function BTCOraclePage() {
 
     const [displayName, setDisplayName] = useState<string>('Unknown');
     const [sellerImage, setSellerImage] = useState<string | undefined>(undefined);
-    const [sellerId, setSellerId] = useState<number | null>(null);
+    const [sellerId, setSellerId] = useState<string | null>(null);
 
     const params = useParams();
     const id = Array.isArray(params.id) ? params.id[0] : params.id;
@@ -34,6 +44,7 @@ export default function BTCOraclePage() {
         window.scrollTo(0, 0);
     }, []);
 
+    
     useEffect(() => {
         if (id) {
             const found = ModelDefinitions.find(item => item.id === id);
@@ -46,7 +57,7 @@ export default function BTCOraclePage() {
                 if(passingAddress){
                     matchedUser = userDetails.find((user: any) => user.address === passingAddress);
                 }else{
-                 matchedUser = userDetails.find((user: any) => user.id === seller.id);
+                 matchedUser = userDetails.find((user: any) => user.id === seller.id || user._id === seller.id);
                 }
                 setSellerImage(matchedUser?.profilePic || undefined);
                 setDisplayName(matchedUser?.name || 'Unknown');
@@ -54,6 +65,48 @@ export default function BTCOraclePage() {
             }
         }
     }, [id]);
+    
+    // useEffect(() => {
+    //     if (id) {
+    //         const found = ModelDefinitions.find(item => item.id === id);
+    //         setData(found || null);
+    
+    //         if (found?.Seller && found.Seller.length > 0) {
+    //             const seller = found.Seller[0];
+                
+    //             fetch('/api/users')
+    //                 .then((res) => {
+    //                     if (!res.ok) {
+    //                         throw new Error('Failed to fetch users');
+    //                     }
+    //                     return res.json();
+    //                 })
+    //                 .then((users: User[]) => {
+    //                     let matchedUser: User | undefined;
+                        
+    //                     if (passingAddress) {
+    //                         matchedUser = users.find((user: User) => 
+    //                             user.address?.toLowerCase() === passingAddress?.toLowerCase()
+    //                         );
+    //                     } else {
+    //                         matchedUser = users.find((user: User) => 
+    //                             user.id === seller.id || user._id === seller.id
+    //                         );
+    //                     }
+                        
+    //                     setSellerImage(matchedUser?.profilePic || undefined);
+    //                     setDisplayName(matchedUser?.name || 'Unknown');
+    //                     setSellerId(matchedUser?.id || matchedUser?._id || null);
+    //                 })
+    //                 .catch((error) => {
+    //                     console.error('Error fetching users from API:', error);
+    //                     setSellerImage(undefined);
+    //                     setDisplayName('Unknown');
+    //                     setSellerId(null);
+    //                 });
+    //         }
+    //     }
+    // }, [id, passingAddress]);
 
     useEffect(() => {
         if (contentRef.current) {

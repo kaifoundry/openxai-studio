@@ -7,24 +7,21 @@ import UnDeployedApps from "./UnDeployedApps";
 import userDetails from "@/utils/user_details.json";
 
 interface UserModelInfoProps {
-  id: number;
+  show?:boolean
+  userAddress?:string
+  userId?:string
 }
 
-const UserModelInfo = ({ id }: UserModelInfoProps) => {
+const UserModelInfo = ({ show,userAddress,userId }: UserModelInfoProps) => {
   const [activeTab, setActiveTab] = useState("deployed");
   const [indicatorStyle, setIndicatorStyle] = useState({});
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const { address } = useAccount();
-
-  const currentUser = userDetails.find((user: any) => user.id === id);
-
  
-  const isOwner =
-    currentUser?.address?.toLowerCase() === address?.toLowerCase();
+  
 
   const tabData = [
     { value: "deployed", label: "Deployed Apps" },
-    ...(isOwner ? [{ value: "undeployed", label: "Undeployed Apps" }] : []),
+    ...(show ? [{ value: "undeployed", label: "Undeployed Apps" }] : []),
   ];
 
   useEffect(() => {
@@ -35,7 +32,7 @@ const UserModelInfo = ({ id }: UserModelInfoProps) => {
         width: el.offsetWidth,
       });
     }
-  }, [activeTab, tabData]);
+  }, [activeTab]);
 
   return (
     <div className="w-full p-4">
@@ -63,13 +60,13 @@ const UserModelInfo = ({ id }: UserModelInfoProps) => {
         </div>
 
         <TabsContent value="deployed" className="mt-6">
-          <DeployedApps />
+          <DeployedApps userAddress={userAddress} userId={userId}/>
         </TabsContent>
 
-        {isOwner && (
+        {show && (
           <TabsContent value="undeployed" className="mt-6">
             {/* <UnDeployedApps /> */}
-            <DeployedApps />
+            <DeployedApps userAddress={userAddress} userId={userId}/>
           </TabsContent>
         )}
       </Tabs>

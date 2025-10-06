@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useAccount } from 'wagmi'
@@ -8,9 +8,21 @@ import userDetails from '@/utils/user_details.json'
 import deploymentsData from '@/utils/deployments-data.json'
 import { mockXNodes } from '@/config/demo-mode';
 
+
+interface User {
+  id?: string
+  _id?: string
+  address: string
+  name: string
+  profilePic: string | null
+  firstConnected?: string
+  createdAt?: string
+}
+
 export default function DeploymentPage() {
   const {address}=useAccount();
   const router = useRouter();
+   const [user, setUser] = useState<User | null>(null)
   const { summaryData, marketplaceEntries, undeploymentData, personalServers } = deploymentsData as any
   const handleClick = (id: string) => {
     router.push(`/app-store/${id}?deploy=true&address=${address}`);
@@ -20,6 +32,30 @@ export default function DeploymentPage() {
     if (!mb || mb <= 0) return '0'
     return (mb / 1024).toFixed(2)
   }
+  useEffect(() => {
+    if (!address) return; // Add this check
+    
+    fetch(`/api/users`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch users')
+        }
+        return res.json()
+      })
+      .then((users: User[]) => { // Change to User[] array
+        // Find the user with matching address
+        const matchedUser = users.find((user: User) => 
+          user.address?.toLowerCase() === address?.toLowerCase()
+        );
+        
+        setUser(matchedUser || null); // Set the matched user or null if not found
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error)
+        setUser(null)
+      })
+  }, [address]) // Add address as dependency
+  
 
   return (
     <div className=" mx-auto md:py-6  px-2">
@@ -72,6 +108,7 @@ export default function DeploymentPage() {
             let sellerImage: string | undefined = undefined
             let displayName: string | null = null
             if (entry?.Seller && entry?.Seller.length > 0) {
+              
               
               const matchedUser = userDetails.find((user: any) => user.address === address)
               sellerImage = matchedUser?.profilePic || undefined
@@ -236,7 +273,7 @@ export default function DeploymentPage() {
             let sellerImage: string | undefined = undefined
             let displayName: string | null = null
             if (entry?.Seller && entry?.Seller.length > 0) {
-              
+             
               const matchedUser = userDetails.find((user: any) => user.address === address)
               sellerImage = matchedUser?.profilePic || undefined
               displayName = matchedUser?.name || 'UnKnown'
@@ -253,7 +290,7 @@ export default function DeploymentPage() {
                 <div className="my-2 flex cursor-pointer  flex-col justify-center rounded-xl bg-[#F6FAFF] p-2 
                                         perspective-1000"
                   style={{ transformStyle: 'preserve-3d' }}
-                  onClick={() => {router.push(`/app-store/${entry?.id}?undeployed=true`);}}
+                  onClick={() => {router.push(`/app-store/${entry?.id}?undeployed=true&address=${address}`);}}
                 >
 
                   <div className="transform-style-preserve-3d group transition-all duration-500 ease-in-out 
